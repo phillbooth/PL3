@@ -65,6 +65,12 @@ application code
 
 They should not be hard-coded into the LO language itself.
 
+Text AI tasks such as summarisation, generation, embeddings, moderation,
+document question answering and NLP workflows are covered separately in
+`docs/text-ai-package-boundaries-and-compute-auto.md`. Search/translation
+packages may interoperate with text AI packages, but neither area should become
+native LO language syntax.
+
 ---
 
 ## Classification

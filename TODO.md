@@ -78,6 +78,61 @@ DEMO_hello_WORLD.md
 docs/
 ```
 
+Current syntax/target documentation additions:
+
+```text
+[x] Add docs/dart-flutter-target.md
+[x] Add docs/sytax/async-dart-flutter.md
+[x] Add docs/sytax-examples/async-dart-flutter.md
+[ ] Implement parser support for async flow
+[ ] Implement await-outside-async diagnostics
+[ ] Implement target dart report/output support
+[ ] Implement target flutter package report/output support
+[ ] Implement Bytes to Dart.Uint8List interop checks
+[ ] Implement Dart type mapping report for Flutter targets
+[ ] Implement Flutter package/plugin layout generation
+[ ] Implement platform channel parser/report support
+[ ] Implement Pigeon-style typed platform API generation or equivalent schema output
+[ ] Implement permission metadata reports for Flutter package/plugin targets
+[ ] Implement flutter-ffi target planning and unsupported-platform diagnostics
+[ ] Implement source maps from generated Dart/native bindings back to .lo files
+[ ] Defer Flutter UI component syntax until Dart package, FFI and platform-channel layers are stable
+[x] Add docs/javascript-typescript-framework-targets.md
+[x] Add docs/sytax/js-ts-framework-targets.md
+[x] Add docs/sytax-examples/js-ts-framework-targets.md
+[ ] Implement target javascript ESM report/output support
+[ ] Implement TypeScript declaration output for framework-facing exports
+[ ] Implement target node report/output support
+[ ] Implement browser/Node WASM bridge reports
+[ ] Implement client_safe, server_only and worker_safe export markers
+[ ] Implement client/server split diagnostics for forbidden effects
+[ ] Implement worker-safe export diagnostics for clone/transfer unsafe data
+[ ] Implement React adapter manifest/hook/client generator as package output
+[ ] Implement Angular adapter manifest/service/client generator as package output
+[ ] Implement framework-adapter-manifest.json
+[x] Add docs/device-capability-boundaries.md
+[x] Add docs/sytax/device-capability-boundaries.md
+[x] Add docs/sytax-examples/device-capability-boundaries.md
+[ ] Implement device permission/effect boundary checks
+[ ] Implement device-capability-report.json
+[ ] Implement device-privacy-report.json
+[ ] Implement native device boundary diagnostics
+[ ] Implement mobile-native target planning without mobile framework syntax
+[ ] Keep camera, microphone, Bluetooth, GPS, notifications, media players and mobile UI out of LO core
+[x] Add docs/text-ai-package-boundaries-and-compute-auto.md
+[x] Add docs/sytax/text-ai-package-boundaries.md
+[x] Add docs/sytax-examples/text-ai-package-boundaries.md
+[ ] Define text_policy parser/report support
+[ ] Define token_policy parser/report support
+[ ] Define prompt_safety policy report support
+[ ] Define text_redaction policy report support
+[ ] Define generated-text-not-executable diagnostics
+[ ] Define token-report.json schema
+[ ] Define text-security-report.json schema
+[ ] Define text-package-target-report.json schema
+[ ] Keep summarisation, generation, embeddings, moderation, translation and NLP tasks out of LO core
+```
+
 Additional recommended files:
 
 ```text
@@ -535,6 +590,9 @@ Reason for additions:
 
 ```text
 [x] Add docs/backend-compute-support-targets.md
+[x] Refactor backend compute target docs around vendor-neutral core targets and plugin/deployment-profile mappings
+[x] Add docs/sytax/backend-compute-targets.md
+[x] Add docs/sytax-examples/backend-compute-targets.md
 [x] Define compute target best
 [x] Define prefer photonic
 [x] Define fallback gpu
@@ -542,6 +600,11 @@ Reason for additions:
 [x] Define CPU target rules
 [ ] Define WASM target rules
 [ ] Define compute auto parser support
+[ ] Define generic compute target category parser support
+[ ] Define target plugin boundary schema
+[ ] Define runtime compute capability map schema
+[ ] Define fallback report schema
+[ ] Define cloud deployment profile mapping report
 [ ] Define backend compute target catalogue parser support
 [ ] Define AI accelerator target rules
 [ ] Define memory/interconnect target rules

@@ -680,13 +680,33 @@ Loops should be source-mapped and safe.
 
 ## Await Syntax
 
-Use `await` for async operations.
+Use `await` for async operations inside an explicit `async flow`.
+
+LO is synchronous by default. A flow becomes async only when declared with the
+`async` marker.
 
 Example:
 
 ```LO
-let payment = await paymentGateway.confirm(order)
+async flow confirmPayment(order: Order) -> Result<Payment, PaymentError>
+effects [network.outbound] {
+  let payment = await paymentGateway.confirm(order)
+  return Ok(payment)
+}
 ```
+
+Rules:
+
+```text
+await is valid only inside async flow bodies
+flows that use await must be marked async
+flows that await async flows must also be marked async
+async flows may appear anywhere normal flows are allowed
+source order must not decide async validity
+```
+
+For Dart output, an async LO flow should lower to a Dart function returning
+`Future<T>`.
 
 ---
 
@@ -1304,6 +1324,56 @@ targets {
     output "./build/release/app.wasm"
   }
 
+  javascript {
+    enabled true
+    module "esm"
+    typescript_declarations true
+    source_maps true
+  }
+
+  node {
+    enabled false
+    module "esm"
+    version ">=22"
+    workers true
+    source_maps true
+  }
+
+  react_adapter {
+    enabled false
+    hooks true
+    fetch_clients true
+    validation_schemas true
+  }
+
+  angular_adapter {
+    enabled false
+    services true
+    validators true
+    signal_wrappers true
+  }
+
+  mobile_native {
+    enabled false
+    output "./build/mobile/generated"
+    source_maps true
+
+    permissions {
+      camera "deny_by_default"
+      microphone "deny_by_default"
+      location "deny_by_default"
+      bluetooth "deny_by_default"
+      notifications "deny_by_default"
+    }
+
+    reports {
+      permissions true
+      device_capabilities true
+      native_bindings true
+      compute_targets true
+    }
+  }
+
   gpu {
     enabled true
     mode "plan"
@@ -1324,6 +1394,31 @@ targets {
     enabled true
     mode "simulation"
     output "./build/release/app.ternary.sim"
+  }
+
+  flutter {
+    enabled false
+    language "dart"
+    output "./build/flutter/generated"
+
+    async {
+      enabled true
+      default "off"
+    }
+
+    bytes {
+      portable "Bytes"
+      dart "Uint8List"
+      conversion "explicit"
+      zero_copy "when_safe"
+    }
+
+    render {
+      framework "flutter"
+      drawing "dart_ui"
+      backend "auto"
+      supports ["skia", "impeller"]
+    }
   }
 }
 ```

@@ -58,7 +58,7 @@ The language is designed to be:
 - API-native
 - Maths-oriented
 - Backwards compatible with normal binary CPU systems
-- Suitable for short scripts and larger MVC-style applications
+- Suitable for short scripts and larger applications built with explicit packages
 - Able to compile one source project into multiple target outputs
 
 The core build idea:

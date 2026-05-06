@@ -43,6 +43,15 @@ an authentication platform
 a queue platform
 a cloud provider
 a browser framework
+a mobile framework
+an operating system
+a media framework
+a camera API
+a device API layer
+an LLM runtime
+an NLP framework
+a document AI platform
+a text generation engine
 a business rules engine
 ```
 
@@ -67,6 +76,22 @@ package security
 interop boundaries
 multi-target compilation
 ```
+
+Device and phone capabilities belong behind packages, platform bindings,
+operating-system APIs, drivers or frameworks. LO core should provide safe
+types, permissions, effects, streams, buffers, compute targets, capability
+detection, FFI boundaries and reports.
+
+See `docs/device-capability-boundaries.md`.
+
+Text AI capabilities such as summarisation, generation, embeddings, moderation,
+translation, document question answering, named entity extraction and sentiment
+analysis belong in packages, model providers, frameworks or external services.
+LO core should provide typed boundaries, text validation, token policies,
+redaction rules, prompt-safety hooks, effects, permissions, `compute auto` and
+reports.
+
+See `docs/text-ai-package-boundaries-and-compute-auto.md`.
 
 ---
 
@@ -1369,6 +1394,8 @@ target declarations
 compute profiles
 fallback rules
 target reports
+precision reports
+runtime capability maps
 performance reports
 security reports
 driver boundaries
@@ -1379,6 +1406,10 @@ Correct wording:
 ```text
 LO should describe compute intent. Compiler targets and vendor packages handle implementation.
 ```
+
+Target plugins and deployment profiles may expose provider-specific names such
+as CUDA, ROCm, TPU, Trainium, Inferentia, cloud confidential compute mappings or
+photonic MZI/WDM backends. These names should not be mandatory LO core targets.
 
 Avoid wording:
 

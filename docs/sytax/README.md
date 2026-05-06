@@ -39,5 +39,10 @@ Matching examples should live in `docs/sytax-examples/` and show both good and b
 ## Files
 
 ```text
+async-dart-flutter.md
+backend-compute-targets.md
+device-capability-boundaries.md
+js-ts-framework-targets.md
 patterns-and-regex.md
+text-ai-package-boundaries.md
 ```

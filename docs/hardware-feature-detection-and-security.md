@@ -32,6 +32,13 @@ Reports explain what was used.
 This should apply to both speed-oriented acceleration and hardware-assisted
 security features.
 
+Device capability detection is not the same as providing native device APIs.
+LO may detect/report compute and security capabilities such as CPU vector
+support, GPU compute, NPU/AI acceleration, DSP-style compute or trusted
+execution features. Camera, microphone, GPS, Bluetooth, notifications and media
+features should remain package/platform/framework capabilities guarded by
+permissions and reports.
+
 ---
 
 ## Speed Features

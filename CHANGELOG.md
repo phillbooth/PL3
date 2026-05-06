@@ -81,6 +81,8 @@ Example:
 - Added docs/ransomware-resistant-design.md for ransomware-resistant security policy planning.
 - Added docs/simple-vector-and-compute-auto.md for beginner-friendly vector syntax and compute auto target planning.
 - Added docs/backend-compute-support-targets.md for CPU, GPU, AI accelerator, photonic and memory/interconnect backend target planning.
+- Refactored docs/backend-compute-support-targets.md around vendor-neutral compute planning, target plugins, deployment profiles, precision/fallback reports and runtime capability maps.
+- Added docs/sytax/backend-compute-targets.md and docs/sytax-examples/backend-compute-targets.md for compute target planning syntax and diagnostics.
 - Added docs/search-and-translation-provider-boundaries.md to classify search, translation, vector search, image search and embeddings as package/provider areas rather than LO core features.
 - Added docs/video-package-boundaries-and-compute-auto.md to classify video processing, video AI, camera/screen capture and video search as package/runtime/provider areas rather than LO core features.
 - Added docs/memory-error-correction.md for memory detection, recovery, rollback, fallback and structured report planning.
@@ -88,6 +90,11 @@ Example:
 - Added docs/contracts.md, docs/modules-and-visibility.md, docs/standard-library.md, docs/testing.md, docs/observability.md and docs/compiler-backends.md.
 - Added docs/package-use-registry.md for `import` versus `use`, package approval, package permissions and package reports.
 - Added docs/language-supported-primitives.md and docs/language-non-supported-primitives.md for supported primitive and native non-support boundaries.
+- Added docs/dart-flutter-target.md plus matching docs/sytax/ and docs/sytax-examples/ entries for layered Dart/Flutter target support, explicit async flows and Bytes/Uint8List interop boundaries.
+- Expanded Dart/Flutter target planning with support levels for Dart logic packages, Flutter package/plugin output, platform-channel contracts, Pigeon-style typed APIs, Flutter FFI/native libraries, permission reports, source maps and deferred widget syntax.
+- Added docs/javascript-typescript-framework-targets.md plus matching docs/sytax/ and docs/sytax-examples/ entries for JavaScript, TypeScript, Node, WASM, worker and React/Angular adapter target planning.
+- Added docs/device-capability-boundaries.md plus matching docs/sytax/ and docs/sytax-examples/ entries for phone/device capability boundaries, permissions, streams, buffers, compute targets, FFI and reports.
+- Added docs/text-ai-package-boundaries-and-compute-auto.md plus matching docs/sytax/ and docs/sytax-examples/ entries for text AI package/provider boundaries, token policy, prompt safety, redaction, generated text safety and compute-auto reporting.
 - Added docs/api-native-design.md, docs/webhooks.md, docs/pure-flow-caching.md, docs/interoperability.md, docs/xml-support.md and docs/graphql-support.md.
 - Added docs/browser-dom-and-web-platform-primitives.md for SafeHtml, DOM effects, browser permissions, fetch/storage/cookie policy, push notifications, service workers and browser reports.
 - Added docs/image-ai-package-boundaries-and-compute-auto.md to classify image AI, vision models, image generation, image search, decoders and compute-auto image workflows as package/provider areas rather than LO core features.
@@ -203,6 +210,11 @@ Example:
 - Updated docs/pending-LO-additions.md as a current planning snapshot with prototype status and recent package, vector and wavelength concepts.
 - Refactored search and translation wording so LO provides safe package/provider boundaries instead of native search, translation, vector search, image search or provider SDK features.
 - Refactored video wording so LO provides safe file, stream, effect, privacy, memory and compute boundaries instead of native video processing, codec, AI, camera or streaming features.
+- Clarified roadmap and README wording so larger application support means package/convention support, not LO becoming an MVC or web framework.
+- Clarified that direct Flutter UI/component syntax is a later-stage research layer, not the first Flutter support target.
+- Clarified that React, Angular, Node, Express/Fastify and similar ecosystems should be supported through generated outputs and adapters, not by baking framework syntax into LO core.
+- Clarified that camera, microphone, Bluetooth, GPS, notifications, media players, phone radios and mobile UI belong in packages/platform bindings/frameworks, not LO core.
+- Clarified that text summarisation, generation, embeddings, moderation, translation, document AI and NLP tasks belong in packages/providers/frameworks, not LO core.
 - Added a documentation rule that syntax changes should update the per-feature files under docs/sytax/.
 - Added a documentation rule that syntax examples should be updated under docs/sytax-examples/ alongside docs/sytax/.
 - Corrected compiler and examples README command paths for running from the repository root.

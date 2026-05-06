@@ -1981,7 +1981,7 @@ Version 0.1 SHOULD NOT require:
 real photonic hardware
 real GPU backend
 full package manager
-full MVC framework
+built-in full MVC framework
 production compiler
 formal verification
 ```

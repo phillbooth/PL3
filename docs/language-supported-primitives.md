@@ -36,6 +36,7 @@ permissions
 files
 streams
 binary data
+safe buffers
 network boundaries
 crypto primitives
 secret handling
@@ -46,6 +47,8 @@ compiler reports
 source maps
 interop boundaries
 multi-target compilation
+compute target selection
+runtime/hardware capability detection
 ```
 
 LO should describe specialist areas using wording like:
@@ -54,6 +57,22 @@ LO should describe specialist areas using wording like:
 LO supports safe primitives for this area.
 The specialist implementation belongs in packages, drivers, frameworks, tooling, or external services.
 ```
+
+For device and phone features, LO should support safe foundations such as
+`Bytes`, `Buffer<T>`, `Stream<T>`, permissions, effects, compute targets,
+capability detection, FFI/native boundaries and security reports. It should not
+make camera apps, photo galleries, GPS navigation, Bluetooth stacks, media
+players or mobile UI native language features.
+
+See `docs/device-capability-boundaries.md`.
+
+For text AI, LO should support safe primitives such as `Text`, Unicode handling,
+`Locale`, `LanguageCode`, typed inputs/outputs, effects, permissions, token
+policies, redaction policies, prompt-safety policy hooks, `compute auto` and
+reports. It should not make summarisation, generation, embeddings, moderation,
+translation, document question answering or NLP tasks native language features.
+
+See `docs/text-ai-package-boundaries-and-compute-auto.md`.
 
 ---
 
@@ -755,12 +774,15 @@ Supported targets may include:
 
 ```text
 CPU
+CPU vector
 WASM
 GPU
 AI accelerator
-photonic accelerator
+photonic candidate
 ternary simulation
 hybrid compute plans
+memory/interconnect planning
+cloud compute profiles
 ```
 
 Supported compiler concepts:
@@ -769,6 +791,9 @@ Supported compiler concepts:
 target declarations
 fallback rules
 target reports
+precision reports
+fallback reports
+runtime capability maps
 security reports
 performance reports
 failure reports
@@ -781,6 +806,13 @@ LO should not hard-code one vendor, chip, cloud, or accelerator.
 The language should describe what the program needs.
 
 The compiler and tooling should decide what targets are available and safe.
+
+Vendor-specific GPU, AI accelerator, cloud and photonic details should be
+handled by target plugins, drivers and deployment profiles. LO core should keep
+generic target categories such as `cpu`, `cpu_vector`, `gpu`,
+`ai_accelerator`, `photonic_auto`, `accelerator_auto` and `safe_cpu`.
+
+See `docs/backend-compute-support-targets.md`.
 
 ---
 

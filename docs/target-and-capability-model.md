@@ -97,9 +97,20 @@ Recommended early target types:
 browser
 server
 native
+javascript
+typescript
+node
+react-adapter
+angular-adapter
+dart
+flutter
 wasm
+worker
+mobile-native
 gpu
+ai-accelerator
 photonic
+memory-interconnect
 ternary-sim
 omni-sim
 wavelength
@@ -113,14 +124,25 @@ The smallest useful v0.1 target boundary should be:
 browser = JavaScript output planning and import security checks
 server  = normal trusted backend runtime planning
 native  = CPU-compatible baseline output
+javascript = generated ESM JavaScript module output
+typescript = generated TypeScript declaration or TS-compatible output
+node    = Node-compatible ESM/WASM/worker output
+react-adapter = optional React-friendly wrapper output
+angular-adapter = optional Angular-friendly wrapper output
 wasm    = WebAssembly output planning
+worker  = browser/Node worker-compatible compute output
+mobile-native = mobile native package/binding output target, not mobile framework syntax
+dart    = generated Dart package output
+flutter = generated Dart prepared for Flutter package/app integration
 ```
 
 Later targets:
 
 ```text
 gpu        = planned accelerator report
+ai         = planned AI accelerator target category report
 photonic   = research/future target report
+memory     = memory/interconnect planning report
 ternary    = simulation
 omni       = configurable logic-width simulation
 wavelength = future analogue photonic maths planning
@@ -130,6 +152,32 @@ Wavelength compute is research-stage and should be treated as a pure compute
 planning target only. It must not allow file, network, database, environment or
 secret access, and results must return to strict LO values before business or
 security decisions.
+
+Backend compute targets should use generic target categories in LO core:
+`cpu`, `cpu_vector`, `gpu`, `ai_accelerator`, `photonic_auto`,
+`photonic_candidate`, `accelerator_auto`, `memory_interconnect` and `safe_cpu`.
+Vendor-specific targets such as CUDA, ROCm, TPU, Trainium, Inferentia, cloud
+confidential compute mappings or photonic MZI/WDM backends belong in target
+plugins or deployment profiles.
+
+Dart and Flutter targets are language/package output targets. They must not turn
+LO into a Flutter framework. Flutter support should be layered: generated Dart
+business logic first, optional Flutter package/plugin output next, and explicit
+render/interop reports where Flutter drawing or platform boundaries are used.
+
+Flutter FFI and platform-channel targets are explicit interop targets. They must
+declare platform support, permissions, generated bindings, source maps and
+unsupported-platform diagnostics.
+
+JavaScript, TypeScript, Node, React adapter and Angular adapter targets are
+framework-facing output targets. They must keep LO framework-neutral: generated
+ESM, declarations, schemas, source maps, WASM bridges and adapter manifests are
+allowed; native React/Angular component syntax and framework routing are not
+core LO features.
+
+Mobile-native targets and device capability packages must not turn LO into a
+mobile framework or operating-system API layer. They should expose explicit
+permissions, effects, native bindings, compute target reports and source maps.
 
 ---
 

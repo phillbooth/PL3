@@ -295,6 +295,27 @@ let body: Bytes = req.body
 
 Bytes should be bounds checked and memory safe.
 
+For Dart and Flutter targets, `Bytes` remains the portable LO type. Dart's
+`Uint8List` is a target-specific interop type and should appear only at explicit
+Dart/Flutter boundaries.
+
+Recommended byte model:
+
+```text
+Bytes          = portable immutable LO byte data
+MutableBytes   = portable mutable LO byte buffer
+ByteView       = safe view into byte data
+Dart.Uint8List = Dart-specific external/platform type
+```
+
+Rule:
+
+```text
+Use Bytes in normal LO code.
+Use Dart.Uint8List only in Dart/Flutter interop code.
+Convert explicitly unless the compiler proves a zero-copy conversion is safe.
+```
+
 ---
 
 ## Collection Types

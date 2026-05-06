@@ -675,7 +675,8 @@ else
 
 ## Support for `photonic_mzi`
 
-LO should support `photonic_mzi` as an advanced compute target.
+LO may support `photonic_mzi` as an advanced target-plugin or deployment-profile
+target.
 
 MZI means:
 
@@ -683,7 +684,8 @@ MZI means:
 Mach-Zehnder interferometer
 ```
 
-In LO, `photonic_mzi` should be treated as a target for suitable numeric vector/matrix compute.
+In LO, `photonic_mzi` should be treated as an optional plugin-backed target for
+suitable numeric vector/matrix compute, not as a mandatory core target.
 
 Good candidates:
 
@@ -721,7 +723,8 @@ compute target photonic_mzi fallback gpu fallback cpu {
 }
 ```
 
-Instead, `boot.lo` should declare that `photonic_mzi` is allowed:
+Instead, `boot.lo` may declare that `photonic_mzi` is allowed when a matching
+target plugin or deployment profile exists:
 
 ```LO
 compute {
@@ -752,6 +755,7 @@ LO can select `photonic_mzi` only if:
 
 ```text
 hardware is available
+target plugin or deployment profile is available
 operation is suitable
 flow is pure
 input is numeric/vector/matrix compatible
@@ -778,6 +782,7 @@ Meaning:
 ```text
 photonic_mzi is required
 if unavailable or unsuitable, check/build fails
+requires a matching target plugin or deployment profile
 ```
 
 This should be rare in normal application code.
@@ -1084,10 +1089,11 @@ Selected target:
 GPU
 
 Reason:
-Photonic MZI runtime was not available. GPU was available and suitable.
+No photonic MZI target plugin was available. GPU was available and suitable.
 
 AI note:
-Do not hard-code `compute target photonic_mzi` unless the project requires that hardware.
+Do not hard-code `compute target photonic_mzi` unless the project requires that
+hardware and a target plugin or deployment profile is available.
 ```
 
 ---
@@ -1102,8 +1108,8 @@ compute auto cannot perform database I/O
 compute auto cannot call APIs
 compute auto cannot handle secrets unless explicitly allowed
 compute auto cannot make final security decisions directly
-photonic_mzi cannot run business side effects
-photonic_mzi results must return to strict LO types
+photonic/plugin targets cannot run business side effects
+photonic/plugin target results must return to strict LO types
 fallback must be reported
 ```
 
@@ -1243,8 +1249,8 @@ support CPU vector and GPU target planning
 Version 0.3:
 
 ```text
-support photonic_mzi as a target profile
-support explicit compute target photonic_mzi required
+support photonic_mzi as an optional plugin/deployment target profile
+support explicit compute target photonic_mzi required when a target plugin exists
 support target capability detection
 support AI guide compute summaries
 ```

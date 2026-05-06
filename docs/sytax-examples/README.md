@@ -34,5 +34,10 @@ expected diagnostics or reports
 ## Files
 
 ```text
+async-dart-flutter.md
+backend-compute-targets.md
+device-capability-boundaries.md
+js-ts-framework-targets.md
 patterns-and-regex.md
+text-ai-package-boundaries.md
 ```

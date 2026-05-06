@@ -1097,6 +1097,202 @@ host capability probing exist.
 
 ---
 
+## 25. Dart and Flutter Target Support
+
+Status: documented in `docs/dart-flutter-target.md`.
+
+LO should support Flutter through Dart output and Flutter-compatible packages.
+This must stay a language/compiler target model, not a native Flutter framework
+inside LO.
+
+Core rule:
+
+```text
+LO is the language.
+Dart is a target language.
+Flutter is an external UI framework.
+Skia and Impeller are rendering backend concerns to report.
+```
+
+Design direction:
+
+```text
+sync by default
+async flow only when declared
+await only inside async flows
+Bytes as portable LO byte data
+Dart.Uint8List only at explicit Dart/Flutter interop boundaries
+vector compute separate from async IO
+Flutter support through generated Dart packages first
+Flutter package/plugin output after Dart logic package output
+platform-channel contracts as explicit interop boundaries
+Pigeon-style typed platform API generation as optional tooling
+Flutter FFI/native-library output for compute-heavy code
+permission metadata and source maps for generated Flutter artefacts
+Flutter UI component syntax as later-stage research
+Skia/Impeller assumptions reported, not hard-coded
+```
+
+Pending work:
+
+```text
+parse async flow
+reject await outside async flow
+lower async flow to Dart Future
+add target dart reports
+add target flutter reports
+add Bytes to Dart.Uint8List conversion checks
+add platform channel parser/report support
+add permission metadata reports
+add Pigeon-style typed API schema output or equivalent
+add flutter-ffi target planning
+add unsupported-platform diagnostics for Flutter FFI
+add source maps from generated Dart/native bindings back to .lo files
+defer Flutter UI component syntax until lower support levels are stable
+emit async, platform-channel, FFI and render backend reports
+```
+
+---
+
+## 26. JavaScript, TypeScript and Framework Target Support
+
+Status: documented in `docs/javascript-typescript-framework-targets.md`.
+
+LO should support Node.js, React, Angular and similar ecosystems through
+generated JavaScript, TypeScript declarations, schemas, source maps, WASM
+bridges and adapter manifests. This must stay target and tooling work, not a
+native React, Angular or Node framework inside LO.
+
+Core rule:
+
+```text
+LO is the language.
+JavaScript/TypeScript are target outputs and interop layers.
+Node is a runtime target.
+React and Angular are external framework adapter targets.
+```
+
+Design direction:
+
+```text
+prefer ESM JavaScript output
+generate TypeScript declarations
+generate JSON Schema and OpenAPI from LO types/contracts
+support browser and Node WASM bridges
+support Node worker-compatible compute modules
+support client_safe, server_only and worker_safe export markers
+reject forbidden client and worker effects
+generate React and Angular adapters as package/generator output
+keep React/Angular components, JSX, decorators, routers and state frameworks out of core LO
+```
+
+Pending work:
+
+```text
+parse target javascript
+parse target node
+parse react-adapter and angular-adapter targets
+parse client_safe, server_only and worker_safe export markers
+emit TypeScript declarations
+emit framework adapter manifests
+emit JS/WASM source maps
+emit client/server split diagnostics
+emit worker clone/transfer safety diagnostics
+```
+
+---
+
+## 27. Device Capability Boundaries
+
+Status: documented in `docs/device-capability-boundaries.md`.
+
+LO should support the safe foundations for phone and device features without
+making camera, microphone, GPS, Bluetooth, notifications, media players, phone
+radios or mobile UI native language features.
+
+Core rule:
+
+```text
+LO is the language.
+Device features belong in packages, platform bindings, OS APIs, drivers or frameworks.
+Mobile UI and app lifecycle belong in frameworks.
+Raw/privileged device access is blocked by default.
+```
+
+Design direction:
+
+```text
+support Bytes, Buffer<T>, Stream<T>, ImageData, AudioData, SignalData, Tensor<T>, Vector<T> and Matrix<T>
+support permissions and effects for device-facing packages
+support async/event handling without becoming a UI framework
+support compute targets such as CPU, GPU, NPU, DSP, WASM and mobile native
+support runtime/hardware capability detection and safe fallback
+support explicit unsafe external native/platform boundaries
+report device permissions, privacy, native bindings and compute target assumptions
+keep camera apps, photo galleries, FM radio, media players, GPS navigation, notifications and mobile UI out of core LO
+```
+
+Pending work:
+
+```text
+check device effects against declared permissions
+reject core calls pretending to be built-in device APIs
+emit device-capability-report.json
+emit device-privacy-report.json
+emit native-bindings-report.json for device/platform bindings
+connect device compute choices to compute-target-report.json
+add mobile-native target planning without mobile framework syntax
+```
+
+---
+
+## 28. Text AI Package Boundaries and Compute Auto
+
+Status: documented in `docs/text-ai-package-boundaries-and-compute-auto.md`.
+
+LO should safely support text AI packages, model providers and compute-heavy
+text workflows without making text AI a native language feature.
+
+Core rule:
+
+```text
+LO is the language.
+Text AI tasks belong in packages, model providers, frameworks, applications or external services.
+Generated text is data, not executable instructions.
+```
+
+Design direction:
+
+```text
+support Text, Unicode handling, Locale, LanguageCode, typed inputs and typed outputs
+support text_policy and token_policy configuration
+support prompt_safety and text_redaction policy hooks
+support package/provider boundaries for summarisation, generation, embeddings, translation, moderation, NLP and document AI
+support compute auto for model-heavy text stages
+keep loading, validation, prompt safety, redaction, final decisions and storage in CPU/exact logic
+require network permissions for external providers
+reject or strongly warn when generated text is executed directly
+report token limits, memory, target selection, prompt safety, redaction and external provider use
+```
+
+Pending work:
+
+```text
+parse text_policy
+parse token_policy
+parse prompt_safety policy
+parse text_redaction policy
+define token-report.json schema
+define text-security-report.json schema
+define text-package-target-report.json schema
+connect text package compute auto to backend target reports
+add generated-text-not-executable diagnostics
+check external provider calls against network permissions
+add AI guide text package summaries
+```
+
+---
+
 ## Final Principle
 
 LO should become more than a language that runs code.

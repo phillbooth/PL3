@@ -75,6 +75,12 @@ Frameworks provide UI structure and developer opinions.
 Browsers provide the actual Web APIs.
 ```
 
+For React, Angular, Node and similar ecosystems, LO should generate framework
+adapter outputs rather than framework syntax. ESM JavaScript, TypeScript
+declarations, JSON Schema, OpenAPI, WASM bridges, source maps and adapter
+manifests belong in the toolchain; React components, Angular components,
+framework routing and state-management systems do not belong in LO core.
+
 ---
 
 ## Core Principle

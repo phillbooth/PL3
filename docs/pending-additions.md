@@ -489,7 +489,7 @@ pure vector float flow
 pure vector decimal flow
 pure vector required flow
 compute auto
-compute target photonic_mzi required
+compute target photonic_mzi required when a target plugin exists
 ```
 
 Pending implementation examples:
@@ -500,7 +500,7 @@ parse pure vector float/decimal/required modifiers
 load boot.lo compute preference order
 emit compute auto target selection reports
 emit AI guide compute auto summaries
-detect photonic_mzi target capability
+detect photonic_mzi target capability through target plugin or deployment profile
 ```
 
 ---
@@ -564,16 +564,45 @@ hardware feature reporting in app.target-report.json
 
 ## 11C.3. Backend Compute Support Targets
 
-Status: documented in `docs/backend-compute-support-targets.md`; target discovery, capability maps, parser support and expanded target reports remain pending.
+Status: documented in `docs/backend-compute-support-targets.md`; target
+discovery, target plugin boundaries, capability maps, parser support and
+expanded target reports remain pending.
 
-The backend target catalogue includes:
+Core rule:
+
+```text
+Compute planning belongs in LO compiler/runtime.
+Vendor-specific hardware support belongs in target plugins, drivers and deployment profiles.
+LO provides safe compute blocks, target categories, fallback rules, precision rules and reports.
+```
+
+The backend target model includes generic categories:
 
 ```text
 CPU and CPU SIMD/vector targets
-GPU targets and APIs
-AI accelerators such as TPU, Trainium, Inferentia and NPU-style targets
-photonic targets such as photonic_mzi, photonic_wdm and photonic_interconnect
+GPU as a broad target category
+AI accelerator as a broad tensor/model target category
+photonic_auto and photonic_candidate as optional candidate categories
 hybrid CPU/GPU and memory/interconnect targets
+cloud compute profiles
+```
+
+Plugin/deployment-profile areas:
+
+```text
+CUDA
+ROCm
+Vulkan compute
+Metal
+OpenCL
+WebGPU runtime details
+TPU
+Trainium
+Inferentia
+NPU plugins
+photonic MZI/WDM/ring/crossbar plugins
+cloud confidential compute mappings
+provider-specific CPU/AI/security processor mappings
 ```
 
 Pending implementation examples:
@@ -581,10 +610,18 @@ Pending implementation examples:
 ```text
 parse compute auto
 parse target chains with ai_accelerator and memory_interconnect
-detect CPU/GPU/AI/photonic target capabilities
+parse precision and tolerance metadata
+parse cloud/deployment target profiles
+define target plugin boundary schema
+detect CPU/GPU/AI/photonic target capabilities through plugins
 report target calibration/health/precision/fallback status
 estimate data movement cost
-expand app.target-report.json schema for backend target catalogue
+emit app.compute-capability-map.json
+emit app.precision-report.json
+emit app.fallback-report.json
+emit app.memory-report.json
+emit app.cloud-target-report.json
+expand app.target-report.json schema for backend target planning
 ```
 
 ---
@@ -1102,6 +1139,220 @@ emit ransomware-risk-report.json
 add security-audit --ransomware command
 add runtime mass write/rename/delete detection
 integrate ransomware checks into security reports
+```
+
+---
+
+## 22. Dart and Flutter Target Support
+
+Status: documented in `docs/dart-flutter-target.md`; parser/backend support remains pending.
+
+LO should support Dart and Flutter as layered target outputs without becoming a
+Flutter framework.
+
+Required boundary:
+
+```text
+LO = language and compiler/toolchain
+Dart = target language
+Flutter = external UI framework/package ecosystem
+Skia and Impeller = rendering backend concerns to report, not core LO syntax
+```
+
+Documented design direction:
+
+```text
+sync by default
+async flow only when declared
+await only inside async flows
+async flows may appear anywhere normal flows are allowed
+Bytes as portable LO byte data
+Dart.Uint8List only at explicit Dart/Flutter interop boundaries
+vector compute separate from async IO
+Flutter support through generated Dart package output first
+Flutter package/plugin output after Dart logic package output
+platform-channel contracts as explicit interop boundaries
+Pigeon-style typed platform API generation as optional tooling
+Flutter FFI/native-library output for compute-heavy code
+permission metadata and source maps for generated Flutter artefacts
+Flutter UI component syntax as later-stage research
+Skia/Impeller assumptions reported, not hard-coded
+```
+
+Pending implementation examples:
+
+```text
+parse async flow
+reject await outside async flow
+lower async flow to Dart Future
+add target dart reports
+add target flutter reports
+add Flutter-compatible package output layout
+add Bytes to Dart.Uint8List conversion checks
+add Dart type mapping reports
+add platform channel parser/report support
+add permission metadata reports
+add Pigeon-style typed API schema output or equivalent
+add flutter-ffi target planning
+add native-library plus Dart binding output planning
+add unsupported-platform diagnostics for Flutter FFI
+add source maps from generated Dart/native bindings back to .lo files
+defer Flutter UI component syntax until lower support levels are stable
+emit async-report.json
+emit bytes-interop-report.json
+emit platform-channel-report.json
+emit ffi-report.json
+emit render-target-report.json
+emit graphics-backend-report.json
+```
+
+---
+
+## 23. JavaScript, TypeScript and Framework Target Support
+
+Status: documented in `docs/javascript-typescript-framework-targets.md`; parser/backend support remains pending.
+
+LO should support Node.js, React, Angular and similar ecosystems through
+generated JavaScript, TypeScript declarations, schemas, source maps, WASM
+bridges and adapter manifests without becoming those frameworks.
+
+Required boundary:
+
+```text
+LO = language and compiler/toolchain
+JavaScript/TypeScript = target output and interop layer
+Node = runtime target
+React/Angular = external framework adapter targets
+WASM = browser/Node compute module target
+```
+
+Documented design direction:
+
+```text
+prefer ESM JavaScript output for modern framework interop
+generate TypeScript declarations for LO exports
+generate JSON Schema and OpenAPI from LO types/contracts
+support browser and Node WASM bridges
+support Node worker-compatible compute modules
+support client_safe, server_only and worker_safe export markers
+reject forbidden effects from client_safe exports
+reject DOM/server-only effects from worker_safe exports
+generate React hook/client/schema adapters as package output
+generate Angular service/client/form/signal-friendly adapters as package output
+keep React/Angular component syntax, JSX, decorators, routers and state frameworks out of core LO
+```
+
+Pending implementation examples:
+
+```text
+parse target javascript
+parse target node
+parse react-adapter and angular-adapter targets
+parse client_safe, server_only and worker_safe export markers
+emit TypeScript declarations
+emit framework-adapter-manifest.json
+emit js-target-report.json
+emit typescript-declarations-report.json
+emit wasm-bridge-report.json
+emit worker-bridge-report.json
+emit client-server-split-report.json
+add client/server split diagnostics
+add worker clone/transfer safety diagnostics
+add source maps from generated JS/WASM back to .lo files
+```
+
+---
+
+## 24. Device Capability Boundaries
+
+Status: documented in `docs/device-capability-boundaries.md`; parser/runtime
+support remains pending.
+
+LO should support the safe foundations for phone and device features without
+making camera, microphone, GPS, Bluetooth, notifications, media players, phone
+radios or mobile UI native language features.
+
+Required boundary:
+
+```text
+LO = language and compiler/toolchain
+Device features = packages, platform bindings, OS APIs, drivers or frameworks
+Mobile UI/app lifecycle = frameworks
+Raw/privileged device access = blocked by default
+```
+
+Documented design direction:
+
+```text
+support Bytes, Buffer<T>, Stream<T>, ImageData, AudioData, SignalData, Tensor<T>, Vector<T> and Matrix<T>
+support permissions and effects for device-facing packages
+support async/event handling without becoming a UI framework
+support compute targets such as CPU, GPU, NPU, DSP, WASM and mobile native
+support runtime/hardware capability detection and safe fallback
+support explicit unsafe external native/platform boundaries
+report device permissions, privacy, native bindings and compute target assumptions
+keep camera apps, photo galleries, FM radio, media players, GPS navigation, notifications and mobile UI out of core LO
+```
+
+Pending implementation examples:
+
+```text
+parse device permission declarations consistently
+check device effects against declared permissions
+reject core calls pretending to be built-in device APIs
+emit device-capability-report.json
+emit device-privacy-report.json
+emit native-bindings-report.json for device/platform bindings
+connect device compute choices to compute-target-report.json
+add mobile-native target planning without mobile framework syntax
+```
+
+---
+
+## 25. Text AI Package Boundaries and Compute Auto
+
+Status: documented in `docs/text-ai-package-boundaries-and-compute-auto.md`;
+parser/runtime/report support remains pending.
+
+LO should safely support text AI packages, model providers and compute-heavy
+text workflows without making text AI a native language feature.
+
+Required boundary:
+
+```text
+LO = language and compiler/toolchain
+Text AI tasks = packages, model providers, frameworks, applications or external services
+Generated text = data, not executable instructions
+```
+
+Documented design direction:
+
+```text
+support Text, Unicode handling, Locale, LanguageCode, typed inputs and typed outputs
+support text_policy and token_policy configuration
+support prompt_safety and text_redaction policy hooks
+support package/provider boundaries for summarisation, generation, embeddings, translation, moderation, NLP and document AI
+support compute auto for model-heavy text stages
+keep loading, validation, prompt safety, redaction, final decisions and storage in CPU/exact logic
+require network permissions for external providers
+reject or strongly warn when generated text is executed directly
+report token limits, memory, target selection, prompt safety, redaction and external provider use
+```
+
+Pending implementation examples:
+
+```text
+parse text_policy
+parse token_policy
+parse prompt_safety policy
+parse text_redaction policy
+define token-report.json schema
+define text-security-report.json schema
+define text-package-target-report.json schema
+connect text package compute auto to backend target reports
+add generated-text-not-executable diagnostics
+check external provider calls against network permissions
+add AI guide text package summaries
 ```
 
 ---

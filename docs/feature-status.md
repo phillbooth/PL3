@@ -59,21 +59,35 @@ Every major LO feature should be labelled Implemented, Prototype, Draft, Planned
 | Photonic target | Research | Future hardware/backend-dependent |
 | Wavelength compute | Research | Hybrid analogue photonic compute model documented, no backend support |
 | Hardware feature detection and reporting | Research | Modern CPU/GPU speed and security feature planning documented, no host/backend support |
-| Backend compute support targets | Draft | CPU/GPU/AI accelerator/photonic/memory-interconnect target catalogue documented; discovery/report support pending |
+| Backend compute support targets | Draft | Vendor-neutral compute auto, CPU/GPU/AI accelerator/photonic candidate, memory/interconnect, precision, fallback, plugin/deployment-profile boundary and report model documented; discovery/report support pending |
 | Browser target | Prototype | Syntax parses and server-only import blocking has initial checks |
+| JavaScript/TypeScript framework targets | Draft | ESM, TypeScript declarations, Node/browser/WASM bridge, worker-safe exports and framework adapter boundaries documented; generator pending |
+| React adapter output | Draft | Hook/client/schema adapter output documented as generator/package work, not core component syntax |
+| Angular adapter output | Draft | Service/client/form/signal-friendly adapter output documented as generator/package work, not core component syntax |
+| Node target | Draft | ESM, worker-compatible modules and WASM loader target direction documented; compiler output pending |
+| Dart target | Draft | Generated Dart library/package output documented; compiler output pending |
+| Flutter target | Draft | Layered Dart/Flutter package support documented; LO remains a language/toolchain, not a Flutter framework |
+| Flutter package/plugin output | Draft | Flutter-compatible package/plugin layouts, permission reports and source maps documented; generator pending |
+| Flutter platform-channel generator | Draft | Typed platform-channel/Pigeon-style boundary model documented; parser/generator pending |
+| Flutter FFI target | Draft | Native library plus Dart FFI binding target documented; platform support checks pending |
+| Flutter UI component syntax | Research | Optional later-stage widget mapping direction documented; not part of first Flutter support target |
 | Capability block | Prototype | `aLOw`/`block` syntax parses and blocked capabilities can reject imports |
 | Package Use Registry | Draft | `import` vs `use`, package approval and package report model documented |
 | Search and translation provider boundaries | Draft | Boundary model documented; search, translation, vector search, image search and provider-specific engines remain package/framework/external-service areas |
+| Text AI package boundaries and compute auto | Draft | Text AI, NLP, LLM, document AI, prompt safety, token policy, redaction and compute-auto boundary model documented; package/report/runtime enforcement pending |
 | Image AI package boundaries and compute auto | Draft | Image AI, vision model, decoder, generation, search and compute-auto boundary model documented; package/report/runtime enforcement pending |
 | Video package boundaries and compute auto | Draft | Video package/provider/privacy/compute boundary model documented; video engines, codecs, AI tasks and camera/screen APIs remain package/runtime/framework areas |
 | Frontend JavaScript output | Planned | Design documented, compiler output pending |
 | Browser JavaScript placeholder output | Prototype | Browser target builds can emit a placeholder `app.browser.js` |
 | Browser, DOM and web platform primitives | Draft | Safe HTML, DOM, browser effects, permissions, storage, push/service worker and report model documented; parser/runtime enforcement pending |
+| Device capability boundaries | Draft | Phone/device features classified as package/platform/framework areas; LO core provides safe types, streams, buffers, permissions, compute targets, FFI and reports |
 | Debug console | Draft | Safe console syntax and redaction rules documented |
 | Hybrid JavaScript + WebAssembly | Planned | Depends on browser target and WASM wrapper support |
+| Framework boundary markers | Draft | `client_safe`, `server_only` and `worker_safe` export markers documented; parser/checker support pending |
 | Vector model | Draft | Security-first model documented, parser support pending |
 | Vectorised dataset syntax | Draft | `vectorize rows` syntax documented, parser/report support pending |
 | Simple vector syntax and compute auto | Draft | Friendly vector/compute auto model documented; parser/runtime support pending |
+| Async Dart/Flutter syntax | Draft | Explicit `async flow`, `await` restrictions, Dart `Future` lowering and `Bytes`/`Uint8List` boundary documented; parser/backend support pending |
 | Offload nodes | Draft | Design documented, runtime scheduler pending |
 | Graph ownership | Planned | Design direction documented, syntax/checking pending |
 | Draft vs secure mode | Planned | Design direction documented |

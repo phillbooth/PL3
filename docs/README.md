@@ -19,6 +19,9 @@ language-non-supported-primitives.md
 backend-language-gap-analysis.md
 syntax.md
 sytax/
+dart-flutter-target.md
+device-capability-boundaries.md
+javascript-typescript-framework-targets.md
 safe-pattern-matching-and-regex.md
 tri-logic
 type-system.md
@@ -73,9 +76,13 @@ api-native-design.md
 webhooks.md
 frontend-compilation-js-wasm.md
 browser-dom-and-web-platform-primitives.md
+dart-flutter-target.md
+device-capability-boundaries.md
+javascript-typescript-framework-targets.md
 xml-support.md
 graphql-support.md
 search-and-translation-provider-boundaries.md
+text-ai-package-boundaries-and-compute-auto.md
 image-ai-package-boundaries-and-compute-auto.md
 video-package-boundaries-and-compute-auto.md
 interoperability.md

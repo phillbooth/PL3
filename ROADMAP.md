@@ -21,7 +21,7 @@ LO should be developed in stages:
 0.6.x  AI-friendly tooling prototype
 0.7.x  Developer tooling
 0.8.x  Runtime prototype
-0.9.x  Early application framework
+0.9.x  Larger application structure and package conventions
 1.0.0  First stable language specification
 ```
 
@@ -503,21 +503,22 @@ runtime errors map back to source files
 
 ---
 
-## Version 0.9.x — Early Application Framework
+## Version 0.9.x — Larger Application Structure
 
 ### Goal
 
-Create early support for larger API/MVC-style applications.
+Create early support for larger API applications without making LO an MVC or
+web framework.
 
 ### Planned Features
 
 ```text
 service blocks
-routes
-controllers
-models
-views
-middleware
+typed API route declarations
+handler modules
+domain models
+package-provided views
+package-provided middleware
 workers
 channels
 configuration
@@ -528,7 +529,7 @@ test structure
 ### Example Structure
 
 ```text
-my-LO-web-app/
+my-LO-api-app/
 ├── boot.lo
 ├── src/
 ├── app/
@@ -588,7 +589,7 @@ real photonic hardware backend
 full production GPU backend
 complete package manager
 formal verification
-full MVC framework
+built-in full MVC framework
 large standard library
 ```
 
@@ -618,7 +619,7 @@ debugger
 deployment tooling
 formal verification tools
 standard library
-web framework
+web framework packages
 cloud deployment adapters
 ```
 

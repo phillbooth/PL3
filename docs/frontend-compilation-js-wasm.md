@@ -71,6 +71,14 @@ working with existing frontend frameworks
 
 LO should therefore treat JavaScript as the main browser integration layer.
 
+Modern framework integration should stay framework-neutral. LO may generate
+JavaScript, TypeScript declarations, schemas, source maps, WASM bridges and
+adapter manifests for React, Angular, Node and similar ecosystems, but those
+frameworks still own UI components, routing, state management and app structure.
+
+Detailed framework-facing target planning lives in
+`docs/javascript-typescript-framework-targets.md`.
+
 ---
 
 ## Target 1: JavaScript
@@ -83,6 +91,8 @@ app.lo -> app.js
 
 The LO compiler reads `.lo` files and generates JavaScript modules.
 
+For modern browser and Node targets, ESM should be the preferred module format.
+
 Example output:
 
 ```text
@@ -90,8 +100,10 @@ src/main.lo
 src/forms/contact-form.lo
 
 dist/app.js
+dist/app.d.ts
 dist/app.js.map
 dist/LO.browser-report.json
+dist/framework-adapter-manifest.json
 ```
 
 The generated JavaScript can then be loaded in the browser:
