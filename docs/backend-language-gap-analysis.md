@@ -44,6 +44,305 @@ docs/language-non-supported-primitives.md
 
 ---
 
+## Primary Rule Set
+
+LO should be designed around a small set of primary language rules. These rules
+should guide future syntax, type-system, compiler, target and documentation
+decisions.
+
+```text
+1. LO must stay developer friendly.
+2. LO must have a clear learning curve.
+3. LO must be a strict backend language.
+4. LO must be AI-readable by design.
+5. LO must be three-way logic aware.
+6. LO must be security-first.
+7. LO must be optimised for low memory usage.
+8. LO must reduce unnecessary compute.
+9. LO must be vector-ready.
+10. LO must support repetitive AI compute tasks safely.
+11. LO must be multi-state logic compatible, including Tri logic<N>.
+12. LO must be photonic and wavelength planning ready.
+13. LO must remain CPU-compatible by default.
+14. LO must be safe through explicit types, effects, permissions, reports and fallback.
+15. LO must reduce ransomware-style attack risk through explicit file, network, package and permission controls.
+16. Is not a Framwork  
+```
+
+These rules define what LO should become:
+
+```text
+a readable backend language
+a safe language for humans and AI tools
+a language that can express uncertainty without unsafe nulls
+a language that can run normal CPU code today
+a language that can plan future vector, AI, photonic and wavelength compute
+a language that avoids framework-specific native features
+```
+
+### 1. Developer Friendly Syntax and Learning Curve
+
+LO should be strict, but it should not be hard to read.
+
+The language should prefer:
+
+```text
+clear keywords
+predictable syntax
+one obvious way to define common behaviour
+small core concepts
+explicit public API boundaries
+examples that compile
+diagnostics that explain the fix
+```
+
+LO should avoid:
+
+```text
+clever shorthand
+large numbers of equivalent spellings
+hidden implicit behaviour
+syntax that only compiler experts can understand
+advanced type tricks in ordinary backend code
+```
+
+Strictness should help developers, not punish them. When LO rejects code, the
+compiler should explain:
+
+```text
+what failed
+why it is unsafe or unclear
+how to fix it
+which source line caused it
+which target or permission rule was involved
+```
+
+### 2. Strict Backend Language
+
+LO should be suitable for backend systems such as APIs, services, workers,
+automation jobs, data pipelines and secure compute tasks.
+
+Core backend language support should include:
+
+```text
+typed flows
+typed request and response boundaries
+typed errors
+structured concurrency
+streams
+files
+network boundaries
+environment boundaries
+secret handling
+resource cleanup
+module visibility
+package approval
+runtime profiles
+```
+
+Backend framework features should not become native language syntax. Routing,
+ORMs, queues, authentication systems, CMS features and cloud deployment belong
+in packages, frameworks, tooling or external services.
+
+### 3. AI-Readable by Design
+
+LO should be easy for AI coding tools to inspect without guessing.
+
+The language should require:
+
+```text
+explicit types at public boundaries
+explicit mutation
+explicit effects
+explicit permissions
+explicit imports
+explicit package use
+explicit target fallback
+exhaustive match for states
+stable diagnostic IDs
+source maps
+machine-readable compiler reports
+secret redaction in generated AI context
+```
+
+AI readability is not just documentation. It should be part of the language and
+compiler contract.
+
+### 4. Three-Way and Multi-State Logic
+
+LO should treat uncertainty as a first-class language concern.
+
+Required logic model:
+
+```text
+Bool      = true / false
+Tri       = true / false / unknown
+Decision  = domain state such as Allow / Deny / Review
+Logic<N>  = future multi-state logic
+```
+
+LO should never silently convert:
+
+```text
+Tri to Bool
+Decision to Bool
+Logic<N> to a smaller logic width
+unknown to allow
+review to allow
+```
+
+Any conversion that loses meaning must name the policy and produce a reportable
+compiler decision.
+
+### 5. Security-First Design
+
+Security should be part of normal LO syntax, not an afterthought.
+
+LO should make these visible:
+
+```text
+effects
+permissions
+secrets
+unsafe behaviour
+imports
+package use
+network access
+file access
+environment access
+target capabilities
+fallback behaviour
+```
+
+The default should be:
+
+```text
+deny unsafe behaviour
+deny accidental global mutation
+deny secret leakage into logs, reports or AI context
+deny raw hardware or driver access
+deny silent fallback where correctness or security changes
+```
+
+Ransomware-style attacks cannot be prevented by language design alone, but LO
+should reduce the risk by making dangerous behaviour explicit and auditable.
+
+LO should require clear permission boundaries for:
+
+```text
+recursive file access
+bulk file writes
+file deletion
+file encryption
+network download and execution
+process spawning
+package install scripts
+access to secrets and credentials
+```
+
+The compiler and runtime reports should flag code or packages that combine risky
+capabilities, such as broad file write access plus network access plus process
+execution.
+
+### 6. Low Memory Usage
+
+LO should make memory behaviour visible and predictable.
+
+The language should prefer:
+
+```text
+immutable values by default
+explicit mutation
+borrowed views where safe
+copy-on-write where useful
+explicit clone
+explicit deep copy
+streaming over full buffering
+chunked file and network processing
+memory pressure reports
+safe spill policies
+```
+
+Large values, repeated datasets, vectors, JSON payloads and AI inputs should not
+silently create expensive copies.
+
+### 7. Reduced Compute and Vector Readiness
+
+LO should reduce unnecessary computation before asking for more hardware.
+
+The compiler should support:
+
+```text
+pure compute blocks
+constant folding where safe
+common repeated-work detection
+vector syntax for independent repeated work
+scalar fallback
+target compatibility reports
+precision reports
+fallback reports
+```
+
+Vector readiness should not make normal backend code harder to read. LO should
+remain scalar-first and vector-aware.
+
+### 8. Repetitive AI Compute Tasks
+
+LO should support repetitive AI compute tasks as language-visible compute
+patterns, without becoming an AI framework.
+
+Good language-level support:
+
+```text
+vectors
+matrices
+tensors as typed data shapes
+batch compute blocks
+pure scoring functions
+target preferences
+CPU fallback
+GPU planning
+photonic planning
+memory limits
+precision reports
+```
+
+Not native language features:
+
+```text
+model hosting
+model training platforms
+prompt orchestration frameworks
+provider-specific AI APIs
+vector databases
+image generation engines
+agent frameworks
+```
+
+LO should provide safe primitives that AI packages and compute backends can use.
+
+### 9. Photonic and Wavelength Planning
+
+Photonic and wavelength support should be planned into the language without
+making photonic hardware required.
+
+Rules:
+
+```text
+CPU execution remains the baseline.
+Photonic targets are future planning targets.
+Wavelength compute is pure compute only.
+Business logic, security decisions and IO stay exact.
+Accelerator results must return to strict LO values.
+Fallback must be explicit and reported.
+CPU reference verification should be available where practical.
+```
+
+Normal LO code should stay readable even when the compiler can plan a pure
+compute block for vector, GPU, photonic or wavelength execution.
+
+---
+
 ## Current LO Position
 
 The existing docs define LO as:
@@ -818,11 +1117,18 @@ C++'s resource-management discipline without normalising unsafe code
 LO's unique direction should remain:
 
 ```text
+developer friendly syntax
+clear learning curve
 strict backend language
 AI-readable by design
 three-way logic aware
+security-first design
+optimised for low memory usage
+reduced compute by default
+vector-ready
 multi-state logic compatible
 photonic and wavelength planning ready
 CPU-compatible by default
 safe through explicit types, effects, permissions, reports and fallback
+support for repetitive AI compute tasks through safe primitives
 ```
