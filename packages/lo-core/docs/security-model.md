@@ -1321,6 +1321,143 @@ Should API authentication be a language feature or framework feature?
 Should AI context generation require an explicit flag in production?
 ```
 
+## API Data Security and Load Control
+
+LO should treat API input as unsafe until it has been decoded into strict
+types and checked against route policy.
+
+Core rule:
+
+```text
+Do not trust API input.
+Decode into strict types.
+Limit memory.
+Limit concurrency.
+Queue or reject overload safely.
+Report everything.
+```
+
+LO should provide typed primitives and reports for:
+
+```text
+content-type validation
+request body policies
+strict JSON parsing
+unknown-field denial
+duplicate-key denial
+unsafe coercion denial
+per-route body size limits
+per-route memory budgets
+streaming request bodies
+read-only request body references
+request-scoped lifetime checks
+IP, user, API-key and route rate limits
+trusted proxy rules for client identity
+route concurrency limits
+queue handoff for heavy work
+backpressure and overload behaviour
+API security, memory and load-control reports
+```
+
+LO should not provide:
+
+```text
+web framework routing implementation
+load balancer products
+API gateway products
+rate-limit storage backends
+queue storage backends
+request analytics dashboards
+```
+
+Detailed planning lives in `docs/api-data-security-and-load-control.md`.
+
+---
+
+## API Duplicate Detection and Idempotency
+
+LO should detect duplicate API structure at check/build time and help prevent
+duplicate runtime side effects through idempotency and replay protection.
+
+LO should provide typed primitives and reports for:
+
+```text
+duplicate method/path route errors
+duplicate route name warnings or errors
+duplicate request/response shape warnings
+API manifest generation
+idempotency declarations
+idempotency TTL and conflict policy checks
+payload mismatch policy checks
+webhook idempotency keys
+webhook replay protection
+duplicate external API client warnings
+duplicate outbound API call warnings
+security report integration
+AI guide API safety summaries
+```
+
+LO should not provide:
+
+```text
+fixed router implementation
+controller framework
+middleware stack
+API gateway product
+admin route dashboard
+idempotency storage backend
+```
+
+Detailed planning lives in
+`docs/api-duplicate-detection-and-idempotency.md`.
+
+---
+
+## Auth, Token and Verification Boundary
+
+LO should support standard auth and verification workflows safely without
+becoming an identity provider or inventing cryptography.
+
+Core rule:
+
+```text
+Do not invent new cryptography.
+Do create safer language-level patterns around proven cryptography.
+```
+
+LO should provide typed primitives and reports for:
+
+```text
+BearerToken as SecureString
+JwtToken as SecureString
+VerifiedJwt<TClaims>
+OAuth provider declarations
+issuer/audience/scope checks
+authorization code with PKCE
+JWKS validation
+DPoP proof-of-possession
+mTLS-bound access tokens
+request proof envelopes
+verified capability tokens
+idempotency and replay protection
+post-quantum/hybrid crypto policy
+experimental hardware proof policy
+```
+
+LO should not provide:
+
+```text
+identity provider products
+login screens
+MFA products
+password reset workflows
+session database products
+admin permission dashboards
+new cryptographic algorithms
+```
+
+Detailed planning lives in `docs/auth-token-verification-boundaries.md`.
+
 ---
 
 ## Final Security Principle

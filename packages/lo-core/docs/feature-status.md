@@ -45,6 +45,9 @@ Every major LO feature should be labelled Implemented, Prototype, Draft, Planned
 | Source maps | Prototype | Emitted in reports and build outputs |
 | Security reports | Prototype | Basic project/security diagnostics exist |
 | Ransomware-resistant design | Draft | Security policy model documented; compiler/runtime checks pending |
+| Auth, token and verification boundaries | Draft | JWT, bearer token, OAuth, DPoP, mTLS, request proof, capability token, hardware proof and post-quantum policy model documented; parser/runtime enforcement pending |
+| API data security and load control | Draft | Typed request contracts, content-type validation, strict body decoding, route memory budgets, rate limits, concurrency limits, queue handoff, backpressure and load-control reports documented; parser/runtime enforcement pending |
+| API duplicate detection and idempotency | Draft | Duplicate route checks, duplicate schema warnings, API manifests, idempotency declarations, webhook replay protection, duplicate external API warnings and source-mapped reports documented; parser/runtime enforcement pending |
 | Memory reports | Prototype | Memory pressure and clone/mutation diagnostics exist |
 | AI context and AI guide | Prototype | Generated from checked/build output |
 | OpenAPI/schema output | Prototype | Works for current API examples |

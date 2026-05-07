@@ -40,3 +40,8 @@ signature or explicit development-mode override
 replay protection or explicit development-mode override
 idempotency key or explicit reason why replayed events are harmless
 ```
+
+Duplicate webhook events should be handled through replay protection and
+idempotency metadata. Detailed duplicate API, webhook duplicate and
+idempotency planning lives in
+`docs/api-duplicate-detection-and-idempotency.md`.

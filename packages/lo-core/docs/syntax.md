@@ -30,6 +30,10 @@ Update the matching examples file whenever syntax changes.
 Current syntax files:
 
 ```text
+docs/sytax/api-data-security-and-load-control.md
+docs/sytax-examples/api-data-security-and-load-control.md
+docs/sytax/api-duplicate-detection-and-idempotency.md
+docs/sytax-examples/api-duplicate-detection-and-idempotency.md
 docs/sytax/patterns-and-regex.md
 docs/sytax-examples/patterns-and-regex.md
 ```

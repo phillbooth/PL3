@@ -1357,6 +1357,187 @@ add AI guide text package summaries
 
 ---
 
+## 26. Auth, Token and Verification Boundaries
+
+Status: documented in `docs/auth-token-verification-boundaries.md`;
+parser/runtime/report support remains pending.
+
+LO should support modern authentication and authorisation standards through
+safe typed verification boundaries without becoming an identity provider,
+authentication product or cryptography framework.
+
+Required boundary:
+
+```text
+LO = language and compiler/toolchain
+JWT, OAuth, bearer, DPoP and mTLS = established standards to validate safely
+Identity provider, login UI, MFA product and session framework = packages/frameworks/external services
+New cryptographic algorithms = out of scope
+```
+
+Documented design direction:
+
+```text
+treat BearerToken and JwtToken as SecureString values
+verify JWT claims before use
+require issuer, audience, expiry, signature and trusted key checks
+deny algorithm "none" and untrusted algorithms by default
+declare OAuth providers, JWKS, PKCE and token validation policy
+support DPoP and mTLS sender-constrained token checks
+support request proof envelopes for high-risk routes, queues and webhooks
+support capability-token workflows bound to action, resource, nonce and request hash
+support idempotency and replay protection for sensitive mutations
+support post-quantum/hybrid crypto policy declarations without forcing them into normal code
+mark hardware proof such as photonic PUFs as experimental policy/plugin work
+generate auth, token, proof, crypto policy and security reports
+```
+
+Pending implementation examples:
+
+```text
+parse auth_policy
+parse auth_provider
+parse route auth blocks for bearer, provider and scopes
+parse verify blocks for capability and request_proof requirements
+parse DPoP and mTLS policy blocks
+parse crypto_policy with classical, post_quantum and hybrid modes
+reject unverified JWT claim use
+reject unsafe bearer-token logging/storage/client exports
+reject JWT algorithm "none" and missing signature defaults
+check issuer, audience, expiry and scope requirements
+check DPoP/mTLS requirements on high-risk routes
+check nonce/replay-cache/idempotency requirements for sensitive mutations
+emit auth-report.json
+emit token-report.json
+emit proof-report.json
+emit crypto-policy-report.json
+add AI guide auth and proof summaries
+```
+
+---
+
+## 27. API Data Security and Load Control
+
+Status: documented in `docs/api-data-security-and-load-control.md`;
+parser/runtime/report support remains pending.
+
+LO should make API input safe before it reaches application logic without
+becoming a web framework, load balancer or API gateway product.
+
+Required boundary:
+
+```text
+LO = language and compiler/toolchain
+API data safety = typed contracts, policies, limits, reports and checks
+HTTP server/router/load balancer/API gateway = packages/frameworks/external systems
+Queue and rate-limit storage = packages/frameworks/external systems
+```
+
+Documented design direction:
+
+```text
+decode API input into strict request types
+validate Content-Type before decoding
+enforce body size, depth, node and string limits
+deny unknown fields and duplicate JSON keys where configured
+deny unsafe implicit type coercion by default
+support safe payload identification without bypassing route policy
+support per-route rate, concurrency, timeout and memory budgets
+support trusted-proxy rules for X-Forwarded-For and source IP decisions
+support streaming request bodies with bounded buffers
+support read-only request references and request-scoped lifetime checks
+support queue handoff for heavy routes
+support backpressure, overload rejection and many-IP abuse controls
+align route concurrency with downstream connection pools
+generate API security, API memory, load-control and AI guide reports
+```
+
+Pending implementation examples:
+
+```text
+parse api_policy
+parse route body blocks
+parse route limits blocks
+parse route memory blocks
+parse route queue blocks
+parse runtime_policy load_distribution blocks
+check content-type mismatch
+check strict body decode and schema rules
+check unknown-field, duplicate-key and unsafe-coercion policy
+check trusted proxy requirements for forwarded headers
+check request-scoped reference escape
+check large request streaming requirements
+check route concurrency against downstream pool limits
+emit app.api-security-report.json
+emit app.api-memory-report.json
+emit app.load-control-report.json
+add map-manifest apiDataBoundaries entries
+add AI guide API data security summaries
+```
+
+---
+
+## 28. API Duplicate Detection and Idempotency
+
+Status: documented in `docs/api-duplicate-detection-and-idempotency.md`;
+parser/runtime/report support remains pending.
+
+LO should detect duplicate API structure at check/build time and help control
+duplicate side effects through idempotency, replay protection and reports
+without becoming a web framework or API gateway.
+
+Required boundary:
+
+```text
+LO = language and compiler/toolchain
+Duplicate API safety = declarations, checks, manifests, idempotency metadata and reports
+Routing/controller/middleware/API gateway = packages/frameworks/external systems
+Idempotency storage = packages/frameworks/external systems
+```
+
+Documented design direction:
+
+```text
+detect duplicate method/path declarations as errors
+detect duplicate route names as errors or warnings
+warn about duplicate request/response type shapes
+allow intentionally same type shapes with explicit annotation
+generate app.api-manifest.json
+support idempotency blocks with key, TTL, conflict and payload mismatch policy
+recommend idempotency from side-effecting route effects
+support explicit idempotency exceptions with reasons
+require webhook replay protection and idempotency keys in strict/release modes
+warn about duplicate external API clients
+warn about repeated outbound API payloads where configured
+check API version conflicts
+integrate duplicate/idempotency findings into security reports and AI guides
+```
+
+Pending implementation examples:
+
+```text
+parse duplicate api_policy settings
+parse idempotency blocks and exceptions
+parse intentionally_same_shape_as
+parse external_api duplicate_policy
+parse intentionally_same_base_as
+detect duplicate method/path routes
+detect duplicate route names
+detect duplicate API type shapes
+recommend idempotency from side-effecting effects
+check idempotency key, TTL, conflict and payload mismatch settings
+check webhook replay and idempotency requirements
+warn about duplicate external API clients
+warn about duplicate outbound API payloads where configured
+emit app.api-manifest.json
+emit app.duplicate-api-report.json
+emit app.idempotency-report.json
+add map-manifest route/webhook duplicate metadata
+add AI guide API duplicate/idempotency summaries
+```
+
+---
+
 ## Final Principle
 
 LO should become more than a language that runs code.

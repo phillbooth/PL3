@@ -48,6 +48,8 @@ an operating system
 a media framework
 a camera API
 a device API layer
+an API gateway
+a load balancer
 an LLM runtime
 an NLP framework
 a document AI platform
@@ -92,6 +94,13 @@ redaction rules, prompt-safety hooks, effects, permissions, `compute auto` and
 reports.
 
 See `docs/text-ai-package-boundaries-and-compute-auto.md`.
+
+Authentication products and identity platforms belong in packages, frameworks
+or external identity providers. LO core should provide secure strings, token
+validation boundaries, proven crypto primitives, route auth declarations,
+proof-of-possession checks, replay protection and security reports.
+
+See `docs/auth-token-verification-boundaries.md`.
 
 ---
 
@@ -560,18 +569,31 @@ SecureString
 permission/effect system
 safe secret handling
 structured security errors
+JWT verification policy
+OAuth provider declarations
+scope and audience checks
+DPoP and mTLS checks
+request proof validation
+capability-token workflow metadata
+replay and nonce checks
+auth/proof/security reports
 ```
+
+LO should not invent new cryptography. It may create safer typed workflows
+around proven standards such as JWT, OAuth bearer tokens, DPoP and mTLS.
 
 Correct wording:
 
 ```text
 LO provides security primitives that authentication packages can use.
+LO supports safer token verification boundaries around established standards.
 ```
 
 Avoid wording:
 
 ```text
 LO includes a built-in authentication framework.
+LO invents its own token cryptography.
 ```
 
 ---
@@ -1242,18 +1264,34 @@ effects
 permissions
 runtime profiles
 structured errors
+content-type validation
+safe body decoding policies
+duplicate route checks
+duplicate schema warnings
+API manifest generation
+idempotency declarations
+webhook replay protection metadata
+rate-limit declarations
+concurrency limits
+memory budgets
+queue handoff metadata
+backpressure policy
+API security and load reports
 ```
 
 Correct wording:
 
 ```text
 Web frameworks can be built on LO primitives.
+LO provides API data safety and load-control primitives that frameworks can use.
+LO provides duplicate API and idempotency metadata that frameworks can enforce.
 ```
 
 Avoid wording:
 
 ```text
 LO includes a built-in Laravel, Django or Express equivalent.
+LO is a load balancer or API gateway product.
 ```
 
 ---

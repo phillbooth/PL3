@@ -131,6 +131,60 @@ Current syntax/target documentation additions:
 [ ] Define text-security-report.json schema
 [ ] Define text-package-target-report.json schema
 [ ] Keep summarisation, generation, embeddings, moderation, translation and NLP tasks out of LO core
+[x] Add docs/auth-token-verification-boundaries.md
+[x] Add docs/sytax/auth-token-verification.md
+[x] Add docs/sytax-examples/auth-token-verification.md
+[ ] Define auth_policy parser/report support
+[ ] Define auth_provider parser/report support
+[ ] Define JWT verification diagnostics and token report fields
+[ ] Define bearer-token SecureString and logging diagnostics
+[ ] Define OAuth issuer, audience, scope, JWKS and PKCE policy checks
+[ ] Define DPoP and mTLS proof-of-possession checks
+[ ] Define request proof envelope parser/report support
+[ ] Define capability token workflow report support
+[ ] Define nonce/replay-cache diagnostics for sensitive routes
+[ ] Define post-quantum and hybrid crypto policy report support
+[ ] Define experimental hardware proof policy flags
+[ ] Define auth, token, proof and crypto policy AI guide summaries
+[ ] Keep identity providers, login products, MFA products and new crypto algorithms out of LO core
+[x] Add docs/api-data-security-and-load-control.md
+[x] Add docs/sytax/api-data-security-and-load-control.md
+[x] Add docs/sytax-examples/api-data-security-and-load-control.md
+[ ] Define api_policy parser/report support
+[ ] Define route body policy parser/report support
+[ ] Define route limits parser/report support
+[ ] Define route memory budget parser/report support
+[ ] Define route queue handoff parser/report support
+[ ] Define content-type mismatch diagnostics
+[ ] Define strict API body decode diagnostics
+[ ] Define unknown-field and duplicate-key API diagnostics
+[ ] Define unsafe API coercion diagnostics
+[ ] Define trusted proxy and X-Forwarded-For diagnostics
+[ ] Define request-scoped body reference lifetime diagnostics
+[ ] Define large-body streaming diagnostics
+[ ] Define route concurrency and connection pool alignment warnings
+[ ] Define API security, API memory and load-control report schemas
+[ ] Define API data boundary AI guide summaries
+[ ] Keep web frameworks, load balancers, API gateways, queue backends and rate-limit stores out of LO core
+[x] Add docs/api-duplicate-detection-and-idempotency.md
+[x] Add docs/sytax/api-duplicate-detection-and-idempotency.md
+[x] Add docs/sytax-examples/api-duplicate-detection-and-idempotency.md
+[ ] Define duplicate route detection diagnostics
+[ ] Define duplicate route name diagnostics
+[ ] Define duplicate API type shape warnings
+[ ] Define intentionally_same_shape_as parser/check support
+[ ] Define API manifest output schema
+[ ] Define duplicate API report schema
+[ ] Define idempotency block parser/report support
+[ ] Define idempotency exception parser/report support
+[ ] Define effect-based idempotency recommendations
+[ ] Define idempotency payload mismatch diagnostics
+[ ] Define webhook duplicate event diagnostics
+[ ] Define duplicate external_api client diagnostics
+[ ] Define outbound duplicate payload warning support
+[ ] Define API version conflict diagnostics
+[ ] Define API duplicate/idempotency AI guide summaries
+[ ] Keep fixed routers, controller frameworks, middleware stacks, API gateways and idempotency storage backends out of LO core
 ```
 
 Additional recommended files:
@@ -490,6 +544,17 @@ Reason for additions:
 [x] Define HMAC verification rules
 [x] Define replay protection rules
 [x] Define idempotency rules
+[x] Document auth, token and verification boundaries
+[ ] Define auth report schema
+[ ] Define token report schema
+[ ] Define proof report schema
+[ ] Define JWT unsafe algorithm diagnostics
+[ ] Define unverified JWT claim-use diagnostics
+[ ] Define bearer-token unsafe storage diagnostics
+[ ] Define DPoP/mTLS required-route enforcement
+[ ] Define capability token request/body/resource binding diagnostics
+[ ] Define request proof replay-cache enforcement
+[ ] Define post-quantum crypto policy warnings
 [x] Define security report schema
 [x] Define security linter rules
 [x] Add docs/ransomware-resistant-design.md
@@ -547,11 +612,32 @@ Reason for additions:
 [x] Define webhook secret syntax
 [x] Define replay protection
 [x] Define idempotency key
+[x] Document API duplicate detection and idempotency
+[ ] Define duplicate API route check
+[ ] Define duplicate API route-name check
+[ ] Define duplicate API schema-shape warning
+[ ] Define API manifest generation
+[ ] Define duplicate-api-report.json schema
+[ ] Define idempotency-report.json schema
+[ ] Define side-effect idempotency recommendations
+[ ] Define duplicate external API client warnings
+[ ] Define duplicate outbound API call warnings
 [x] Define payload size limit
 [x] Define API timeout rules
 [x] Define retry rules
 [x] Define circuit breaker rules
 [x] Define rate limit rules
+[x] Document API data security and load control
+[ ] Define API body policy parser support
+[ ] Define content-type validation checks
+[ ] Define request body streaming policy checks
+[ ] Define route memory budget checks
+[ ] Define API concurrency limit checks
+[ ] Define backpressure policy checks
+[ ] Define queue handoff report entries
+[ ] Define load-control report schema
+[ ] Define API memory report schema
+[ ] Define client identity trusted proxy checks
 [x] Define API report output
 [x] Define OpenAPI output
 [x] Define generated client SDK scope

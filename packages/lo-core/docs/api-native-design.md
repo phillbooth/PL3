@@ -106,6 +106,46 @@ Authentication hooks should return explicit `Result<AuthContext, AuthError>` val
 auth required UserSession using authenticateRequest
 ```
 
+For modern API auth, routes may declare bearer/JWT/OAuth requirements, scopes,
+proof-of-possession and replay protection as contract metadata.
+
+Example:
+
+```LO
+api AccountApi {
+  GET "/account" {
+    request AccountRequest
+    response AccountResponse
+    handler getAccount
+
+    auth {
+      provider MainIdentity
+      bearer required
+      scopes ["account.read"]
+    }
+  }
+}
+```
+
+High-risk mutating routes should combine auth with replay protection:
+
+```LO
+auth {
+  bearer required
+  dpop required
+  scopes ["payments.capture"]
+}
+
+idempotency {
+  key header "Idempotency-Key"
+  ttl 24h
+  payload_mismatch "reject"
+}
+```
+
+Detailed JWT, OAuth, DPoP, mTLS, capability-token and request-proof planning
+lives in `docs/auth-token-verification-boundaries.md`.
+
 Rate limits should be source-mapped and included in API/security reports.
 
 ```LO
@@ -116,6 +156,84 @@ rate_limit {
   on_exceeded TooManyRequests
 }
 ```
+
+## API Data Security and Load Control
+
+API input should be treated as unsafe until it has crossed a controlled
+boundary.
+
+Routes may declare body, idempotency, limit, memory and queue policies:
+
+```LO
+api OrdersApi {
+  POST "/orders" {
+    request CreateOrderRequest
+    response CreateOrderResponse
+    handler createOrder
+
+    body {
+      content_type "application/json"
+      max_size 256kb
+      parse_mode "strict"
+      unknown_fields "deny"
+    }
+
+    limits {
+      rate "30/minute"
+      max_concurrent 5
+      timeout 5s
+      memory 32mb
+    }
+  }
+}
+```
+
+The handler should receive a typed request value, not raw JSON or unbounded
+request bytes.
+
+Detailed API input, content-type, unknown-field, memory-budget, streaming,
+queue handoff, backpressure and load-control planning lives in
+`docs/api-data-security-and-load-control.md`.
+
+## Duplicate API Detection and Idempotency
+
+LO should detect duplicate API structure at check/build time and help control
+duplicate side effects at runtime.
+
+Examples of duplicate API problems:
+
+```text
+same method/path declared twice
+same route name reused
+same request/response schema shape duplicated accidentally
+same external API client configured more than once
+same user request submitted twice
+same webhook event replayed
+same outbound API payload sent repeatedly by mistake
+```
+
+Route conflicts should be source-mapped errors:
+
+```text
+API route conflict:
+POST /orders is declared more than once.
+```
+
+Side-effecting routes should declare idempotency or an explicit reason why it
+is not required:
+
+```LO
+idempotency {
+  key header "Idempotency-Key"
+  ttl 24h
+  conflict "return_previous_response"
+  payload_mismatch "reject"
+}
+```
+
+Detailed duplicate route, duplicate schema, API manifest, idempotency,
+webhook duplicate protection and duplicate outbound API planning lives in
+`docs/api-duplicate-detection-and-idempotency.md`.
 
 ## Generated Client SDK Scope
 

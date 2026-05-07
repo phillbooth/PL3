@@ -95,6 +95,9 @@ Example:
 - Added docs/javascript-typescript-framework-targets.md plus matching docs/sytax/ and docs/sytax-examples/ entries for JavaScript, TypeScript, Node, WASM, worker and React/Angular adapter target planning.
 - Added docs/device-capability-boundaries.md plus matching docs/sytax/ and docs/sytax-examples/ entries for phone/device capability boundaries, permissions, streams, buffers, compute targets, FFI and reports.
 - Added docs/text-ai-package-boundaries-and-compute-auto.md plus matching docs/sytax/ and docs/sytax-examples/ entries for text AI package/provider boundaries, token policy, prompt safety, redaction, generated text safety and compute-auto reporting.
+- Added docs/auth-token-verification-boundaries.md plus matching docs/sytax/ and docs/sytax-examples/ entries for JWT, bearer token, OAuth, DPoP, mTLS, request proof, capability token, hardware proof and post-quantum crypto policy boundaries.
+- Added docs/api-data-security-and-load-control.md plus matching docs/sytax/ and docs/sytax-examples/ entries for typed API body policies, content-type validation, rate limits, memory budgets, streaming bodies, queue handoff, backpressure and load-control reports.
+- Added docs/api-duplicate-detection-and-idempotency.md plus matching docs/sytax/ and docs/sytax-examples/ entries for duplicate route checks, duplicate schema warnings, API manifests, idempotency declarations, webhook duplicate protection and duplicate outbound API warnings.
 - Added docs/api-native-design.md, docs/webhooks.md, docs/pure-flow-caching.md, docs/interoperability.md, docs/xml-support.md and docs/graphql-support.md.
 - Added docs/browser-dom-and-web-platform-primitives.md for SafeHtml, DOM effects, browser permissions, fetch/storage/cookie policy, push notifications, service workers and browser reports.
 - Added docs/image-ai-package-boundaries-and-compute-auto.md to classify image AI, vision models, image generation, image search, decoders and compute-auto image workflows as package/provider areas rather than LO core features.
@@ -215,6 +218,9 @@ Example:
 - Clarified that React, Angular, Node, Express/Fastify and similar ecosystems should be supported through generated outputs and adapters, not by baking framework syntax into LO core.
 - Clarified that camera, microphone, Bluetooth, GPS, notifications, media players, phone radios and mobile UI belong in packages/platform bindings/frameworks, not LO core.
 - Clarified that text summarisation, generation, embeddings, moderation, translation, document AI and NLP tasks belong in packages/providers/frameworks, not LO core.
+- Clarified that JWT, OAuth, bearer tokens, DPoP and mTLS should be safer typed verification workflows around established standards, not an LO identity provider or new cryptography system.
+- Clarified that API data security and load control are language/toolchain policy and report concerns, while HTTP servers, web frameworks, load balancers, API gateways, queue backends and rate-limit stores remain outside LO core.
+- Clarified that API duplicate detection and idempotency are compiler/toolchain safety checks and metadata, while actual routing and idempotency storage remain framework/package territory.
 - Added a documentation rule that syntax changes should update the per-feature files under docs/sytax/.
 - Added a documentation rule that syntax examples should be updated under docs/sytax-examples/ alongside docs/sytax/.
 - Corrected compiler and examples README command paths for running from the repository root.
@@ -262,6 +268,11 @@ Example:
 - Added webhook HMAC verification concept.
 - Added replay protection requirement for webhooks.
 - Added idempotency key requirement for webhooks.
+- Added bearer-token, JWT, OAuth, DPoP, mTLS, request-proof and capability-token verification boundary planning.
+- Added rule that LO must not invent new cryptography and should instead wrap proven cryptography in typed verification workflows and reports.
+- Added experimental framing for hardware proof such as photonic PUFs and policy-only framing for post-quantum/hybrid crypto options.
+- Added API input safety planning for strict request decoding, unknown-field denial, unsafe coercion denial, request-scoped memory, trusted proxy checks, rate limits, concurrency limits, backpressure and overload rejection.
+- Added API duplicate/idempotency safety planning for duplicate route detection, duplicate type warnings, idempotency reports, webhook replay protection, duplicate external client warnings and effect-based idempotency recommendations.
 - Added package permission concept.
 - Added effect system concept.
 - Added unsafe denied-by-default requirement.

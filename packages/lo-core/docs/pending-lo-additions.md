@@ -1293,6 +1293,154 @@ add AI guide text package summaries
 
 ---
 
+## 29. Auth, Token and Verification Boundaries
+
+Status: documented in `docs/auth-token-verification-boundaries.md`.
+
+LO should support JWT, bearer tokens, OAuth, DPoP, mTLS and future proof
+policies through safe typed verification workflows. This must stay security
+language/toolchain work, not a native identity provider, login framework or
+new cryptography system.
+
+Core rule:
+
+```text
+Do not invent new cryptography.
+Do create safer typed verification workflows around proven cryptography.
+```
+
+Design direction:
+
+```text
+BearerToken and JwtToken are SecureString values
+JWT claims are not trusted until verified
+OAuth providers are declared through issuer, JWKS, audience, scopes and PKCE policy
+DPoP and mTLS provide sender-constrained token checks for higher-risk APIs
+request proof envelopes bind method, path, body hash, nonce and timestamp
+capability-token workflows bind action, resource, expiry, nonce and request hash
+idempotency and replay protection are required for sensitive mutations
+hardware proof such as photonic PUFs is experimental/plugin policy work
+post-quantum and hybrid crypto are crypto_policy declarations and reports
+identity providers, login UI, MFA products and session frameworks stay outside LO core
+```
+
+Pending work:
+
+```text
+parse auth_policy
+parse auth_provider
+parse route auth blocks
+parse verify request_proof and capability blocks
+parse DPoP and mTLS policy blocks
+parse crypto_policy
+reject unverified JWT claim use
+reject unsafe bearer-token logging or client export
+check issuer, audience, expiry, scope, JWKS and algorithm requirements
+emit auth, token, proof, crypto policy and security reports
+add AI guide auth/security summaries
+```
+
+---
+
+## 30. API Data Security and Load Control
+
+Status: documented in `docs/api-data-security-and-load-control.md`.
+
+LO should provide API data safety and load-control primitives for frameworks
+and runtimes. This must stay language/toolchain policy and reporting work, not
+a native web framework, load balancer, API gateway, queue backend or
+rate-limit store.
+
+Core rule:
+
+```text
+Do not trust API input.
+Decode into strict types.
+Limit memory.
+Limit concurrency.
+Queue or reject overload safely.
+Report everything.
+```
+
+Design direction:
+
+```text
+API routes declare body policy, content type, max size and unknown-field policy
+request bodies decode into typed request values before application logic
+strict JSON rejects malformed input, duplicate keys and unsafe coercion
+client identity must not trust proxy headers unless the proxy is trusted
+routes declare rate limits, concurrency limits, timeouts and memory budgets
+large request bodies stream with bounded buffers
+request body references are read-only and request-scoped by default
+heavy routes can hand off to queues and return accepted responses
+backpressure can queue, throttle or reject overload safely
+load reports explain route limits, memory use and queue handoff decisions
+```
+
+Pending work:
+
+```text
+parse api_policy
+parse body, limits, memory and queue route blocks
+parse runtime_policy load_distribution
+check content-type and strict decode rules
+check trusted proxy and forwarded header usage
+check request-scoped reference escapes
+check large body streaming requirements
+check route concurrency against connection pool limits
+emit API security, API memory and load-control reports
+add AI guide API data boundary summaries
+```
+
+---
+
+## 31. API Duplicate Detection and Idempotency
+
+Status: documented in `docs/api-duplicate-detection-and-idempotency.md`.
+
+LO should detect duplicate API structure and make duplicate side effects
+visible through idempotency and replay protection metadata. This must stay
+language/toolchain checking and report work, not a native router, controller
+framework, middleware stack, API gateway or idempotency storage backend.
+
+Core rule:
+
+```text
+Duplicate API structure should be detected by LO.
+Duplicate API behaviour should be controlled by idempotency, replay protection and reports.
+Actual routing remains framework/package territory.
+```
+
+Design direction:
+
+```text
+duplicate method/path declarations are errors
+duplicate route names are errors or warnings by policy
+duplicate request/response shapes are warnings unless marked intentional
+side-effecting POST/PATCH/DELETE routes should declare idempotency
+webhooks should declare replay protection and idempotency keys
+idempotency requires key source, TTL, conflict mode and payload mismatch mode
+duplicate external API clients should warn unless marked intentional
+duplicate outbound API payloads can warn within a configured window
+API manifests, duplicate reports, idempotency reports and AI guide summaries are generated
+```
+
+Pending work:
+
+```text
+parse duplicate api_policy settings
+parse idempotency blocks and exceptions
+parse intentionally_same_shape_as and intentionally_same_base_as
+detect duplicate route conflicts
+detect duplicate API type shapes
+recommend idempotency from side-effecting effects
+check webhook duplicate protection requirements
+emit API manifest, duplicate API and idempotency reports
+add AI guide API duplicate/idempotency summaries
+```
+
+---
+
 ## Final Principle
 
 LO should become more than a language that runs code.

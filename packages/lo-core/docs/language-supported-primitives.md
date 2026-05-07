@@ -74,6 +74,13 @@ translation, document question answering or NLP tasks native language features.
 
 See `docs/text-ai-package-boundaries-and-compute-auto.md`.
 
+For authentication and authorisation, LO should support safer typed
+verification primitives around established standards such as bearer tokens,
+JWT, OAuth 2.0, DPoP and mTLS. It should not become an identity provider,
+session framework, login product or cryptography framework.
+
+See `docs/auth-token-verification-boundaries.md`.
+
 ---
 
 ## 1. Types and Memory Safety
@@ -284,11 +291,37 @@ certificate handling
 safe inbound access
 safe outbound access
 streaming responses
+content-type validation
+typed request body decoding
+request body size limits
+unknown-field policy
+per-route memory budgets
+rate-limit policies
+concurrency limits
+backpressure declarations
+queue handoff metadata
+load-control reports
 ```
 
 LO should allow packages to build HTTP clients, API clients, email clients, database drivers, and provider SDKs.
 
 Provider-specific integrations should remain outside the core language.
+
+For API data security and load control, LO should support typed request
+contracts, strict body policies, safe decoding, streaming request bodies,
+request-scoped memory, rate-limit declarations, concurrency limits, queue
+handoff metadata and reports. It should not become a web framework, load
+balancer or API gateway product.
+
+See `docs/api-data-security-and-load-control.md`.
+
+For API duplicate detection and idempotency, LO should support duplicate route
+checks, duplicate schema warnings, API manifests, idempotency declarations,
+webhook replay protection metadata, duplicate external API warnings and
+source-mapped reports. It should not provide a fixed router, API gateway or
+idempotency storage backend.
+
+See `docs/api-duplicate-detection-and-idempotency.md`.
 
 ---
 
@@ -311,6 +344,11 @@ constant-time comparison
 certificate handling
 safe environment variable access
 secret redaction
+token validation boundaries
+verified token wrappers
+request proof verification
+replay protection primitives
+crypto policy reports
 ```
 
 Secrets should be protected by default.
@@ -322,6 +360,29 @@ Secrets, SecureString values, private keys, tokens, passwords, credentials, and 
 ```
 
 LO should make unsafe secret handling difficult and visible.
+
+Auth-facing primitives may include:
+
+```text
+BearerToken as SecureString
+JwtToken as SecureString
+VerifiedJwt<TClaims>
+auth_provider declarations
+auth_policy declarations
+scope and audience checks
+issuer and expiry checks
+JWKS validation policy
+DPoP and mTLS proof-of-possession checks
+VerifiedCapability workflow metadata
+Request Proof Envelope validation
+nonce and replay-cache requirements
+post-quantum and hybrid crypto policy declarations
+auth, token, proof and security reports
+```
+
+These are verification and safety boundaries. Identity provider
+implementations, account workflows, MFA products and admin permission
+dashboards remain packages, frameworks or external services.
 
 ---
 

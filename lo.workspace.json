@@ -1,0 +1,24 @@
+{
+    "name": "LO-app",
+    "version": "0.1.0",
+    "description": "A clean LO app workspace template.",
+    "packages": [
+        "packages/LO",
+        "packages/app"
+    ],
+    "defaultPackage": "packages/app",
+    "languagePackage": "packages/LO",
+    "strict": true,
+    "targets": [
+        "cpu",
+        "wasm",
+        "ternary-sim"
+    ],
+    "docs": {
+        "app": "docs",
+        "language": "packages/LO"
+    },
+    "tools": {
+        "root": "tools"
+    }
+}
