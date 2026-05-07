@@ -77,6 +77,7 @@ Example:
 - Added backend evolution requirements for editions, compatibility, variants, constraints, concurrency, cleanup, metadata, FFI, shape types and diagnostics.
 - Added Secure App Kernel boundary guidance to AI instructions.
 - Added checked Run Mode support for simple `console.log("...")` output.
+- Added parser support for explicit `async flow` declarations.
 - Added SPEC.md as the root entry point for LO specification planning.
 - Added GOVERNANCE.md for early project governance and change process.
 - Added COMPATIBILITY.md for repository-root, runtime, logic, output and documentation compatibility rules.

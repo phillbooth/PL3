@@ -28,8 +28,9 @@ keep async separate from vector compute
 ## Grammar Direction
 
 ```text
-flow_decl       = async_marker? flow_marker identifier params return_type? effects? block
+flow_decl       = async_marker? flow_modifier? flow_marker identifier params return_type? effects? block
 async_marker    = "async"
+flow_modifier   = "secure" | "pure"
 flow_marker     = "flow"
 await_expr      = "await" expression
 target_dart     = target "dart" block
@@ -63,6 +64,16 @@ async flow loadUser(id: UserId) -> Result<User, ApiError>
 effects [network.outbound] {
   let response = await api.get("/users/{id}")
   return User.fromJson(response)
+}
+```
+
+Secure async boundary:
+
+```LO
+async secure flow enrichOrder(input: CreateOrderRequest) -> Result<EnrichedOrder, ApiError>
+effects [network.outbound] {
+  let order = await OrdersApi.load(input.id)
+  return Ok(order)
 }
 ```
 
@@ -223,7 +234,7 @@ source-map links from generated Dart/native bindings to .lo source
 ## Open Parser and Runtime Work
 
 ```text
-parse async flow
+parse async flow (prototype support exists)
 reject await outside async flow
 lower async flow to target-specific future/promise/runtime form
 add Dart Future lowering

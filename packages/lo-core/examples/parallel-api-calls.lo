@@ -16,7 +16,7 @@ type RiskScore {
   score: Float
 }
 
-secure flow enrichOrder(input: CreateOrderRequest) -> Result<EnrichedOrder, ApiError>
+async secure flow enrichOrder(input: CreateOrderRequest) -> Result<EnrichedOrder, ApiError>
 effects [network.outbound] {
   parallel {
     customer = await CustomersApi.get(input.customerId)

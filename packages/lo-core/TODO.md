@@ -86,7 +86,7 @@ Current syntax/target documentation additions:
 [x] Add docs/dart-flutter-target.md
 [x] Add docs/sytax/async-dart-flutter.md
 [x] Add docs/sytax-examples/async-dart-flutter.md
-[ ] Implement parser support for async flow
+[x] Implement parser support for async flow
 [ ] Implement await-outside-async diagnostics
 [ ] Implement target dart report/output support
 [ ] Implement target flutter package report/output support

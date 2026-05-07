@@ -91,7 +91,7 @@ Every major LO feature should be labelled Implemented, Prototype, Draft, Planned
 | Vector model | Draft | Security-first model documented, parser support pending |
 | Vectorised dataset syntax | Draft | `vectorize rows` syntax documented, parser/report support pending |
 | Simple vector syntax and compute auto | Draft | Friendly vector/compute auto model documented; `pure vector flow` and `pure vector required flow` parser support exists; target selection and runtime hardware detection remain pending |
-| Async Dart/Flutter syntax | Draft | Explicit `async flow`, `await` restrictions, Dart `Future` lowering and `Bytes`/`Uint8List` boundary documented; parser/backend support pending |
+| Async Dart/Flutter syntax | Draft | Explicit `async flow` parser support exists; `await` restrictions, Dart `Future` lowering and `Bytes`/`Uint8List` backend support pending |
 | Offload nodes | Draft | Design documented, runtime scheduler pending |
 | Graph ownership | Planned | Design direction documented, syntax/checking pending |
 | Draft vs secure mode | Planned | Design direction documented |

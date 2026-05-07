@@ -27,6 +27,16 @@ effects [file.read] {
 }
 ```
 
+Secure async API boundary:
+
+```LO
+async secure flow loadUser(id: UserId) -> Result<User, ApiError>
+effects [network.outbound] {
+  let response = await api.get("/users/{id}")
+  return User.fromJson(response)
+}
+```
+
 Async caller:
 
 ```LO

@@ -1105,6 +1105,21 @@ pure vector required flow strictVectorTotal(input: Array<Int>) -> Int {
     assert(requiredFlow.vectorMode === "required", "Expected vector required mode.");
   });
 
+  test("parse async flow modifier", () => {
+    const result = analyseProject(projectFromSource("async-flow.lo", `async flow loadUser(id: UserId) -> Result<User, ApiError>
+effects [network.outbound] {
+  let response = await api.get("/users/{id}")
+  return User.fromJson(response)
+}
+`));
+    assertNoLexErrors(result);
+    const asyncFlow = result.ast.flows.find((flow) => flow.name === "loadUser");
+    assert(asyncFlow, "Expected async flow to be parsed.");
+    assert(asyncFlow.qualifier === "async", "Expected async flow qualifier.");
+    assert(asyncFlow.async === true, "Expected async flow flag.");
+    assert(asyncFlow.effects.includes("network.outbound"), "Expected async flow effects to be parsed.");
+  });
+
   test("parse boot.lo project and targets", () => {
     const result = analyseProject(loadProject(path.join(root, "boot.lo")));
     assertNoLexErrors(result);
@@ -1789,14 +1804,15 @@ function parseFile(source, diagnostics) {
     });
   }
 
-  for (const match of matches(content, /\b(?:(secure|pure(?:\s+vector(?:\s+required)?)?)\s+)?flow\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(([^)]*)\)\s*->\s*([A-Za-z_][A-Za-z0-9_<>, ]*)/g)) {
-    const qualifier = (match[1] || "").trim() || "normal";
+  for (const match of matches(content, /\b(async\s+)?(?:(secure|pure(?:\s+vector(?:\s+required)?)?)\s+)?flow\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(([^)]*)\)\s*->\s*([A-Za-z_][A-Za-z0-9_<>, ]*)/g)) {
+    const qualifier = flowQualifier(match[1], match[2]);
     ast.flows.push({
-      name: match[2],
+      name: match[3],
       qualifier,
       vectorMode: flowVectorMode(qualifier),
-      params: parseParams(match[3]),
-      returns: match[4].trim(),
+      async: qualifier.includes("async"),
+      params: parseParams(match[4]),
+      returns: match[5].trim(),
       effects: parseEffects(content.slice(match.index, match.index + 300)),
       ...loc(source, match.index)
     });
@@ -1981,7 +1997,7 @@ function extractStrictComments(source, diagnostics) {
 
 function strictCommentSubject(line, lineNumber) {
   const cleaned = line.replace(/^export\s+/, "");
-  const flow = cleaned.match(/^(?:(secure|pure(?:\s+vector(?:\s+required)?)?)\s+)?flow\s+([A-Za-z_][A-Za-z0-9_]*)/);
+  const flow = cleaned.match(/^(?:async\s+)?(?:(secure|pure(?:\s+vector(?:\s+required)?)?)\s+)?flow\s+([A-Za-z_][A-Za-z0-9_]*)/);
   if (flow) return { kind: "flow", name: flow[2], line: lineNumber };
   const api = cleaned.match(/^api\s+([A-Z][A-Za-z0-9_]*)/);
   if (api) return { kind: "api", name: api[1], line: lineNumber };
@@ -2335,7 +2351,7 @@ function checkReadOnlyBorrowMutation(sourceFile, content, diagnostics) {
 
 function findMemoryCheckFlowBlocks(content) {
   const blocks = [];
-  const regex = /\b(?:(secure|pure(?:\s+vector(?:\s+required)?)?)\s+)?flow\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(([^)]*)\)\s*->\s*[A-Za-z_][A-Za-z0-9_<>, &]*(?:\s*\n\s*effects\s+\[[^\]]+\])?\s*\{/g;
+  const regex = /\b(?:async\s+)?(?:(secure|pure(?:\s+vector(?:\s+required)?)?)\s+)?flow\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(([^)]*)\)\s*->\s*[A-Za-z_][A-Za-z0-9_<>, &]*(?:\s*\n\s*effects\s+\[[^\]]+\])?\s*\{/g;
   let match;
   while ((match = regex.exec(content)) !== null) {
     const open = content.indexOf("{", match.index);
@@ -2730,9 +2746,16 @@ function parseParams(text) {
   }).filter((param) => param.name && param.type);
 }
 
+function flowQualifier(asyncMarker, qualifierMarker) {
+  const parts = [];
+  if (asyncMarker) parts.push("async");
+  if (qualifierMarker) parts.push(qualifierMarker.trim());
+  return parts.join(" ") || "normal";
+}
+
 function flowVectorMode(qualifier) {
-  if (qualifier === "pure vector required") return "required";
-  if (qualifier === "pure vector") return "preferred";
+  if (qualifier.includes("pure vector required")) return "required";
+  if (qualifier.includes("pure vector")) return "preferred";
   return "scalar";
 }
 
@@ -3938,6 +3961,7 @@ function buildMapManifest(result) {
     flows: result.ast.flows.map((flow) => ({
       name: flow.name,
       source: `${flow.file}:${flow.line}`,
+      async: Boolean(flow.async),
       returns: flow.returns,
       effects: flow.effects
     })),
@@ -4754,6 +4778,7 @@ function buildAiContext(result) {
     flowSummary: uniqueFlows.map((flow) => ({
       name: flow.name,
       qualifier: flow.qualifier,
+      async: Boolean(flow.async),
       params: flow.params,
       returns: flow.returns,
       effects: flow.effects,
@@ -5256,7 +5281,7 @@ function evaluateRunFunction(name, argsText, outerVariables, functions) {
 
 function collectRunFunctions(content) {
   const functions = new Map();
-  const regex = /\b(?:(secure|pure(?:\s+vector(?:\s+required)?)?)\s+)?flow\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(([^)]*)\)\s*->\s*[A-Za-z_][A-Za-z0-9_<>, ]*\s*\{/g;
+  const regex = /\b(?:async\s+)?(?:(secure|pure(?:\s+vector(?:\s+required)?)?)\s+)?flow\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(([^)]*)\)\s*->\s*[A-Za-z_][A-Za-z0-9_<>, ]*\s*\{/g;
   let match;
   while ((match = regex.exec(content)) !== null) {
     const open = content.indexOf("{", match.index);
