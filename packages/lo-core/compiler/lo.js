@@ -1368,6 +1368,17 @@ effects [database.write] {
     assert(manifest.generatedOutputNaming.outputs.every((item) => !path.isAbsolute(item.path) && !item.path.includes("\\")), "Expected portable relative output names.");
   });
 
+  test("build manifest includes per-source hashes", () => {
+    const result = analyseProject(loadProject(root, ["source-map-error.lo"]));
+    const manifest = buildManifest(result, {
+      "app.bin": "placeholder",
+      "app.wasm": "placeholder"
+    });
+    assert(validSourceHashPolicy(manifest.deterministicInputs), "Expected valid source hash policy.");
+    assert(manifest.deterministicInputs.sourceFiles.length === result.project.files.length, "Expected one source hash per source file.");
+    assert(manifest.deterministicInputs.sourceFiles.every((item) => item.hash.startsWith("sha256:")), "Expected SHA-256 source hashes.");
+  });
+
   test("verify checks build artifact status metadata", () => {
     const result = analyseProject(loadProject(root, ["source-map-error.lo"]));
     const outDir = fs.mkdtempSync(path.join(os.tmpdir(), "LO-verify-artifacts-"));
@@ -1378,6 +1389,7 @@ effects [database.write] {
       assert(report.checks.some((item) => item.name === "artifact status: app.bin" && item.ok), "Expected app.bin artifact status check.");
       assert(report.checks.some((item) => item.name === "artifact status: app.wasm" && item.ok), "Expected app.wasm artifact status check.");
       assert(report.checks.some((item) => item.name === "generated output naming policy" && item.ok), "Expected generated output naming check.");
+      assert(report.checks.some((item) => item.name === "source hash policy" && item.ok), "Expected source hash policy check.");
     } finally {
       fs.rmSync(outDir, { recursive: true, force: true });
     }
@@ -2980,6 +2992,7 @@ function verifyBuild(input) {
   if (manifest) {
     check("manifest has compiler version", () => typeof manifest.compiler === "string" && manifest.compiler.length > 0, "Manifest is missing compiler version.");
     check("manifest has deterministic input hash", () => Boolean(manifest.deterministicInputs && manifest.deterministicInputs.sourceHash), "Manifest is missing deterministicInputs.sourceHash.");
+    check("source hash policy", () => validSourceHashPolicy(manifest.deterministicInputs), "Manifest has an invalid deterministicInputs source hash policy.");
 
     const outputFiles = [
       ...Object.values(manifest.targetOutputs || {}),
@@ -3061,6 +3074,25 @@ function validGeneratedOutputNaming(policy) {
     if (typeof output.cleanup !== "boolean") return false;
   }
   return paths.has("app.build-manifest.json");
+}
+
+function validSourceHashPolicy(inputs) {
+  if (!inputs || typeof inputs !== "object") return false;
+  if (inputs.sourceHashAlgorithm !== "sha256") return false;
+  if (typeof inputs.sourceHash !== "string" || !inputs.sourceHash.startsWith("sha256:")) return false;
+  if (!Number.isInteger(inputs.fileCount) || inputs.fileCount < 1) return false;
+  if (!Array.isArray(inputs.sourceFiles) || inputs.sourceFiles.length !== inputs.fileCount) return false;
+  const seen = new Set();
+  for (const sourceFile of inputs.sourceFiles) {
+    if (!sourceFile || typeof sourceFile !== "object") return false;
+    if (typeof sourceFile.path !== "string" || sourceFile.path.length === 0) return false;
+    if (path.isAbsolute(sourceFile.path) || sourceFile.path.includes("\\") || sourceFile.path.includes("..")) return false;
+    if (seen.has(sourceFile.path)) return false;
+    seen.add(sourceFile.path);
+    if (typeof sourceFile.hash !== "string" || !/^sha256:[a-f0-9]{64}$/.test(sourceFile.hash)) return false;
+    if (!Number.isInteger(sourceFile.bytes) || sourceFile.bytes < 0) return false;
+  }
+  return true;
 }
 
 function resolveManifestPath(input) {
@@ -4748,8 +4780,10 @@ function buildManifest(result, outputs = {}) {
     mode: result.ast.buildContract.mode === "release" ? "release" : "debug",
     createdAt: new Date().toISOString(),
     deterministicInputs: {
+      sourceHashAlgorithm: "sha256",
       sourceHash: `sha256:${sourceHash}`,
       fileCount: result.project.files.length,
+      sourceFiles: sourceFileHashes(result.project),
       globalRegistryHash: `sha256:${globalRegistryHash(result)}`
     },
     diagnosticSummary: diagnosticSummary(result.diagnostics),
@@ -4798,6 +4832,16 @@ function buildManifest(result, outputs = {}) {
     requiredOutputs: requiredOutputs(result),
     outputHashes
   };
+}
+
+function sourceFileHashes(project) {
+  return project.files
+    .map((file) => ({
+      path: file.relativePath,
+      hash: `sha256:${sha256(file.content)}`,
+      bytes: Buffer.byteLength(file.content, "utf8")
+    }))
+    .sort((a, b) => a.path.localeCompare(b.path));
 }
 
 function generatedOutputNamingPolicy() {

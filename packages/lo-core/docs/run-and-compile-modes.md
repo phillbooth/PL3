@@ -288,6 +288,10 @@ Generated names are stable manifest paths such as `app.build-manifest.json` and
 `docs/api-guide.md`. They are recorded in the build manifest under
 `generatedOutputNaming` and use `/` separators even on Windows.
 
+Source hashing is also recorded in `app.build-manifest.json` under
+`deterministicInputs`. Compile Mode stores a combined source hash plus per-file
+SHA-256 hashes for the `.lo` inputs.
+
 ## Suggested Workflow
 
 ```text

@@ -67,6 +67,10 @@ Generated output names are defined by the compiler as stable, root-relative
 manifest paths using `/` separators. The naming policy is emitted as
 `generatedOutputNaming` in `app.build-manifest.json` and checked by `LO verify`.
 
+Source hashing is recorded in `deterministicInputs` using SHA-256. The build
+manifest includes a combined `sourceHash`, a `sourceHashAlgorithm`, and a
+`sourceFiles` list with one hash per `.lo` source file.
+
 ## Lexer
 
 The lexer lives in `compiler/lexer.js` and emits `app.tokens.json` during build.
