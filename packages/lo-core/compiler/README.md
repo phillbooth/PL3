@@ -54,6 +54,10 @@ outputs as non-executable placeholders. In the v0.1 prototype, `app.bin` is not
 a Windows `.exe` or Linux ELF binary, and `app.wasm` is not a runnable
 WebAssembly module.
 
+`LO verify` checks this metadata alongside required files, output hashes and
+JSON report parsing, so placeholder artefacts cannot be mistaken for runnable
+platform binaries in a valid build manifest.
+
 ## Lexer
 
 The lexer lives in `compiler/lexer.js` and emits `app.tokens.json` during build.

@@ -1319,6 +1319,20 @@ effects [database.write] {
     assert(manifest.artifactStatus["app.wasm"].runtimeStatus === "placeholder", "Expected app.wasm to be marked as placeholder.");
   });
 
+  test("verify checks build artifact status metadata", () => {
+    const result = analyseProject(loadProject(root, ["source-map-error.lo"]));
+    const outDir = fs.mkdtempSync(path.join(os.tmpdir(), "LO-verify-artifacts-"));
+    try {
+      build(result, outDir);
+      const report = verifyBuild(outDir);
+      assert(report.failed === 0, `Expected verified build, found ${report.failed} failures.`);
+      assert(report.checks.some((item) => item.name === "artifact status: app.bin" && item.ok), "Expected app.bin artifact status check.");
+      assert(report.checks.some((item) => item.name === "artifact status: app.wasm" && item.ok), "Expected app.wasm artifact status check.");
+    } finally {
+      fs.rmSync(outDir, { recursive: true, force: true });
+    }
+  });
+
   test("runtime report describes memory pressure and spill policy", () => {
     const result = analyseProject(loadProject(path.join(root, "boot.lo")));
     const report = buildRuntimeReport(result);
@@ -2909,6 +2923,12 @@ function verifyBuild(input) {
       }, `Hash mismatch for ${fileName}.`);
     }
 
+    check("manifest has artifact status metadata", () => Boolean(manifest.artifactStatus && typeof manifest.artifactStatus === "object"), "Manifest is missing artifactStatus metadata.");
+    for (const fileName of Object.values(manifest.targetOutputs || {})) {
+      if (!fileName || typeof fileName !== "string") continue;
+      check(`artifact status: ${fileName}`, () => validArtifactStatus(fileName, manifest.artifactStatus[fileName]), `Invalid artifactStatus entry for ${fileName}.`);
+    }
+
     for (const fileName of manifest.reports || []) {
       check(`report JSON parses: ${fileName}`, () => {
         JSON.parse(fs.readFileSync(path.join(buildDir, fileName), "utf8"));
@@ -2929,6 +2949,18 @@ function verifyBuild(input) {
       checks.push({ name, ok: false, problem: error.message || problem });
     }
   }
+}
+
+function validArtifactStatus(fileName, status) {
+  if (!status || typeof status !== "object") return false;
+  if (typeof status.kind !== "string" || status.kind.length === 0) return false;
+  if (typeof status.format !== "string" || status.format.length === 0) return false;
+  if (typeof status.runtimeStatus !== "string" || status.runtimeStatus.length === 0) return false;
+  if (typeof status.executable !== "boolean") return false;
+  if (status.runtimeStatus === "placeholder" && status.executable !== false) return false;
+  if (fileName === "app.bin" && status.platform !== "not-windows-or-linux") return false;
+  if (fileName === "app.wasm" && status.runtimeStatus !== "placeholder") return false;
+  return true;
 }
 
 function resolveManifestPath(input) {
