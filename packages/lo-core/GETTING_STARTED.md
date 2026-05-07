@@ -18,7 +18,7 @@ The repository includes:
 documented language rules and design notes
 draft grammar and JSON schemas
 runnable .lo examples
-a Node.js prototype CLI in compiler/LO.js
+a Node.js prototype CLI in compiler/lo.js
 lexer, parser, formatter and smoke-test commands
 prototype type, target, security, memory and strict-comment diagnostics
 development report/documentation generation
@@ -40,7 +40,7 @@ From the repository root:
 ```bash
 node --version
 npm --version
-node compiler/LO.js --help
+node compiler/lo.js --help
 ```
 
 No npm install step is required for the current prototype because
@@ -53,7 +53,7 @@ No npm install step is required for the current prototype because
 Run the checked hello example:
 
 ```bash
-node compiler/LO.js run examples/hello.lo
+node compiler/lo.js run examples/hello.lo
 ```
 
 Expected output:
@@ -109,24 +109,24 @@ npm run ai-context
 Direct CLI commands:
 
 ```bash
-node compiler/LO.js init my-LO-app
-node compiler/LO.js run examples/hello.lo
-node compiler/LO.js run examples/hello.lo --generate --out .build-dev-run
-node compiler/LO.js generate examples --exclude source-map-error.lo --out .build-dev
-node compiler/LO.js dev examples/hello.lo --out .build-dev
-node compiler/LO.js dev examples/hello.lo --watch --out .build-dev
-node compiler/LO.js serve examples --dev
-node compiler/LO.js check examples --exclude source-map-error.lo
-node compiler/LO.js tokens examples/hello.lo
-node compiler/LO.js fmt examples --check
-node compiler/LO.js test examples
-node compiler/LO.js schema examples/api-orders.lo --type CreateOrderRequest
-node compiler/LO.js openapi examples/api-orders.lo
-node compiler/LO.js build examples --exclude source-map-error.lo --out build/examples
-node compiler/LO.js verify build/examples
-node compiler/LO.js targets examples
-node compiler/LO.js ai-context examples --out build/examples
-node compiler/LO.js explain examples/source-map-error.lo --for-ai
+node compiler/lo.js init my-LO-app
+node compiler/lo.js run examples/hello.lo
+node compiler/lo.js run examples/hello.lo --generate --out .build-dev-run
+node compiler/lo.js generate examples --exclude source-map-error.lo --out .build-dev
+node compiler/lo.js dev examples/hello.lo --out .build-dev
+node compiler/lo.js dev examples/hello.lo --watch --out .build-dev
+node compiler/lo.js serve examples --dev
+node compiler/lo.js check examples --exclude source-map-error.lo
+node compiler/lo.js tokens examples/hello.lo
+node compiler/lo.js fmt examples --check
+node compiler/lo.js test examples
+node compiler/lo.js schema examples/api-orders.lo --type CreateOrderRequest
+node compiler/lo.js openapi examples/api-orders.lo
+node compiler/lo.js build examples --exclude source-map-error.lo --out build/examples
+node compiler/lo.js verify build/examples
+node compiler/lo.js targets examples
+node compiler/lo.js ai-context examples --out build/examples
+node compiler/lo.js explain examples/source-map-error.lo --for-ai
 ```
 
 `dev --watch` is accepted by the prototype, but it currently performs one
@@ -141,7 +141,7 @@ server yet.
 Create a small project:
 
 ```bash
-node compiler/LO.js init my-LO-app
+node compiler/lo.js init my-LO-app
 ```
 
 Generated structure:
@@ -156,7 +156,7 @@ my-LO-app/
 Run it from this repository root:
 
 ```bash
-node compiler/LO.js run my-LO-app
+node compiler/lo.js run my-LO-app
 ```
 
 The generated `boot.lo` includes target declarations, global registry entries,
@@ -170,7 +170,7 @@ manifest settings and required build outputs.
 Compile Mode writes placeholder target artefacts plus JSON/Markdown reports.
 
 ```bash
-node compiler/LO.js build examples --exclude source-map-error.lo --out build/examples
+node compiler/lo.js build examples --exclude source-map-error.lo --out build/examples
 ```
 
 Typical production build output:
@@ -221,8 +221,8 @@ build/examples/
 Verify a build:
 
 ```bash
-node compiler/LO.js verify build/examples
-node compiler/LO.js verify build/examples/app.build-manifest.json
+node compiler/lo.js verify build/examples
+node compiler/lo.js verify build/examples/app.build-manifest.json
 ```
 
 ---
@@ -233,7 +233,7 @@ Development generation writes reports and docs without production binaries or
 the production build manifest:
 
 ```bash
-node compiler/LO.js generate examples --exclude source-map-error.lo --out .build-dev
+node compiler/lo.js generate examples --exclude source-map-error.lo --out .build-dev
 ```
 
 This is useful when you want generated docs, source maps, AI context and safety
@@ -247,8 +247,8 @@ reports while still keeping Compile Mode as the production path.
 prototype can demonstrate source-mapped diagnostics.
 
 ```bash
-node compiler/LO.js explain examples/source-map-error.lo
-node compiler/LO.js explain examples/source-map-error.lo --for-ai
+node compiler/lo.js explain examples/source-map-error.lo
+node compiler/lo.js explain examples/source-map-error.lo --for-ai
 ```
 
 The AI-friendly explanation includes structured fields such as error type,
@@ -261,7 +261,7 @@ target, source location, problem and suggested fix.
 Generate compact context for AI tools:
 
 ```bash
-node compiler/LO.js ai-context examples --out build/examples
+node compiler/lo.js ai-context examples --out build/examples
 ```
 
 Generated output:
@@ -367,8 +367,8 @@ api OrdersApi {
 Generate API contract drafts:
 
 ```bash
-node compiler/LO.js schema examples/api-orders.lo --type CreateOrderRequest
-node compiler/LO.js openapi examples/api-orders.lo
+node compiler/lo.js schema examples/api-orders.lo --type CreateOrderRequest
+node compiler/lo.js openapi examples/api-orders.lo
 ```
 
 ---

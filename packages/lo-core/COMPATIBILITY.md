@@ -126,7 +126,7 @@ should remain root-relative.
 Compatible examples:
 
 ```text
-compiler/LO.js
+compiler/lo.js
 examples/hello.lo
 schemas/ai-context.schema.json
 docs/type-system.md

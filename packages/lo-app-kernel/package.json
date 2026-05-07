@@ -6,6 +6,6 @@
   "private": true,
   "scripts": {
     "test": "npm run test:hello",
-    "test:hello": "node ../lo-core/compiler/LO.js run tests/hello-world.lo"
+    "test:hello": "node ../lo-core/compiler/lo.js run tests/hello-world.lo"
   }
 }

@@ -11,7 +11,7 @@ schemas and detailed language documentation.
 
 LO is currently a language-design and v0.1 prototype project.
 
-The prototype CLI lives in `compiler/LO.js`. It can parse and check the
+The prototype CLI lives in `compiler/lo.js`. It can parse and check the
 documented LO subset, run simple `.lo` files, generate reports, emit placeholder
 build artefacts, and produce AI-readable context.
 
@@ -24,7 +24,7 @@ npm run build:examples
 npm run verify -- build/examples
 npm run generate:dev
 npm run dev
-node compiler/LO.js run examples/hello.lo --generate
+node compiler/lo.js run examples/hello.lo --generate
 ```
 
 The prototype is not a production compiler. CPU-compatible checked execution is
@@ -150,7 +150,7 @@ secure flow main() -> Result<Void, Error> {
 Run:
 
 ```bash
-node compiler/LO.js run examples/hello.lo
+node compiler/lo.js run examples/hello.lo
 ```
 
 Short scripts should still use secure defaults:
@@ -277,8 +277,8 @@ LO should reduce the amount of source code that developers need to paste into AI
 tools.
 
 ```bash
-node compiler/LO.js ai-context examples --out build/examples
-node compiler/LO.js explain examples/source-map-error.lo --for-ai
+node compiler/lo.js ai-context examples --out build/examples
+node compiler/lo.js explain examples/source-map-error.lo --for-ai
 ```
 
 AI reports must be compact, deterministic, source-mapped and free of secrets.

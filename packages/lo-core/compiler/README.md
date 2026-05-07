@@ -36,14 +36,14 @@ npm run schema
 npm run openapi
 npm run build:examples
 npm run verify
-node compiler/LO.js run examples/hello.lo
-node compiler/LO.js run examples/hello.lo --generate --out .build-dev-run
-node compiler/LO.js generate examples --exclude source-map-error.lo --out .build-dev
-node compiler/LO.js dev examples/hello.lo --out .build-dev
-node compiler/LO.js dev examples/hello.lo --watch --out .build-dev
-node compiler/LO.js serve examples --dev
-node compiler/LO.js init my-LO-app
-node compiler/LO.js explain examples/source-map-error.lo --for-ai
+node compiler/lo.js run examples/hello.lo
+node compiler/lo.js run examples/hello.lo --generate --out .build-dev-run
+node compiler/lo.js generate examples --exclude source-map-error.lo --out .build-dev
+node compiler/lo.js dev examples/hello.lo --out .build-dev
+node compiler/lo.js dev examples/hello.lo --watch --out .build-dev
+node compiler/lo.js serve examples --dev
+node compiler/lo.js init my-LO-app
+node compiler/lo.js explain examples/source-map-error.lo --for-ai
 ```
 
 The generated `app.bin` and `app.wasm` files are placeholders. They prove the
@@ -77,8 +77,8 @@ manifests.
 The formatter lives in `compiler/formatter.js`.
 
 ```bash
-node compiler/LO.js fmt examples --check
-node compiler/LO.js fmt examples
+node compiler/lo.js fmt examples --check
+node compiler/lo.js fmt examples
 ```
 
 The first command reports files that would change. The second rewrites `.lo`
@@ -90,7 +90,7 @@ newline.
 The prototype test command validates the current examples:
 
 ```bash
-node compiler/LO.js test examples
+node compiler/lo.js test examples
 ```
 
 It checks that `hello.lo` parses as a secure `main` flow, `boot.lo` parses the
@@ -137,9 +137,9 @@ comments as a design/linting concern rather than a build error.
 The schema generator lives in `compiler/schema-generator.js`.
 
 ```bash
-node compiler/LO.js schema examples/api-orders.lo
-node compiler/LO.js schema examples/api-orders.lo --type CreateOrderRequest
-node compiler/LO.js openapi examples/api-orders.lo
+node compiler/lo.js schema examples/api-orders.lo
+node compiler/lo.js schema examples/api-orders.lo --type CreateOrderRequest
+node compiler/lo.js openapi examples/api-orders.lo
 ```
 
 Builds write `app.schemas.json` and `app.openapi.json`. The JSON Schema output
@@ -152,8 +152,8 @@ Build manifests include target outputs, report files and SHA-256 hashes for
 every generated artefact except the manifest itself.
 
 ```bash
-node compiler/LO.js verify build/examples
-node compiler/LO.js verify build/examples/app.build-manifest.json
+node compiler/lo.js verify build/examples
+node compiler/lo.js verify build/examples/app.build-manifest.json
 ```
 
 Verification checks that artefacts exist, hashes match and JSON reports parse.
@@ -251,7 +251,7 @@ reported as an error.
 `app.target-report.json`.
 
 ```bash
-node compiler/LO.js targets examples
+node compiler/lo.js targets examples
 ```
 
 The report includes declared targets, compute blocks, fallback coverage,
@@ -275,7 +275,7 @@ tolerance or confidence rules are violated.
 `LO ai-context` writes compact JSON and Markdown summaries for AI tools:
 
 ```bash
-node compiler/LO.js ai-context examples --out build/examples
+node compiler/lo.js ai-context examples --out build/examples
 ```
 
 The JSON report includes source file hashes, changed-file status when Git is

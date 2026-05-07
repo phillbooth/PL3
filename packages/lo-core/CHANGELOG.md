@@ -142,7 +142,7 @@ Example:
 - Added prototype `LO generate`, `LO dev` and `LO run --generate` development-output commands.
 - Added prototype browser target import blocking for server-only imports, with parsed `target browser`, `import` and `capabilities` syntax.
 - Added examples/browser-form.lo and prototype `app.browser.js` placeholder output when a browser target is declared.
-- Added v0.1 prototype CLI in compiler/LO.js.
+- Added v0.1 prototype CLI in compiler/lo.js.
 - Added source-mapped lexer prototype in compiler/lexer.js and `LO tokens`.
 - Added basic formatter prototype in compiler/formatter.js and `LO fmt`.
 - Added `LO test` prototype smoke tests for hello, boot, formatter and target diagnostics.

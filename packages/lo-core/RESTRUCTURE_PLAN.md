@@ -403,7 +403,7 @@ Example:
   "target": "cpu",
   "recoveryAction": "continue_with_warning",
   "source": {
-    "file": "compiler/LO.js",
+    "file": "compiler/lo.js",
     "line": 120
   },
   "timestamp": "2026-05-03T00:00:00Z"

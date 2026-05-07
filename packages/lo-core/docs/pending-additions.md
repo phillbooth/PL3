@@ -1060,7 +1060,7 @@ Inside this repository, paths should be root-relative.
 Correct:
 
 ```text
-compiler/LO.js
+compiler/lo.js
 examples/hello.lo
 schemas/ai-context.schema.json
 docs/type-system.md

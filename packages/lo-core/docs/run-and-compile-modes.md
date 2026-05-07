@@ -186,7 +186,7 @@ bytecode:
 Compile Mode builds the project into production-ready outputs.
 
 ```bash
-node compiler/LO.js build examples --exclude source-map-error.lo --out build/examples
+node compiler/lo.js build examples --exclude source-map-error.lo --out build/examples
 ```
 
 `LO build --mode release --target all` remains the intended future production
