@@ -24,6 +24,7 @@
 
 ## Phase 4: Testing
 
+- [x] Add app-kernel hello-world checked Run Mode test
 - [ ] Add unit tests
 - [ ] Add integration tests
 - [ ] Add manual test checklist

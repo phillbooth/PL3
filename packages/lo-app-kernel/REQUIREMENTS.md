@@ -10,6 +10,8 @@
 - Support memory, timeout, concurrency and rate-limit policies.
 - Support queue and job contracts without becoming a queue product.
 - Generate machine-readable runtime and audit reports.
+- Provide a non-compiled checked Run Mode smoke test for basic framework
+  development feedback.
 
 ## Boundary Requirements
 
@@ -26,4 +28,13 @@ LO language
   -> LO Secure App Kernel
   -> LO HTTP Adapter for Node / native server / WASM edge
   -> optional framework such as LO Web, LO CMS, LO API Framework, React adapter or Angular adapter
+```
+
+## Test Requirement
+
+The package should keep a hello-world `.lo` fixture that runs through LO core
+Run Mode without compiling:
+
+```bash
+npm.cmd --prefix packages/lo-app-kernel run test:hello
 ```

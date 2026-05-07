@@ -64,6 +64,8 @@ Describe the problem this app solves.
   storage backends and identity providers.
 - The kernel must not include CMS features, admin dashboards, page builders,
   mandatory ORM design, mandatory template engines or frontend framework syntax.
+- The kernel package must support a non-compiled checked Run Mode smoke test
+  for validating simple `.lo` execution during framework development.
 
 ## Out of Scope
 

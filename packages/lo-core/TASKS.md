@@ -84,6 +84,7 @@ Git workflow
 [x] Tri uses Positive/Neutral/Negative for value-level ternary state
 [x] First practical implementation target: Node.js-hosted checked interpreter/prototype
 [x] Separate LO core language concerns from the optional Secure App Kernel layer
+[x] Support simple `console.log("...")` output in checked Run Mode
 ```
 
 ---

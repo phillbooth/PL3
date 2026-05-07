@@ -1366,6 +1366,18 @@ effects [database.write] {
     assert(run.output[0] === "hello from LO", "Expected run mode print output.");
   });
 
+  test("run mode executes simple checked console.log script", () => {
+    const source = projectFromSource("hello-console-run.lo", `secure flow main() -> Result<Void, Error> {
+  console.log("hello from LO console")
+  return Ok()
+}
+`);
+    const result = analyseProject(source);
+    const run = runProject(source, result);
+    assert(run.ok === true, "Expected checked run mode to pass.");
+    assert(run.output[0] === "hello from LO console", "Expected run mode console.log output.");
+  });
+
   test("development generate writes reports without production binaries", () => {
     const result = analyseProject(loadProject(root, ["source-map-error.lo"]));
     const outDir = fs.mkdtempSync(path.join(os.tmpdir(), "LO-dev-"));
@@ -4709,7 +4721,7 @@ function runProject(project, result) {
   }
 
   const source = project.files.find((file) => file.relativePath === mainFlow.file) || project.files[0];
-  const output = matches(stripComments(source.content), /\bprint\s*\(\s*"([^"]*)"\s*\)/g).map((match) => match[1]);
+  const output = matches(stripComments(source.content), /\b(?:print|console\.log)\s*\(\s*"([^"]*)"\s*\)/g).map((match) => match[1]);
   return {
     ok: true,
     mode: (result.ast.runtime || defaultRuntimeContract()).runMode || "checked",

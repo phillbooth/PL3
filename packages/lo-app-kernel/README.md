@@ -93,3 +93,21 @@ app.target-report.json
 app.ai-guide.md
 app.map-manifest.json
 ```
+
+## Checked Test Run
+
+The kernel package can run a simple hello-world test through LO core Run Mode.
+This is not a compiled build.
+
+```bash
+npm.cmd --prefix packages/lo-app-kernel run test:hello
+```
+
+The test fixture lives in `tests/hello-world.lo` and uses:
+
+```LO
+secure flow main() -> Result<Void, Error> {
+  console.log("hello from LO app kernel test")
+  return Ok()
+}
+```

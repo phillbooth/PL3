@@ -39,3 +39,19 @@ LO Full Frameworks
 The Secure App Kernel is a partial framework layer. It enforces safe runtime
 boundaries, but it must not become a full Laravel, Django, React or WordPress
 style framework.
+
+## Checked Run Smoke Tests
+
+The framework layer can be exercised without compiling by running LO core
+checked Run Mode against `.lo` test fixtures.
+
+```text
+packages/lo-app-kernel/tests/
+`-- hello-world.lo
+```
+
+The current smoke test runs through the LO core prototype:
+
+```bash
+npm.cmd --prefix packages/lo-app-kernel run test:hello
+```
