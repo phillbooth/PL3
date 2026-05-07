@@ -279,6 +279,11 @@ and its `artifactStatus` section before treating any output as runnable.
 `LO verify` validates that artefact-status metadata as part of build
 verification.
 
+Before Compile Mode writes new artefacts, it removes known LO-generated files
+from the output directory so stale target outputs do not survive a later build
+with different targets. Files outside the known generated-output list are left
+alone.
+
 ## Suggested Workflow
 
 ```text

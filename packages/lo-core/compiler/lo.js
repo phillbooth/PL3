@@ -1333,6 +1333,22 @@ effects [database.write] {
     }
   });
 
+  test("build cleans stale generated outputs before writing new artefacts", () => {
+    const outDir = fs.mkdtempSync(path.join(os.tmpdir(), "LO-build-clean-"));
+    const keepFile = path.join(outDir, "keep.txt");
+    try {
+      build(analyseProject(loadProject(path.join(root, "browser-form.lo"))), outDir);
+      assert(fs.existsSync(path.join(outDir, "app.browser.js")), "Expected browser build to create app.browser.js.");
+      fs.writeFileSync(keepFile, "user-owned file\n", "utf8");
+
+      build(analyseProject(loadProject(path.join(root, "hello.lo"))), outDir);
+      assert(!fs.existsSync(path.join(outDir, "app.browser.js")), "Expected stale browser output to be cleaned.");
+      assert(fs.existsSync(keepFile), "Expected non-generated file to be preserved.");
+    } finally {
+      fs.rmSync(outDir, { recursive: true, force: true });
+    }
+  });
+
   test("runtime report describes memory pressure and spill policy", () => {
     const result = analyseProject(loadProject(path.join(root, "boot.lo")));
     const report = buildRuntimeReport(result);
@@ -2817,6 +2833,7 @@ function build(result, outDir) {
     enforceBuildContract(result, reports);
   }
 
+  cleanGeneratedOutputs(outDir);
   return writeReportFiles(outDir, reports);
 }
 
@@ -2882,6 +2899,56 @@ function writeReportFiles(outDir, reports) {
     written.push(file);
   }
   return written;
+}
+
+function cleanGeneratedOutputs(outDir) {
+  for (const name of knownGeneratedOutputPaths()) {
+    const file = path.join(outDir, name);
+    if (fs.existsSync(file) && fs.statSync(file).isFile()) {
+      fs.rmSync(file, { force: true });
+    }
+  }
+}
+
+function knownGeneratedOutputPaths() {
+  return [
+    "app.bin",
+    "app.wasm",
+    "app.browser.js",
+    "app.gpu.plan",
+    "app.photonic.plan",
+    "app.ternary.sim",
+    "app.omni-logic.sim",
+    "app.precision-report.json",
+    "app.schemas.json",
+    "app.openapi.json",
+    "app.api-report.json",
+    "app.global-report.json",
+    "app.map-manifest.json",
+    "app.runtime-report.json",
+    "app.memory-report.json",
+    "app.execution-report.json",
+    "app.target-report.json",
+    "app.security-report.json",
+    "app.failure-report.json",
+    "app.source-map.json",
+    "app.tokens.json",
+    "app.ai-context.json",
+    "app.ai-context.md",
+    "app.ai-guide.md",
+    "app.build-manifest.json",
+    "docs/api-guide.md",
+    "docs/webhook-guide.md",
+    "docs/type-reference.md",
+    "docs/global-registry-guide.md",
+    "docs/security-guide.md",
+    "docs/runtime-guide.md",
+    "docs/memory-pressure-guide.md",
+    "docs/run-compile-mode-guide.md",
+    "docs/deployment-guide.md",
+    "docs/ai-summary.md",
+    "docs/docs-manifest.json"
+  ];
 }
 
 function verifyBuild(input) {

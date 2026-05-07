@@ -58,6 +58,11 @@ WebAssembly module.
 JSON report parsing, so placeholder artefacts cannot be mistaken for runnable
 platform binaries in a valid build manifest.
 
+Builds clean known LO-generated outputs before writing new artefacts. This
+prevents stale target files such as `app.browser.js` from surviving after a
+later build that no longer enables that target, while preserving unrelated files
+in the output directory.
+
 ## Lexer
 
 The lexer lives in `compiler/lexer.js` and emits `app.tokens.json` during build.

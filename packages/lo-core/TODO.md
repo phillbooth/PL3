@@ -902,7 +902,7 @@ Reason for additions:
 [ ] Define build signing possibility
 [ ] Define source-map output rules
 [ ] Define generated file naming
-[ ] Define generated file cleanup
+[x] Define generated file cleanup
 ```
 
 ---
