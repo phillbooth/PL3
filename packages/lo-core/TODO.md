@@ -886,7 +886,7 @@ Reason for additions:
 [x] Define build manifest schema
 [x] Define map manifest schema
 [x] Define docs manifest schema
-[ ] Define deterministic build rules
+[x] Define deterministic build rules
 [x] Define source hashing
 [x] Define dependency hashing
 [x] Define output hashing

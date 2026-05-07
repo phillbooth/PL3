@@ -75,6 +75,10 @@ Dependency hashing is also recorded in `deterministicInputs`. Declared
 `import`/`use` modules are sorted, classified and hashed with SHA-256, then
 combined into `dependencyHash` for repeatable build inputs.
 
+Deterministic build rules are recorded in `deterministicBuildRules`. The
+manifest separates stable reproducibility inputs from metadata such as
+`createdAt`, and records a combined `buildInputHash` for repeatable comparison.
+
 ## Lexer
 
 The lexer lives in `compiler/lexer.js` and emits `app.tokens.json` during build.

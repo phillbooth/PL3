@@ -296,6 +296,11 @@ Declared imports are recorded in the same section as dependency inputs. Compile
 Mode stores sorted dependency entries with SHA-256 hashes and a combined
 `dependencyHash`.
 
+Deterministic build rules are recorded as `deterministicBuildRules`. The
+prototype treats mode, source hashes, dependency hashes and global registry
+hashes as stable inputs, while timestamp metadata such as `createdAt` is
+excluded from reproducibility comparison.
+
 ## Suggested Workflow
 
 ```text

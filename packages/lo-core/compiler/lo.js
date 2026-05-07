@@ -1397,6 +1397,17 @@ secure flow main() -> Result<Void, Error> {
     assert(manifest.deterministicInputs.dependencies.some((item) => item.module === "server.database" && item.kind === "server-only"), "Expected server-only dependency classification.");
   });
 
+  test("build manifest defines deterministic build rules", () => {
+    const result = analyseProject(loadProject(root, ["source-map-error.lo"]));
+    const manifest = buildManifest(result, {
+      "app.bin": "placeholder",
+      "app.wasm": "placeholder"
+    });
+    assert(validDeterministicBuildRules(manifest.deterministicBuildRules, manifest.deterministicInputs), "Expected valid deterministic build rules.");
+    assert(manifest.deterministicBuildRules.excludedMetadata.includes("createdAt"), "Expected createdAt to be excluded from reproducibility.");
+    assert(manifest.deterministicInputs.buildInputHash.startsWith("sha256:"), "Expected build input hash.");
+  });
+
   test("verify checks build artifact status metadata", () => {
     const result = analyseProject(loadProject(root, ["source-map-error.lo"]));
     const outDir = fs.mkdtempSync(path.join(os.tmpdir(), "LO-verify-artifacts-"));
@@ -1409,6 +1420,7 @@ secure flow main() -> Result<Void, Error> {
       assert(report.checks.some((item) => item.name === "generated output naming policy" && item.ok), "Expected generated output naming check.");
       assert(report.checks.some((item) => item.name === "source hash policy" && item.ok), "Expected source hash policy check.");
       assert(report.checks.some((item) => item.name === "dependency hash policy" && item.ok), "Expected dependency hash policy check.");
+      assert(report.checks.some((item) => item.name === "deterministic build rules" && item.ok), "Expected deterministic build rules check.");
     } finally {
       fs.rmSync(outDir, { recursive: true, force: true });
     }
@@ -3013,6 +3025,7 @@ function verifyBuild(input) {
     check("manifest has deterministic input hash", () => Boolean(manifest.deterministicInputs && manifest.deterministicInputs.sourceHash), "Manifest is missing deterministicInputs.sourceHash.");
     check("source hash policy", () => validSourceHashPolicy(manifest.deterministicInputs), "Manifest has an invalid deterministicInputs source hash policy.");
     check("dependency hash policy", () => validDependencyHashPolicy(manifest.deterministicInputs), "Manifest has an invalid deterministicInputs dependency hash policy.");
+    check("deterministic build rules", () => validDeterministicBuildRules(manifest.deterministicBuildRules, manifest.deterministicInputs), "Manifest has invalid deterministic build rules.");
 
     const outputFiles = [
       ...Object.values(manifest.targetOutputs || {}),
@@ -3130,6 +3143,18 @@ function validDependencyHashPolicy(inputs) {
     if (typeof dependency.hash !== "string" || !/^sha256:[a-f0-9]{64}$/.test(dependency.hash)) return false;
     if (!["browser-safe", "server-only", "compute-safe", "declared-import"].includes(dependency.kind)) return false;
   }
+  return true;
+}
+
+function validDeterministicBuildRules(rules, inputs) {
+  if (!rules || typeof rules !== "object") return false;
+  if (!inputs || typeof inputs !== "object") return false;
+  if (rules.hashAlgorithm !== "sha256") return false;
+  if (rules.pathSeparator !== "/") return false;
+  if (!Array.isArray(rules.stableInputs) || !rules.stableInputs.includes("sourceHash") || !rules.stableInputs.includes("dependencyHash")) return false;
+  if (!Array.isArray(rules.excludedMetadata) || !rules.excludedMetadata.includes("createdAt")) return false;
+  if (typeof rules.outputHashNormalisation !== "string" || !rules.outputHashNormalisation.includes("trailing newline")) return false;
+  if (typeof inputs.buildInputHash !== "string" || !/^sha256:[a-f0-9]{64}$/.test(inputs.buildInputHash)) return false;
   return true;
 }
 
@@ -4808,6 +4833,14 @@ function buildManifest(result, outputs = {}) {
   const sourceHash = sha256(result.project.files.map((file) => file.content).join("\n"));
   const dependencies = dependencyHashes(result.ast);
   const dependencyHash = sha256(dependencies.map((item) => item.module).join("\n"));
+  const globalHash = globalRegistryHash(result);
+  const mode = result.ast.buildContract.mode === "release" ? "release" : "debug";
+  const buildInputHash = sha256([
+    `mode:${mode}`,
+    `source:${sourceHash}`,
+    `dependencies:${dependencyHash}`,
+    `globals:${globalHash}`
+  ].join("\n"));
   const outputHashes = {};
   for (const [fileName, content] of Object.entries(outputs)) {
     outputHashes[fileName] = `sha256:${sha256(content.endsWith("\n") ? content : `${content}\n`)}`;
@@ -4817,9 +4850,11 @@ function buildManifest(result, outputs = {}) {
     project: result.ast.project,
     version: "0.1.0",
     compiler: VERSION,
-    mode: result.ast.buildContract.mode === "release" ? "release" : "debug",
+    mode,
     createdAt: new Date().toISOString(),
     deterministicInputs: {
+      buildInputHashAlgorithm: "sha256",
+      buildInputHash: `sha256:${buildInputHash}`,
       sourceHashAlgorithm: "sha256",
       sourceHash: `sha256:${sourceHash}`,
       fileCount: result.project.files.length,
@@ -4828,8 +4863,9 @@ function buildManifest(result, outputs = {}) {
       dependencyHash: `sha256:${dependencyHash}`,
       dependencyCount: dependencies.length,
       dependencies,
-      globalRegistryHash: `sha256:${globalRegistryHash(result)}`
+      globalRegistryHash: `sha256:${globalHash}`
     },
+    deterministicBuildRules: deterministicBuildRules(),
     diagnosticSummary: diagnosticSummary(result.diagnostics),
     requiredEnvironment: buildGlobalReport(result).requiredEnvironment,
     targetOutputs: {
@@ -4902,6 +4938,30 @@ function dependencyKind(module) {
   if (BROWSER_SAFE_IMPORTS.has(module)) return "browser-safe";
   if (COMPUTE_SAFE_IMPORTS.has(module)) return "compute-safe";
   return "declared-import";
+}
+
+function deterministicBuildRules() {
+  return {
+    hashAlgorithm: "sha256",
+    pathSeparator: "/",
+    stableInputs: [
+      "mode",
+      "sourceHash",
+      "dependencyHash",
+      "globalRegistryHash"
+    ],
+    stableOutputs: [
+      "outputHashes",
+      "generatedOutputNaming",
+      "artifactStatus"
+    ],
+    excludedMetadata: [
+      "createdAt",
+      "changedFiles"
+    ],
+    outputHashNormalisation: "Output hashes are calculated after normalising each generated file to one trailing newline.",
+    rule: "A build is reproducible when stable inputs and generated output hashes match; timestamp and local Git status metadata are excluded."
+  };
 }
 
 function generatedOutputNamingPolicy() {
