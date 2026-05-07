@@ -54,6 +54,11 @@ LO should support typed security boundaries and reports. Identity provider
 implementation, login screens, account recovery, MFA products and admin role
 dashboards remain packages, frameworks or external services.
 
+The optional LO Secure App Kernel may enforce declared auth provider, bearer,
+scope, mTLS, DPoP, webhook signature and capability-token requirements at
+runtime. LO core should define the contract and reports; the kernel and adapters
+should perform runtime verification.
+
 ---
 
 ## Bearer Tokens

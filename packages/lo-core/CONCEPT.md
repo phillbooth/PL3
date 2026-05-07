@@ -1,77 +1,172 @@
-Yes — **mostly**, but I would strengthen it.
+# LO Concept
 
-In `CONCEPT.md`, I included:
+LO, short for Logic Omni, is a strict, memory-safe, security-first programming
+language concept for modern backend systems and future compute targets.
+
+The core idea is simple:
 
 ```text
-JSON-native design
-API-native design
+Write explicit, typed, safe LO code once.
+Check it with the compiler.
+Generate source-mapped outputs and reports.
+Run on normal CPU systems first.
+Plan future accelerator targets where appropriate.
+```
+
+## What LO Is
+
+LO is intended to be:
+
+```text
+strictly typed
+memory safe
+security-first
+JSON-native
+API-aware
+AI-readable
+source-map friendly
+CPU-compatible by default
+accelerator-aware for pure compute
+```
+
+LO should be practical before future hardware is common.
+
+## What LO Is Not
+
+LO core is not:
+
+```text
+a full web framework
+a CMS
+an admin dashboard
+a React or Angular clone
+a mandatory ORM
+a template system
+a photonic-only research language
+a loose scripting language
+```
+
+Application runtime enforcement belongs in the optional LO Secure App Kernel.
+Full frameworks can build on top of that kernel.
+
+## Layer Model
+
+```text
+LO Core
+  strict types, flows, effects, memory safety, compute planning, compiler reports
+
+LO Standard Library
+  Json, Xml, SafeHtml, File, Stream, Request, Response, DateTime, Money, SecureString
+
+LO Secure App Kernel
+  optional runtime layer for APIs, validation, auth, rate limits, jobs and reports
+
+Full Frameworks
+  CMS, admin panels, UI systems, templates, ORM, page builders and frontend adapters
+```
+
+Final rule:
+
+```text
+LO the language defines safety.
+LO the kernel enforces safe runtime boundaries.
+Frameworks provide opinions and user-facing structure.
+```
+
+## Why LO Exists
+
+Modern backend applications increasingly depend on:
+
+```text
 REST APIs
 webhooks
-typed JSON decoding
-OpenAPI generation
-JSON schemas
-source maps
-AI context files
-lower AI token use
-machine-readable reports
-API contract checks
-webhook/security concepts
+JSON payloads
+auth tokens
+idempotency
+queues
+workers
+AI model calls
+large datasets
+source-mapped debugging
+secure deployment
+multi-target output
 ```
 
-I also included the idea of:
+Existing languages can handle these areas, but much of the safety often lives in
+framework conventions, external packages or developer discipline. LO aims to
+make the core safety contracts explicit, typed and reportable.
 
-```bash
-LO ai-context
-```
+## Backend Language Suggestions
 
-But I **did not explicitly add**:
+LO should adopt the safest lessons from other backend languages without copying
+their unsafe or framework-specific features.
 
-```bash
-LO explain --for-ai
-```
-
-And while API/webhook optimisation is covered, it could be made more direct with a dedicated section named:
+Highest-value additions:
 
 ```text
-Optimised for APIs and Webhooks
+language editions and compatibility rules
+Bool, Tri, Decision and Logic<N> conversion rules
+algebraic variants and exhaustive match
+generic constraints, traits or protocols
+structured concurrency, cancellation and streams
+deterministic resource cleanup
+safe compile-time metadata and attributes
+C ABI and foreign-call boundaries
+matrix/vector shape rules with scalar fallback
+stable diagnostics and AI report schemas
 ```
 
-I would add this block to `CONCEPT.md`:
+These suggestions belong in LO core because they affect safety, typing,
+compatibility, compilation or AI readability.
 
-````markdown
-## Optimised for APIs and Webhooks
+## JSON-Native but Strict
 
-LO should be designed as an API-native language.
-
-It should make common backend and integration work safer, clearer and less repetitive.
-
-LO should support:
+LO should treat JSON as a first-class data format, but it must not become
+loosely typed.
 
 ```text
-REST APIs
-webhooks
+JSON is easy to receive.
+JSON is easy to inspect.
+JSON is easy to transform.
+JSON is easy to output.
+Production JSON is decoded into strict LO types.
+```
+
+Preferred:
+
+```LO
+let order: CreateOrderRequest = json.decode<CreateOrderRequest>(req.body)
+```
+
+Allowed when raw inspection is required:
+
+```LO
+let raw: Json = req.json()
+let eventType: String = raw.path("$.type").asString()
+```
+
+LO should support streaming JSON, JSON Lines, schema generation, OpenAPI output,
+safe redaction, duplicate key policy, depth limits and payload size limits.
+
+## API and Webhook Contracts
+
+LO should be API-aware without becoming an API framework.
+
+LO core should define:
+
+```text
 typed request bodies
 typed response bodies
-JSON schema generation
+route contracts
+webhook contracts
+schema generation
 OpenAPI generation
-HMAC signature verification
-webhook replay protection
-idempotency keys
-request timeouts
-request cancellation
-payload size limits
-rate limiting
-retry policies
-circuit breakers
-worker pools
-channels
-backpressure
-dead-letter queues
-structured logging
-safe secret redaction
-````
+idempotency declarations
+replay-protection declarations
+source-mapped API reports
+```
 
-The goal is for LO to handle API and webhook systems with less boilerplate than traditional frameworks, while still preserving strict typing and security-first defaults.
+The Secure App Kernel can enforce those contracts at runtime.
 
 Example:
 
@@ -93,26 +188,18 @@ webhook PaymentWebhook {
 }
 ```
 
-This makes webhook safety part of the language design rather than something each developer has to remember manually.
-
-````
-
-And this block for AI tooling:
-
-```markdown
 ## AI Explanation Mode
 
-LO should include an AI-friendly explanation mode.
-
-Suggested command:
+LO should support:
 
 ```bash
 LO explain --for-ai
-````
+```
 
-This command should produce compact, machine-readable and human-readable explanations of compiler errors, target failures, security warnings and API contract problems.
+This command should produce compact, machine-readable explanations of compiler
+errors, target failures, security warnings and API contract problems.
 
-Example output:
+Example:
 
 ```json
 {
@@ -123,71 +210,46 @@ Example output:
   "column": 12,
   "problem": "readFile cannot run inside a photonic compute block.",
   "why": "Photonic targets only support approved maths, tensor, matrix and model operations.",
-  "suggestedFix": "Move readFile outside the compute block and pass the parsed data into the model.",
-  "safeExample": "data = readFile(\"./data.json\")\ncompute target photonic fallback gpu fallback cpu {\n  result = model(data)\n}"
+  "suggestedFix": "Move readFile outside the compute block and pass parsed data into the model."
 }
 ```
 
-The purpose of `LO explain --for-ai` is to reduce the amount of code and context a developer needs to paste into an AI assistant.
+The goal is to reduce how much code and context a developer must paste into an
+AI assistant.
 
-It should work with:
+## Compute Model
 
-```text
-app.failure-report.json
-app.source-map.json
-app.security-report.json
-app.target-report.json
-app.api-report.json
-app.ai-context.json
-```
+LO should remain scalar-first for normal backend workflows.
 
-````
-
-And I would add this to the JSON-native section:
-
-```markdown
-## JSON-Native but Strict
-
-LO should treat JSON as a first-class data format, but not make the language loosely typed.
-
-The rule should be:
-
-```text
-JSON is easy to receive.
-JSON is easy to inspect.
-JSON is easy to transform.
-JSON is easy to output.
-But production JSON should be decoded into strict LO types.
-````
-
-Preferred:
+Pure numeric, matrix, vector and model-inference workloads may use compute
+blocks:
 
 ```LO
-let order: CreateOrderRequest = json.decode<CreateOrderRequest>(req.body)
+compute target best verify cpu_reference {
+  prefer photonic
+  fallback gpu
+  fallback cpu
+
+  result = scoreRisk(features)
+}
 ```
 
-ALOwed when necessary:
+I/O, payment actions, database writes, secret access and security decisions
+should remain exact CPU-compatible application logic unless an explicit safe
+offload pattern is defined.
 
-```LO
-let raw: Json = req.json()
-let eventType: String = raw.path("$.type").asString()
-```
+## Core Principle
 
-LO should support:
+LO should make safe code easier to write and unsafe code harder to hide.
 
 ```text
-streaming JSON parsing
-partial JSON decoding
-typed JSON decoding
-JSON Lines
-JSON path access
-canonical JSON output
-safe redaction
-schema validation
-OpenAPI generation
-duplicate key detection
-maximum depth limits
-maximum payload size limits
+No undefined.
+No silent null.
+No hidden errors.
+No unsafe memory by default.
+No accidental truthy/falsy logic.
+No implicit type coercion.
+No compiled secrets.
+No unreported target fallback.
+No runtime error without original source mapping.
 ```
-
-

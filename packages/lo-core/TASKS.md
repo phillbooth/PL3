@@ -10,7 +10,7 @@ The goal of this file is to break the project into clear work areas that can be 
 
 ## Task Status Key
 
-Use the foLOwing status labels:
+Use the following status labels:
 
 ```text
 [ ] Not started
@@ -83,6 +83,8 @@ Git workflow
 [x] Documentation bundle should include Git docs
 [x] Tri uses Positive/Neutral/Negative for value-level ternary state
 [x] First practical implementation target: Node.js-hosted checked interpreter/prototype
+[x] Separate LO core language concerns from the optional Secure App Kernel layer
+[x] Support simple `console.log("...")` output in checked Run Mode
 ```
 
 ---
@@ -102,6 +104,25 @@ Git workflow
 [?] Should compute blocks be required for accelerator targeting?
 [?] Should the compiler be written in Rust, Go, TypeScript, Zig, C#, or another language?
 [?] Should package management be built early or deferred?
+[?] What syntax should LO use for explicit generic constraints or protocols?
+[?] What shape-type syntax should vectors, matrices and tensors use?
+```
+
+---
+
+## Backend Language Suggestion Tasks
+
+```text
+[ ] Define language edition metadata and compatibility diagnostics
+[ ] Finalise Bool, Tri, Decision and Logic<N> conversion rules
+[ ] Specify algebraic variants, sealed state and exhaustive match requirements
+[ ] Specify explicit generic constraints, traits or protocols
+[ ] Specify structured concurrency, cancellation and typed streams
+[ ] Specify deterministic cleanup for files, sockets, locks and FFI handles
+[ ] Specify safe compile-time metadata and attributes
+[ ] Specify C ABI and foreign-call boundaries
+[ ] Specify matrix/vector shape rules with scalar fallback
+[ ] Standardise diagnostics and AI report schemas
 ```
 
 ---
@@ -345,7 +366,7 @@ Tasks:
 [x] Define memory error reporting format
 [x] Define SecureString memory behaviour
 [x] Define runtime memory pressure block
-[x] Define runtime spill aLOw/deny policy
+[x] Define runtime spill allow/deny policy
 [x] Define memory pressure ladder and cache bypass behaviour
 [x] Define Strict Global Registry
 [x] Define secret clearing expectations

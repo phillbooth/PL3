@@ -135,10 +135,10 @@ docs/type-system.md
 Incompatible inside this repository:
 
 ```text
-packages/LO/compiler/LO.js
-packages/LO/examples/hello.lo
-packages/LO/schemas/ai-context.schema.json
-packages/LO/docs/type-system.md
+packages/lo-core/compiler/lo.js
+packages/lo-core/examples/hello.lo
+packages/lo-core/schemas/ai-context.schema.json
+packages/lo-core/docs/type-system.md
 ```
 
 Project layout compatibility should preserve the meaning of established

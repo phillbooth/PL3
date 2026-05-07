@@ -44,6 +44,35 @@ The compiler should support normal CPU execution first, while planning for GPU, 
 
 ---
 
+## Runtime Kernel Boundary
+
+LO core defines the language, compiler checks, type system, effects, memory
+safety rules, compute planning and report contracts.
+
+Application runtime enforcement belongs in the optional LO Secure App Kernel:
+
+```text
+LO Core
+  language/compiler/type system/effects/memory/compute
+
+LO Secure App Kernel
+  request lifecycle, validation, security, auth, rate limits, jobs and reports
+
+LO Standard Packages
+  HTTP adapters, SQL adapters, Redis queues, OpenAPI generators, JS/WASM generators
+
+LO Full Frameworks
+  web frameworks, CMS, admin UI, frontend adapters, ORM and template systems
+```
+
+LO core may describe safe API and webhook contracts. The Secure App Kernel is
+the layer that receives requests, validates input, applies security policy,
+checks auth, controls workload, queues heavy work and routes to typed flows.
+
+The kernel is a partial framework layer, not a full application framework.
+
+---
+
 ## Main Architecture Goals
 
 The architecture should support:

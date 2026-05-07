@@ -1,6 +1,9 @@
 # Webhooks
 
 LO should support secure webhook handling as a first-class API pattern.
+LO core defines the webhook contract and reports. The optional LO Secure App
+Kernel enforces verification, replay protection, idempotency and typed decode at
+runtime when an application uses a kernel-backed adapter.
 
 ## Required Defaults
 

@@ -16,8 +16,8 @@ webhooks.lo
 external-apis.lo
 ```
 
-This document describes how LO should help detect and control duplicate API
-problems without becoming a web framework.
+This document describes how LO should help detect duplicate API problems and
+declare idempotency contracts without becoming a web framework.
 
 LO should not provide a fixed routing framework, controller framework,
 middleware stack or API gateway.
@@ -36,6 +36,9 @@ source-mapped reports
 security reports
 AI-readable API guidance
 ```
+
+The optional LO Secure App Kernel may enforce idempotency and replay protection
+at runtime through configured storage and adapter packages.
 
 Related API input, body policy, load control, rate limiting and memory budget
 planning lives in `docs/api-data-security-and-load-control.md`.
@@ -68,9 +71,10 @@ duplicate side effects through idempotency and replay protection.
 ## Core Principle
 
 ```text
-LO should not be an API framework.
+LO core should not be an API framework.
 
 LO should provide language/toolchain checks that make APIs safer to build.
+The Secure App Kernel may enforce the checked contracts at runtime.
 ```
 
 Final rule:

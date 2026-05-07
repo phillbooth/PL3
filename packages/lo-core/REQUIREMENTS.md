@@ -4,13 +4,15 @@ This document defines the initial requirements for **LO / Logic Omni**.
 
 LO is a strict, memory-safe, security-first, JSON-native, API-native and accelerator-aware programming language concept.
 
-The requirements in this document are intended to guide the design of the language, compiler, runtime, tooling, documentation and future project structure.
+The requirements in this document are intended to guide the design of the
+language, compiler, optional Secure App Kernel contract, tooling,
+documentation and future project structure.
 
 ---
 
 ## Requirement Levels
 
-Requirements are grouped using the foLOwing labels:
+Requirements are grouped using the following labels:
 
 | Level | Meaning |
 |---|---|
@@ -47,6 +49,115 @@ secure runtime configuration
 
 The build folder should also include `app.memory-report.json` and
 `docs/memory-pressure-guide.md` when runtime memory policy is enabled.
+
+LO core defines language safety. Runtime enforcement for request handling,
+auth, rate limits, idempotency, jobs and workload control belongs in the
+optional LO Secure App Kernel. Full frameworks should build above that kernel.
+
+---
+
+## Backend Language Evolution Requirements
+
+### REQ-EVOLUTION-001: Language Editions
+
+LO SHOULD define language editions before major syntax growth.
+
+Editions SHOULD be declared in project metadata:
+
+```LO
+language {
+  edition "2026"
+  compatibility "stable"
+}
+```
+
+Edition changes MUST be reported in build manifests, source maps, diagnostics
+and AI context.
+
+---
+
+### REQ-EVOLUTION-002: Compatibility and Deprecation Policy
+
+LO SHOULD provide a compatibility policy for syntax, reports, targets and
+runtime contracts.
+
+Deprecations SHOULD produce warnings and fix suggestions before removals.
+Breaking changes SHOULD be edition-gated.
+
+---
+
+### REQ-EVOLUTION-003: Algebraic Variants and Exhaustive Match
+
+LO SHOULD treat enums, sealed variants and exhaustive `match` as core language
+safety features.
+
+The compiler SHOULD reject incomplete matches for closed state sets such as
+`Option<T>`, `Result<T, E>`, `Decision`, `Tri` and declared sealed variants.
+
+---
+
+### REQ-EVOLUTION-004: Generic Constraints and Protocols
+
+LO SHOULD support explicit generic constraints for reusable backend, numeric,
+JSON and target-compatible code.
+
+The design SHOULD avoid hidden implicit resolution. Constraints must be visible
+to humans, compilers and AI tools.
+
+---
+
+### REQ-EVOLUTION-005: Structured Concurrency, Cancellation and Streams
+
+LO SHOULD define structured concurrency primitives, cancellation propagation,
+timeouts and typed streams.
+
+These features are required for backend services, long-running workers,
+streaming JSON, network I/O and safe shutdown.
+
+---
+
+### REQ-EVOLUTION-006: Deterministic Resource Cleanup
+
+LO SHOULD define deterministic cleanup for resources such as files, sockets,
+locks, temporary directories and foreign handles.
+
+Cleanup behaviour MUST be source-mapped and must not hide errors.
+
+---
+
+### REQ-EVOLUTION-007: Safe Metadata and Compile-Time Transforms
+
+LO MAY support safe compile-time metadata, attributes or hygienic transforms.
+
+Metadata and transforms MUST NOT bypass source maps, effects, permissions,
+security reports or AI reports.
+
+---
+
+### REQ-EVOLUTION-008: C ABI and Foreign-Call Boundary
+
+LO MAY support C ABI import/export and foreign calls.
+
+Foreign calls MUST declare types, effects, permissions, target compatibility
+and unsafe boundaries. Raw pointers MUST remain unavailable in normal LO code.
+
+---
+
+### REQ-EVOLUTION-009: Shape-Aware Matrix and Vector Types
+
+LO SHOULD support shape-aware vectors, matrices and tensors where practical.
+
+Shape checks SHOULD happen at compile time where possible. Scalar fallback and
+target compatibility reports are required for accelerated compute.
+
+---
+
+### REQ-EVOLUTION-010: Stable Diagnostics and AI Report Schemas
+
+LO MUST keep diagnostics and AI report schemas stable enough for tools.
+
+Diagnostic output SHOULD include stable IDs, severity, category, source
+location, problem, why, suggested fix and safe examples where appropriate.
 
 ---
 
@@ -459,7 +570,7 @@ spill deny lists
 secret redaction
 ```
 
-Spill storage MUST be aLOw-list based. Sensitive values MUST NOT spill to disk.
+Spill storage MUST be allow-list based. Sensitive values MUST NOT spill to disk.
 
 Required deny-list examples:
 
@@ -581,7 +692,7 @@ Example:
 ```LO
 permissions {
   network "restricted"
-  file_read "aLOw"
+  file_read "allow"
   file_write "restricted"
   environment "restricted"
   native_bindings "deny"
@@ -671,7 +782,7 @@ Preferred:
 let order: CreateOrderRequest = json.decode<CreateOrderRequest>(req.body)
 ```
 
-ALOwed when needed:
+Allowed when needed:
 
 ```LO
 let raw: Json = req.json()
@@ -1749,10 +1860,10 @@ Example:
 
 ```LO
 package_policy {
-  aLOw_network false
-  aLOw_file_write false
-  aLOw_native false
-  aLOw_unsafe false
+  allow_network false
+  allow_file_write false
+  allow_native false
+  allow_unsafe false
 }
 ```
 

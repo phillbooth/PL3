@@ -1052,7 +1052,7 @@ The Git repository itself represents the LO package root.
 Equivalent intended path:
 
 ```text
-packages/LO/
+packages/lo-core/
 ```
 
 Inside this repository, paths should be root-relative.
@@ -1069,9 +1069,9 @@ docs/type-system.md
 Incorrect inside this repository:
 
 ```text
-packages/LO/compiler/LO.js
-packages/LO/examples/hello.lo
-packages/LO/schemas/ai-context.schema.json
+packages/lo-core/compiler/lo.js
+packages/lo-core/examples/hello.lo
+packages/lo-core/schemas/ai-context.schema.json
 ```
 
 ---

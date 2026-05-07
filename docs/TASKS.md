@@ -1,13 +1,9 @@
-
----
-
-# `docs/TASKS.md`
-
-```md
 # Tasks
 
 ## Phase 1: Planning
 
+- [x] Update workspace documentation for the `packages/lo-core/` language package move
+- [x] Split partial framework guidance into `packages/lo-app-kernel/`
 - [ ] Complete `docs/REQUIREMENTS.md`
 - [ ] Complete `docs/DESIGN.md`
 - [ ] Complete `docs/ARCHITECTURE.md`
@@ -28,6 +24,7 @@
 
 ## Phase 4: Testing
 
+- [x] Add app-kernel hello-world checked Run Mode test
 - [ ] Add unit tests
 - [ ] Add integration tests
 - [ ] Add manual test checklist

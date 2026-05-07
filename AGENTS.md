@@ -1,9 +1,3 @@
-
----
-
-# `AGENTS.md`
-
-```md
 # AGENTS.md
 
 ## Purpose
@@ -16,14 +10,16 @@ This is a LO application template.
 
 The repository contains:
 
-- LO language/package files in `packages/LO/`
+- LO language/package files in `packages/lo-core/`
+- LO secure runtime kernel design files in `packages/lo-app-kernel/`
 - Bespoke app files in `packages/app/`
 - App documentation in `docs/`
 - Helper scripts and generators in `tools/`
 
 ## Important Rules
 
-- Do not place app-specific documentation inside `packages/LO/`.
+- Do not place app-specific documentation inside `packages/lo-core/`.
+- Do not place full-framework, CMS, admin UI, ORM or frontend framework design inside `packages/lo-core/`.
 - Do not place LO language documentation inside `docs/`.
 - Keep the repository root clean.
 - Do not commit secrets.
@@ -58,7 +54,7 @@ When adding or changing features, update:
 
 ## Package Boundaries
 
-### `packages/LO/`
+### `packages/lo-core/`
 
 Use for:
 
@@ -69,6 +65,27 @@ Use for:
 - memory safety model
 - examples
 - standard library notes
+
+### `packages/lo-app-kernel/`
+
+Use for:
+
+- optional LO Secure App Kernel design
+- request lifecycle policy
+- typed API boundary enforcement
+- validation, auth and rate-limit policy
+- idempotency and replay protection policy
+- queue/job contracts
+- runtime and audit reports
+
+Do not use for:
+
+- CMS features
+- admin dashboards
+- page builders
+- mandatory ORM design
+- mandatory template engines
+- React, Angular or other frontend framework syntax
 
 ### `packages/app/`
 

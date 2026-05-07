@@ -34,14 +34,18 @@ Detailed duplicate route, duplicate schema, API manifest, idempotency, webhook
 replay and duplicate outbound API planning lives in
 `docs/api-duplicate-detection-and-idempotency.md`.
 
-It describes how LO could provide strong API data security and safe request
-processing without becoming a web framework or load balancer.
+It describes how LO could define strong API data security and safe request
+processing contracts without becoming a web framework or load balancer.
 
 LO should not be a full web framework.
 
-LO should provide language/toolchain primitives that help frameworks and
-runtimes process API data safely, identify types correctly, protect memory and
-handle large numbers of simultaneous requests.
+LO core should provide language/toolchain primitives that help the optional LO
+Secure App Kernel, frameworks and runtime adapters process API data safely,
+identify types correctly, protect memory and handle large numbers of
+simultaneous requests.
+
+The Secure App Kernel is the runtime enforcement layer for these contracts when
+an application opts into a LO-managed request lifecycle.
 
 ---
 

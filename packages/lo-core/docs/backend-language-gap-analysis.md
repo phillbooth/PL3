@@ -8,7 +8,8 @@ Scope:
 
 ```text
 language design only
-not framework design
+not secure app kernel implementation design
+not full framework design
 not package ecosystem design
 not provider integration design
 not cloud platform design
@@ -66,7 +67,8 @@ decisions.
 13. LO must remain CPU-compatible by default.
 14. LO must be safe through explicit types, effects, permissions, reports and fallback.
 15. LO must reduce ransomware-style attack risk through explicit file, network, package and permission controls.
-16. Is not a Framwork  
+16. LO is not a full framework.
+17. LO may define contracts that an optional Secure App Kernel enforces.
 ```
 
 These rules define what LO should become:
@@ -143,6 +145,11 @@ runtime profiles
 Backend framework features should not become native language syntax. Routing,
 ORMs, queues, authentication systems, CMS features and cloud deployment belong
 in packages, frameworks, tooling or external services.
+
+LO may still define safe application contracts that a separate Secure App
+Kernel enforces at runtime. That kernel is a partial framework layer for typed
+API boundaries, validation, auth, idempotency, workload controls, jobs and
+reports. It is not the same as a full CMS, admin UI, ORM or frontend framework.
 
 ### 3. AI-Readable by Design
 
@@ -368,6 +375,14 @@ The docs also set an important boundary:
 ```text
 LO should be a programming language first.
 Specialist systems should belong in packages, drivers, frameworks, tooling or external services.
+```
+
+For application runtime safety, the boundary is:
+
+```text
+LO core defines safety.
+LO Secure App Kernel enforces safe runtime boundaries.
+Full frameworks provide opinions and user-facing structure.
 ```
 
 That means gaps should be split into three categories:
@@ -1092,6 +1107,37 @@ The highest-value language work is:
 | 8 | Define C ABI and foreign-call boundaries | Needed for real backend interoperability |
 | 9 | Define matrix/vector shape rules and scalar fallback | Needed for AI, numeric and photonic planning |
 | 10 | Standardise diagnostics and AI report schemas | Keeps LO understandable for tools |
+
+---
+
+## Suggested Documentation Updates
+
+These recommendations should not stay isolated in this analysis file. They
+should be reflected across the core project documents as follows:
+
+| Recommendation | Primary Docs To Update | Notes |
+|---|---|---|
+| Language editions and compatibility | `COMPATIBILITY.md`, `REQUIREMENTS.md`, `SPEC.md` | Edition changes must be explicit and source-mapped |
+| Logic conversion rules | `docs/tri-logic.md`, `docs/logic-widths.md`, `REQUIREMENTS.md` | Lossy conversion must require named policy |
+| Algebraic variants and exhaustive match | `docs/type-system.md`, `docs/language-rules.md`, `REQUIREMENTS.md` | Variants are core safety, not framework syntax |
+| Generic constraints and protocols | `docs/type-system.md`, `SPEC.md`, `REQUIREMENTS.md` | Constraints should be explicit, not implicit magic |
+| Structured concurrency and streams | `docs/language-rules.md`, `REQUIREMENTS.md` | Cancellation and timeout propagation are backend essentials |
+| Deterministic cleanup | `docs/memory-safety.md`, `REQUIREMENTS.md` | Needed for files, sockets, FFI handles and locks |
+| Compile-time metadata and attributes | `SPEC.md`, `AI-INSTRUCTIONS.md`, `REQUIREMENTS.md` | Metadata must not bypass reports or source maps |
+| C ABI and FFI boundary | `docs/target-and-capability-model.md`, `SECURITY.md`, `REQUIREMENTS.md` | Foreign calls require permissions and explicit effects |
+| Matrix/vector shape rules | `docs/vector-model.md`, `docs/type-system.md`, `REQUIREMENTS.md` | Scalar fallback and target reports are mandatory |
+| Diagnostics and AI report schemas | `docs/error-codes.md`, `schemas/`, `AI-INSTRUCTIONS.md` | Reports must stay compact, stable and secret-safe |
+
+Recommended implementation order:
+
+```text
+1. Write the compatibility and edition rules.
+2. Finalise logic state and conversion semantics.
+3. Tighten type-system requirements around variants, match and constraints.
+4. Define concurrency, stream and cleanup primitives.
+5. Define metadata, FFI and shape rules after the core safety model is stable.
+6. Keep diagnostics and AI report schemas updated with each language feature.
+```
 
 ---
 

@@ -13,6 +13,7 @@ It is not a production compiler. It is a practical v0.1 scaffold that can:
 - check `undefined`, silent `null`, truthy/falsy conditions and compute-block I/O
 - type-check declared type references, generic arity and simple exhaustive matches
 - run simple checked `main` scripts through `LO run`
+- print simple Run Mode output with `print("...")` or `console.log("...")`
 - report planned development serve mode through `LO serve --dev`
 - generate JSON Schema drafts and OpenAPI drafts from LO declarations
 - generate Strict Global Registry reports with secret redaction
@@ -230,8 +231,9 @@ small scripts and development. Compile Mode is the production path that writes
 target outputs, reports, manifests, generated docs and AI guides.
 
 The v0.1 `LO run` command executes simple checked `main` scripts with
-`print("...")` output. The v0.1 `LO serve --dev` command reports the planned
-development runtime state; it does not start a production HTTP server.
+`print("...")` or `console.log("...")` output. The v0.1 `LO serve --dev`
+command reports the planned development runtime state; it does not start a
+production HTTP server.
 
 ## Global Report
 

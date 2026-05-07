@@ -30,7 +30,7 @@ compile and run modes
 future GPU / photonic / ternary targets
 ```
 
-The foLOwing items should be added, reviewed or confirmed in the repository.
+The following items should be added, reviewed or confirmed in the repository.
 
 ---
 
@@ -61,15 +61,11 @@ LO build --mode release
 Current prototype command examples:
 
 ```bash
-node compiler/LO.js run examples/hello.lo --generate --out .build-dev-run
-node compiler/LO.js generate examples --exclude source-map-error.lo --out .build-dev
-<<<<<<< Updated upstream
-node compiler/LO.js dev examples/heLO.lo --out .build-dev
-node compiler/LO.js dev examples/heLO.lo --watch --out .build-dev
-=======
-node compiler/LO.js dev examples/hello.lo --out .build-dev
->>>>>>> Stashed changes
-node compiler/LO.js build examples --exclude source-map-error.lo --out build/examples
+node compiler/lo.js run examples/hello.lo --generate --out .build-dev-run
+node compiler/lo.js generate examples --exclude source-map-error.lo --out .build-dev
+node compiler/lo.js dev examples/hello.lo --out .build-dev
+node compiler/lo.js dev examples/hello.lo --watch --out .build-dev
+node compiler/lo.js build examples --exclude source-map-error.lo --out build/examples
 ```
 
 Command behaviour:
@@ -935,7 +931,7 @@ The Git repository itself represents the LO package root.
 Equivalent intended path:
 
 ```text
-packages/LO/
+packages/lo-core/
 ```
 
 But inside this repository, paths should be root-relative.
@@ -943,7 +939,7 @@ But inside this repository, paths should be root-relative.
 Correct:
 
 ```text
-compiler/LO.js
+compiler/lo.js
 examples/hello.lo
 schemas/ai-context.schema.json
 docs/type-system.md
@@ -952,9 +948,9 @@ docs/type-system.md
 Incorrect inside this repository:
 
 ```text
-packages/LO/compiler/LO.js
-packages/LO/examples/hello.lo
-packages/LO/schemas/ai-context.schema.json
+packages/lo-core/compiler/lo.js
+packages/lo-core/examples/hello.lo
+packages/lo-core/schemas/ai-context.schema.json
 ```
 
 ---

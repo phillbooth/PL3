@@ -50,6 +50,11 @@ source-map friendly
 deployment-friendly
 ```
 
+LO core is the language, compiler and safety contract. The optional LO Secure
+App Kernel enforces request lifecycle, validation, auth, rate-limit,
+idempotency, job and runtime-report boundaries. Full frameworks such as CMS,
+admin UI, ORM, templates and frontend adapters must stay above the kernel.
+
 LO should not become:
 
 ```text
@@ -60,6 +65,10 @@ a Python clone
 a loose scripting language
 a photonic-only research language
 a language that requires future hardware to be useful
+a full web framework
+a CMS or admin dashboard
+a React or Angular clone
+a mandatory ORM or template system
 ```
 
 ---
@@ -82,7 +91,32 @@ Do not make JSON fully dynamic by default.
 Do not make unsafe memory normal.
 Do not design or implement kernel, driver, privileged native binding or raw hardware access work without explicit maintainer or project permission.
 Treat kernel and driver development as last-stage work.
+Do not put full framework features into LO core.
+Do not treat the Secure App Kernel as a CMS, ORM, UI framework or page builder.
 ```
+
+---
+
+## Backend Suggestion Rule
+
+When updating LO core, preserve the backend language priorities from
+`docs/backend-language-gap-analysis.md`:
+
+```text
+language editions and compatibility rules
+Bool, Tri, Decision and Logic<N> conversion rules
+algebraic variants and exhaustive match
+generic constraints, traits or protocols
+structured concurrency, cancellation and streams
+deterministic resource cleanup
+safe compile-time metadata and attributes
+C ABI and foreign-call boundaries
+matrix/vector shape rules with scalar fallback
+stable diagnostics and AI report schemas
+```
+
+Treat these as language/compiler concerns. Runtime enforcement belongs in the
+Secure App Kernel. Full application opinions belong in frameworks.
 
 ---
 
@@ -376,7 +410,7 @@ Example:
 
 ```LO
 enum Decision {
-  ALOw
+  Allow
   Deny
   Review
 }
@@ -387,7 +421,7 @@ Use `Decision` instead of `Bool` when a third state is needed.
 Bad:
 
 ```LO
-let aLOwed: Bool = checkRisk(order)
+let allowed: Bool = checkRisk(order)
 ```
 
 Good:
@@ -414,7 +448,7 @@ Better for risk/security:
 
 ```LO
 enum Decision {
-  ALOw
+  Allow
   Deny
   Review
 }
@@ -450,7 +484,7 @@ Preferred:
 let order: CreateOrderRequest = json.decode<CreateOrderRequest>(req.body)
 ```
 
-ALOwed when needed:
+Allowed when needed:
 
 ```LO
 let raw: Json = req.json()
@@ -1018,7 +1052,7 @@ enum PaymentStatus {
 }
 
 enum Decision {
-  ALOw
+  Allow
   Deny
   Review
 }
@@ -1027,7 +1061,7 @@ secure flow processOrder(order: Order) -> Result<Decision, OrderError> {
   match order.payment.status {
     Paid => {
       shipOrder(order)
-      return Ok(ALOw)
+      return Ok(Allow)
     }
 
     Pending => {
