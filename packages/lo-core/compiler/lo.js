@@ -1087,6 +1087,24 @@ function runPrototypeTests(project) {
     assert(mainFlow.returns === "Result<Void, Error>", "Expected main flow to return Result<Void, Error>.");
   });
 
+  test("parse pure vector flow modifiers", () => {
+    const result = analyseProject(projectFromSource("vector-flow.lo", `pure vector flow vectorTotal(input: Array<Int>) -> Int {
+  return input[0] + input[1] + input[2]
+}
+
+pure vector required flow strictVectorTotal(input: Array<Int>) -> Int {
+  return input[0] + input[1] + input[2]
+}
+`));
+    assertNoLexErrors(result);
+    const vectorFlow = result.ast.flows.find((flow) => flow.name === "vectorTotal");
+    const requiredFlow = result.ast.flows.find((flow) => flow.name === "strictVectorTotal");
+    assert(vectorFlow && vectorFlow.qualifier === "pure vector", "Expected pure vector flow qualifier.");
+    assert(vectorFlow.vectorMode === "preferred", "Expected vector preferred mode.");
+    assert(requiredFlow && requiredFlow.qualifier === "pure vector required", "Expected pure vector required flow qualifier.");
+    assert(requiredFlow.vectorMode === "required", "Expected vector required mode.");
+  });
+
   test("parse boot.lo project and targets", () => {
     const result = analyseProject(loadProject(path.join(root, "boot.lo")));
     assertNoLexErrors(result);
@@ -1512,6 +1530,25 @@ secure flow main() -> Result<Void, Error> {
     assert(run.output[0] === "hello from LO console", "Expected run mode console.log output.");
   });
 
+  test("run mode resolves simple let bindings and string concatenation", () => {
+    const source = projectFromSource("concat-run.lo", `pure vector flow vectorTotal(input: Int) -> Int {
+  return input
+}
+
+secure flow main() -> Result<Void, Error> {
+  let total: Int = vectorTotal(6)
+  console.log("vector total: " + total)
+  print("dot total: " . total)
+  return Ok()
+}
+`);
+    const result = analyseProject(source);
+    const run = runProject(source, result);
+    assert(run.ok === true, "Expected checked run mode to pass.");
+    assert(run.output[0] === "vector total: 6", "Expected plus concatenation output.");
+    assert(run.output[1] === "dot total: 6", "Expected dot concatenation output.");
+  });
+
   test("development generate writes reports without production binaries", () => {
     const result = analyseProject(loadProject(root, ["source-map-error.lo"]));
     const outDir = fs.mkdtempSync(path.join(os.tmpdir(), "LO-dev-"));
@@ -1723,10 +1760,12 @@ function parseFile(source, diagnostics) {
     });
   }
 
-  for (const match of matches(content, /\b((?:secure|pure)\s+)?flow\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(([^)]*)\)\s*->\s*([A-Za-z_][A-Za-z0-9_<>, ]*)/g)) {
+  for (const match of matches(content, /\b(?:(secure|pure(?:\s+vector(?:\s+required)?)?)\s+)?flow\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(([^)]*)\)\s*->\s*([A-Za-z_][A-Za-z0-9_<>, ]*)/g)) {
+    const qualifier = (match[1] || "").trim() || "normal";
     ast.flows.push({
       name: match[2],
-      qualifier: (match[1] || "").trim() || "normal",
+      qualifier,
+      vectorMode: flowVectorMode(qualifier),
       params: parseParams(match[3]),
       returns: match[4].trim(),
       effects: parseEffects(content.slice(match.index, match.index + 300)),
@@ -1913,7 +1952,7 @@ function extractStrictComments(source, diagnostics) {
 
 function strictCommentSubject(line, lineNumber) {
   const cleaned = line.replace(/^export\s+/, "");
-  const flow = cleaned.match(/^((?:secure|pure)\s+)?flow\s+([A-Za-z_][A-Za-z0-9_]*)/);
+  const flow = cleaned.match(/^(?:(secure|pure(?:\s+vector(?:\s+required)?)?)\s+)?flow\s+([A-Za-z_][A-Za-z0-9_]*)/);
   if (flow) return { kind: "flow", name: flow[2], line: lineNumber };
   const api = cleaned.match(/^api\s+([A-Z][A-Za-z0-9_]*)/);
   if (api) return { kind: "api", name: api[1], line: lineNumber };
@@ -2267,7 +2306,7 @@ function checkReadOnlyBorrowMutation(sourceFile, content, diagnostics) {
 
 function findMemoryCheckFlowBlocks(content) {
   const blocks = [];
-  const regex = /\b((?:secure|pure)\s+)?flow\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(([^)]*)\)\s*->\s*[A-Za-z_][A-Za-z0-9_<>, &]*(?:\s*\n\s*effects\s+\[[^\]]+\])?\s*\{/g;
+  const regex = /\b(?:(secure|pure(?:\s+vector(?:\s+required)?)?)\s+)?flow\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(([^)]*)\)\s*->\s*[A-Za-z_][A-Za-z0-9_<>, &]*(?:\s*\n\s*effects\s+\[[^\]]+\])?\s*\{/g;
   let match;
   while ((match = regex.exec(content)) !== null) {
     const open = content.indexOf("{", match.index);
@@ -2660,6 +2699,12 @@ function parseParams(text) {
     const [name, type] = item.split(":").map((value) => value.trim());
     return { name, type };
   }).filter((param) => param.name && param.type);
+}
+
+function flowVectorMode(qualifier) {
+  if (qualifier === "pure vector required") return "required";
+  if (qualifier === "pure vector") return "preferred";
+  return "scalar";
 }
 
 function splitTopLevel(text) {
@@ -5106,7 +5151,9 @@ function runProject(project, result) {
   }
 
   const source = project.files.find((file) => file.relativePath === mainFlow.file) || project.files[0];
-  const output = matches(stripComments(source.content), /\b(?:print|console\.log)\s*\(\s*"([^"]*)"\s*\)/g).map((match) => match[1]);
+  const content = stripComments(source.content);
+  const variables = collectRunVariables(content);
+  const output = collectRunOutput(content, variables);
   return {
     ok: true,
     mode: (result.ast.runtime || defaultRuntimeContract()).runMode || "checked",
@@ -5114,6 +5161,53 @@ function runProject(project, result) {
     entry: mainFlow.file,
     output
   };
+}
+
+function collectRunVariables(content) {
+  const variables = new Map();
+  for (const match of matches(content, /\blet\s+([A-Za-z_][A-Za-z0-9_]*)\s*:\s*[A-Za-z_][A-Za-z0-9_<>, ]*\s*=\s*([^\r\n]+)/g)) {
+    variables.set(match[1], evaluateRunExpression(match[2], variables));
+  }
+  return variables;
+}
+
+function collectRunOutput(content, variables) {
+  return matches(content, /\b(?:print|console\.log)\s*\(([^)]*)\)/g)
+    .map((match) => evaluateRunExpression(match[1], variables));
+}
+
+function evaluateRunExpression(expression, variables) {
+  const text = expression.trim().replace(/;$/, "");
+  const parts = splitRunConcat(text);
+  if (parts.length > 1) {
+    return parts.map((part) => evaluateRunExpression(part, variables)).join("");
+  }
+  const stringMatch = text.match(/^"([^"]*)"$/);
+  if (stringMatch) return stringMatch[1];
+  if (/^-?\d+(?:\.\d+)?$/.test(text)) return text;
+  const simpleCall = text.match(/^[A-Za-z_][A-Za-z0-9_]*\(\s*(-?\d+(?:\.\d+)?)\s*\)$/);
+  if (simpleCall) return simpleCall[1];
+  if (variables.has(text)) return variables.get(text);
+  return text;
+}
+
+function splitRunConcat(text) {
+  const parts = [];
+  let current = "";
+  let inString = false;
+  for (let index = 0; index < text.length; index += 1) {
+    const char = text[index];
+    if (char === "\"") inString = !inString;
+    const isDotConcat = char === "." && /\s/.test(text[index - 1] || "") && /\s/.test(text[index + 1] || "");
+    if (!inString && (char === "+" || isDotConcat)) {
+      parts.push(current.trim());
+      current = "";
+      continue;
+    }
+    current += char;
+  }
+  if (current.trim()) parts.push(current.trim());
+  return parts;
 }
 
 function serveProject(result, options = {}) {

@@ -6,24 +6,32 @@ This workspace currently uses the LO core prototype for checked Run Mode smoke
 tests. These tests execute `.lo` source directly and do not produce compiled
 artefacts.
 
-## Current Smoke Test
+## Current Smoke Tests
 
-The app-kernel package has a hello-world fixture:
+The app-kernel package has checked Run Mode fixtures:
 
 ```text
 packages/lo-app-kernel/tests/hello-world.lo
+packages/lo-app-kernel/tests/vector-function.lo
+packages/lo-app-kernel/tests/sum.lo
+packages/lo-app-kernel/tests/decimal-sum.lo
+packages/lo-app-kernel/tests/json-return.lo
 ```
 
-Run it from the workspace root:
+Run all app-kernel fixtures from the workspace root:
 
 ```bash
-npm.cmd --prefix packages/lo-app-kernel run test:hello
+npm.cmd --prefix packages/lo-app-kernel test
 ```
 
-Expected output:
+Expected output includes:
 
 ```text
 hello from LO app kernel test
+vector total: 6
+sum: 5
+decimal sum: 3.50
+json ids: 1,2,3 test: xxx
 ```
 
 ## Test Types
@@ -43,5 +51,9 @@ packages/app/tests/
 `-- integration/
 
 packages/lo-app-kernel/tests/
-`-- hello-world.lo
+|-- hello-world.lo
+|-- vector-function.lo
+|-- sum.lo
+|-- decimal-sum.lo
+`-- json-return.lo
 ```

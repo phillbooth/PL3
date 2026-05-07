@@ -96,14 +96,24 @@ app.map-manifest.json
 
 ## Checked Test Run
 
-The kernel package can run a simple hello-world test through LO core Run Mode.
-This is not a compiled build.
+The kernel package can run checked fixtures through LO core Run Mode. This is
+not a compiled build.
 
 ```bash
-npm.cmd --prefix packages/lo-app-kernel run test:hello
+npm.cmd --prefix packages/lo-app-kernel test
 ```
 
-The test fixture lives in `tests/hello-world.lo` and uses:
+Current fixtures cover:
+
+```text
+hello-world.lo
+vector-function.lo
+sum.lo
+decimal-sum.lo
+json-return.lo
+```
+
+The hello-world fixture uses:
 
 ```LO
 secure flow main() -> Result<Void, Error> {

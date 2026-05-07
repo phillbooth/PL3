@@ -25,6 +25,7 @@
 ## Phase 4: Testing
 
 - [x] Add app-kernel hello-world checked Run Mode test
+- [x] Add app-kernel vector, sum, decimal and JSON checked Run Mode fixtures
 - [ ] Add unit tests
 - [ ] Add integration tests
 - [ ] Add manual test checklist

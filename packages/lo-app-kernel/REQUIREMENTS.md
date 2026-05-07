@@ -30,11 +30,18 @@ LO language
   -> optional framework such as LO Web, LO CMS, LO API Framework, React adapter or Angular adapter
 ```
 
-## Test Requirement
+## Test Requirements
 
 The package should keep a hello-world `.lo` fixture that runs through LO core
 Run Mode without compiling:
 
 ```bash
 npm.cmd --prefix packages/lo-app-kernel run test:hello
+```
+
+The package should also keep small checked Run Mode fixtures for vector-style
+function calls, integer sums, decimal sums and JSON payload return shapes:
+
+```bash
+npm.cmd --prefix packages/lo-app-kernel test
 ```

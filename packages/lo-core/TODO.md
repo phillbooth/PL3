@@ -726,8 +726,8 @@ Reason for additions:
 [x] Define vector block syntax
 [x] Define vector optimisation modes
 [ ] Define vectorize parser support
-[ ] Define pure vector flow parser support
-[ ] Define pure vector required flow parser support
+[x] Define pure vector flow parser support
+[x] Define pure vector required flow parser support
 [x] Define scalar fallback lowering
 [x] Define vector purity checks
 [x] Define vector side-effect blocking
