@@ -71,6 +71,10 @@ Source hashing is recorded in `deterministicInputs` using SHA-256. The build
 manifest includes a combined `sourceHash`, a `sourceHashAlgorithm`, and a
 `sourceFiles` list with one hash per `.lo` source file.
 
+Dependency hashing is also recorded in `deterministicInputs`. Declared
+`import`/`use` modules are sorted, classified and hashed with SHA-256, then
+combined into `dependencyHash` for repeatable build inputs.
+
 ## Lexer
 
 The lexer lives in `compiler/lexer.js` and emits `app.tokens.json` during build.

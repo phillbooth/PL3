@@ -292,6 +292,10 @@ Source hashing is also recorded in `app.build-manifest.json` under
 `deterministicInputs`. Compile Mode stores a combined source hash plus per-file
 SHA-256 hashes for the `.lo` inputs.
 
+Declared imports are recorded in the same section as dependency inputs. Compile
+Mode stores sorted dependency entries with SHA-256 hashes and a combined
+`dependencyHash`.
+
 ## Suggested Workflow
 
 ```text

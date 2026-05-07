@@ -1379,6 +1379,24 @@ effects [database.write] {
     assert(manifest.deterministicInputs.sourceFiles.every((item) => item.hash.startsWith("sha256:")), "Expected SHA-256 source hashes.");
   });
 
+  test("build manifest includes dependency hashes", () => {
+    const result = analyseProject(projectFromSource("imports.lo", `project "Imports"
+import browser.dom
+import server.database
+secure flow main() -> Result<Void, Error> {
+  return Ok()
+}
+`));
+    const manifest = buildManifest(result, {
+      "app.bin": "placeholder",
+      "app.wasm": "placeholder"
+    });
+    assert(validDependencyHashPolicy(manifest.deterministicInputs), "Expected valid dependency hash policy.");
+    assert(manifest.deterministicInputs.dependencies.length === 2, "Expected two dependency hashes.");
+    assert(manifest.deterministicInputs.dependencies.some((item) => item.module === "browser.dom" && item.kind === "browser-safe"), "Expected browser-safe dependency classification.");
+    assert(manifest.deterministicInputs.dependencies.some((item) => item.module === "server.database" && item.kind === "server-only"), "Expected server-only dependency classification.");
+  });
+
   test("verify checks build artifact status metadata", () => {
     const result = analyseProject(loadProject(root, ["source-map-error.lo"]));
     const outDir = fs.mkdtempSync(path.join(os.tmpdir(), "LO-verify-artifacts-"));
@@ -1390,6 +1408,7 @@ effects [database.write] {
       assert(report.checks.some((item) => item.name === "artifact status: app.wasm" && item.ok), "Expected app.wasm artifact status check.");
       assert(report.checks.some((item) => item.name === "generated output naming policy" && item.ok), "Expected generated output naming check.");
       assert(report.checks.some((item) => item.name === "source hash policy" && item.ok), "Expected source hash policy check.");
+      assert(report.checks.some((item) => item.name === "dependency hash policy" && item.ok), "Expected dependency hash policy check.");
     } finally {
       fs.rmSync(outDir, { recursive: true, force: true });
     }
@@ -2993,6 +3012,7 @@ function verifyBuild(input) {
     check("manifest has compiler version", () => typeof manifest.compiler === "string" && manifest.compiler.length > 0, "Manifest is missing compiler version.");
     check("manifest has deterministic input hash", () => Boolean(manifest.deterministicInputs && manifest.deterministicInputs.sourceHash), "Manifest is missing deterministicInputs.sourceHash.");
     check("source hash policy", () => validSourceHashPolicy(manifest.deterministicInputs), "Manifest has an invalid deterministicInputs source hash policy.");
+    check("dependency hash policy", () => validDependencyHashPolicy(manifest.deterministicInputs), "Manifest has an invalid deterministicInputs dependency hash policy.");
 
     const outputFiles = [
       ...Object.values(manifest.targetOutputs || {}),
@@ -3091,6 +3111,24 @@ function validSourceHashPolicy(inputs) {
     seen.add(sourceFile.path);
     if (typeof sourceFile.hash !== "string" || !/^sha256:[a-f0-9]{64}$/.test(sourceFile.hash)) return false;
     if (!Number.isInteger(sourceFile.bytes) || sourceFile.bytes < 0) return false;
+  }
+  return true;
+}
+
+function validDependencyHashPolicy(inputs) {
+  if (!inputs || typeof inputs !== "object") return false;
+  if (inputs.dependencyHashAlgorithm !== "sha256") return false;
+  if (typeof inputs.dependencyHash !== "string" || !/^sha256:[a-f0-9]{64}$/.test(inputs.dependencyHash)) return false;
+  if (!Number.isInteger(inputs.dependencyCount) || inputs.dependencyCount < 0) return false;
+  if (!Array.isArray(inputs.dependencies) || inputs.dependencies.length !== inputs.dependencyCount) return false;
+  const seen = new Set();
+  for (const dependency of inputs.dependencies) {
+    if (!dependency || typeof dependency !== "object") return false;
+    if (typeof dependency.module !== "string" || !/^[A-Za-z_][A-Za-z0-9_.]*$/.test(dependency.module)) return false;
+    if (seen.has(dependency.module)) return false;
+    seen.add(dependency.module);
+    if (typeof dependency.hash !== "string" || !/^sha256:[a-f0-9]{64}$/.test(dependency.hash)) return false;
+    if (!["browser-safe", "server-only", "compute-safe", "declared-import"].includes(dependency.kind)) return false;
   }
   return true;
 }
@@ -4768,6 +4806,8 @@ function findGitRoot(start) {
 
 function buildManifest(result, outputs = {}) {
   const sourceHash = sha256(result.project.files.map((file) => file.content).join("\n"));
+  const dependencies = dependencyHashes(result.ast);
+  const dependencyHash = sha256(dependencies.map((item) => item.module).join("\n"));
   const outputHashes = {};
   for (const [fileName, content] of Object.entries(outputs)) {
     outputHashes[fileName] = `sha256:${sha256(content.endsWith("\n") ? content : `${content}\n`)}`;
@@ -4784,6 +4824,10 @@ function buildManifest(result, outputs = {}) {
       sourceHash: `sha256:${sourceHash}`,
       fileCount: result.project.files.length,
       sourceFiles: sourceFileHashes(result.project),
+      dependencyHashAlgorithm: "sha256",
+      dependencyHash: `sha256:${dependencyHash}`,
+      dependencyCount: dependencies.length,
+      dependencies,
       globalRegistryHash: `sha256:${globalRegistryHash(result)}`
     },
     diagnosticSummary: diagnosticSummary(result.diagnostics),
@@ -4842,6 +4886,22 @@ function sourceFileHashes(project) {
       bytes: Buffer.byteLength(file.content, "utf8")
     }))
     .sort((a, b) => a.path.localeCompare(b.path));
+}
+
+function dependencyHashes(ast) {
+  const modules = Array.from(new Set(ast.imports.map((item) => item.module))).sort();
+  return modules.map((module) => ({
+    module,
+    kind: dependencyKind(module),
+    hash: `sha256:${sha256(module)}`
+  }));
+}
+
+function dependencyKind(module) {
+  if (isServerOnlyImport(module)) return "server-only";
+  if (BROWSER_SAFE_IMPORTS.has(module)) return "browser-safe";
+  if (COMPUTE_SAFE_IMPORTS.has(module)) return "compute-safe";
+  return "declared-import";
 }
 
 function generatedOutputNamingPolicy() {

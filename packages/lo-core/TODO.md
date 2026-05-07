@@ -888,7 +888,7 @@ Reason for additions:
 [x] Define docs manifest schema
 [ ] Define deterministic build rules
 [x] Define source hashing
-[ ] Define dependency hashing
+[x] Define dependency hashing
 [x] Define output hashing
 [x] Define artefact verification
 [x] Generate map manifest
