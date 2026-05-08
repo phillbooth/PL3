@@ -18,7 +18,7 @@ compute effects
 target selection
 offload planning
 fallback planning
-CPU BitNet fallback planning
+low-bit AI fallback planning
 compute reports
 ```
 
@@ -34,13 +34,13 @@ as:
 ```text
 prefer gpu
 fallback npu
-fallback cpu.bitnet
+fallback low_bit_ai
 fallback cpu.generic
 ```
 
-The actual AI model contracts belong in `lo-ai`, BitNet-specific model support
-belongs in `lo-bitnet`, CPU capability planning belongs in `lo-target-cpu`, and
-optimized CPU kernel contracts belong in `lo-cpu-kernels`.
+The actual AI model contracts belong in `lo-ai`, low-bit AI backend support
+belongs in `lo-lowbit-ai`, CPU capability planning belongs in `lo-target-cpu`,
+and optimized CPU kernel contracts belong in `lo-cpu-kernels`.
 
 ## Contracts
 
@@ -53,7 +53,7 @@ Final rule:
 ```text
 lo-compute plans work.
 lo-ai describes AI inference.
-lo-bitnet describes BitNet-specific inference.
+lo-lowbit-ai describes low-bit AI backend inference.
 lo-target-binary emits binary/native target plans.
 lo-target-photonic emits photonic target plans.
 ```

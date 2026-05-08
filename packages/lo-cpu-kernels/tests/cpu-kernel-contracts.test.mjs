@@ -9,7 +9,7 @@ import {
 } from "../dist/index.js";
 
 const plan = {
-  name: "bitnet-i2s-gemv",
+  name: "lowbit-i2s-gemv",
   operation: "gemv",
   inputType: "i2_s",
   outputType: "f32",
@@ -27,20 +27,20 @@ describe("lo-cpu-kernels contracts", () => {
   it("creates benchmark-ready kernel reports", () => {
     const report = createCpuKernelReport([plan], [
       {
-        planName: "bitnet-i2s-gemv",
+        planName: "lowbit-i2s-gemv",
         tokensPerSecond: 42,
         memoryBytesPerSecond: 1_000_000_000,
       },
     ]);
 
     assert.equal(report.plans.length, 1);
-    assert.equal(report.benchmarks[0]?.planName, "bitnet-i2s-gemv");
+    assert.equal(report.benchmarks[0]?.planName, "lowbit-i2s-gemv");
   });
 
   it("validates native ABI metadata", () => {
     assert.deepEqual(
       validateCpuKernelNativeAbi({
-        symbolName: "lo_cpu_bitnet_i2s_gemv",
+        symbolName: "lo_cpu_lowbit_i2s_gemv",
         callingConvention: "c",
         inputs: ["i2_s", "f32"],
         output: "f32",

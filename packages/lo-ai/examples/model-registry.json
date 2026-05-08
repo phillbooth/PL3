@@ -1,11 +1,11 @@
 {
   "models": [
     {
-      "id": "local.bitnet.assistant",
+      "id": "local.lowbit.assistant",
       "approved": true,
       "tags": ["local", "cpu-fallback", "summarisation"],
       "descriptor": {
-        "name": "LocalBitNetAssistant",
+        "name": "LocalLowBitAssistant",
         "format": "gguf",
         "source": "local-file",
         "capabilities": [
@@ -14,7 +14,7 @@
             "maxContextTokens": 2048,
             "maxOutputTokens": 256,
             "supportsStreaming": true,
-            "supportedTargets": ["cpu.bitnet", "cpu.generic"]
+            "supportedTargets": ["low_bit_ai", "cpu.generic"]
           }
         ],
         "memoryEstimate": {

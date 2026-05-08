@@ -8,8 +8,8 @@ target selection belong in `packages/lo-compute/`. Target-specific planning
 belongs in `packages/lo-target-cpu/`, `packages/lo-target-binary/`,
 `packages/lo-target-gpu/` and `packages/lo-target-photonic/`. Optimized CPU
 kernel contracts belong in `packages/lo-cpu-kernels/`. AI inference contracts
-belong in `packages/lo-ai/`, with BitNet-specific CPU fallback in
-`packages/lo-bitnet/`.
+belong in `packages/lo-ai/`, with low-bit and ternary AI backend planning in
+`packages/lo-lowbit-ai/`.
 
 LO, short for **Logic Omni**, is a strict, memory-safe, security-first
 programming language and compiler/toolchain.
@@ -114,7 +114,7 @@ LO compiler/runtime:
 
 LO target plugins:
   CPU backend
-  BitNet CPU inference backend
+  low-bit AI inference backend
   CUDA backend
   ROCm backend
   Vulkan backend
@@ -196,7 +196,7 @@ LO may support broad target categories:
 
 ```text
 cpu
-cpu.bitnet
+low_bit_ai
 cpu.generic
 cpu_vector
 gpu

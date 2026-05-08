@@ -44,12 +44,12 @@ All notable changes to this app should be documented here.
   handoff contracts, examples and tests.
 - Added `packages/lo-ai/` for generic AI inference contracts, safety policy and
   AI inference reports.
-- Added `packages/lo-bitnet/` for BitNet-style 1.58-bit and ternary AI
-  inference contracts.
+- Added `packages/lo-lowbit-ai/` for low-bit and ternary AI inference contracts,
+  with BitNet represented as an optional backend.
 - Added `packages/lo-target-cpu/` for CPU capability, fallback and execution
   planning contracts.
 - Added `packages/lo-cpu-kernels/` for optimized CPU kernel contracts.
-- Added a BitNet CPU fallback architecture note.
+- Added a low-bit AI backend architecture note.
 - Added `packages/lo-project-graph/` for project knowledge graph contracts,
   graph scan policy, output manifests and AI assistant map support.
 
@@ -65,14 +65,16 @@ All notable changes to this app should be documented here.
 - Documented the future split-repository layout where `packages/` can become
   its own reusable Git repository imported by multiple frameworks.
 - Added simple `console.log("...")` output support to LO core checked Run Mode.
-- Expanded `lo-compute` target selection contracts with `cpu.bitnet`,
+- Expanded `lo-compute` target selection contracts with `low_bit_ai`,
   `cpu.generic`, AI inference workload planning and compute-auto selection
   reporting.
 - Clarified that BitNet ternary model weights are separate from LO `Tri`
   semantics.
-- Completed initial `lo-ai`, `lo-bitnet`, `lo-target-cpu` and
+- Reworked low-bit AI target naming so LO source uses generic `low_bit_ai` and
+  `ternary_ai` targets instead of backend-specific BitNet syntax.
+- Completed initial `lo-ai`, `lo-lowbit-ai`, `lo-target-cpu` and
   `lo-cpu-kernels` contracts with validation helpers, examples and tests.
-- Completed initial `lo-compute` offload planning reports, BitNet fallback
+- Completed initial `lo-compute` offload planning reports, low-bit AI fallback
   example and test coverage.
 - Added a placeholder `lo graph` CLI command entry for future project graph
   generation and querying.

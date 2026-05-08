@@ -34,7 +34,7 @@
   `lo-target-binary` and `lo-target-photonic`
 - [x] Add package scaffolds for `lo-compiler`, `lo-runtime`, `lo-security`,
   `lo-config`, `lo-reports`, `lo-target-wasm` and `lo-target-gpu`
-- [x] Add package scaffolds for `lo-ai`, `lo-bitnet`, `lo-target-cpu` and
+- [x] Add package scaffolds for `lo-ai`, `lo-lowbit-ai`, `lo-target-cpu` and
   `lo-cpu-kernels`
 - [x] Add package scaffold for `lo-project-graph`
 - [x] Add TODO documents for `lo-api-server` and `lo-app-kernel`
@@ -70,7 +70,7 @@
 - [ ] Define `lo-vector` vector value and operation rules
 - [x] Define `lo-compute` compute planning and target selection rules
 - [x] Define `lo-ai` generic AI inference and safety policy contracts
-- [x] Define `lo-bitnet` CPU fallback contracts for 1.58-bit AI inference
+- [x] Define `lo-lowbit-ai` backend contracts for low-bit AI inference
 - [x] Define `lo-target-cpu` CPU capability and fallback report contracts
 - [x] Define `lo-cpu-kernels` low-bit CPU kernel planning contracts
 - [ ] Define `lo-target-binary` binary/native target plans

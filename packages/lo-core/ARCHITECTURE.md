@@ -67,8 +67,8 @@ LO Compute
 LO AI
   generic AI inference contracts, model metadata, safety policy and reports
 
-LO BitNet
-  BitNet-style 1.58-bit / ternary model references and CPU inference plans
+LO Low-Bit AI
+  low-bit / ternary model references, backend selection and CPU inference plans
 
 LO Photonic
   wavelength, phase, amplitude, optical channels and photonic vocabulary
@@ -119,7 +119,7 @@ Tri / Logic<N> / Omni      -> packages/lo-logic
 vector values and lanes    -> packages/lo-vector
 compute target selection   -> packages/lo-compute
 AI inference contracts     -> packages/lo-ai
-BitNet CPU fallback        -> packages/lo-bitnet
+Low-bit AI backend         -> packages/lo-lowbit-ai
 photonic concepts          -> packages/lo-photonic
 CPU target planning        -> packages/lo-target-cpu
 CPU kernel contracts       -> packages/lo-cpu-kernels

@@ -27,15 +27,15 @@ logic reports
 `Tri` is a language-level logic model. `Omni` is a wider logic model. Photonic
 support is a hardware or compute mapping.
 
-BitNet-style ternary weights also use `-1`, `0` and `+1`, but they are model
-weights for AI inference, not LO logic truth semantics. BitNet integration
-belongs in `lo-bitnet`.
+Some low-bit AI backends, including BitNet-style ternary models, also use
+`-1`, `0` and `+1`, but they are model weights for AI inference, not LO logic
+truth semantics. Low-bit AI backend integration belongs in `lo-lowbit-ai`.
 
 Final rule:
 
 ```text
 lo-logic handles Tri, Logic<N> and Omni.
-lo-bitnet handles BitNet-style ternary model weights.
+lo-lowbit-ai handles low-bit and ternary model weights.
 lo-photonic handles how logic may be represented using light.
 ```
 

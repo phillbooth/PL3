@@ -70,8 +70,8 @@ packages/lo-compute/
 packages/lo-ai/
   generic AI inference contracts, model metadata, safety policy, AI reports
 
-packages/lo-bitnet/
-  BitNet-style 1.58-bit / ternary AI model references and CPU inference plans
+packages/lo-lowbit-ai/
+  low-bit / ternary AI model references, backend selection and CPU inference plans
 
 packages/lo-photonic/
   Wavelength, Phase, Amplitude, OpticalSignal, OpticalChannel

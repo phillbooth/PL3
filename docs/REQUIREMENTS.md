@@ -58,8 +58,8 @@ Describe the problem this app solves.
   live in `packages/lo-compute/`.
 - Generic AI inference contracts, model metadata, safety policy and AI reports
   must live in `packages/lo-ai/`.
-- BitNet-style 1.58-bit and ternary AI inference contracts must live in
-  `packages/lo-bitnet/`.
+- Low-bit and ternary AI inference contracts must live in
+  `packages/lo-lowbit-ai/`, with BitNet represented only as a backend.
 - Photonic and wavelength hardware concepts must live in
   `packages/lo-photonic/`.
 - CPU target planning, feature detection and fallback reports must live in
@@ -162,9 +162,9 @@ Describe the problem this app solves.
   target selection concepts.
 - `lo-ai` must own generic AI inference contracts, prompt/response shapes,
   model capability metadata, memory estimates, safety policy and AI reports.
-- `lo-bitnet` must own BitNet-style model references, GGUF metadata,
-  1.58-bit/ternary quantization declarations, CPU inference limits and
-  BitNet-specific inference reports.
+- `lo-lowbit-ai` must own low-bit and ternary model references, GGUF metadata,
+  quantization declarations, backend selection, CPU inference limits and
+  low-bit AI inference reports.
 - `lo-target-binary` must own binary/native target planning and artefact
   metadata.
 - `lo-target-cpu` must own CPU capability, feature, thread, memory and
@@ -195,19 +195,24 @@ Describe the problem this app solves.
   mode, required environment variables and unsafe secret defaults.
 - `lo-reports` must own shared report schemas and report-writing contracts.
 
-## AI and BitNet Requirements
+## AI and Low-Bit Backend Requirements
 
 - AI inference must be target-neutral at the `lo-ai` layer.
-- BitNet support must be optional and must not be required by `lo-core`.
-- BitNet should be treated as a CPU AI inference fallback when GPU, NPU or
-  other accelerator targets are unavailable or not permitted.
-- BitNet ternary weights must not be treated as LO `Tri` truth semantics.
+- Low-bit AI support must be optional and must not be required by `lo-core`.
+- LO source syntax must use generic targets such as `low_bit_ai` and
+  `ternary_ai`, not a backend name such as BitNet.
+- BitNet should be treated as one optional backend for compatible low-bit AI
+  inference when GPU, NPU or other accelerator targets are unavailable or not
+  permitted.
+- BitNet ternary weights and other model weight formats must not be treated as
+  LO `Tri` truth semantics.
 - AI inference declarations must include explicit model reference, context
   limit, output token limit, timeout, thread limit and memory estimate.
 - AI output must be untrusted by default and must not directly authorize
   security, payment, access-control or other high-impact decisions.
-- Compute target selection reports must record when `cpu.bitnet` was selected
-  as a fallback and why higher-preference targets were not selected.
+- Compute target selection reports must record when `low_bit_ai` or
+  `ternary_ai` was selected, which backend was used and why higher-preference
+  targets were not selected.
 
 ## Runtime Naming Requirement
 

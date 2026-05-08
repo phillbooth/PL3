@@ -8,8 +8,8 @@
       {
         "name": "generate-summary",
         "target": "gpu",
-        "fallbackTarget": "cpu.bitnet",
-        "operations": ["tokenize", "bitnet.generate"],
+        "fallbackTarget": "low_bit_ai",
+        "operations": ["tokenize", "ai.infer"],
         "dataMovement": [
           {
             "from": "host",
@@ -35,7 +35,7 @@
   "selections": [
     {
       "requested": "compute auto",
-      "selectedTarget": "cpu.bitnet",
+      "selectedTarget": "low_bit_ai",
       "reason": "Target is available and appears first in preference order.",
       "fallback": true,
       "satisfied": true,

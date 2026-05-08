@@ -105,7 +105,7 @@ Example:
   sibling packages: `lo-logic`, `lo-vector`, `lo-compute`, `lo-photonic`,
   `lo-target-binary`, `lo-target-photonic`, `lo-app-kernel`, `lo-api-server`,
   `lo-cli` and `lo-tasks`.
-- Added LO core package-boundary references for `lo-ai`, `lo-bitnet`,
+- Added LO core package-boundary references for `lo-ai`, `lo-lowbit-ai`,
   `lo-target-cpu` and `lo-cpu-kernels` so AI inference and CPU fallback stay
   outside `lo-core`.
 - Clarified `TASKS.md` and `TODO.md` so `lo-core` tracks syntax, compiler

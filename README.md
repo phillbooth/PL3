@@ -14,7 +14,7 @@ The project is split into package areas:
 - `packages/lo-vector/` - vector value, vector operation and vector report concepts.
 - `packages/lo-compute/` - compute planning concepts shared across CPU, WASM, vector and hardware targets.
 - `packages/lo-ai/` - generic AI inference contracts, model metadata, safety policy and reports.
-- `packages/lo-bitnet/` - BitNet-style 1.58-bit and ternary AI inference contracts.
+- `packages/lo-lowbit-ai/` - low-bit and ternary AI inference contracts, with BitNet as an optional backend.
 - `packages/lo-photonic/` - photonic and wavelength hardware concepts and mappings.
 - `packages/lo-target-cpu/` - CPU target capability, fallback and execution planning contracts.
 - `packages/lo-cpu-kernels/` - optimized CPU kernel contracts for low-bit, vector and matrix workloads.
@@ -46,7 +46,7 @@ LO-app/
 |   |-- lo-vector/
 |   |-- lo-compute/
 |   |-- lo-ai/
-|   |-- lo-bitnet/
+|   |-- lo-lowbit-ai/
 |   |-- lo-photonic/
 |   |-- lo-target-cpu/
 |   |-- lo-cpu-kernels/
@@ -93,8 +93,8 @@ LO Compute
 LO AI
   generic AI inference contracts, safety policy, memory estimates and reports
 
-LO BitNet
-  BitNet-style 1.58-bit / ternary model metadata and CPU inference plans
+LO Low-Bit AI
+  low-bit / ternary model metadata, backend selection and CPU inference plans
 
 LO Photonic
   wavelength, phase, amplitude, optical channels and photonic target mapping

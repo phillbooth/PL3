@@ -18,7 +18,8 @@ export type AiModelFormat =
 export type AiInferenceTarget =
   | "gpu"
   | "npu"
-  | "cpu.bitnet"
+  | "low_bit_ai"
+  | "ternary_ai"
   | "cpu.generic"
   | "wasm"
   | "remote"

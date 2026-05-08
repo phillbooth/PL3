@@ -11,7 +11,7 @@ import {
 } from "../dist/index.js";
 
 const model = {
-  name: "LocalBitNetAssistant",
+  name: "LocalLowBitAssistant",
   format: "gguf",
   source: "local-file",
   capabilities: [
@@ -20,7 +20,7 @@ const model = {
       maxContextTokens: 2048,
       maxOutputTokens: 256,
       supportsStreaming: true,
-      supportedTargets: ["cpu.bitnet", "cpu.generic"],
+      supportedTargets: ["low_bit_ai", "cpu.generic"],
     },
   ],
   memoryEstimate: {
@@ -35,19 +35,19 @@ const model = {
 describe("lo-ai contracts", () => {
   it("registers and finds approved models", () => {
     const registry = defineAiModelRegistry([
-      { id: "local.bitnet", descriptor: model, approved: true, tags: ["local"] },
+      { id: "local.lowbit", descriptor: model, approved: true, tags: ["local"] },
     ]);
 
-    assert.equal(findAiModel(registry, "local.bitnet")?.approved, true);
+    assert.equal(findAiModel(registry, "local.lowbit")?.approved, true);
     assert.equal(findAiModel(registry, "missing"), undefined);
   });
 
-  it("selects cpu.bitnet when GPU is unavailable for the model", () => {
+  it("selects low_bit_ai when GPU is unavailable for the model", () => {
     const request = {
       model,
       prompt: { input: "Summarise this text." },
       task: "summarisation",
-      targetPreference: ["gpu", "cpu.bitnet", "cpu.generic"],
+      targetPreference: ["gpu", "low_bit_ai", "cpu.generic"],
       options: {
         maxOutputTokens: 128,
         contextTokens: 1024,
@@ -59,9 +59,9 @@ describe("lo-ai contracts", () => {
     const selection = selectAiInferenceTarget(request);
     const report = createAiInferenceReport(request);
 
-    assert.equal(selection.selectedTarget, "cpu.bitnet");
+    assert.equal(selection.selectedTarget, "low_bit_ai");
     assert.equal(selection.fallbackUsed, true);
-    assert.equal(report.selectedTarget, "cpu.bitnet");
+    assert.equal(report.selectedTarget, "low_bit_ai");
     assert.equal(report.diagnostics.length, 0);
   });
 
@@ -76,7 +76,7 @@ describe("lo-ai contracts", () => {
       },
       prompt: { input: "Hello" },
       task: "summarisation",
-      targetPreference: ["cpu.bitnet"],
+      targetPreference: ["low_bit_ai"],
       options: {
         maxOutputTokens: 128,
         contextTokens: 1024,

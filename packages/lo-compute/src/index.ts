@@ -1,7 +1,8 @@
 export type ComputeTarget =
   | "cpu"
   | "cpu.generic"
-  | "cpu.bitnet"
+  | "low_bit_ai"
+  | "ternary_ai"
   | "wasm"
   | "binary"
   | "vector"

@@ -1,7 +1,7 @@
 {
-  "name": "@lo/bitnet",
+  "name": "@lo/lowbit-ai",
   "version": "0.1.0",
-  "description": "LO BitNet-style 1.58-bit and ternary AI inference contracts.",
+  "description": "LO low-bit AI inference contracts with BitNet as an optional backend.",
   "license": "Apache-2.0",
   "private": true,
   "type": "module",

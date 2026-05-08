@@ -95,12 +95,13 @@ packages/lo-ai
   AI safety policy
   AI inference reports
 
-packages/lo-bitnet
-  BitNet model references
+packages/lo-lowbit-ai
+  low-bit model references
   GGUF model metadata
-  1.58-bit and ternary quantization declarations
-  CPU BitNet inference plans
-  BitNet inference reports
+  low-bit and ternary quantization declarations
+  backend selection contracts
+  CPU low-bit inference plans
+  low-bit inference reports
 
 packages/lo-photonic
   Wavelength
@@ -210,8 +211,8 @@ AI inference contracts
   update packages/lo-ai first
   update lo-core docs only if package registry or effect syntax changes
 
-BitNet CPU fallback
-  update packages/lo-bitnet, packages/lo-target-cpu or packages/lo-cpu-kernels first
+Low-bit AI backend
+  update packages/lo-lowbit-ai, packages/lo-target-cpu or packages/lo-cpu-kernels first
   update lo-core docs only if compute target syntax or report contracts change
 
 Photonic wavelength model
@@ -270,7 +271,7 @@ project graph extraction implementation
 photonic hardware backend code
 binary emitter implementation
 AI model runtime implementation
-BitNet adapter implementation
+BitNet or other low-bit backend adapter implementation
 vector runtime kernels
 compute scheduler implementation
 CLI command UX details

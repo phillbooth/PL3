@@ -120,7 +120,7 @@ LO standard library:
 
 LO packages:
   generic AI inference contracts
-  BitNet-style local CPU inference adapters
+  low-bit local inference adapters
   text classifiers
   summarisation clients
   embedding clients
@@ -157,9 +157,10 @@ External services:
   search providers
 ```
 
-BitNet-style support belongs in `packages/lo-bitnet/`, with generic AI
-contracts in `packages/lo-ai/`. It should be selected through compute target
-planning, for example `cpu.bitnet`, rather than added to LO core.
+Low-bit AI support belongs in `packages/lo-lowbit-ai/`, with generic AI
+contracts in `packages/lo-ai/`. BitNet can be selected as a backend there, but
+source code should use generic compute target planning such as `low_bit_ai` or
+`ternary_ai`, rather than adding a backend name to LO core.
 
 ---
 

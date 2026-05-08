@@ -11,7 +11,7 @@ import {
 const capabilities = [
   { target: "gpu", features: ["fp16"], available: false },
   {
-    target: "cpu.bitnet",
+    target: "low_bit_ai",
     features: ["i2_s", "avx2"],
     available: true,
     memoryBytes: 8_589_934_592,
@@ -20,18 +20,18 @@ const capabilities = [
 ];
 
 describe("lo-compute contracts", () => {
-  it("selects cpu.bitnet when GPU is unavailable", () => {
+  it("selects low_bit_ai when GPU is unavailable", () => {
     const selection = selectComputeTarget(
       {
         workload: "ai-inference",
-        prefer: ["gpu", "cpu.bitnet", "cpu.generic"],
+        prefer: ["gpu", "low_bit_ai", "cpu.generic"],
         fallbackRequired: true,
         report: true,
       },
       capabilities,
     );
 
-    assert.equal(selection.selectedTarget, "cpu.bitnet");
+    assert.equal(selection.selectedTarget, "low_bit_ai");
     assert.equal(selection.fallback, true);
     assert.equal(selection.satisfied, true);
   });
@@ -62,8 +62,8 @@ describe("lo-compute contracts", () => {
           {
             name: "generate-summary",
             target: "gpu",
-            fallbackTarget: "cpu.bitnet",
-            operations: ["tokenize", "bitnet.generate"],
+            fallbackTarget: "low_bit_ai",
+            operations: ["tokenize", "ai.infer"],
             dataMovement: [
               {
                 from: "host",
@@ -89,7 +89,7 @@ describe("lo-compute contracts", () => {
       capabilities,
     );
 
-    assert.equal(report.selections[0]?.selectedTarget, "cpu.bitnet");
+    assert.equal(report.selections[0]?.selectedTarget, "low_bit_ai");
     assert.equal(report.fallbackUsed, true);
     assert.equal(report.totalDataMovementBytes, 6144);
     assert.equal(report.diagnostics.length, 0);
@@ -102,7 +102,7 @@ describe("lo-compute contracts", () => {
           name: "summariseText",
           workload: "ai-inference",
           preferredTarget: "gpu",
-          fallbackTargets: ["cpu.bitnet", "cpu.generic"],
+          fallbackTargets: ["low_bit_ai", "cpu.generic"],
           requiredCapabilities: ["text-generation"],
           reportTargetSelection: true,
         },

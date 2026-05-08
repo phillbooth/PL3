@@ -65,7 +65,7 @@ packages/lo-logic
 packages/lo-vector
 packages/lo-compute
 packages/lo-ai
-packages/lo-bitnet
+packages/lo-lowbit-ai
 packages/lo-photonic
 packages/lo-target-cpu
 packages/lo-cpu-kernels
@@ -1909,7 +1909,7 @@ lo-logic             = Tri, Logic<N>, Decision, RiskLevel and Omni logic
 lo-vector            = vector values, dimensions, lanes and vector operations
 lo-compute           = compute planning, capabilities, budgets and target selection
 lo-ai                = generic AI inference contracts and safety policy
-lo-bitnet            = BitNet-style 1.58-bit / ternary AI inference contracts
+lo-lowbit-ai            = low-bit and ternary AI inference contracts
 lo-photonic          = wavelength, phase, amplitude and optical signal concepts
 lo-target-cpu        = CPU target capability and fallback planning
 lo-cpu-kernels       = optimized CPU kernel contracts

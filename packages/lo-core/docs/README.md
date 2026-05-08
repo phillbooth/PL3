@@ -54,7 +54,7 @@ updated first:
 ../../lo-vector/README.md
 ../../lo-compute/README.md
 ../../lo-ai/README.md
-../../lo-bitnet/README.md
+../../lo-lowbit-ai/README.md
 ../../lo-photonic/README.md
 ../../lo-target-cpu/README.md
 ../../lo-cpu-kernels/README.md

@@ -24,7 +24,7 @@ target-neutral generation contracts
 ## Boundary
 
 `lo-ai` should not own a model runtime, kernel implementation, GPU backend or
-BitNet-specific model format. Those belong in target or adapter packages.
+low-bit backend model formats. Those belong in target or adapter packages.
 
 AI output is untrusted by default. Application policy must decide whether and
 how model output can influence business decisions.
@@ -39,6 +39,6 @@ Final rule:
 
 ```text
 lo-ai describes AI inference.
-lo-bitnet adapts BitNet-style models.
+lo-lowbit-ai adapts low-bit model backends.
 lo-compute and target packages choose where work runs.
 ```

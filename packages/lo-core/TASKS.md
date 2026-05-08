@@ -91,7 +91,7 @@ package boundaries
     `lo-compute`, `lo-photonic`, target packages, CLI and task packages
 [x] Split compiler, runtime, security, config, reports, WASM target and GPU
     target responsibilities into dedicated package TODOs
-[x] Split AI inference, BitNet CPU fallback, CPU target and CPU kernel
+[x] Split AI inference, low-bit AI backend, CPU target and CPU kernel
     responsibilities into dedicated package TODOs
 ```
 
@@ -140,7 +140,7 @@ Tri / Logic<N> / Omni work should update packages/lo-logic first.
 Vector work should update packages/lo-vector first.
 Compute planning work should update packages/lo-compute first.
 AI inference work should update packages/lo-ai first.
-BitNet CPU fallback work should update packages/lo-bitnet first.
+Low-bit AI backend work should update packages/lo-lowbit-ai first.
 Photonic vocabulary should update packages/lo-photonic first.
 Target backend work should update packages/lo-target-binary or
 packages/lo-target-cpu, packages/lo-target-wasm, packages/lo-target-gpu or
@@ -164,7 +164,7 @@ Tri, Logic<N>, Decision and Omni semantics -> packages/lo-logic/TODO.md
 Vector values, lanes and operation semantics -> packages/lo-vector/TODO.md
 Compute planning and target selection -> packages/lo-compute/TODO.md
 AI inference contracts -> packages/lo-ai/TODO.md
-BitNet CPU fallback -> packages/lo-bitnet/TODO.md
+Low-bit AI backend -> packages/lo-lowbit-ai/TODO.md
 Photonic concepts and simulation helpers -> packages/lo-photonic/TODO.md
 CPU target planning -> packages/lo-target-cpu/TODO.md
 CPU kernel planning -> packages/lo-cpu-kernels/TODO.md
