@@ -1,40 +1,105 @@
 # LO App Template
 
-This repository is a starter template for building a bespoke application using LO.
+This repository is a starter workspace for building a bespoke application with
+LO.
 
-The project is split into package areas:
+LO, short for Logic Omni, is a strict, memory-safe, security-first programming
+language concept for API-heavy, JSON-native, AI-readable and accelerator-aware
+software. This workspace keeps the LO language package, compiler/runtime
+contracts, secure application kernel, developer tooling and app source in clear
+package boundaries while the project is still being shaped.
 
-- `packages/lo-core/` - the LO language package, compiler rules, syntax notes and examples.
-- `packages/lo-compiler/` - compiler pipeline contracts for parser, checkers, IR, diagnostics and reports.
-- `packages/lo-runtime/` - execution engine contracts for checked or compiled LO code.
-- `packages/lo-security/` - reusable security primitives, redaction, permissions and security reports.
-- `packages/lo-config/` - project configuration, environment mode and policy loading contracts.
-- `packages/lo-reports/` - shared LO report schemas and report-writing contracts.
-- `packages/lo-logic/` - LO multi-state logic concepts such as `Tri`, `Logic<N>` and future Omni logic.
-- `packages/lo-vector/` - vector value, vector operation and vector report concepts.
-- `packages/lo-compute/` - compute planning concepts shared across CPU, WASM, vector and hardware targets.
-- `packages/lo-ai/` - generic AI inference contracts, model metadata, safety policy and reports.
-- `packages/lo-lowbit-ai/` - low-bit and ternary AI inference contracts, with BitNet as an optional backend.
-- `packages/lo-photonic/` - photonic and wavelength hardware concepts and mappings.
-- `packages/lo-target-cpu/` - CPU target capability, fallback and execution planning contracts.
-- `packages/lo-cpu-kernels/` - optimized CPU kernel contracts for low-bit, vector and matrix workloads.
-- `packages/lo-target-binary/` - binary/native target planning and artefact metadata.
-- `packages/lo-target-wasm/` - WebAssembly target planning and output contracts.
-- `packages/lo-target-gpu/` - GPU target planning and output contracts.
-- `packages/lo-target-photonic/` - photonic target backend planning that uses `lo-photonic`.
-- `packages/lo-app-kernel/` - the optional secure runtime foundation for typed APIs, validation, auth, workload controls, jobs and reports.
-- `packages/lo-api-server/` - the built-in HTTP API serving package for LO App Kernel.
-- `packages/lo-cli/` - developer command tooling for checking, building, serving, reporting and task execution.
-- `packages/lo-tasks/` - safe typed project automation and task execution.
-- `packages/lo-project-graph/` - project knowledge graph contracts for packages, docs, policies and reports.
-- `packages/app/` - the bespoke application built with LO.
-- `docs/` - app-specific planning, requirements, architecture and deployment notes.
+## Status
+
+LO is currently a language-design and v0.1 prototype project.
+
+The mature language introduction lives in:
+
+```text
+packages/lo-core/README.md
+```
+
+The root of this repository is the workspace entry point. Use it to understand
+how LO packages, app files, tooling, reports and generated project graph outputs
+fit together.
+
+The practical baseline is CPU-compatible checked execution and deterministic
+developer tooling. GPU, low-bit AI, photonic, ternary and Omni-logic support are
+package contracts, planning layers or simulation/report artefacts until real
+backends exist.
+
+## Core Ideas
+
+LO is designed around:
+
+```text
+strict typing
+explicit missing values
+explicit errors
+memory safety
+security-first defaults
+typed JSON and API contracts
+source maps and machine-readable reports
+AI-readable project context
+CPU compatibility by default
+optional accelerator planning
+optional AI inference packages
+```
+
+LO avoids:
+
+```text
+undefined
+silent null
+truthy/falsy conditions
+implicit type coercion
+hidden exceptions as the default error model
+raw pointers in normal code
+compiled secrets
+silent target fallback
+framework-specific language syntax
+mandatory future hardware
+```
+
+## Quick Start
+
+From the repository root:
+
+```powershell
+cd C:\laragon\www\LO
+```
+
+Generate or refresh the project graph:
+
+```powershell
+node packages\lo-cli\dist\index.js graph --out build\graph
+```
+
+Inspect task automation with a dry run:
+
+```powershell
+node packages\lo-cli\dist\index.js task buildApi --file packages\lo-tasks\examples\tasks.lo --dry-run
+```
+
+Run the package tests that currently have executable coverage:
+
+```powershell
+npm.cmd --prefix packages\lo-project-graph test
+npm.cmd --prefix packages\lo-tasks test
+npm.cmd --prefix packages\lo-cli test
+```
+
+For the prototype LO core compiler, work from `packages/lo-core/` and see that
+package README for the supported commands.
 
 ## Project Structure
 
 ```text
 LO-app/
+|-- AGENTS.md
 |-- docs/
+|-- build/
+|   `-- graph/
 |-- packages/
 |   |-- lo-core/
 |   |-- lo-compiler/
@@ -63,9 +128,115 @@ LO-app/
 `-- tools/
 ```
 
+## Package Map
+
+- `packages/lo-core/` - LO language rules, syntax, type system, prototype
+  compiler notes, memory safety model, examples and core documentation.
+- `packages/lo-compiler/` - compiler pipeline contracts for lexer, parser, AST,
+  checkers, IR, diagnostics, source maps and compiler reports.
+- `packages/lo-runtime/` - execution contracts for checked or compiled LO code.
+- `packages/lo-security/` - reusable security primitives, redaction,
+  permissions, crypto policy and security reports.
+- `packages/lo-config/` - project configuration, environment mode and production
+  strictness contracts.
+- `packages/lo-reports/` - shared report schemas and report-writing contracts.
+- `packages/lo-logic/` - `Tri`, `Logic<N>`, Decision, RiskLevel and future Omni
+  logic concepts.
+- `packages/lo-vector/` - vector value, lane, dimension and operation concepts.
+- `packages/lo-compute/` - compute planning, capabilities, effects, budgets and
+  target selection.
+- `packages/lo-ai/` - generic AI inference contracts, model metadata, safety
+  policy and AI reports.
+- `packages/lo-lowbit-ai/` - low-bit and ternary AI inference contracts, with
+  BitNet represented as one optional backend rather than LO syntax.
+- `packages/lo-photonic/` - photonic and wavelength concepts, simulation and
+  logic-to-light mapping contracts.
+- `packages/lo-target-cpu/` - CPU capability detection, threading, memory limits
+  and fallback planning.
+- `packages/lo-cpu-kernels/` - optimized CPU kernel contracts for vector,
+  matrix, low-bit and ternary workloads.
+- `packages/lo-target-binary/` - binary/native target planning and artefact
+  metadata.
+- `packages/lo-target-wasm/` - WebAssembly target planning and module metadata.
+- `packages/lo-target-gpu/` - GPU target planning, kernel mapping and data
+  movement reports.
+- `packages/lo-target-photonic/` - photonic backend target planning that uses
+  `lo-photonic`.
+- `packages/lo-app-kernel/` - optional secure application kernel for typed API
+  boundaries, validation, auth, rate limits, jobs and runtime reports.
+- `packages/lo-api-server/` - built-in HTTP API transport that delegates typed
+  execution and policy decisions to `lo-app-kernel`.
+- `packages/lo-cli/` - developer command tooling for graph, tasks, future check,
+  build, run, serve, reports, routes and security commands.
+- `packages/lo-tasks/` - safe typed project automation with declared effects,
+  permissions, dependency planning and reports.
+- `packages/lo-project-graph/` - project graph contracts and mapper for package,
+  document, policy and report relationships.
+- `packages/app/` - bespoke application source, routes, modules, tests and app
+  configuration.
+- `docs/` - app/workspace requirements, architecture, security, deployment,
+  decisions, changelog and operational documentation.
+
+## Layering
+
+```text
+LO Core
+  language, type system, effects, memory safety, syntax and core reports
+
+LO Compiler / Runtime / Security / Config / Reports
+  compiler pipeline, execution, shared security, configuration and report contracts
+
+LO Logic / Vector / Compute / AI / Photonic / Target Packages
+  specialised concepts and target planning outside the core language package
+
+LO Secure App Kernel
+  optional runtime layer for API validation, auth, rate limits, jobs and reports
+
+LO API Server
+  HTTP transport that normalises requests and calls the app kernel
+
+LO CLI / Tasks / Project Graph
+  developer tooling, safe automation and AI-readable project maps
+
+Full Frameworks
+  CMS, admin UI, page builders, ORMs, template engines and frontend adapters
+```
+
+Important boundary rules:
+
+- `lo-core` defines the language. It must not become a web framework.
+- `lo-app-kernel` is an optional secure application boundary. It must not become
+  a CMS, admin dashboard, ORM or frontend framework.
+- `lo-api-server` serves HTTP and delegates typed policy decisions.
+- `lo-ai` and `lo-lowbit-ai` are optional AI package layers, not core syntax.
+- BitNet is a backend option inside low-bit AI, not a language feature.
+- `lo-project-graph` explains the repository. It does not enforce compiler,
+  runtime or security rules.
+
+## Current Tooling
+
+The currently implemented root-level CLI paths are:
+
+```powershell
+node packages\lo-cli\dist\index.js graph --out build\graph
+node packages\lo-cli\dist\index.js graph query lo-security --out build\graph
+node packages\lo-cli\dist\index.js graph explain package:lo-security --out build\graph
+node packages\lo-cli\dist\index.js graph path package:lo-project-graph report:project-graph --out build\graph
+
+node packages\lo-cli\dist\index.js task --file packages\lo-tasks\examples\tasks.lo
+node packages\lo-cli\dist\index.js task buildApi --file packages\lo-tasks\examples\tasks.lo --dry-run
+```
+
+Once `lo-cli` is installed or linked, the intended shorthand is:
+
+```powershell
+lo graph --out build\graph
+lo task buildApi --dry-run
+```
+
 ## Project Graph
 
-AI assistants and developers can use the generated project graph to inspect
+AI assistants and developers should use the generated project graph to inspect
 package ownership and repository relationships:
 
 ```text
@@ -84,68 +255,49 @@ node packages\lo-cli\dist\index.js graph --out build\graph
 The graph is navigation tooling only. It does not replace the compiler, tests,
 security checks or package boundary rules.
 
-## Layering
+## Task Automation
+
+`lo-tasks` loads safe task definitions from `tasks.lo` files. Tasks declare
+their dependencies, effects and permissions before anything runs.
+
+Example:
+
+```lo
+task buildApi {
+  depends [generateReports]
+  effects [filesystem, compiler, reports]
+
+  permissions {
+    read "./src"
+    write "./build"
+  }
+}
+```
+
+Current task execution supports loading, listing, dependency ordering, cycle
+detection, dry-run planning, permission checks and task report generation.
+Built-in operation execution is still future work.
+
+Task reports are written by default to:
 
 ```text
-LO Core
-  language, compiler, type system, effects, memory safety, compute planning
-
-LO Compiler
-  parser, checker pipeline, IR, diagnostics, source maps and compiler reports
-
-LO Runtime
-  execution engine for checked or compiled LO code, separate from the app kernel
-
-LO Security
-  SecureString helpers, redaction, permissions, diagnostics and security reports
-
-LO Config and Reports
-  project configuration, environment modes and shared report schemas
-
-LO Logic
-  Tri, Logic<N>, Decision, RiskLevel, Omni logic and multi-state truth tables
-
-LO Vector
-  vector values, dimensions, lanes, operations and vector reports
-
-LO Compute
-  compute planning, capabilities, effects, budgets and target selection
-
-LO AI
-  generic AI inference contracts, safety policy, memory estimates and reports
-
-LO Low-Bit AI
-  low-bit / ternary model metadata, backend selection and CPU inference plans
-
-LO Photonic
-  wavelength, phase, amplitude, optical channels and photonic target mapping
-
-LO Target CPU and CPU Kernels
-  CPU capability detection, fallback planning, SIMD, threading and low-bit kernels
-
-LO Target Packages
-  CPU, binary/native, WASM, GPU and photonic backend planning
-
-LO Project Graph
-  tooling contracts for package, document, policy and report relationship maps
-
-LO Standard Library
-  Json, Xml, SafeHtml, File, Stream, Request, Response, DateTime, Money, SecureString
-
-LO Secure App Kernel
-  optional runtime layer for APIs, routing, validation, auth, rate limits, jobs and reports
-
-Full Frameworks
-  CMS, admin UI, UI systems, templates, ORM, page builders and frontend adapters
+build/reports/task-report.json
 ```
+
+## Documentation Guide
+
+- Use `packages/lo-core/` for language documentation.
+- Use package READMEs and TODOs for package-specific contracts and work.
+- Use `docs/` for app/workspace requirements, architecture, security,
+  deployment, decisions and changelog.
+- Use `AGENTS.md` for AI coding tool instructions.
+- Update `docs/CHANGELOG.md` when architecture, tooling, package contracts or
+  behavior changes.
 
 ## Git Layout
 
-Current development uses one Git repository at the framework root:
-
-```text
-E:/projects/LO/.git
-```
+Current development uses one root Git repository while package boundaries are
+still being shaped.
 
 The intended future split is:
 

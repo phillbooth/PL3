@@ -71,6 +71,9 @@ All notable changes to this app should be documented here.
   `--no-report` controls.
 - Added `lo-tasks` filesystem and environment permission validation, including
   safe relative path checks and explicit environment variable permissions.
+- Expanded the root `README.md` into a full workspace introduction covering LO
+  status, core goals, package boundaries, current tooling, project graph and
+  task automation.
 
 ### Changed
 
