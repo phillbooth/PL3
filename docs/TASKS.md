@@ -66,7 +66,7 @@
 - [ ] Define photonic mappings from `lo-logic`
 - [ ] Add examples and tests for logic and photonic package boundaries
 - [ ] Define `lo-vector` vector value and operation rules
-- [ ] Define `lo-compute` compute planning and target selection rules
+- [x] Define `lo-compute` compute planning and target selection rules
 - [x] Define `lo-ai` generic AI inference and safety policy contracts
 - [x] Define `lo-bitnet` CPU fallback contracts for 1.58-bit AI inference
 - [x] Define `lo-target-cpu` CPU capability and fallback report contracts

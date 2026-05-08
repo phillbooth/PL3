@@ -42,6 +42,12 @@ The actual AI model contracts belong in `lo-ai`, BitNet-specific model support
 belongs in `lo-bitnet`, CPU capability planning belongs in `lo-target-cpu`, and
 optimized CPU kernel contracts belong in `lo-cpu-kernels`.
 
+## Contracts
+
+The package includes typed contracts for compute capabilities, budgets, target
+selection, compute-auto fallback reports, offload stages, data movement totals
+and aggregate compute reports.
+
 Final rule:
 
 ```text

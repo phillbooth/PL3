@@ -9,7 +9,7 @@
 [x] Define compute budget model
 [x] Define target selection rules
 [x] Add CPU BitNet fallback target concept
-[ ] Define offload planning reports
-[ ] Add examples
-[ ] Add tests
+[x] Define offload planning reports
+[x] Add examples
+[x] Add tests
 ```

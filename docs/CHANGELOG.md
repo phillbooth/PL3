@@ -70,6 +70,8 @@ All notable changes to this app should be documented here.
   semantics.
 - Completed initial `lo-ai`, `lo-bitnet`, `lo-target-cpu` and
   `lo-cpu-kernels` contracts with validation helpers, examples and tests.
+- Completed initial `lo-compute` offload planning reports, BitNet fallback
+  example and test coverage.
 
 ### Removed
 
