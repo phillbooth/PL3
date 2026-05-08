@@ -1,10 +1,22 @@
 # LO App Template
 
+### LO, short for Logic Omni
+
+```text
+Designed to be backwards compatiable with binary while supporting photonic Tri logic.
+
+Easy to code and learn for Humans
+
+AI Friendly sytax and mapping
+```
+
 This repository is a starter workspace for building a bespoke application with
 LO.
 
-LO, short for Logic Omni, is a strict, memory-safe, security-first programming
-language concept for API-heavy, JSON-native, AI-readable and accelerator-aware
+A strict, memory-safe, 
+security-first programming
+language concept for API-heavy, JSON-native, 
+AI-readable and accelerator-aware
 software. This workspace keeps the LO language package, compiler/runtime
 contracts, secure application kernel, developer tooling and app source in clear
 package boundaries while the project is still being shaped.
