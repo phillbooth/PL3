@@ -85,6 +85,7 @@ vectorised-dataset-syntax.md
 simple-vector-and-compute-auto.md
 backend-compute-support-targets.md
 compiler-backends.md
+gpu-target.md
 kernel-and-driver-boundary.md
 ```
 
