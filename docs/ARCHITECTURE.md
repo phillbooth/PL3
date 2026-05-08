@@ -179,6 +179,13 @@ binary/native, WebAssembly, GPU and photonic backends.
 and API policy enforcement remain in `lo-app-kernel`. `lo-config` owns
 configuration loading contracts, and `lo-reports` owns shared report shapes.
 
+`lo-config` validates project configuration, resolves environment modes and
+produces runtime handoff objects with structured diagnostics. It represents
+environment variables by safe references only: names, required flags, secret
+flags, scopes and optional non-secret defaults. Production strictness policy
+checks belong here, while secret protection and redaction remain in
+`lo-security`.
+
 `lo-app-kernel` should not be renamed to `lo-runtime`. A future `lo-runtime`
 package should execute compiled or checked LO code. The app kernel should
 remain the secure application/API boundary that controls validation, auth,

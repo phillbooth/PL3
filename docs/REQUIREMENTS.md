@@ -154,6 +154,11 @@ Describe the problem this app solves.
   permission models, security diagnostics and security report contracts.
 - `lo-config` must own project config, environment mode and policy loading
   contracts.
+- `lo-config` must represent environment variables as safe references by name
+  and metadata; it must not expose secret values in diagnostics or runtime
+  handoff objects.
+- `lo-config` must provide production strictness checks for strict project
+  mode, required environment variables and unsafe secret defaults.
 - `lo-reports` must own shared report schemas and report-writing contracts.
 
 ## Runtime Naming Requirement

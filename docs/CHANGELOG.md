@@ -39,6 +39,9 @@ All notable changes to this app should be documented here.
 - Added README and TODO documents for `packages/app/`.
 - Added CLI and task runner requirements in
   `packages/lo-cli-and-lo-tasks-requirements.md`.
+- Added `lo-config` project config parsing, environment mode loading,
+  production strictness policy, safe environment variable references, runtime
+  handoff contracts, examples and tests.
 
 ### Changed
 
