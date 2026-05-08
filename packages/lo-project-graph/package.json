@@ -1,13 +1,12 @@
 {
-  "name": "@lo/cli",
+  "name": "@lo/project-graph",
   "version": "0.1.0",
-  "description": "LO developer command-line interface for checking, building, serving, reporting and running safe tasks.",
+  "description": "LO project knowledge graph contracts for package, document, policy and report relationships.",
   "license": "Apache-2.0",
   "private": true,
   "type": "module",
-  "bin": {
-    "lo": "./dist/index.js"
-  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "typecheck": "tsc --noEmit",
     "build": "tsc -p tsconfig.json",

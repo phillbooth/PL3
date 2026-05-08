@@ -23,6 +23,7 @@ run task tools
 print safe output
 generate reports
 show diagnostics
+generate project graphs
 ```
 
 ## Early Commands
@@ -36,7 +37,21 @@ lo reports
 lo security:check
 lo routes
 lo task
+lo graph
 ```
+
+## Graph Command
+
+`lo graph` reads `lo.workspace.json` and writes a local project graph summary.
+
+Default outputs:
+
+```text
+build/graph/lo-project-graph.json
+build/graph/LO_GRAPH_REPORT.md
+```
+
+Use `--out <dir>` to choose a different output directory.
 
 ## Security Rules
 

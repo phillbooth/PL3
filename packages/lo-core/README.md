@@ -93,6 +93,9 @@ packages/lo-target-gpu/
 
 packages/lo-target-photonic/
   photonic backend target plans using lo-photonic concepts
+
+packages/lo-project-graph/
+  project knowledge graph contracts for packages, docs, policies and reports
 ```
 
 Detailed package-boundary guidance lives in
@@ -131,6 +134,9 @@ LO Secure App Kernel
 
 LO API Server
   built-in HTTP API server that loads route manifests and calls the app kernel
+
+LO Project Graph
+  optional developer tooling for project relationship maps and AI context
 
 Full Frameworks
   CMS, admin panels, UI systems, templates, ORM, page builders and frontend adapters

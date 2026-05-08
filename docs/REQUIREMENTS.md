@@ -74,6 +74,7 @@ Describe the problem this app solves.
 - The built-in LO HTTP API server must live in `packages/lo-api-server/`.
 - The LO developer CLI must live in `packages/lo-cli/`.
 - Safe LO project automation must live in `packages/lo-tasks/`.
+- LO project knowledge graph tooling must live in `packages/lo-project-graph/`.
 - Bespoke app source must live in `packages/app/`.
 - App documentation must live in `docs/`.
 - Language documentation must stay within `packages/lo-core/`.
@@ -130,6 +131,22 @@ Describe the problem this app solves.
   timeout-limited, reported and redacted.
 - Both packages must redact secrets, bearer tokens, cookies, `SecureString`
   values and private key material from output and reports.
+
+## Project Graph Requirements
+
+- `lo-project-graph` must own project knowledge graph contracts for packages,
+  documents, flows, types, effects, policies, reports, targets and decisions.
+- Project graph tooling must be optional developer tooling and must not be
+  required to compile or run LO applications.
+- Project graph output may explain security and architecture relationships, but
+  it must not replace compiler checks, runtime policy enforcement or security
+  reports.
+- Project graph scans must redact secrets by default.
+- Model-assisted extraction for documents, PDFs, images, audio or video must be
+  opt-in and reported.
+- Project graph outputs should include JSON, human-readable report and AI map
+  paths so assistants can query project relationships without rereading every
+  file.
 
 ## Logic and Photonic Package Requirements
 

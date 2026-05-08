@@ -50,6 +50,8 @@ All notable changes to this app should be documented here.
   planning contracts.
 - Added `packages/lo-cpu-kernels/` for optimized CPU kernel contracts.
 - Added a BitNet CPU fallback architecture note.
+- Added `packages/lo-project-graph/` for project knowledge graph contracts,
+  graph scan policy, output manifests and AI assistant map support.
 
 ### Changed
 
@@ -72,6 +74,10 @@ All notable changes to this app should be documented here.
   `lo-cpu-kernels` contracts with validation helpers, examples and tests.
 - Completed initial `lo-compute` offload planning reports, BitNet fallback
   example and test coverage.
+- Added a placeholder `lo graph` CLI command entry for future project graph
+  generation and querying.
+- Implemented the initial `lo graph` command to generate project graph JSON and
+  a Markdown graph report from `lo.workspace.json`.
 
 ### Removed
 

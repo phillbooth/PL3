@@ -19,6 +19,7 @@ These files describe the app being built, not the LO language itself.
 - `DECISIONS.md` — technical decisions
 - `CHANGELOG.md` — project changes
 - `BITNET_CPU_FALLBACK.md` - BitNet CPU fallback architecture note
+- `PROJECT_GRAPH.md` - project knowledge graph tooling note
 
 ## Language and Runtime Proposals
 

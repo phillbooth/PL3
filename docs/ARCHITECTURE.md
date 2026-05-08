@@ -23,7 +23,8 @@ in `packages/lo-bitnet/`. Photonic and wavelength concepts live in
 optional Secure App Kernel design lives in `packages/lo-app-kernel/`. The
 built-in HTTP API server package lives in `packages/lo-api-server/`. Developer command
 tooling lives in `packages/lo-cli/`, and safe project automation lives in
-`packages/lo-tasks/`. App source and build configuration live in
+`packages/lo-tasks/`. Project knowledge graph tooling lives in
+`packages/lo-project-graph/`. App source and build configuration live in
 `packages/app/`. App planning and operational documentation live in `docs/`.
 
 ## Main Structure
@@ -56,6 +57,7 @@ LO-app/
 |   |-- lo-api-server/
 |   |-- lo-cli/
 |   |-- lo-tasks/
+|   |-- lo-project-graph/
 |   `-- app/
 `-- tools/
 ```
@@ -88,7 +90,8 @@ light-framework/
 |   |-- lo-app-kernel/
 |   |-- lo-api-server/
 |   |-- lo-cli/
-|   `-- lo-tasks/
+|   |-- lo-tasks/
+|   `-- lo-project-graph/
 |-- app/
 `-- framework files
 ```
@@ -167,6 +170,9 @@ LO CLI
 LO Tasks
   safe typed project automation with declared effects and permissions
 
+LO Project Graph
+  project graph maps for packages, docs, policies, reports and AI assistance
+
 LO Standard Packages
   HTTP adapters, SQL adapters, Redis queue, OpenAPI generator, JS/WASM generators
 
@@ -189,6 +195,11 @@ server and task packages, but it must not own application behaviour.
 `lo-tasks` is the safe automation layer. It runs typed tasks with declared
 effects and permissions. Raw shell is disabled by default and should only exist
 later as explicit unsafe compatibility.
+
+`lo-project-graph` is developer tooling for architecture inspection and AI
+assistant context. It may generate graph JSON, an HTML view, a graph report and
+an AI map, but it must not become a source of truth for compiler validation,
+runtime enforcement or security decisions.
 
 `lo-logic` owns logic semantics such as `Tri`, `Logic<N>` and Omni. `lo-photonic`
 owns photonic representation and target planning. Photonic mappings may consume

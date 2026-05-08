@@ -84,6 +84,7 @@ lo-app-kernel        = secure application/API runtime boundary
 lo-api-server        = built-in HTTP transport package
 lo-cli               = developer command-line tooling
 lo-tasks             = safe project automation
+lo-project-graph     = project knowledge graph and AI assistant map contracts
 ```
 
 `lo-core` owns the package registry syntax and compiler/report contract.

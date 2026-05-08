@@ -36,6 +36,7 @@
   `lo-config`, `lo-reports`, `lo-target-wasm` and `lo-target-gpu`
 - [x] Add package scaffolds for `lo-ai`, `lo-bitnet`, `lo-target-cpu` and
   `lo-cpu-kernels`
+- [x] Add package scaffold for `lo-project-graph`
 - [x] Add TODO documents for `lo-api-server` and `lo-app-kernel`
 - [x] Add README and TODO documents for `packages/app`
 - [ ] Add unit tests
@@ -58,6 +59,7 @@
 - [ ] Implement `lo-tasks` dependency graph and cycle detection
 - [ ] Add CLI and task runner tests
 - [ ] Add report generation for CLI and task runs
+- [x] Define `lo-project-graph` project knowledge graph contracts
 
 ## Phase 7: Logic and Photonic Packages
 

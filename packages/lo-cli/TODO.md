@@ -9,6 +9,7 @@
 [x] Add src/index.ts
 [x] Add command router placeholder
 [x] Add safe output redaction placeholder
+[x] Add lo graph project graph command integration
 [ ] Add lo check command integration
 [ ] Add lo build command integration
 [ ] Add lo run command integration
@@ -20,5 +21,5 @@
 [ ] Add environment mode config loading
 [ ] Add structured CLI errors
 [ ] Add report summary output
-[ ] Add tests
+[x] Add tests
 ```

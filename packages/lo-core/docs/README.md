@@ -66,6 +66,7 @@ updated first:
 ../../lo-api-server/README.md
 ../../lo-cli/README.md
 ../../lo-tasks/README.md
+../../lo-project-graph/README.md
 ```
 
 Use `package-boundaries.md` to decide whether a change belongs in `lo-core` or

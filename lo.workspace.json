@@ -25,6 +25,7 @@
         "packages/lo-api-server",
         "packages/lo-cli",
         "packages/lo-tasks",
+        "packages/lo-project-graph",
         "packages/app"
     ],
     "defaultPackage": "packages/app",
@@ -50,6 +51,7 @@
     "apiServerPackage": "packages/lo-api-server",
     "cliPackage": "packages/lo-cli",
     "tasksPackage": "packages/lo-tasks",
+    "projectGraphPackage": "packages/lo-project-graph",
     "strict": true,
     "targets": [
         "cpu",
@@ -81,7 +83,8 @@
         "targetGpu": "packages/lo-target-gpu",
         "targetPhotonic": "packages/lo-target-photonic",
         "runtimeKernel": "packages/lo-app-kernel",
-        "cliAndTasks": "packages/lo-cli-and-lo-tasks-requirements.md"
+        "cliAndTasks": "packages/lo-cli-and-lo-tasks-requirements.md",
+        "projectGraph": "packages/lo-project-graph"
     },
     "tools": {
         "root": "tools"

@@ -178,6 +178,13 @@ packages/lo-tasks
   dry run mode
   task reports
   unsafe shell gates
+
+packages/lo-project-graph
+  project graph nodes and relationships
+  package ownership maps
+  documentation and decision links
+  graph output manifests
+  AI assistant map contracts
 ```
 
 ## Update Rule
@@ -242,6 +249,10 @@ CLI command behaviour
 Safe task automation
   update packages/lo-tasks first
   update lo-core docs only if package registry or task syntax changes
+
+Project knowledge graph tooling
+  update packages/lo-project-graph first
+  update lo-core docs only if compiler reports or package registry contracts change
 ```
 
 ## Core Reference Policy
@@ -255,6 +266,7 @@ compiler report contracts.
 HTTP server internals
 auth provider implementation
 task runner execution
+project graph extraction implementation
 photonic hardware backend code
 binary emitter implementation
 AI model runtime implementation

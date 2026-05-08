@@ -26,6 +26,7 @@ The project is split into package areas:
 - `packages/lo-api-server/` - the built-in HTTP API serving package for LO App Kernel.
 - `packages/lo-cli/` - developer command tooling for checking, building, serving, reporting and task execution.
 - `packages/lo-tasks/` - safe typed project automation and task execution.
+- `packages/lo-project-graph/` - project knowledge graph contracts for packages, docs, policies and reports.
 - `packages/app/` - the bespoke application built with LO.
 - `docs/` - app-specific planning, requirements, architecture and deployment notes.
 
@@ -57,6 +58,7 @@ LO-app/
 |   |-- lo-api-server/
 |   |-- lo-cli/
 |   |-- lo-tasks/
+|   |-- lo-project-graph/
 |   `-- app/
 `-- tools/
 ```
@@ -102,6 +104,9 @@ LO Target CPU and CPU Kernels
 
 LO Target Packages
   CPU, binary/native, WASM, GPU and photonic backend planning
+
+LO Project Graph
+  tooling contracts for package, document, policy and report relationship maps
 
 LO Standard Library
   Json, Xml, SafeHtml, File, Stream, Request, Response, DateTime, Money, SecureString

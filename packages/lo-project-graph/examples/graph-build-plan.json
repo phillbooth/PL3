@@ -1,0 +1,23 @@
+{
+  "root": ".",
+  "policy": {
+    "include": ["README.md", "docs/**", "packages/**"],
+    "exclude": ["**/dist/**", "**/node_modules/**", "**/.env", "**/*.log"],
+    "sources": ["markdown", "lo-source", "typescript", "json-report", "schema"],
+    "allowModelExtraction": false,
+    "redactSecrets": true,
+    "commitGeneratedGraph": false
+  },
+  "output": {
+    "jsonPath": "build/graph/lo-project-graph.json",
+    "htmlPath": "build/graph/lo-project-graph.html",
+    "reportPath": "build/graph/LO_GRAPH_REPORT.md",
+    "aiMapPath": "build/graph/lo-ai-map.md",
+    "generatedFiles": [
+      "build/graph/lo-project-graph.json",
+      "build/graph/lo-project-graph.html",
+      "build/graph/LO_GRAPH_REPORT.md",
+      "build/graph/lo-ai-map.md"
+    ]
+  }
+}
