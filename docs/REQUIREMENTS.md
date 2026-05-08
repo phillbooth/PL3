@@ -200,6 +200,9 @@ Describe the problem this app solves.
 - `lo-config` must provide production strictness checks for strict project
   mode, required environment variables and unsafe secret defaults.
 - `lo-reports` must own shared report schemas and report-writing contracts.
+- Shared report contracts must include common metadata, generator metadata,
+  diagnostic summaries and typed build, security, target, runtime, task and AI
+  guide report shapes.
 
 ## AI and Low-Bit Backend Requirements
 

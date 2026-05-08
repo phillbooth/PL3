@@ -85,7 +85,7 @@
 - [ ] Define `lo-runtime` execution contracts
 - [ ] Define `lo-security` primitives, redaction and permission models
 - [x] Define `lo-config` project config and environment mode contracts
-- [ ] Define `lo-reports` shared report schemas
+- [x] Define `lo-reports` shared report schemas
 
 ## Phase 9: Repository Split
 

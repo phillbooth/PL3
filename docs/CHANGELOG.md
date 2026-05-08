@@ -42,6 +42,9 @@ All notable changes to this app should be documented here.
 - Added `lo-config` project config parsing, environment mode loading,
   production strictness policy, safe environment variable references, runtime
   handoff contracts, examples and tests.
+- Added `lo-reports` shared report metadata, diagnostic summaries, build,
+  security, target, runtime, task and AI guide report contracts with examples
+  and tests.
 - Added `packages/lo-ai/` for generic AI inference contracts, safety policy and
   AI inference reports.
 - Added `packages/lo-lowbit-ai/` for low-bit and ternary AI inference contracts,

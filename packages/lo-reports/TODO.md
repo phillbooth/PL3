@@ -6,15 +6,15 @@
 [x] Add TODO.md
 [x] Add package metadata
 [x] Add initial typed exports
-[ ] Define common report metadata
-[ ] Define report severity model
-[ ] Define diagnostic summary contract
-[ ] Define build report contract
-[ ] Define security report contract
-[ ] Define target report contract
-[ ] Define runtime report contract
-[ ] Define task report contract
-[ ] Define AI guide report contract
-[ ] Add examples
-[ ] Add tests
+[x] Define common report metadata
+[x] Define report severity model
+[x] Define diagnostic summary contract
+[x] Define build report contract
+[x] Define security report contract
+[x] Define target report contract
+[x] Define runtime report contract
+[x] Define task report contract
+[x] Define AI guide report contract
+[x] Add examples
+[x] Add tests
 ```

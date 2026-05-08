@@ -21,6 +21,8 @@ target report contracts
 runtime report contracts
 task report contracts
 AI guide report contracts
+report writer interface
+JSON serialization helper
 ```
 
 ## Boundary
@@ -34,4 +36,34 @@ security checks   -> lo-security / lo-compiler
 runtime events    -> lo-runtime
 task execution    -> lo-tasks
 target analysis   -> target packages
+```
+
+## Contracts
+
+The package defines:
+
+```text
+ReportMetadata
+ReportGenerator
+ReportDiagnostic
+DiagnosticSummary
+BuildReport
+SecurityReport
+TargetReport
+RuntimeReport
+TaskReport
+AiGuideReport
+CustomReport
+ReportWriter
+```
+
+Use these contracts to keep package-specific reports consistent while leaving
+the actual analysis in the owning package.
+
+Final rule:
+
+```text
+lo-reports owns shared report shapes.
+Owning packages produce their own facts and diagnostics.
+Report output must stay deterministic and safe to inspect.
 ```
