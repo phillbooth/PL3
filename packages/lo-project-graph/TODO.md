@@ -12,6 +12,7 @@
 [x] Define graph validation diagnostics
 [x] Define LO-native workspace graph builder
 [x] Add Markdown report and AI map renderers
+[x] Add query, explain and path helpers
 [x] Add examples
 [x] Add tests
 ```

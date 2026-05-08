@@ -200,6 +200,30 @@ export interface ProjectGraphExplainRequest {
   readonly graphPath?: string;
 }
 
+export interface ProjectGraphQueryResult {
+  readonly query: string;
+  readonly nodes: readonly ProjectGraphNode[];
+  readonly edges: readonly ProjectGraphEdge[];
+}
+
+export interface ProjectGraphPathResult {
+  readonly from: string;
+  readonly to: string;
+  readonly found: boolean;
+  readonly nodes: readonly ProjectGraphNode[];
+  readonly edges: readonly ProjectGraphEdge[];
+  readonly diagnostics: readonly ProjectGraphDiagnostic[];
+}
+
+export interface ProjectGraphExplainResult {
+  readonly nodeId: string;
+  readonly node?: ProjectGraphNode;
+  readonly incoming: readonly ProjectGraphEdge[];
+  readonly outgoing: readonly ProjectGraphEdge[];
+  readonly relatedNodes: readonly ProjectGraphNode[];
+  readonly diagnostics: readonly ProjectGraphDiagnostic[];
+}
+
 export interface ProjectGraphReport {
   readonly graph: ProjectGraph;
   readonly manifest: ProjectGraphOutputManifest;
@@ -359,6 +383,170 @@ export function createProjectGraphReport(
     warnings: diagnostics
       .filter((diagnostic) => diagnostic.severity === "warning")
       .map((diagnostic) => diagnostic.message),
+  };
+}
+
+export function queryProjectGraph(
+  graph: ProjectGraph,
+  request: ProjectGraphQueryRequest,
+): ProjectGraphQueryResult {
+  const query = normalizeQuery(request.query);
+
+  if (query.length === 0) {
+    return {
+      query: request.query,
+      nodes: [],
+      edges: [],
+    };
+  }
+
+  const nodes = graph.nodes.filter((node) => nodeMatchesQuery(node, query));
+  const nodeIds = new Set(nodes.map((node) => node.id));
+  const edges = graph.edges.filter(
+    (edge) =>
+      edgeMatchesQuery(edge, query) || nodeIds.has(edge.from) || nodeIds.has(edge.to),
+  );
+
+  return {
+    query: request.query,
+    nodes,
+    edges,
+  };
+}
+
+export function explainProjectGraphNode(
+  graph: ProjectGraph,
+  request: ProjectGraphExplainRequest,
+): ProjectGraphExplainResult {
+  const node = findGraphNode(graph, request.nodeId);
+
+  if (node === undefined) {
+    return {
+      nodeId: request.nodeId,
+      incoming: [],
+      outgoing: [],
+      relatedNodes: [],
+      diagnostics: [
+        {
+          code: "LO_PROJECT_GRAPH_EXPLAIN_NODE_MISSING",
+          severity: "error",
+          message: `Project graph node "${request.nodeId}" was not found.`,
+          path: "nodeId",
+        },
+      ],
+    };
+  }
+
+  const incoming = graph.edges.filter((edge) => edge.to === node.id);
+  const outgoing = graph.edges.filter((edge) => edge.from === node.id);
+  const relatedNodeIds = new Set([
+    ...incoming.map((edge) => edge.from),
+    ...outgoing.map((edge) => edge.to),
+  ]);
+
+  return {
+    nodeId: request.nodeId,
+    node,
+    incoming,
+    outgoing,
+    relatedNodes: graph.nodes.filter((candidate) => relatedNodeIds.has(candidate.id)),
+    diagnostics: [],
+  };
+}
+
+export function findProjectGraphPath(
+  graph: ProjectGraph,
+  request: ProjectGraphPathRequest,
+): ProjectGraphPathResult {
+  const from = findGraphNode(graph, request.from);
+  const to = findGraphNode(graph, request.to);
+
+  if (from === undefined || to === undefined) {
+    return {
+      from: request.from,
+      to: request.to,
+      found: false,
+      nodes: [],
+      edges: [],
+      diagnostics: [
+        ...(from === undefined
+          ? [
+              {
+                code: "LO_PROJECT_GRAPH_PATH_FROM_MISSING",
+                severity: "error" as const,
+                message: `Project graph path source "${request.from}" was not found.`,
+                path: "from",
+              },
+            ]
+          : []),
+        ...(to === undefined
+          ? [
+              {
+                code: "LO_PROJECT_GRAPH_PATH_TO_MISSING",
+                severity: "error" as const,
+                message: `Project graph path target "${request.to}" was not found.`,
+                path: "to",
+              },
+            ]
+          : []),
+      ],
+    };
+  }
+
+  const queue: string[][] = [[from.id]];
+  const visited = new Set<string>([from.id]);
+  let cursor = 0;
+
+  while (cursor < queue.length) {
+    const path = queue[cursor];
+    cursor += 1;
+
+    if (path === undefined) {
+      continue;
+    }
+
+    const current = path.at(-1);
+
+    if (current === undefined) {
+      continue;
+    }
+
+    if (current === to.id) {
+      const pathEdges = edgesForPath(graph, path);
+      return {
+        from: request.from,
+        to: request.to,
+        found: true,
+        nodes: path
+          .map((nodeId) => graph.nodes.find((node) => node.id === nodeId))
+          .filter((node): node is ProjectGraphNode => node !== undefined),
+        edges: pathEdges,
+        diagnostics: [],
+      };
+    }
+
+    for (const edge of graph.edges.filter((item) => item.from === current)) {
+      if (visited.has(edge.to)) {
+        continue;
+      }
+      visited.add(edge.to);
+      queue.push([...path, edge.to]);
+    }
+  }
+
+  return {
+    from: request.from,
+    to: request.to,
+    found: false,
+    nodes: [],
+    edges: [],
+    diagnostics: [
+      {
+        code: "LO_PROJECT_GRAPH_PATH_NOT_FOUND",
+        severity: "warning",
+        message: `No project graph path was found from "${from.id}" to "${to.id}".`,
+      },
+    ],
   };
 }
 
@@ -897,4 +1085,59 @@ function reportNodeId(path: string): string {
 
 function normalizePath(path: string): string {
   return path.replace(/\\/g, "/").replace(/^\.\//, "");
+}
+
+function normalizeQuery(query: string): string {
+  return query.trim().toLowerCase();
+}
+
+function nodeMatchesQuery(node: ProjectGraphNode, query: string): boolean {
+  return [
+    node.id,
+    node.label,
+    node.sourcePath ?? "",
+    node.summary ?? "",
+    ...node.tags,
+  ].some((value) => value.toLowerCase().includes(query));
+}
+
+function edgeMatchesQuery(edge: ProjectGraphEdge, query: string): boolean {
+  return [
+    edge.from,
+    edge.to,
+    edge.kind,
+    edge.evidencePath ?? "",
+    edge.rationale ?? "",
+  ].some((value) => value.toLowerCase().includes(query));
+}
+
+function findGraphNode(
+  graph: ProjectGraph,
+  idOrLabel: string,
+): ProjectGraphNode | undefined {
+  const query = normalizeQuery(idOrLabel);
+  return graph.nodes.find(
+    (node) =>
+      node.id.toLowerCase() === query ||
+      node.label.toLowerCase() === query ||
+      node.id.toLowerCase().endsWith(`:${query}`),
+  );
+}
+
+function edgesForPath(
+  graph: ProjectGraph,
+  path: readonly string[],
+): readonly ProjectGraphEdge[] {
+  const edges: ProjectGraphEdge[] = [];
+
+  for (let index = 0; index < path.length - 1; index += 1) {
+    const from = path[index];
+    const to = path[index + 1];
+    const edge = graph.edges.find((item) => item.from === from && item.to === to);
+    if (edge !== undefined) {
+      edges.push(edge);
+    }
+  }
+
+  return edges;
 }

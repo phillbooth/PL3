@@ -22,6 +22,7 @@ graph query, path and explain request contracts
 backend selection policy
 workspace package/doc scanner
 Markdown report and AI map rendering
+graph query, explain and path helpers
 ```
 
 ## Backend Role
@@ -85,6 +86,30 @@ build/graph/lo-project-graph.json
 build/graph/LO_GRAPH_REPORT.md
 build/graph/lo-ai-map.md
 build/graph/lo-project-graph.html
+```
+
+Run the current local CLI build from the repository root:
+
+```text
+node packages\lo-cli\dist\index.js graph --out build\graph
+```
+
+Once `lo-cli` is installed or linked, the intended shorthand is:
+
+```text
+lo graph --out build\graph
+```
+
+It can also query generated graph output:
+
+```text
+node packages\lo-cli\dist\index.js graph query lo-security --out build\graph
+node packages\lo-cli\dist\index.js graph explain package:lo-security --out build\graph
+node packages\lo-cli\dist\index.js graph path package:lo-project-graph report:project-graph --out build\graph
+
+lo graph query lo-security
+lo graph explain package:lo-security
+lo graph path package:lo-project-graph report:project-graph
 ```
 
 Final rule:

@@ -26,6 +26,39 @@ The repository contains:
 - Do not invent LO syntax without documenting it.
 - Update relevant docs when changing architecture, requirements, security, API or deployment behaviour.
 
+## Project Graph for AI Tools
+
+Use the generated project graph to understand package ownership, docs, reports
+and relationships before making broad architecture or package changes.
+
+Primary graph outputs:
+
+- `build/graph/lo-project-graph.json`
+- `build/graph/LO_GRAPH_REPORT.md`
+- `build/graph/lo-ai-map.md`
+- `build/graph/lo-project-graph.html`
+
+If `build/graph/lo-project-graph.json` is missing, or if the graph appears out
+of date after changes to `AGENTS.md`, `lo.workspace.json`, `docs/`, package
+READMEs, package TODOs, package manifests or package source contracts, run from
+the repository root:
+
+```powershell
+node packages\lo-cli\dist\index.js graph --out build\graph
+```
+
+Use graph query commands when package ownership or relationships are unclear:
+
+```powershell
+node packages\lo-cli\dist\index.js graph query lo-security --out build\graph
+node packages\lo-cli\dist\index.js graph explain package:lo-security --out build\graph
+node packages\lo-cli\dist\index.js graph path package:lo-project-graph report:project-graph --out build\graph
+```
+
+The project graph is advisory. It helps AI and humans navigate the repository,
+but it does not replace compiler checks, security rules, tests or package
+boundary instructions in this file.
+
 ## Coding Rules
 
 - Use strict typing.

@@ -3,8 +3,12 @@ import { join, relative, resolve } from "node:path";
 import {
   createDefaultProjectGraphOutputManifest,
   createWorkspaceProjectGraph,
+  explainProjectGraphNode,
+  findProjectGraphPath,
+  queryProjectGraph,
   renderProjectGraphAiMap,
   renderProjectGraphMarkdownReport,
+  type ProjectGraph,
   type ProjectGraphWorkspaceConfig,
   type ProjectGraphWorkspaceFile,
 } from "../../lo-project-graph/dist/index.js";
@@ -25,6 +29,20 @@ interface GraphOutputPaths {
 }
 
 export async function runGraphCommand(context: CliContext): Promise<CliResult> {
+  const subcommand = context.args[0];
+
+  if (subcommand === "query") {
+    return runGraphQueryCommand(context);
+  }
+
+  if (subcommand === "explain") {
+    return runGraphExplainCommand(context);
+  }
+
+  if (subcommand === "path") {
+    return runGraphPathCommand(context);
+  }
+
   const outputDirectory = resolveOutputDirectory(context);
   const workspacePath = join(context.cwd, "lo.workspace.json");
   const workspace = parseWorkspaceConfig(await readFile(workspacePath, "utf8"));
@@ -64,6 +82,115 @@ export async function runGraphCommand(context: CliContext): Promise<CliResult> {
       `Edges: ${graph.edges.length}`,
     ],
   };
+}
+
+async function runGraphQueryCommand(context: CliContext): Promise<CliResult> {
+  const query = positionalArgs(context.args.slice(1)).join(" ").trim();
+  const graph = await readGeneratedGraph(context);
+  const result = queryProjectGraph(graph, { query });
+
+  return {
+    ok: true,
+    code: 0,
+    message: `Project graph query: ${query}`,
+    details: [
+      `Nodes: ${result.nodes.length}`,
+      `Edges: ${result.edges.length}`,
+      ...result.nodes.slice(0, 20).map((node) => `${node.id} (${node.kind})`),
+    ],
+  };
+}
+
+async function runGraphExplainCommand(context: CliContext): Promise<CliResult> {
+  const nodeId = positionalArgs(context.args.slice(1)).join(" ").trim();
+  const graph = await readGeneratedGraph(context);
+  const result = explainProjectGraphNode(graph, { nodeId });
+
+  if (result.node === undefined) {
+    return {
+      ok: false,
+      code: 1,
+      message: result.diagnostics[0]?.message ?? "Project graph node not found.",
+    };
+  }
+
+  return {
+    ok: true,
+    code: 0,
+    message: `Project graph node: ${result.node.label}`,
+    details: [
+      `Id: ${result.node.id}`,
+      `Kind: ${result.node.kind}`,
+      `Source: ${result.node.sourcePath ?? "none"}`,
+      `Incoming: ${result.incoming.length}`,
+      `Outgoing: ${result.outgoing.length}`,
+      ...result.outgoing
+        .slice(0, 15)
+        .map((edge) => `${edge.kind} -> ${edge.to}`),
+    ],
+  };
+}
+
+async function runGraphPathCommand(context: CliContext): Promise<CliResult> {
+  const args = positionalArgs(context.args.slice(1));
+  const from = args[0] ?? "";
+  const to = args[1] ?? "";
+  const graph = await readGeneratedGraph(context);
+  const result = findProjectGraphPath(graph, { from, to });
+
+  if (!result.found) {
+    return {
+      ok: false,
+      code: 1,
+      message: result.diagnostics[0]?.message ?? "Project graph path not found.",
+    };
+  }
+
+  return {
+    ok: true,
+    code: 0,
+    message: `Project graph path: ${from} -> ${to}`,
+    details: result.edges.map((edge) => `${edge.from} --${edge.kind}--> ${edge.to}`),
+  };
+}
+
+async function readGeneratedGraph(context: CliContext): Promise<ProjectGraph> {
+  const graphFlagIndex = context.args.findIndex((arg) => arg === "--graph");
+  const graphFlagValue =
+    graphFlagIndex >= 0 ? context.args[graphFlagIndex + 1] : undefined;
+  const graphPath =
+    graphFlagValue === undefined
+      ? join(resolveOutputDirectory(context), "lo-project-graph.json")
+      : resolve(context.cwd, graphFlagValue);
+
+  try {
+    return JSON.parse(await readFile(graphPath, "utf8")) as ProjectGraph;
+  } catch {
+    throw new Error(
+      "Project graph not found. Run `node packages\\lo-cli\\dist\\index.js graph --out build\\graph` from the repository root first.",
+    );
+  }
+}
+
+function positionalArgs(args: readonly string[]): readonly string[] {
+  const output: string[] = [];
+
+  for (let index = 0; index < args.length; index += 1) {
+    const arg = args[index];
+    if (arg === undefined) {
+      continue;
+    }
+    if (arg === "--out" || arg === "--graph" || arg === "--env") {
+      index += 1;
+      continue;
+    }
+    if (arg.startsWith("--")) {
+      continue;
+    }
+    output.push(arg);
+  }
+
+  return output;
 }
 
 function resolveOutputDirectory(context: CliContext): string {
@@ -120,6 +247,7 @@ async function collectProjectGraphFiles(
   workspace: WorkspaceConfig,
 ): Promise<readonly ProjectGraphWorkspaceFile[]> {
   const roots = uniqueStrings([
+    "AGENTS.md",
     "README.md",
     "lo.workspace.json",
     "docs",

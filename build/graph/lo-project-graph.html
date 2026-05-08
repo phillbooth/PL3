@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>LO Project Graph</h1>
-<p>743 nodes, 1326 relationships.</p>
+<p>750 nodes, 1343 relationships.</p>
 <h2>Nodes</h2>
 <ul><li><strong>lo-core</strong> <span>Package</span></li>
 <li><strong>lo-compiler</strong> <span>Package</span></li>
@@ -33,6 +33,7 @@
 <li><strong>lo-tasks</strong> <span>Package</span></li>
 <li><strong>lo-project-graph</strong> <span>Package</span></li>
 <li><strong>app</strong> <span>Package</span></li>
+<li><strong>AGENTS.md</strong> <span>Document</span></li>
 <li><strong>README.md</strong> <span>Document</span></li>
 <li><strong>lo.workspace.json</strong> <span>Document</span></li>
 <li><strong>API.md</strong> <span>Document</span></li>
@@ -709,6 +710,9 @@
 <li><strong>ProjectGraphQueryRequest</strong> <span>Type</span></li>
 <li><strong>ProjectGraphPathRequest</strong> <span>Type</span></li>
 <li><strong>ProjectGraphExplainRequest</strong> <span>Type</span></li>
+<li><strong>ProjectGraphQueryResult</strong> <span>Type</span></li>
+<li><strong>ProjectGraphPathResult</strong> <span>Type</span></li>
+<li><strong>ProjectGraphExplainResult</strong> <span>Type</span></li>
 <li><strong>ProjectGraphReport</strong> <span>Type</span></li>
 <li><strong>DEFAULT_PROJECT_GRAPH_SCAN_POLICY</strong> <span>Type</span></li>
 <li><strong>DEFAULT_PROJECT_GRAPH_BACKEND_POLICY</strong> <span>Type</span></li>
@@ -717,6 +721,9 @@
 <li><strong>selectProjectGraphBackend</strong> <span>Flow</span></li>
 <li><strong>validateProjectGraphBackendReference</strong> <span>Flow</span></li>
 <li><strong>createProjectGraphReport</strong> <span>Flow</span></li>
+<li><strong>queryProjectGraph</strong> <span>Flow</span></li>
+<li><strong>explainProjectGraphNode</strong> <span>Flow</span></li>
+<li><strong>findProjectGraphPath</strong> <span>Flow</span></li>
 <li><strong>createWorkspaceProjectGraph</strong> <span>Flow</span></li>
 <li><strong>createDefaultProjectGraphOutputManifest</strong> <span>Flow</span></li>
 <li><strong>renderProjectGraphMarkdownReport</strong> <span>Flow</span></li>
@@ -753,7 +760,14 @@
 <li><strong>projectGraph</strong> <span>Document</span></li>
 <li><strong>LO Project Graph Report</strong> <span>Report</span></li></ul>
 <h2>Relationships</h2>
-<ul><li>doc:README.md <code>documents</code> package:lo-core</li>
+<ul><li>doc:AGENTS.md <code>documents</code> package:lo-core</li>
+<li>doc:AGENTS.md <code>documents</code> package:lo-security</li>
+<li>doc:AGENTS.md <code>documents</code> package:lo-ai</li>
+<li>doc:AGENTS.md <code>documents</code> package:lo-app-kernel</li>
+<li>doc:AGENTS.md <code>documents</code> package:lo-cli</li>
+<li>doc:AGENTS.md <code>documents</code> package:lo-project-graph</li>
+<li>doc:AGENTS.md <code>documents</code> package:app</li>
+<li>doc:README.md <code>documents</code> package:lo-core</li>
 <li>doc:README.md <code>documents</code> package:lo-compiler</li>
 <li>doc:README.md <code>documents</code> package:lo-runtime</li>
 <li>doc:README.md <code>documents</code> package:lo-security</li>
@@ -853,6 +867,7 @@
 <li>doc:docs/PROJECT_GRAPH.md <code>documents</code> package:lo-security</li>
 <li>doc:docs/PROJECT_GRAPH.md <code>documents</code> package:lo-ai</li>
 <li>doc:docs/PROJECT_GRAPH.md <code>documents</code> package:lo-api-server</li>
+<li>doc:docs/PROJECT_GRAPH.md <code>documents</code> package:lo-cli</li>
 <li>doc:docs/PROJECT_GRAPH.md <code>documents</code> package:lo-project-graph</li>
 <li>doc:docs/PROJECT_GRAPH.md <code>documents</code> package:app</li>
 <li>doc:docs/README.md <code>documents</code> package:lo-logic</li>
@@ -1244,14 +1259,6 @@
 <li>doc:packages/lo-core/docs/primary-lane-and-offload-nodes.md <code>documents</code> package:app</li>
 <li>package:lo-core <code>owns</code> doc:packages/lo-core/docs/pure-flow-caching.md</li>
 <li>package:lo-core <code>owns</code> doc:packages/lo-core/docs/ransomware-resistant-design.md</li>
-<li>doc:packages/lo-core/docs/ransomware-resistant-design.md <code>documents</code> package:app</li>
-<li>package:lo-core <code>owns</code> doc:packages/lo-core/docs/react-native-target.md</li>
-<li>doc:packages/lo-core/docs/react-native-target.md <code>documents</code> package:app</li>
-<li>package:lo-core <code>owns</code> doc:packages/lo-core/docs/README.md</li>
-<li>doc:packages/lo-core/docs/README.md <code>documents</code> package:lo-core</li>
-<li>doc:packages/lo-core/docs/README.md <code>documents</code> package:lo-compiler</li>
-<li>doc:packages/lo-core/docs/README.md <code>documents</code> package:lo-runtime</li>
-<li>doc:packages/lo-core/docs/README.md <code>documents</code> package:lo-security</li>
-<li>doc:packages/lo-core/docs/README.md <code>documents</code> package:lo-config</li></ul>
+<li>doc:packages/lo-core/docs/ransomware-resistant-design.md <code>documents</code> package:app</li></ul>
 </body>
 </html>

@@ -62,6 +62,7 @@
 - [x] Define `lo-project-graph` project knowledge graph contracts
 - [x] Define backend-neutral `lo-project-graph` backend policy contracts
 - [x] Add LO-native `lo-project-graph` workspace mapping support
+- [x] Add `lo graph` query, explain and path support
 
 ## Phase 7: Logic and Photonic Packages
 

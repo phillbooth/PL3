@@ -63,6 +63,27 @@ LO-app/
 `-- tools/
 ```
 
+## Project Graph
+
+AI assistants and developers can use the generated project graph to inspect
+package ownership and repository relationships:
+
+```text
+build/graph/lo-project-graph.json
+build/graph/LO_GRAPH_REPORT.md
+build/graph/lo-ai-map.md
+build/graph/lo-project-graph.html
+```
+
+If the graph is missing or out of date, regenerate it from the repository root:
+
+```powershell
+node packages\lo-cli\dist\index.js graph --out build\graph
+```
+
+The graph is navigation tooling only. It does not replace the compiler, tests,
+security checks or package boundary rules.
+
 ## Layering
 
 ```text

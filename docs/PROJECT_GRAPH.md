@@ -83,22 +83,43 @@ build/graph/lo-ai-map.md
 
 ## CLI Direction
 
-Current command:
+Run from the repository root:
+
+```powershell
+cd C:\laragon\www\LO
+node packages\lo-cli\dist\index.js graph --out build\graph
+```
+
+This writes the graph outputs under `build\graph`. Once `lo-cli` is linked or
+published, use the stable installed CLI form:
+
+```powershell
+lo graph --out build\graph
+```
+
+AI coding tools should consult `build\graph\lo-ai-map.md` or
+`build\graph\LO_GRAPH_REPORT.md` when package ownership is unclear. If
+`build\graph\lo-project-graph.json` is missing, or if changes were made to
+`AGENTS.md`, `lo.workspace.json`, `docs/`, package README/TODO files, package
+manifests or package source contracts, regenerate the graph before relying on
+it.
+
+Current commands:
 
 ```bash
 lo graph
 lo graph --out build/graph
-```
-
-Planned future query commands:
-
-```bash
-lo graph --html
-lo graph --json
-lo graph --report
 lo graph query "Which package owns SecureString?"
 lo graph explain lo-security
 lo graph path lo-api-server lo-security
+```
+
+Current local Node equivalents:
+
+```powershell
+node packages\lo-cli\dist\index.js graph query lo-security --out build\graph
+node packages\lo-cli\dist\index.js graph explain package:lo-security --out build\graph
+node packages\lo-cli\dist\index.js graph path package:lo-project-graph report:project-graph --out build\graph
 ```
 
 ## Safety Rules
@@ -140,6 +161,9 @@ package mentions in documentation
 
 This is intentionally lightweight and deterministic. Richer external tools can
 be added later as backend adapters without changing `lo graph`.
+
+The native helper also supports graph query, node explanation and path finding
+over generated graph JSON.
 
 ## Boundary
 

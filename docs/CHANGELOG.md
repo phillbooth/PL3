@@ -58,6 +58,10 @@ All notable changes to this app should be documented here.
 - Added a low-bit AI backend architecture note.
 - Added `packages/lo-project-graph/` for project knowledge graph contracts,
   graph scan policy, output manifests and AI assistant map support.
+- Added local `node packages\lo-cli\dist\index.js graph --out build\graph`
+  run instructions for project graph generation.
+- Added AI-facing instructions to consult and regenerate `build\graph` project
+  graph outputs when graph data is missing or stale.
 
 ### Changed
 
@@ -91,6 +95,8 @@ All notable changes to this app should be documented here.
 - Expanded `lo-project-graph` with a LO-native workspace scanner that maps
   packages, documents, exported TypeScript contracts, package references and
   generated graph report outputs.
+- Added graph query, explain and path helpers to `lo-project-graph` and exposed
+  them through `lo graph query`, `lo graph explain` and `lo graph path`.
 
 ### Removed
 

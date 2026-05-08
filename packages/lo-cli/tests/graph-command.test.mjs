@@ -30,6 +30,11 @@ describe("lo graph command", () => {
       )}\n`,
       "utf8",
     );
+    await writeFile(
+      join(cwd, "AGENTS.md"),
+      "# Agent Instructions\n\nUse build/graph before broad changes.\n",
+      "utf8",
+    );
 
     const result = await runCli(["graph", "--out", "graph-out"], cwd);
     const graph = JSON.parse(
@@ -48,11 +53,38 @@ describe("lo graph command", () => {
     assert.equal(result.ok, true);
     assert.equal(graph.nodes.some((node) => node.id === "package:lo-core"), true);
     assert.equal(
+      graph.nodes.some((node) => node.id === "doc:AGENTS.md"),
+      true,
+    );
+    assert.equal(
       graph.edges.some((edge) => edge.kind === "generates"),
       true,
     );
     assert.match(report, /LO Graph Report/);
     assert.match(aiMap, /LO AI Map/);
     assert.match(html, /LO Project Graph/);
+
+    const query = await runCli(["graph", "query", "lo-security", "--out", "graph-out"], cwd);
+    const explain = await runCli(
+      ["graph", "explain", "package:lo-security", "--out", "graph-out"],
+      cwd,
+    );
+    const path = await runCli(
+      [
+        "graph",
+        "path",
+        "package:lo-project-graph",
+        "report:project-graph",
+        "--out",
+        "graph-out",
+      ],
+      cwd,
+    );
+
+    assert.equal(query.ok, true);
+    assert.match(query.details?.join("\n") ?? "", /package:lo-security/);
+    assert.equal(explain.ok, true);
+    assert.match(explain.message, /lo-security/);
+    assert.equal(path.ok, true);
   });
 });

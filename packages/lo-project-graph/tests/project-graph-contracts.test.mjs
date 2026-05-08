@@ -5,11 +5,14 @@ import {
   createDocumentNode,
   createPackageNode,
   createWorkspaceProjectGraph,
+  explainProjectGraphNode,
+  findProjectGraphPath,
   createProjectGraphEdge,
   createProjectGraphReport,
   defineProjectGraphBackendPolicy,
   defineProjectGraphScanPolicy,
   selectProjectGraphBackend,
+  queryProjectGraph,
   validateProjectGraphBackendReference,
   validateProjectGraph,
 } from "../dist/index.js";
@@ -204,5 +207,21 @@ describe("lo-project-graph contracts", () => {
       true,
     );
     assert.equal(validateProjectGraph(workspaceGraph).length, 0);
+  });
+
+  it("queries, explains and finds paths through a graph", () => {
+    const query = queryProjectGraph(graph, { query: "SecureString" });
+    const explanation = explainProjectGraphNode(graph, {
+      nodeId: "package:lo-security",
+    });
+    const path = findProjectGraphPath(graph, {
+      from: "package:lo-security",
+      to: "type:SecureString",
+    });
+
+    assert.equal(query.nodes.some((node) => node.id === "type:SecureString"), true);
+    assert.equal(explanation.outgoing.length, 1);
+    assert.equal(path.found, true);
+    assert.equal(path.edges[0]?.kind, "provides");
   });
 });

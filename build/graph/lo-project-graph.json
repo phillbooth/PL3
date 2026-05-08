@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-08T19:48:13.532Z",
+  "generatedAt": "2026-05-08T20:01:27.602Z",
   "nodes": [
     {
       "id": "package:lo-core",
@@ -240,6 +240,15 @@
       "summary": "`packages/app` is the bespoke application package for this workspace.",
       "tags": [
         "package"
+      ]
+    },
+    {
+      "id": "doc:AGENTS.md",
+      "kind": "Document",
+      "label": "AGENTS.md",
+      "sourcePath": "AGENTS.md",
+      "tags": [
+        "document"
       ]
     },
     {
@@ -6982,6 +6991,36 @@
       ]
     },
     {
+      "id": "type:lo-project-graph:ProjectGraphQueryResult",
+      "kind": "Type",
+      "label": "ProjectGraphQueryResult",
+      "sourcePath": "packages/lo-project-graph/src/index.ts",
+      "tags": [
+        "type",
+        "lo-project-graph"
+      ]
+    },
+    {
+      "id": "type:lo-project-graph:ProjectGraphPathResult",
+      "kind": "Type",
+      "label": "ProjectGraphPathResult",
+      "sourcePath": "packages/lo-project-graph/src/index.ts",
+      "tags": [
+        "type",
+        "lo-project-graph"
+      ]
+    },
+    {
+      "id": "type:lo-project-graph:ProjectGraphExplainResult",
+      "kind": "Type",
+      "label": "ProjectGraphExplainResult",
+      "sourcePath": "packages/lo-project-graph/src/index.ts",
+      "tags": [
+        "type",
+        "lo-project-graph"
+      ]
+    },
+    {
       "id": "type:lo-project-graph:ProjectGraphReport",
       "kind": "Type",
       "label": "ProjectGraphReport",
@@ -7055,6 +7094,36 @@
       "id": "flow:lo-project-graph:createProjectGraphReport",
       "kind": "Flow",
       "label": "createProjectGraphReport",
+      "sourcePath": "packages/lo-project-graph/src/index.ts",
+      "tags": [
+        "function",
+        "lo-project-graph"
+      ]
+    },
+    {
+      "id": "flow:lo-project-graph:queryProjectGraph",
+      "kind": "Flow",
+      "label": "queryProjectGraph",
+      "sourcePath": "packages/lo-project-graph/src/index.ts",
+      "tags": [
+        "function",
+        "lo-project-graph"
+      ]
+    },
+    {
+      "id": "flow:lo-project-graph:explainProjectGraphNode",
+      "kind": "Flow",
+      "label": "explainProjectGraphNode",
+      "sourcePath": "packages/lo-project-graph/src/index.ts",
+      "tags": [
+        "function",
+        "lo-project-graph"
+      ]
+    },
+    {
+      "id": "flow:lo-project-graph:findProjectGraphPath",
+      "kind": "Flow",
+      "label": "findProjectGraphPath",
       "sourcePath": "packages/lo-project-graph/src/index.ts",
       "tags": [
         "function",
@@ -7413,6 +7482,55 @@
     }
   ],
   "edges": [
+    {
+      "from": "doc:AGENTS.md",
+      "to": "package:lo-core",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "AGENTS.md"
+    },
+    {
+      "from": "doc:AGENTS.md",
+      "to": "package:lo-security",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "AGENTS.md"
+    },
+    {
+      "from": "doc:AGENTS.md",
+      "to": "package:lo-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "AGENTS.md"
+    },
+    {
+      "from": "doc:AGENTS.md",
+      "to": "package:lo-app-kernel",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "AGENTS.md"
+    },
+    {
+      "from": "doc:AGENTS.md",
+      "to": "package:lo-cli",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "AGENTS.md"
+    },
+    {
+      "from": "doc:AGENTS.md",
+      "to": "package:lo-project-graph",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "AGENTS.md"
+    },
+    {
+      "from": "doc:AGENTS.md",
+      "to": "package:app",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "AGENTS.md"
+    },
     {
       "from": "doc:README.md",
       "to": "package:lo-core",
@@ -8109,6 +8227,13 @@
     {
       "from": "doc:docs/PROJECT_GRAPH.md",
       "to": "package:lo-api-server",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/PROJECT_GRAPH.md"
+    },
+    {
+      "from": "doc:docs/PROJECT_GRAPH.md",
+      "to": "package:lo-cli",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/PROJECT_GRAPH.md"
@@ -15941,6 +16066,20 @@
     },
     {
       "from": "doc:packages/lo-cli/README.md",
+      "to": "package:lo-security",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-cli/README.md"
+    },
+    {
+      "from": "doc:packages/lo-cli/README.md",
+      "to": "package:lo-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-cli/README.md"
+    },
+    {
+      "from": "doc:packages/lo-cli/README.md",
       "to": "package:lo-cli",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -16326,6 +16465,13 @@
     },
     {
       "from": "doc:packages/lo-project-graph/README.md",
+      "to": "package:lo-cli",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-project-graph/README.md"
+    },
+    {
+      "from": "doc:packages/lo-project-graph/README.md",
       "to": "package:lo-project-graph",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -16522,6 +16668,27 @@
     },
     {
       "from": "package:lo-project-graph",
+      "to": "type:lo-project-graph:ProjectGraphQueryResult",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-project-graph/src/index.ts"
+    },
+    {
+      "from": "package:lo-project-graph",
+      "to": "type:lo-project-graph:ProjectGraphPathResult",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-project-graph/src/index.ts"
+    },
+    {
+      "from": "package:lo-project-graph",
+      "to": "type:lo-project-graph:ProjectGraphExplainResult",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-project-graph/src/index.ts"
+    },
+    {
+      "from": "package:lo-project-graph",
       "to": "type:lo-project-graph:ProjectGraphReport",
       "kind": "provides",
       "confidence": "EXTRACTED",
@@ -16572,6 +16739,27 @@
     {
       "from": "package:lo-project-graph",
       "to": "flow:lo-project-graph:createProjectGraphReport",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-project-graph/src/index.ts"
+    },
+    {
+      "from": "package:lo-project-graph",
+      "to": "flow:lo-project-graph:queryProjectGraph",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-project-graph/src/index.ts"
+    },
+    {
+      "from": "package:lo-project-graph",
+      "to": "flow:lo-project-graph:explainProjectGraphNode",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-project-graph/src/index.ts"
+    },
+    {
+      "from": "package:lo-project-graph",
+      "to": "flow:lo-project-graph:findProjectGraphPath",
       "kind": "provides",
       "confidence": "EXTRACTED",
       "evidencePath": "packages/lo-project-graph/src/index.ts"
