@@ -7,7 +7,7 @@
 - [x] Add LO logic, compute type and secure runtime future-support proposal
 - [x] Add `packages/lo-api-server/` HTTP API serving package documentation
 - [x] Complete `docs/REQUIREMENTS.md`
-- [ ] Complete `docs/DESIGN.md`
+- [x] Complete `docs/DESIGN.md`
 - [ ] Complete `docs/ARCHITECTURE.md`
 - [ ] Complete `docs/SECURITY.md`
 

@@ -76,6 +76,9 @@ All notable changes to this app should be documented here.
   task automation.
 - Reworked `docs/REQUIREMENTS.md` from app placeholders into complete
   template, package boundary, tooling, security and success requirements.
+- Reworked `docs/DESIGN.md` from generic UI placeholders into a template and
+  developer-experience design guide for docs, tooling, reports and future app
+  UX boundaries.
 
 ### Changed
 

@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-08T20:30:48.516Z",
+  "generatedAt": "2026-05-08T20:33:51.013Z",
   "nodes": [
     {
       "id": "package:lo-core",
@@ -8205,6 +8205,55 @@
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/DEPLOYMENT.md"
+    },
+    {
+      "from": "doc:docs/DESIGN.md",
+      "to": "package:lo-core",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/DESIGN.md"
+    },
+    {
+      "from": "doc:docs/DESIGN.md",
+      "to": "package:lo-security",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/DESIGN.md"
+    },
+    {
+      "from": "doc:docs/DESIGN.md",
+      "to": "package:lo-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/DESIGN.md"
+    },
+    {
+      "from": "doc:docs/DESIGN.md",
+      "to": "package:lo-app-kernel",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/DESIGN.md"
+    },
+    {
+      "from": "doc:docs/DESIGN.md",
+      "to": "package:lo-cli",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/DESIGN.md"
+    },
+    {
+      "from": "doc:docs/DESIGN.md",
+      "to": "package:lo-tasks",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/DESIGN.md"
+    },
+    {
+      "from": "doc:docs/DESIGN.md",
+      "to": "package:lo-project-graph",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/DESIGN.md"
     },
     {
       "from": "doc:docs/DESIGN.md",
