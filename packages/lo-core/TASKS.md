@@ -218,7 +218,7 @@ Application boundary enforcement -> packages/lo-app-kernel/TODO.md
 [x] Create docs/json-native-design.md
 [x] Create docs/api-native-design.md
 [x] Create docs/webhooks.md
-[ ] Create docs/concurrency.md
+[x] Create docs/concurrency.md
 [ ] Create docs/compute-blocks.md as language syntax and compiler contract reference
 [ ] Create docs/gpu-target.md as target declaration/report contract reference
 [ ] Create docs/photonic-target.md as target declaration/report contract reference
