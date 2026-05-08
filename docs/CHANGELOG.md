@@ -80,6 +80,8 @@ All notable changes to this app should be documented here.
   generation and querying.
 - Implemented the initial `lo graph` command to generate project graph JSON and
   a Markdown graph report from `lo.workspace.json`.
+- Clarified that project graph syntax and CLI commands are backend-neutral, with
+  Graphify treated as an optional swappable backend rather than LO syntax.
 
 ### Removed
 

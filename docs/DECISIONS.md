@@ -64,3 +64,36 @@ dedicated packages.
 Compute policies may select `low_bit_ai` or `ternary_ai` as AI inference
 fallbacks and must report the selected backend. AI output remains untrusted by
 default and cannot directly authorize high-impact actions.
+
+---
+
+### Keep Project Graph Backends Swappable
+
+**Date:** 2026-05-08
+
+**Status:** Accepted
+
+**Context:**
+
+Graphify-style tooling can help LO generate project knowledge graphs from code,
+docs and other project material. However, Graphify is an implementation choice
+that may be replaced by another graph tool or LO-native scanner later.
+
+**Decision:**
+
+LO will expose generic project graph commands and contracts such as `lo graph`,
+graph nodes, graph edges, graph reports and graph backend policy. Graphify may
+be used as an optional backend, including from a pinned Git package, but it must
+not become LO syntax or a required CLI command.
+
+**Reason:**
+
+This keeps LO project graph output stable while allowing the underlying graph
+backend to change. It also prevents AI/tooling support from becoming a compiler
+or runtime authority.
+
+**Consequences:**
+
+Project graph backends must be selected by policy. Git-sourced backends must be
+explicitly allowed and pinned. Model-assisted extraction remains opt-in and
+reported.

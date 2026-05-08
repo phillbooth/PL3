@@ -2,10 +2,10 @@
 
 ## Summary
 
-LO should support Graphify-style project maps as optional developer tooling.
-The goal is to help humans and AI assistants understand package ownership,
-documentation links, policies, reports and design decisions without treating
-the graph as a compiler or runtime authority.
+LO should support project maps as optional developer tooling. The goal is to
+help humans and AI assistants understand package ownership, documentation
+links, policies, reports and design decisions without treating the graph as a
+compiler or runtime authority.
 
 Primary references:
 
@@ -36,6 +36,39 @@ SecurityRule
 ComputeFeature
 Decision
 ```
+
+## Backend-Neutral Rule
+
+Do not make developers write Graphify-specific LO syntax or commands. Keep the
+stable surface generic:
+
+```bash
+lo graph
+lo graph --out build/graph
+lo graph query "Which package owns SecureString?"
+```
+
+Backend selection belongs in policy/configuration:
+
+```text
+project_graph {
+  backend auto
+  allow ["lo_native", "graphify", "future_standard"]
+}
+```
+
+This lets LO use:
+
+```text
+lo_native today
+graphify as an optional pinned Git backend
+another graph backend later
+```
+
+without changing LO source, CLI commands or generated graph file names.
+
+If a backend is loaded from Git, it must be explicitly allowed and pinned to a
+commit, tag or versioned ref. Model-assisted extraction remains opt-in.
 
 ## Outputs
 

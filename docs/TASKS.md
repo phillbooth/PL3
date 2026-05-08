@@ -60,6 +60,7 @@
 - [ ] Add CLI and task runner tests
 - [ ] Add report generation for CLI and task runs
 - [x] Define `lo-project-graph` project knowledge graph contracts
+- [x] Define backend-neutral `lo-project-graph` backend policy contracts
 
 ## Phase 7: Logic and Photonic Packages
 

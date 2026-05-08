@@ -142,6 +142,12 @@ Describe the problem this app solves.
   it must not replace compiler checks, runtime policy enforcement or security
   reports.
 - Project graph scans must redact secrets by default.
+- Project graph syntax and CLI commands must stay backend-neutral; `lo graph`
+  must not become `lo graphify`.
+- Graphify or any future graph tool must be represented as a swappable backend
+  selected by policy, not as LO language syntax.
+- Git-sourced project graph backends must be explicitly allowed and pinned to a
+  commit, tag or versioned ref.
 - Model-assisted extraction for documents, PDFs, images, audio or video must be
   opt-in and reported.
 - Project graph outputs should include JSON, human-readable report and AI map

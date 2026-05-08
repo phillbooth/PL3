@@ -32,6 +32,32 @@ export type ProjectGraphConfidence = "EXTRACTED" | "INFERRED" | "AMBIGUOUS";
 
 export type ProjectGraphDiagnosticSeverity = "warning" | "error";
 
+export type ProjectGraphBackendId =
+  | "lo_native"
+  | "graphify"
+  | "static_analyser"
+  | "docs_indexer"
+  | "future_standard"
+  | "plan_only";
+
+export type ProjectGraphBackendSourceKind =
+  | "built-in"
+  | "git"
+  | "local-package"
+  | "npm"
+  | "external-command"
+  | "plan-only";
+
+export type ProjectGraphBackendCapability =
+  | "workspace-metadata"
+  | "static-analysis"
+  | "semantic-extraction"
+  | "json-output"
+  | "html-output"
+  | "report-output"
+  | "media-extraction"
+  | "model-assisted-extraction";
+
 export interface ProjectGraphDiagnostic {
   readonly code: string;
   readonly severity: ProjectGraphDiagnosticSeverity;
@@ -84,6 +110,33 @@ export interface ProjectGraphScanPolicy {
   readonly commitGeneratedGraph: boolean;
 }
 
+export interface ProjectGraphBackendPolicy {
+  readonly preferred: readonly ProjectGraphBackendId[];
+  readonly allowGitBackends: boolean;
+  readonly requirePinnedGitRef: boolean;
+  readonly allowModelExtractionBackends: boolean;
+}
+
+export interface ProjectGraphBackendReference {
+  readonly id: ProjectGraphBackendId;
+  readonly label: string;
+  readonly source: ProjectGraphBackendSourceKind;
+  readonly packageName?: string;
+  readonly gitUrl?: string;
+  readonly gitRef?: string;
+  readonly command?: string;
+  readonly version?: string;
+  readonly capabilities: readonly ProjectGraphBackendCapability[];
+}
+
+export interface ProjectGraphBackendSelection {
+  readonly requested: ProjectGraphBackendId | "auto";
+  readonly selected: ProjectGraphBackendId;
+  readonly source: ProjectGraphBackendSourceKind;
+  readonly fallback: boolean;
+  readonly reason: string;
+}
+
 export interface ProjectGraphOutputManifest {
   readonly jsonPath: string;
   readonly htmlPath?: string;
@@ -95,6 +148,8 @@ export interface ProjectGraphOutputManifest {
 export interface ProjectGraphBuildPlan {
   readonly root: string;
   readonly policy: ProjectGraphScanPolicy;
+  readonly backendPolicy?: ProjectGraphBackendPolicy;
+  readonly backend?: ProjectGraphBackendSelection;
   readonly output: ProjectGraphOutputManifest;
 }
 
@@ -117,6 +172,7 @@ export interface ProjectGraphExplainRequest {
 export interface ProjectGraphReport {
   readonly graph: ProjectGraph;
   readonly manifest: ProjectGraphOutputManifest;
+  readonly backend?: ProjectGraphBackendSelection;
   readonly diagnostics: readonly ProjectGraphDiagnostic[];
   readonly warnings: readonly string[];
 }
@@ -128,6 +184,13 @@ export const DEFAULT_PROJECT_GRAPH_SCAN_POLICY: ProjectGraphScanPolicy = {
   allowModelExtraction: false,
   redactSecrets: true,
   commitGeneratedGraph: false,
+};
+
+export const DEFAULT_PROJECT_GRAPH_BACKEND_POLICY: ProjectGraphBackendPolicy = {
+  preferred: ["lo_native", "graphify", "future_standard"],
+  allowGitBackends: false,
+  requirePinnedGitRef: true,
+  allowModelExtractionBackends: false,
 };
 
 export function defineProjectGraphScanPolicy(
@@ -148,15 +211,119 @@ export function defineProjectGraphScanPolicy(
   };
 }
 
+export function defineProjectGraphBackendPolicy(
+  policy: Partial<ProjectGraphBackendPolicy> = {},
+): ProjectGraphBackendPolicy {
+  return {
+    preferred: policy.preferred ?? DEFAULT_PROJECT_GRAPH_BACKEND_POLICY.preferred,
+    allowGitBackends:
+      policy.allowGitBackends ??
+      DEFAULT_PROJECT_GRAPH_BACKEND_POLICY.allowGitBackends,
+    requirePinnedGitRef:
+      policy.requirePinnedGitRef ??
+      DEFAULT_PROJECT_GRAPH_BACKEND_POLICY.requirePinnedGitRef,
+    allowModelExtractionBackends:
+      policy.allowModelExtractionBackends ??
+      DEFAULT_PROJECT_GRAPH_BACKEND_POLICY.allowModelExtractionBackends,
+  };
+}
+
+export function selectProjectGraphBackend(
+  adapters: readonly ProjectGraphBackendReference[],
+  policy: ProjectGraphBackendPolicy = DEFAULT_PROJECT_GRAPH_BACKEND_POLICY,
+  requested: ProjectGraphBackendId | "auto" = "auto",
+): ProjectGraphBackendSelection {
+  const preference =
+    requested === "auto" ? policy.preferred : [requested, ...policy.preferred];
+
+  for (const backendId of preference) {
+    const adapter = adapters.find((item) => item.id === backendId);
+
+    if (adapter !== undefined) {
+      return {
+        requested,
+        selected: adapter.id,
+        source: adapter.source,
+        fallback: requested !== "auto" && adapter.id !== requested,
+        reason: "Project graph backend is available in preference order.",
+      };
+    }
+  }
+
+  return {
+    requested,
+    selected: "plan_only",
+    source: "plan-only",
+    fallback: true,
+    reason: "No requested project graph backend is available.",
+  };
+}
+
+export function validateProjectGraphBackendReference(
+  backend: ProjectGraphBackendReference,
+  policy: ProjectGraphBackendPolicy = DEFAULT_PROJECT_GRAPH_BACKEND_POLICY,
+): readonly ProjectGraphDiagnostic[] {
+  const diagnostics: ProjectGraphDiagnostic[] = [];
+
+  if (backend.label.trim().length === 0) {
+    diagnostics.push({
+      code: "LO_PROJECT_GRAPH_BACKEND_LABEL_REQUIRED",
+      severity: "error",
+      message: "Project graph backend requires a label.",
+      path: "backend.label",
+    });
+  }
+
+  if (backend.source === "git" && !policy.allowGitBackends) {
+    diagnostics.push({
+      code: "LO_PROJECT_GRAPH_GIT_BACKEND_NOT_ALLOWED",
+      severity: "error",
+      message:
+        "Git project graph backends must be explicitly allowed by backend policy.",
+      path: "backend.source",
+    });
+  }
+
+  if (
+    backend.source === "git" &&
+    policy.requirePinnedGitRef &&
+    (backend.gitRef === undefined || backend.gitRef.trim().length === 0)
+  ) {
+    diagnostics.push({
+      code: "LO_PROJECT_GRAPH_GIT_BACKEND_REF_REQUIRED",
+      severity: "error",
+      message: "Git project graph backends require a pinned git ref.",
+      path: "backend.gitRef",
+    });
+  }
+
+  if (
+    backend.capabilities.includes("model-assisted-extraction") &&
+    !policy.allowModelExtractionBackends
+  ) {
+    diagnostics.push({
+      code: "LO_PROJECT_GRAPH_MODEL_BACKEND_NOT_ALLOWED",
+      severity: "error",
+      message:
+        "Model-assisted project graph backends must be explicitly allowed by backend policy.",
+      path: "backend.capabilities",
+    });
+  }
+
+  return diagnostics;
+}
+
 export function createProjectGraphReport(
   graph: ProjectGraph,
   manifest: ProjectGraphOutputManifest,
+  backend?: ProjectGraphBackendSelection,
 ): ProjectGraphReport {
   const diagnostics = validateProjectGraph(graph);
 
   return {
     graph,
     manifest,
+    ...(backend === undefined ? {} : { backend }),
     diagnostics,
     warnings: diagnostics
       .filter((diagnostic) => diagnostic.severity === "warning")
