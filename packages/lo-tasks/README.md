@@ -43,6 +43,47 @@ openapi.generate()
 tests.run()
 ```
 
+## Task Files
+
+The first supported task file shape is `tasks.lo`:
+
+```lo
+task generateReports {
+  description "Generate local reports"
+  effects [filesystem, reports]
+
+  permissions {
+    write "./build/reports"
+  }
+}
+
+task buildApi {
+  depends [generateReports]
+  effects [filesystem, compiler, reports]
+
+  permissions {
+    read "./src"
+    write "./build"
+  }
+}
+```
+
+The loader supports:
+
+```text
+task name blocks
+description strings
+depends lists
+effects lists
+permissions blocks
+unsafe markers with reason strings
+timeout / timeoutMs values
+```
+
+Dependency resolution is deterministic and rejects missing or circular task
+dependencies before execution. Current execution can dry-run task plans and
+perform permission checks; built-in operation execution is still future work.
+
 ## Unsafe Shell
 
 Raw shell is disabled by default. If added later, it must require an `unsafe`

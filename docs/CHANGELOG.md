@@ -62,6 +62,10 @@ All notable changes to this app should be documented here.
   run instructions for project graph generation.
 - Added AI-facing instructions to consult and regenerate `build\graph` project
   graph outputs when graph data is missing or stale.
+- Added `lo task` CLI integration for loading `tasks.lo`, listing tasks,
+  resolving dependency order and running dry-run task plans.
+- Added `lo-tasks` task file parsing, dependency resolution, cycle detection
+  and tests.
 
 ### Changed
 

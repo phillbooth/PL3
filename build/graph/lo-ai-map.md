@@ -279,17 +279,17 @@ Safe typed task runner for LO project automation.
 
 Provides:
 - checkTaskPermissions
+- TaskDependencyPlan
+- resolveTaskDependencies
 - DryRunPlan
 - createDryRunPlan
 - dryRunTask
 - LoadedTasks
+- parseTasksSource
+- readFile
 - RunTaskOptions
 - TaskReport
 - createTaskReport
-- TaskEffect
-- TaskPermission
-- TaskDefinition
-- TaskStatus
 
 ## lo-project-graph
 

@@ -80,6 +80,23 @@ lo graph explain package:lo-security
 lo graph path package:lo-project-graph report:project-graph
 ```
 
+## Task Command
+
+`lo task` loads safe project automation from `tasks.lo` in the repository root,
+or from a file passed with `--file`.
+
+Examples:
+
+```text
+lo task
+lo task buildApi --dry-run
+lo task generateReports --file packages/lo-tasks/examples/tasks.lo --dry-run
+```
+
+Current task execution supports loading task definitions, listing tasks,
+resolving dependency order, rejecting missing or circular dependencies and
+running dry-run plans. Built-in operation execution remains in `lo-tasks`.
+
 ## Security Rules
 
 CLI output is safe by default. It must redact `SecureString` values, bearer

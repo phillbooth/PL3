@@ -55,9 +55,10 @@
 ## Phase 6: Tooling Packages
 
 - [ ] Implement `lo-cli` command integrations
-- [ ] Implement `lo-tasks` task file loading
-- [ ] Implement `lo-tasks` dependency graph and cycle detection
-- [ ] Add CLI and task runner tests
+- [x] Add `lo task` CLI integration with `lo-tasks`
+- [x] Implement `lo-tasks` task file loading
+- [x] Implement `lo-tasks` dependency graph and cycle detection
+- [x] Add CLI and task runner tests
 - [ ] Add report generation for CLI and task runs
 - [x] Define `lo-project-graph` project knowledge graph contracts
 - [x] Define backend-neutral `lo-project-graph` backend policy contracts

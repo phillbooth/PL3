@@ -17,7 +17,7 @@
 [ ] Add lo reports command integration
 [ ] Add lo security:check command integration
 [ ] Add lo routes command integration
-[ ] Add lo task command integration with lo-tasks
+[x] Add lo task command integration with lo-tasks
 [ ] Add environment mode config loading
 [ ] Add structured CLI errors
 [ ] Add report summary output

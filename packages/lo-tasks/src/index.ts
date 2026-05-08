@@ -1,8 +1,12 @@
 export { checkTaskPermissions } from "./check-permissions.js";
+export { resolveTaskDependencies } from "./dependency-graph.js";
 export { createDryRunPlan, dryRunTask } from "./dry-run.js";
-export { loadTasks } from "./load-tasks.js";
+export { loadTasks, parseTasksSource } from "./load-tasks.js";
 export { runTask } from "./run-task.js";
 export { createTaskReport } from "./task-report.js";
+export type {
+  TaskDependencyPlan
+} from "./dependency-graph.js";
 export type {
   LoadedTasks
 } from "./load-tasks.js";

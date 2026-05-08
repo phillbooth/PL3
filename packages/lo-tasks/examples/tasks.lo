@@ -13,6 +13,7 @@ task generateReports {
 }
 
 task buildApi {
+  depends [generateReports]
   effects [filesystem, compiler, reports]
 
   permissions {

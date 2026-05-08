@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-08T20:01:27.602Z",
+  "generatedAt": "2026-05-08T20:07:17.616Z",
   "nodes": [
     {
       "id": "package:lo-core",
@@ -6541,6 +6541,26 @@
       ]
     },
     {
+      "id": "type:lo-tasks:TaskDependencyPlan",
+      "kind": "Type",
+      "label": "TaskDependencyPlan",
+      "sourcePath": "packages/lo-tasks/src/dependency-graph.ts",
+      "tags": [
+        "type",
+        "lo-tasks"
+      ]
+    },
+    {
+      "id": "flow:lo-tasks:resolveTaskDependencies",
+      "kind": "Flow",
+      "label": "resolveTaskDependencies",
+      "sourcePath": "packages/lo-tasks/src/dependency-graph.ts",
+      "tags": [
+        "function",
+        "lo-tasks"
+      ]
+    },
+    {
       "id": "type:lo-tasks:DryRunPlan",
       "kind": "Type",
       "label": "DryRunPlan",
@@ -6577,6 +6597,26 @@
       "sourcePath": "packages/lo-tasks/src/load-tasks.ts",
       "tags": [
         "type",
+        "lo-tasks"
+      ]
+    },
+    {
+      "id": "flow:lo-tasks:parseTasksSource",
+      "kind": "Flow",
+      "label": "parseTasksSource",
+      "sourcePath": "packages/lo-tasks/src/load-tasks.ts",
+      "tags": [
+        "function",
+        "lo-tasks"
+      ]
+    },
+    {
+      "id": "flow:lo-tasks:readFile",
+      "kind": "Flow",
+      "label": "readFile",
+      "sourcePath": "packages/lo-tasks/src/node-globals.d.ts",
+      "tags": [
+        "function",
         "lo-tasks"
       ]
     },
@@ -16087,6 +16127,13 @@
     },
     {
       "from": "doc:packages/lo-cli/README.md",
+      "to": "package:lo-tasks",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-cli/README.md"
+    },
+    {
+      "from": "doc:packages/lo-cli/README.md",
       "to": "package:lo-project-graph",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -16297,6 +16344,20 @@
     },
     {
       "from": "package:lo-tasks",
+      "to": "type:lo-tasks:TaskDependencyPlan",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-tasks/src/dependency-graph.ts"
+    },
+    {
+      "from": "package:lo-tasks",
+      "to": "flow:lo-tasks:resolveTaskDependencies",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-tasks/src/dependency-graph.ts"
+    },
+    {
+      "from": "package:lo-tasks",
       "to": "type:lo-tasks:DryRunPlan",
       "kind": "provides",
       "confidence": "EXTRACTED",
@@ -16322,6 +16383,20 @@
       "kind": "provides",
       "confidence": "EXTRACTED",
       "evidencePath": "packages/lo-tasks/src/load-tasks.ts"
+    },
+    {
+      "from": "package:lo-tasks",
+      "to": "flow:lo-tasks:parseTasksSource",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-tasks/src/load-tasks.ts"
+    },
+    {
+      "from": "package:lo-tasks",
+      "to": "flow:lo-tasks:readFile",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-tasks/src/node-globals.d.ts"
     },
     {
       "from": "package:lo-tasks",

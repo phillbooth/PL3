@@ -1,5 +1,6 @@
 import type { CliCommand, CliContext, CliResult } from "./types.js";
 import { runGraphCommand } from "./graph-command.js";
+import { runTaskCommand } from "./task-command.js";
 
 function notImplemented(command: string): CliResult {
   return {
@@ -25,7 +26,11 @@ export const commands: readonly CliCommand[] = [
   createPlaceholderCommand("reports", "Generate or display reports."),
   createPlaceholderCommand("security:check", "Check security rules and unsafe features."),
   createPlaceholderCommand("routes", "List declared API routes."),
-  createPlaceholderCommand("task", "Run a safe task through lo-tasks."),
+  {
+    name: "task",
+    description: "Run a safe task through lo-tasks.",
+    run: runTaskCommand
+  },
   {
     name: "graph",
     description: "Generate or query the LO project graph.",

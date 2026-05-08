@@ -15,12 +15,12 @@
 [x] Add task report type
 [x] Add unsafe shell placeholder
 [x] Deny shell by default
-[ ] Load tasks.lo
+[x] Load tasks.lo
 [ ] Run named task operations
-[ ] Support task dependencies
-[ ] Detect circular dependencies
+[x] Support task dependencies
+[x] Detect circular dependencies
 [ ] Add filesystem permissions
 [ ] Add environment permissions
 [ ] Write task-report.json output
-[ ] Add tests
+[x] Add tests
 ```
