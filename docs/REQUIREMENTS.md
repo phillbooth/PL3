@@ -1,48 +1,85 @@
 # Requirements
 
-## App Summary
+## Scope
 
-Describe the application here.
+This repository is a LO application template and package workspace. It does not
+yet define one specific product domain. Requirements in this file describe what
+the template, package boundaries and developer tooling must provide so a
+bespoke application can be built on top of LO safely.
 
-## Problem
+Product-specific requirements belong in this file once an app domain is chosen.
+Until then, `packages/app/` remains a minimal app area and feature placeholders
+must not be treated as implemented app functionality.
 
-Describe the problem this app solves.
+## Template Goals
+
+- Provide a clear workspace for LO language, compiler/runtime contracts,
+  security primitives, tooling packages and bespoke app code.
+- Keep language documentation in `packages/lo-core/` and app/workspace
+  documentation in `docs/`.
+- Support CPU-compatible checked execution and deterministic reports as the
+  practical baseline.
+- Keep GPU, photonic, low-bit AI and other accelerator support optional and
+  backend-neutral.
+- Give AI coding tools enough generated context to understand package ownership
+  without replacing compiler, runtime, security or test checks.
+- Provide safe task automation with explicit effects, permissions and reports.
 
 ## Users
 
 | User Type | Description |
 |---|---|
-| User | Standard application user |
-| Admin | Manages application data and settings |
+| App developer | Builds bespoke application source in `packages/app/` using LO packages. |
+| Package maintainer | Evolves reusable LO package contracts under `packages/`. |
+| Security reviewer | Reviews policy, secret handling, reports and package boundaries. |
+| AI coding assistant | Uses `AGENTS.md` and `build/graph` to navigate the project safely. |
+| Future app user | End user of the bespoke app once a product domain is defined. |
+| Future app admin | Operational/admin user once a product domain is defined. |
 
-## Core Requirements
+## Core Workspace Requirements
 
-- [ ] Requirement 1
-- [ ] Requirement 2
-- [ ] Requirement 3
+- The root README must introduce LO, the workspace layout, current tooling and
+  package boundaries.
+- `AGENTS.md` must tell AI tools how to use the project graph and where package
+  responsibilities live.
+- `lo.workspace.json` must identify the package paths and documentation roots
+  used by tooling.
+- Generated project graph outputs must be refreshable from the repository root.
+- The workspace must keep generated compiler output out of Git unless a file is
+  intentionally committed as an example or report artefact.
+- The workspace must keep secrets out of source control.
+- Package READMEs and TODOs must describe package responsibility and remaining
+  implementation work.
 
-## User Features
+## App Requirements
 
-- [ ] Users can...
-- [ ] Users can...
-- [ ] Users can...
+The app package must remain deliberately small until a product domain is chosen.
 
-## Admin Features
-
-- [ ] Admins can...
-- [ ] Admins can...
-- [ ] Admins can...
+- Bespoke app source must live in `packages/app/`.
+- App routes, modules, tests and app configuration must stay in `packages/app/`
+  or app-specific docs.
+- App-specific requirements must be added to this document before implementing
+  product features.
+- App source must use explicit validation, explicit error handling and safe
+  configuration references.
+- App features must not be implemented inside `packages/lo-core/`.
+- App features must not turn `packages/lo-app-kernel/` into a full framework,
+  CMS, admin dashboard, ORM or frontend framework.
 
 ## Non-Functional Requirements
 
-- The app must be secure.
-- The app must validate input.
-- The app must handle errors safely.
-- The app must not expose secrets.
-- The app must be maintainable.
-- The app must be documented.
+- The template must be secure by default.
+- The template must validate external input at typed boundaries.
+- Errors must be explicit and safely reportable.
+- CLI and task output must redact secrets, bearer tokens, cookies, private keys
+  and `SecureString` values.
+- Runtime configuration must stay separate from compiled output.
+- Build and report artefacts must identify selected targets and fallback
+  reasons where relevant.
+- Documentation must be updated when architecture, requirements, security, API,
+  deployment or package behavior changes.
 
-## Workspace Requirements
+## Workspace Package Requirements
 
 - The LO language core must live in `packages/lo-core/`.
 - Compiler pipeline contracts must live in `packages/lo-compiler/`.
@@ -50,8 +87,8 @@ Describe the problem this app solves.
 - Shared security primitives must live in `packages/lo-security/`.
 - Project configuration contracts must live in `packages/lo-config/`.
 - Shared report contracts must live in `packages/lo-reports/`.
-- LO multi-state logic concepts such as `Tri`, `Logic<N>` and future Omni
-  logic must live in `packages/lo-logic/`.
+- LO multi-state logic concepts such as `Tri`, `Logic<N>` and future Omni logic
+  must live in `packages/lo-logic/`.
 - LO vector value, lane and operation concepts must live in
   `packages/lo-vector/`.
 - LO compute planning, capability, budget and target selection concepts must
@@ -82,8 +119,8 @@ Describe the problem this app solves.
   `packages/lo-app-kernel/`.
 - Current development may use one root Git repository while package boundaries
   are still being shaped.
-- Later, `packages/` may become its own Git repository so the LO packages can
-  be imported into different frameworks.
+- Later, `packages/` may become its own Git repository so the LO packages can be
+  imported into different frameworks.
 - If `packages/` has its own `.git`, it must be added intentionally as a
   submodule or standalone nested repository, and the framework root must treat
   it as an external dependency.
@@ -100,8 +137,8 @@ Describe the problem this app solves.
   storage backends and identity providers.
 - The kernel must not include CMS features, admin dashboards, page builders,
   mandatory ORM design, mandatory template engines or frontend framework syntax.
-- The kernel package must support a non-compiled checked Run Mode smoke test
-  for validating simple `.lo` execution during framework development.
+- The kernel package must support a non-compiled checked Run Mode smoke test for
+  validating simple `.lo` execution during framework development.
 
 ## API Server Requirements
 
@@ -124,8 +161,15 @@ Describe the problem this app solves.
   serving, reporting, route inspection, security checks and task execution.
 - `lo-cli` may coordinate `lo-core`, future compiler/runtime packages,
   `lo-api-server` and `lo-tasks`, but must not contain application behaviour.
+- `lo graph` must generate project graph JSON, Markdown report, AI map and HTML
+  outputs.
+- `lo task` must load task files, list tasks, resolve dependencies, detect
+  cycles, support dry-run planning and write task reports.
 - `lo-tasks` must provide safe, typed project automation with declared effects
   and permissions.
+- `lo-tasks` must validate filesystem permissions as safe repository-relative
+  paths.
+- `lo-tasks` must validate environment permissions as explicit variable names.
 - `lo-tasks` must deny raw shell execution by default.
 - Unsafe shell support, if added later, must be explicit, permissioned,
   timeout-limited, reported and redacted.
@@ -167,17 +211,17 @@ Describe the problem this app solves.
   representations, but it must not own the logic semantics.
 - `lo-vector` must own vector values, dimensions, lanes, vector operation rules
   and vector reports.
-- `lo-compute` must own compute planning, capability, budget, offload and
-  target selection concepts.
-- `lo-ai` must own generic AI inference contracts, prompt/response shapes,
-  model capability metadata, memory estimates, safety policy and AI reports.
+- `lo-compute` must own compute planning, capability, budget, offload and target
+  selection concepts.
+- `lo-ai` must own generic AI inference contracts, prompt/response shapes, model
+  capability metadata, memory estimates, safety policy and AI reports.
 - `lo-lowbit-ai` must own low-bit and ternary model references, GGUF metadata,
-  quantization declarations, backend selection, CPU inference limits and
-  low-bit AI inference reports.
+  quantization declarations, backend selection, CPU inference limits and low-bit
+  AI inference reports.
 - `lo-target-binary` must own binary/native target planning and artefact
   metadata.
-- `lo-target-cpu` must own CPU capability, feature, thread, memory and
-  fallback planning contracts.
+- `lo-target-cpu` must own CPU capability, feature, thread, memory and fallback
+  planning contracts.
 - `lo-cpu-kernels` must own CPU kernel contracts for GEMM, GEMV, vector dot
   products, matrix multiplication, low-bit operations, ternary operations,
   tiling and threading plans.
@@ -204,8 +248,8 @@ Describe the problem this app solves.
 - `lo-config` must represent environment variables as safe references by name
   and metadata; it must not expose secret values in diagnostics or runtime
   handoff objects.
-- `lo-config` must provide production strictness checks for strict project
-  mode, required environment variables and unsafe secret defaults.
+- `lo-config` must provide production strictness checks for strict project mode,
+  required environment variables and unsafe secret defaults.
 - `lo-reports` must own shared report schemas and report-writing contracts.
 - Shared report contracts must include common metadata, generator metadata,
   diagnostic summaries and typed build, security, target, runtime, task and AI
@@ -240,13 +284,20 @@ Describe the problem this app solves.
 
 ## Out of Scope
 
-- Item 1
-- Item 2
-- Item 3
+- Product-specific app features before a product domain is selected.
+- Full-framework behavior inside `lo-core` or `lo-app-kernel`.
+- Mandatory ORM, CMS, admin UI, template engine or frontend framework design.
+- Treating project graph output as a security or compiler authority.
+- Treating BitNet, Graphify or any named backend as LO language syntax.
+- Requiring future hardware for the baseline LO developer workflow.
 
 ## Success Criteria
 
-- [ ] The app meets the core requirements.
-- [ ] The app can be tested.
-- [ ] The app can be deployed.
-- [ ] The app handles errors safely.
+- The root README and package docs explain the workspace clearly.
+- Package boundaries are explicit and enforced through documentation and tests
+  where code exists.
+- Project graph outputs can be regenerated and used by AI tools.
+- `lo task` can load, validate, dry-run and report safe task plans.
+- Secrets are never committed or emitted in reports.
+- A future app can add domain requirements without moving language or framework
+  responsibilities into the wrong package.

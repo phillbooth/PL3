@@ -6,7 +6,7 @@
 - [x] Split partial framework guidance into `packages/lo-app-kernel/`
 - [x] Add LO logic, compute type and secure runtime future-support proposal
 - [x] Add `packages/lo-api-server/` HTTP API serving package documentation
-- [ ] Complete `docs/REQUIREMENTS.md`
+- [x] Complete `docs/REQUIREMENTS.md`
 - [ ] Complete `docs/DESIGN.md`
 - [ ] Complete `docs/ARCHITECTURE.md`
 - [ ] Complete `docs/SECURITY.md`

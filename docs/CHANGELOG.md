@@ -74,6 +74,8 @@ All notable changes to this app should be documented here.
 - Expanded the root `README.md` into a full workspace introduction covering LO
   status, core goals, package boundaries, current tooling, project graph and
   task automation.
+- Reworked `docs/REQUIREMENTS.md` from app placeholders into complete
+  template, package boundary, tooling, security and success requirements.
 
 ### Changed
 
