@@ -113,6 +113,8 @@ Example:
   by sibling package TODOs.
 - Added `docs/concurrency.md` as the LO core structured concurrency syntax,
   compiler-check and report-contract reference.
+- Added `docs/compute-blocks.md` as the LO core compute block syntax,
+  compiler-check and report-contract reference.
 - Added docs/javascript-typescript-framework-targets.md plus matching docs/sytax/ and docs/sytax-examples/ entries for JavaScript, TypeScript, Node, WASM, worker and React/Angular adapter target planning.
 - Added docs/device-capability-boundaries.md plus matching docs/sytax/ and docs/sytax-examples/ entries for phone/device capability boundaries, permissions, streams, buffers, compute targets, FFI and reports.
 - Added docs/text-ai-package-boundaries-and-compute-auto.md plus matching docs/sytax/ and docs/sytax-examples/ entries for text AI package/provider boundaries, token policy, prompt safety, redaction, generated text safety and compute-auto reporting.
