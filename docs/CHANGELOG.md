@@ -45,6 +45,9 @@ All notable changes to this app should be documented here.
 - Added `lo-reports` shared report metadata, diagnostic summaries, build,
   security, target, runtime, task and AI guide report contracts with examples
   and tests.
+- Added `lo-security` SecureString references, redaction helpers, permission
+  decisions, safe token/cookie/header references, crypto policy validation,
+  security reports, examples and tests.
 - Added `packages/lo-ai/` for generic AI inference contracts, safety policy and
   AI inference reports.
 - Added `packages/lo-lowbit-ai/` for low-bit and ternary AI inference contracts,

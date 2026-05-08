@@ -19,6 +19,7 @@ security diagnostics
 security report contracts
 safe token/cookie/header handling helpers
 cryptographic policy types
+security report creation
 ```
 
 ## Boundary
@@ -33,6 +34,29 @@ HTTP header parsing     -> lo-api-server
 task permission checks  -> lo-tasks
 compiler security rules -> lo-core / lo-compiler
 ```
+
+## Contracts
+
+The package defines:
+
+```text
+SecureStringReference
+RedactionRule
+RedactionResult
+PermissionModel
+PermissionDecision
+SafeTokenReference
+SafeCookieReference
+SafeHeaderReference
+CryptographicPolicy
+SecurityDiagnostic
+SecurityReport
+```
+
+Use `SecureStringReference` and safe token/cookie/header helpers to represent
+sensitive values without storing the real value in source-controlled reports.
+Use redaction helpers before writing diagnostics, logs or report text that may
+include secrets.
 
 Final rule:
 

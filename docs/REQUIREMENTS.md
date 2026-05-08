@@ -192,6 +192,10 @@ Describe the problem this app solves.
 - `lo-runtime` must own execution contracts for checked and compiled LO code.
 - `lo-security` must own reusable security primitives, redaction rules,
   permission models, security diagnostics and security report contracts.
+- Security primitives must represent sensitive values as redacted references in
+  reports and diagnostics, not as raw secret values.
+- Security helpers must provide reusable redaction, safe token/cookie/header
+  references, permission decisions and cryptographic policy validation.
 - `lo-config` must own project config, environment mode and policy loading
   contracts.
 - `lo-config` must represent environment variables as safe references by name
