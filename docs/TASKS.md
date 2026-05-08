@@ -28,6 +28,10 @@
 
 - [x] Add app-kernel hello-world checked Run Mode test
 - [x] Add app-kernel vector, sum, decimal and JSON checked Run Mode fixtures
+- [x] Add package scaffolds for `lo-cli`, `lo-tasks`, `lo-logic` and
+  `lo-photonic`
+- [x] Add package scaffolds for `lo-vector`, `lo-compute`,
+  `lo-target-binary` and `lo-target-photonic`
 - [ ] Add unit tests
 - [ ] Add integration tests
 - [ ] Add manual test checklist
@@ -40,3 +44,32 @@
 - [ ] Build the app
 - [ ] Deploy to staging
 - [ ] Deploy to production
+
+## Phase 6: Tooling Packages
+
+- [ ] Implement `lo-cli` command integrations
+- [ ] Implement `lo-tasks` task file loading
+- [ ] Implement `lo-tasks` dependency graph and cycle detection
+- [ ] Add CLI and task runner tests
+- [ ] Add report generation for CLI and task runs
+
+## Phase 7: Logic and Photonic Packages
+
+- [ ] Define `lo-logic` syntax and reports for `Tri`, `Logic<N>` and Omni
+- [ ] Define `lo-photonic` wavelength, phase and amplitude model
+- [ ] Define photonic mappings from `lo-logic`
+- [ ] Add examples and tests for logic and photonic package boundaries
+- [ ] Define `lo-vector` vector value and operation rules
+- [ ] Define `lo-compute` compute planning and target selection rules
+- [ ] Define `lo-target-binary` binary/native target plans
+- [ ] Define `lo-target-photonic` photonic backend target plans
+
+## Phase 8: Repository Split
+
+- [ ] Decide when `packages/` is stable enough to become a reusable package
+  repository
+- [ ] Split `packages/` into its own Git repository
+- [ ] Mount `packages/` in framework repositories as a submodule or explicit
+  nested repository
+- [ ] Document package import workflow for different frameworks
+- [ ] Add release/versioning rules for reusable LO packages

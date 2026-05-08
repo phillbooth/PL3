@@ -4,23 +4,67 @@
 
 This workspace separates the LO language core from the bespoke app that uses it.
 Language documentation, compiler notes, examples and schemas live in
-`packages/lo-core/`. The optional Secure App Kernel design lives in
-`packages/lo-app-kernel/`. The built-in HTTP API server package lives in
-`packages/lo-api-server/`. App source and build configuration live in
+`packages/lo-core/`. Multi-state logic concepts live in `packages/lo-logic/`.
+Vector concepts live in `packages/lo-vector/`. Compute planning concepts live in
+`packages/lo-compute/`. Photonic and wavelength concepts live in
+`packages/lo-photonic/`. Binary/native target planning lives in
+`packages/lo-target-binary/`, and photonic target backend planning lives in
+`packages/lo-target-photonic/`. The
+optional Secure App Kernel design lives in `packages/lo-app-kernel/`. The
+built-in HTTP API server package lives in `packages/lo-api-server/`. Developer command
+tooling lives in `packages/lo-cli/`, and safe project automation lives in
+`packages/lo-tasks/`. App source and build configuration live in
 `packages/app/`. App planning and operational documentation live in `docs/`.
 
 ## Main Structure
+
+Current single-repository structure:
 
 ```text
 LO-app/
 |-- docs/
 |-- packages/
 |   |-- lo-core/
+|   |-- lo-logic/
+|   |-- lo-vector/
+|   |-- lo-compute/
+|   |-- lo-photonic/
+|   |-- lo-target-binary/
+|   |-- lo-target-photonic/
 |   |-- lo-app-kernel/
 |   |-- lo-api-server/
+|   |-- lo-cli/
+|   |-- lo-tasks/
 |   `-- app/
 `-- tools/
 ```
+
+Future split-repository structure:
+
+```text
+light-framework/
+|-- .git
+|-- packages/
+|   |-- .git
+|   |-- lo-core/
+|   |-- lo-logic/
+|   |-- lo-vector/
+|   |-- lo-compute/
+|   |-- lo-photonic/
+|   |-- lo-target-binary/
+|   |-- lo-target-photonic/
+|   |-- lo-app-kernel/
+|   |-- lo-api-server/
+|   |-- lo-cli/
+|   `-- lo-tasks/
+|-- app/
+`-- framework files
+```
+
+In the future structure, `packages/` is a reusable LO package repository that
+can be imported by multiple frameworks. It should be mounted intentionally, for
+example as a Git submodule or standalone nested repository. The framework root
+remains its own repository.
 
 ## Package Layers
 
@@ -28,11 +72,38 @@ LO-app/
 LO Core
   language/compiler/type system/effects/memory/compute
 
+LO Logic
+  Tri, Logic<N>, Decision, RiskLevel, Omni logic and multi-state truth tables
+
+LO Vector
+  vector values, dimensions, lanes, operations and vector reports
+
+LO Compute
+  compute planning, capabilities, budgets, effects and target selection
+
+LO Photonic
+  wavelength, phase, amplitude, optical channels and logic-to-light mapping
+
+LO Target Binary
+  binary/native target planning, platform triples, ABI constraints and artefacts
+
+LO Target Photonic
+  photonic backend target plans that use lo-photonic concepts
+
 LO Secure App Kernel
   request lifecycle, validation, security, auth, rate limits, jobs and reports
 
+LO Runtime
+  future execution engine for compiled or checked LO code
+
 LO API Server
   HTTP listening, request normalisation, route manifest loading, safe responses
+
+LO CLI
+  developer commands for check, build, run, serve, reports, routes and tasks
+
+LO Tasks
+  safe typed project automation with declared effects and permissions
 
 LO Standard Packages
   HTTP adapters, SQL adapters, Redis queue, OpenAPI generator, JS/WASM generators
@@ -49,6 +120,44 @@ style framework.
 serves HTTP, loads route manifests, applies server-level limits and passes
 normalised requests into `lo-app-kernel`. It must not own auth decisions,
 business logic, ORM design, CMS features or frontend rendering.
+
+`lo-cli` is the developer command tool. It coordinates compiler, runtime, API
+server and task packages, but it must not own application behaviour.
+
+`lo-tasks` is the safe automation layer. It runs typed tasks with declared
+effects and permissions. Raw shell is disabled by default and should only exist
+later as explicit unsafe compatibility.
+
+`lo-logic` owns logic semantics such as `Tri`, `Logic<N>` and Omni. `lo-photonic`
+owns photonic representation and target planning. Photonic mappings may consume
+logic states, but logic semantics stay in `lo-logic`.
+
+`lo-vector` owns vector values and vector operation concepts. `lo-compute` owns
+compute planning and target selection. `lo-target-binary` and
+`lo-target-photonic` own target-specific planning for binary/native and
+photonic backends.
+
+`lo-app-kernel` should not be renamed to `lo-runtime`. A future `lo-runtime`
+package should execute compiled or checked LO code. The app kernel should
+remain the secure application/API boundary that controls validation, auth,
+idempotency, limits, jobs and runtime reports.
+
+## Repository Boundaries
+
+The current template keeps all files in one root Git repository while the
+package boundaries are still being shaped.
+
+Later, split reusable LO packages into their own `packages/` repository:
+
+```text
+light-framework/.git
+light-framework/packages/.git
+```
+
+This is appropriate when the same packages need to be imported into different
+framework repositories. At that point, the root framework repository should
+treat `packages/` as an external dependency, not as ordinary tracked child
+files.
 
 ## Checked Run Smoke Tests
 

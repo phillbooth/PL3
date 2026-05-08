@@ -45,13 +45,33 @@ Describe the problem this app solves.
 ## Workspace Requirements
 
 - The LO language core must live in `packages/lo-core/`.
+- LO multi-state logic concepts such as `Tri`, `Logic<N>` and future Omni
+  logic must live in `packages/lo-logic/`.
+- LO vector value, lane and operation concepts must live in
+  `packages/lo-vector/`.
+- LO compute planning, capability, budget and target selection concepts must
+  live in `packages/lo-compute/`.
+- Photonic and wavelength hardware concepts must live in
+  `packages/lo-photonic/`.
+- Binary/native target planning must live in `packages/lo-target-binary/`.
+- Photonic backend target planning must live in
+  `packages/lo-target-photonic/`.
 - The optional LO Secure App Kernel must live in `packages/lo-app-kernel/`.
 - The built-in LO HTTP API server must live in `packages/lo-api-server/`.
+- The LO developer CLI must live in `packages/lo-cli/`.
+- Safe LO project automation must live in `packages/lo-tasks/`.
 - Bespoke app source must live in `packages/app/`.
 - App documentation must live in `docs/`.
 - Language documentation must stay within `packages/lo-core/`.
 - Full framework features must stay outside `packages/lo-core/` and
   `packages/lo-app-kernel/`.
+- Current development may use one root Git repository while package boundaries
+  are still being shaped.
+- Later, `packages/` may become its own Git repository so the LO packages can
+  be imported into different frameworks.
+- If `packages/` has its own `.git`, it must be added intentionally as a
+  submodule or standalone nested repository, and the framework root must treat
+  it as an external dependency.
 
 ## Secure App Kernel Requirements
 
@@ -82,6 +102,45 @@ Describe the problem this app solves.
   values from logs and reports.
 - Bespoke frameworks may either use `lo-api-server` or call `lo-app-kernel`
   directly from their own HTTP layer.
+
+## CLI and Task Requirements
+
+- `lo-cli` must provide developer commands for checking, building, running,
+  serving, reporting, route inspection, security checks and task execution.
+- `lo-cli` may coordinate `lo-core`, future compiler/runtime packages,
+  `lo-api-server` and `lo-tasks`, but must not contain application behaviour.
+- `lo-tasks` must provide safe, typed project automation with declared effects
+  and permissions.
+- `lo-tasks` must deny raw shell execution by default.
+- Unsafe shell support, if added later, must be explicit, permissioned,
+  timeout-limited, reported and redacted.
+- Both packages must redact secrets, bearer tokens, cookies, `SecureString`
+  values and private key material from output and reports.
+
+## Logic and Photonic Package Requirements
+
+- `lo-logic` must own `Tri`, `Logic<N>`, future Omni logic, multi-state truth
+  tables, conversion rules and logic reports.
+- `lo-photonic` must own wavelength, phase, amplitude, optical signal, optical
+  channel, photonic simulation and photonic target planning concepts.
+- `lo-photonic` may map logic states from `lo-logic` to photonic
+  representations, but it must not own the logic semantics.
+- `lo-vector` must own vector values, dimensions, lanes, vector operation rules
+  and vector reports.
+- `lo-compute` must own compute planning, capability, budget, offload and
+  target selection concepts.
+- `lo-target-binary` must own binary/native target planning and artefact
+  metadata.
+- `lo-target-photonic` must own photonic backend target planning and may use
+  `lo-photonic` concepts.
+
+## Runtime Naming Requirement
+
+- `lo-app-kernel` must remain the secure application boundary package.
+- A future `lo-runtime` package, if added, should be the LO execution engine for
+  compiled or checked LO code.
+- `lo-app-kernel` must not be renamed to `lo-runtime`, because API policy and
+  code execution are separate responsibilities.
 
 ## Out of Scope
 

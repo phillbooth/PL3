@@ -2,10 +2,19 @@
 
 This repository is a starter template for building a bespoke application using LO.
 
-The project is split into three main areas:
+The project is split into package areas:
 
 - `packages/lo-core/` - the LO language package, compiler rules, syntax notes and examples.
+- `packages/lo-logic/` - LO multi-state logic concepts such as `Tri`, `Logic<N>` and future Omni logic.
+- `packages/lo-vector/` - vector value, vector operation and vector report concepts.
+- `packages/lo-compute/` - compute planning concepts shared across CPU, WASM, vector and hardware targets.
+- `packages/lo-photonic/` - photonic and wavelength hardware concepts and mappings.
+- `packages/lo-target-binary/` - binary/native target planning and artefact metadata.
+- `packages/lo-target-photonic/` - photonic target backend planning that uses `lo-photonic`.
 - `packages/lo-app-kernel/` - the optional secure runtime foundation for typed APIs, validation, auth, workload controls, jobs and reports.
+- `packages/lo-api-server/` - the built-in HTTP API serving package for LO App Kernel.
+- `packages/lo-cli/` - developer command tooling for checking, building, serving, reporting and task execution.
+- `packages/lo-tasks/` - safe typed project automation and task execution.
 - `packages/app/` - the bespoke application built with LO.
 - `docs/` - app-specific planning, requirements, architecture and deployment notes.
 
@@ -16,7 +25,16 @@ LO-app/
 |-- docs/
 |-- packages/
 |   |-- lo-core/
+|   |-- lo-logic/
+|   |-- lo-vector/
+|   |-- lo-compute/
+|   |-- lo-photonic/
+|   |-- lo-target-binary/
+|   |-- lo-target-photonic/
 |   |-- lo-app-kernel/
+|   |-- lo-api-server/
+|   |-- lo-cli/
+|   |-- lo-tasks/
 |   `-- app/
 `-- tools/
 ```
@@ -27,12 +45,63 @@ LO-app/
 LO Core
   language, compiler, type system, effects, memory safety, compute planning
 
+LO Logic
+  Tri, Logic<N>, Decision, RiskLevel, Omni logic and multi-state truth tables
+
+LO Vector
+  vector values, dimensions, lanes, operations and vector reports
+
+LO Compute
+  compute planning, capabilities, effects, budgets and target selection
+
+LO Photonic
+  wavelength, phase, amplitude, optical channels and photonic target mapping
+
+LO Target Packages
+  binary/native target planning and photonic backend planning
+
 LO Standard Library
   Json, Xml, SafeHtml, File, Stream, Request, Response, DateTime, Money, SecureString
 
 LO Secure App Kernel
   optional runtime layer for APIs, routing, validation, auth, rate limits, jobs and reports
 
+LO Runtime
+  future execution engine for compiled or checked LO code, separate from the app kernel
+
 Full Frameworks
   CMS, admin UI, UI systems, templates, ORM, page builders and frontend adapters
 ```
+
+## Git Layout
+
+Current development uses one Git repository at the framework root:
+
+```text
+E:/projects/LO/.git
+```
+
+The intended future split is:
+
+```text
+light-framework/
+|-- .git
+|-- packages/
+|   `-- .git
+`-- app/framework files
+```
+
+Use that layout only when `packages/` becomes a reusable package collection that
+is imported by different frameworks.
+
+Recommended implementation:
+
+```text
+light-framework/.git
+packages/.git
+```
+
+with `packages/` added to the framework as an intentional Git submodule or
+standalone nested repository. Do not create `packages/.git` accidentally inside
+the current app template, because the parent repository will not track package
+contents in the normal way once `packages/` is its own repository.

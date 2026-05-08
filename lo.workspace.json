@@ -4,22 +4,49 @@
     "description": "A clean LO app workspace template.",
     "packages": [
         "packages/lo-core",
+        "packages/lo-logic",
+        "packages/lo-vector",
+        "packages/lo-compute",
+        "packages/lo-photonic",
+        "packages/lo-target-binary",
+        "packages/lo-target-photonic",
         "packages/lo-app-kernel",
+        "packages/lo-api-server",
+        "packages/lo-cli",
+        "packages/lo-tasks",
         "packages/app"
     ],
     "defaultPackage": "packages/app",
     "languagePackage": "packages/lo-core",
+    "logicPackage": "packages/lo-logic",
+    "vectorPackage": "packages/lo-vector",
+    "computePackage": "packages/lo-compute",
+    "photonicPackage": "packages/lo-photonic",
+    "binaryTargetPackage": "packages/lo-target-binary",
+    "photonicTargetPackage": "packages/lo-target-photonic",
     "runtimeKernelPackage": "packages/lo-app-kernel",
+    "apiServerPackage": "packages/lo-api-server",
+    "cliPackage": "packages/lo-cli",
+    "tasksPackage": "packages/lo-tasks",
     "strict": true,
     "targets": [
         "cpu",
         "wasm",
-        "ternary-sim"
+        "binary",
+        "ternary-sim",
+        "photonic-sim"
     ],
     "docs": {
         "app": "docs",
         "language": "packages/lo-core",
-        "runtimeKernel": "packages/lo-app-kernel"
+        "logic": "packages/lo-logic",
+        "vector": "packages/lo-vector",
+        "compute": "packages/lo-compute",
+        "photonic": "packages/lo-photonic",
+        "targetBinary": "packages/lo-target-binary",
+        "targetPhotonic": "packages/lo-target-photonic",
+        "runtimeKernel": "packages/lo-app-kernel",
+        "cliAndTasks": "packages/lo-cli-and-lo-tasks-requirements.md"
     },
     "tools": {
         "root": "tools"
