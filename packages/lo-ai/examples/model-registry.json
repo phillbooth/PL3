@@ -1,0 +1,36 @@
+{
+  "models": [
+    {
+      "id": "local.bitnet.assistant",
+      "approved": true,
+      "tags": ["local", "cpu-fallback", "summarisation"],
+      "descriptor": {
+        "name": "LocalBitNetAssistant",
+        "format": "gguf",
+        "source": "local-file",
+        "capabilities": [
+          {
+            "task": "summarisation",
+            "maxContextTokens": 2048,
+            "maxOutputTokens": 256,
+            "supportsStreaming": true,
+            "supportedTargets": ["cpu.bitnet", "cpu.generic"]
+          }
+        ],
+        "memoryEstimate": {
+          "modelBytes": 3000000000,
+          "contextBytes": 512000000,
+          "workingBytes": 256000000,
+          "totalBytes": 3768000000
+        },
+        "safetyPolicy": {
+          "outputTrust": "untrusted",
+          "allowSecurityDecisions": false,
+          "requireHumanReviewForHighImpact": true,
+          "redactSecretsFromPrompts": true,
+          "logPrompts": false
+        }
+      }
+    }
+  ]
+}

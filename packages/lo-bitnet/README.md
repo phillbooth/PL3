@@ -43,6 +43,12 @@ model weights; LO `Tri` and `Logic<N>` belong in `lo-logic`.
 implementations. Those belong in `lo-ai`, `lo-target-cpu` and
 `lo-cpu-kernels`.
 
+## Contracts
+
+The package includes typed contracts for GGUF BitNet model references, runtime
+adapter compatibility, CPU inference limits, benchmark samples, validation
+diagnostics and inference reports.
+
 Final rule:
 
 ```text

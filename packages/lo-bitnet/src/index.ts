@@ -21,6 +21,15 @@ export interface BitNetDiagnostic {
   readonly path?: string;
 }
 
+export interface BitNetRuntimeAdapter {
+  readonly name: string;
+  readonly kind: BitNetRuntimeKind;
+  readonly version?: string;
+  readonly supportedQuantizations: readonly BitNetQuantization[];
+  readonly supportedEmbeddingQuantizations: readonly BitNetEmbeddingQuantization[];
+  readonly supportedKernelFamilies: readonly BitNetKernelFamily[];
+}
+
 export interface BitNetModelReference {
   readonly name: string;
   readonly path: string;
@@ -32,6 +41,12 @@ export interface BitNetModelReference {
   readonly maxContextTokens: number;
   readonly maxOutputTokens: number;
   readonly memoryEstimateBytes: number;
+}
+
+export interface BitNetGgufValidationResult {
+  readonly model: BitNetModelReference;
+  readonly valid: boolean;
+  readonly diagnostics: readonly BitNetDiagnostic[];
 }
 
 export interface BitNetCpuRuntimeLimits {
@@ -62,6 +77,21 @@ export interface BitNetInferenceReport {
   readonly diagnostics: readonly BitNetDiagnostic[];
 }
 
+export interface BitNetBenchmarkSample {
+  readonly modelName: string;
+  readonly runtime: BitNetRuntimeKind;
+  readonly threads: number;
+  readonly promptTokens: number;
+  readonly outputTokens: number;
+  readonly tokensPerSecond: number;
+  readonly memoryBytes: number;
+}
+
+export interface BitNetBenchmarkReport {
+  readonly samples: readonly BitNetBenchmarkSample[];
+  readonly diagnostics: readonly BitNetDiagnostic[];
+}
+
 export function createBitNetCpuInferencePlan(
   model: BitNetModelReference,
   limits: BitNetCpuRuntimeLimits,
@@ -83,10 +113,120 @@ export function createBitNetCpuInferencePlan(
   };
 }
 
+export function createBitNetInferenceReport(
+  plan: BitNetCpuInferencePlan,
+): BitNetInferenceReport {
+  const diagnostics = validateBitNetCpuInferencePlan(plan);
+
+  return {
+    modelName: plan.model.name,
+    selectedTarget: "cpu.bitnet",
+    runtime: plan.runtime,
+    quantization: plan.model.quantization,
+    embeddingQuantization: plan.model.embeddingQuantization,
+    threads: plan.limits.threads,
+    fallback: plan.fallbackReason !== undefined,
+    diagnostics,
+  };
+}
+
+export function validateBitNetGgufModel(
+  model: BitNetModelReference,
+): BitNetGgufValidationResult {
+  const diagnostics: BitNetDiagnostic[] = [];
+
+  if (!model.path.toLowerCase().endsWith(".gguf")) {
+    diagnostics.push({
+      code: "LO_BITNET_GGUF_EXTENSION_REQUIRED",
+      severity: "error",
+      message: "BitNet model path must reference a GGUF file.",
+      path: "model.path",
+    });
+  }
+
+  if (model.weightSet !== "ternary-b1.58") {
+    diagnostics.push({
+      code: "LO_BITNET_WEIGHT_SET_UNSUPPORTED",
+      severity: "error",
+      message: "BitNet model must declare ternary-b1.58 weights.",
+      path: "model.weightSet",
+    });
+  }
+
+  if (model.maxContextTokens <= 0) {
+    diagnostics.push({
+      code: "LO_BITNET_CONTEXT_TOKENS_REQUIRED",
+      severity: "error",
+      message: "BitNet model requires a positive max context token limit.",
+      path: "model.maxContextTokens",
+    });
+  }
+
+  if (model.memoryEstimateBytes <= 0) {
+    diagnostics.push({
+      code: "LO_BITNET_MEMORY_ESTIMATE_REQUIRED",
+      severity: "error",
+      message: "BitNet model requires a positive memory estimate.",
+      path: "model.memoryEstimateBytes",
+    });
+  }
+
+  return {
+    model,
+    valid: diagnostics.every((diagnostic) => diagnostic.severity !== "error"),
+    diagnostics,
+  };
+}
+
+export function validateBitNetRuntimeAdapter(
+  adapter: BitNetRuntimeAdapter,
+  plan: BitNetCpuInferencePlan,
+): readonly BitNetDiagnostic[] {
+  const diagnostics: BitNetDiagnostic[] = [];
+
+  if (!adapter.supportedQuantizations.includes(plan.model.quantization)) {
+    diagnostics.push({
+      code: "LO_BITNET_RUNTIME_QUANTIZATION_UNSUPPORTED",
+      severity: "error",
+      message: "BitNet runtime adapter does not support the model quantization.",
+      path: "runtime.supportedQuantizations",
+    });
+  }
+
+  if (
+    !adapter.supportedEmbeddingQuantizations.includes(
+      plan.model.embeddingQuantization,
+    )
+  ) {
+    diagnostics.push({
+      code: "LO_BITNET_RUNTIME_EMBEDDING_QUANTIZATION_UNSUPPORTED",
+      severity: "error",
+      message:
+        "BitNet runtime adapter does not support the embedding quantization.",
+      path: "runtime.supportedEmbeddingQuantizations",
+    });
+  }
+
+  if (
+    plan.kernelFamily !== "auto" &&
+    !adapter.supportedKernelFamilies.includes(plan.kernelFamily)
+  ) {
+    diagnostics.push({
+      code: "LO_BITNET_RUNTIME_KERNEL_UNSUPPORTED",
+      severity: "error",
+      message: "BitNet runtime adapter does not support the requested kernel.",
+      path: "runtime.supportedKernelFamilies",
+    });
+  }
+
+  return diagnostics;
+}
+
 export function validateBitNetCpuInferencePlan(
   plan: BitNetCpuInferencePlan,
 ): readonly BitNetDiagnostic[] {
   const diagnostics: BitNetDiagnostic[] = [];
+  diagnostics.push(...validateBitNetGgufModel(plan.model).diagnostics);
 
   if (plan.model.path.trim().length === 0) {
     diagnostics.push({
@@ -140,6 +280,15 @@ export function validateBitNetCpuInferencePlan(
       message:
         "BitNet model output capacity is higher than the runtime output limit.",
       path: "model.maxOutputTokens",
+    });
+  }
+
+  if (plan.limits.maxPromptTokens > plan.model.maxContextTokens) {
+    diagnostics.push({
+      code: "LO_BITNET_PROMPT_LIMIT_EXCEEDS_CONTEXT",
+      severity: "error",
+      message: "BitNet prompt token limit exceeds the model context window.",
+      path: "limits.maxPromptTokens",
     });
   }
 

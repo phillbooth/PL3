@@ -58,6 +58,24 @@ export interface AiModelDescriptor {
   readonly safetyPolicy: AiSafetyPolicy;
 }
 
+export interface AiModelRegistryEntry {
+  readonly id: string;
+  readonly descriptor: AiModelDescriptor;
+  readonly approved: boolean;
+  readonly tags: readonly string[];
+}
+
+export interface AiModelRegistry {
+  readonly models: readonly AiModelRegistryEntry[];
+}
+
+export interface AiTargetSelection {
+  readonly selectedTarget: AiInferenceTarget;
+  readonly fallbackUsed: boolean;
+  readonly reason: string;
+  readonly diagnostics: readonly AiDiagnostic[];
+}
+
 export interface AiPrompt {
   readonly input: string;
   readonly system?: string;
@@ -113,6 +131,19 @@ export const DEFAULT_AI_SAFETY_POLICY: AiSafetyPolicy = {
   logPrompts: false,
 };
 
+export function defineAiModelRegistry(
+  models: readonly AiModelRegistryEntry[],
+): AiModelRegistry {
+  return { models };
+}
+
+export function findAiModel(
+  registry: AiModelRegistry,
+  id: string,
+): AiModelRegistryEntry | undefined {
+  return registry.models.find((entry) => entry.id === id);
+}
+
 export function defineAiSafetyPolicy(
   policy: Partial<AiSafetyPolicy> = {},
 ): AiSafetyPolicy {
@@ -131,10 +162,81 @@ export function defineAiSafetyPolicy(
   };
 }
 
+export function selectAiInferenceTarget(
+  request: AiInferenceRequest,
+): AiTargetSelection {
+  const capability = request.model.capabilities.find(
+    (item) => item.task === request.task,
+  );
+
+  if (capability === undefined) {
+    return {
+      selectedTarget: "plan-only",
+      fallbackUsed: true,
+      reason: "Model does not declare support for the requested AI task.",
+      diagnostics: [
+        {
+          code: "LO_AI_MODEL_TASK_UNSUPPORTED",
+          severity: "error",
+          message: `Model "${request.model.name}" does not support task "${request.task}".`,
+          path: "model.capabilities",
+        },
+      ],
+    };
+  }
+
+  for (const target of request.targetPreference) {
+    if (capability.supportedTargets.includes(target)) {
+      return {
+        selectedTarget: target,
+        fallbackUsed: target !== request.targetPreference[0],
+        reason: "Target is compatible with the model capability and preference order.",
+        diagnostics: [],
+      };
+    }
+  }
+
+  return {
+    selectedTarget: "plan-only",
+    fallbackUsed: true,
+    reason: "No requested inference target is compatible with the model.",
+    diagnostics: [
+      {
+        code: "LO_AI_TARGET_UNSUPPORTED",
+        severity: "error",
+        message: "No requested inference target is compatible with the model capability.",
+        path: "targetPreference",
+      },
+    ],
+  };
+}
+
+export function createAiInferenceReport(
+  request: AiInferenceRequest,
+): AiInferenceReport {
+  const diagnostics = validateAiInferenceRequest(request);
+  const selection = selectAiInferenceTarget(request);
+
+  return {
+    modelName: request.model.name,
+    task: request.task,
+    requestedTargets: request.targetPreference,
+    selectedTarget: selection.selectedTarget,
+    fallbackUsed: selection.fallbackUsed,
+    ...(request.model.memoryEstimate === undefined
+      ? {}
+      : { memoryEstimate: request.model.memoryEstimate }),
+    diagnostics: [...diagnostics, ...selection.diagnostics],
+  };
+}
+
 export function validateAiInferenceRequest(
   request: AiInferenceRequest,
 ): readonly AiDiagnostic[] {
   const diagnostics: AiDiagnostic[] = [];
+  const capability = request.model.capabilities.find(
+    (item) => item.task === request.task,
+  );
 
   if (request.options.maxOutputTokens <= 0) {
     diagnostics.push({
@@ -172,6 +274,64 @@ export function validateAiInferenceRequest(
       path: "model.safetyPolicy.allowSecurityDecisions",
       suggestedFix:
         "Route AI output through deterministic application policy before acting.",
+    });
+  }
+
+  if (
+    request.model.safetyPolicy.outputTrust !== "untrusted" &&
+    request.model.safetyPolicy.requireHumanReviewForHighImpact
+  ) {
+    diagnostics.push({
+      code: "LO_AI_OUTPUT_TRUST_REVIEW_CONFLICT",
+      severity: "warning",
+      message:
+        "Trusted AI output still requires human review for high-impact actions.",
+      path: "model.safetyPolicy",
+    });
+  }
+
+  if (
+    request.model.safetyPolicy.logPrompts &&
+    !request.model.safetyPolicy.redactSecretsFromPrompts
+  ) {
+    diagnostics.push({
+      code: "LO_AI_PROMPT_LOGGING_REQUIRES_REDACTION",
+      severity: "error",
+      message: "Prompt logging requires prompt secret redaction.",
+      path: "model.safetyPolicy.logPrompts",
+    });
+  }
+
+  if (
+    capability !== undefined &&
+    request.options.contextTokens > capability.maxContextTokens
+  ) {
+    diagnostics.push({
+      code: "LO_AI_CONTEXT_LIMIT_EXCEEDED",
+      severity: "error",
+      message: "Requested context token limit exceeds model capability.",
+      path: "options.contextTokens",
+    });
+  }
+
+  if (
+    capability !== undefined &&
+    request.options.maxOutputTokens > capability.maxOutputTokens
+  ) {
+    diagnostics.push({
+      code: "LO_AI_OUTPUT_LIMIT_EXCEEDED",
+      severity: "error",
+      message: "Requested output token limit exceeds model capability.",
+      path: "options.maxOutputTokens",
+    });
+  }
+
+  if (request.prompt.input.trim().length === 0) {
+    diagnostics.push({
+      code: "LO_AI_PROMPT_INPUT_REQUIRED",
+      severity: "error",
+      message: "AI inference requires non-empty prompt input.",
+      path: "prompt.input",
     });
   }
 

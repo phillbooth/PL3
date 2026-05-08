@@ -68,6 +68,8 @@ All notable changes to this app should be documented here.
   reporting.
 - Clarified that BitNet ternary model weights are separate from LO `Tri`
   semantics.
+- Completed initial `lo-ai`, `lo-bitnet`, `lo-target-cpu` and
+  `lo-cpu-kernels` contracts with validation helpers, examples and tests.
 
 ### Removed
 

@@ -27,6 +27,11 @@ kernel benchmark reports
 `lo-cpu-kernels` describes CPU kernels and their constraints. It should not own
 AI model metadata, target selection policy or LO language syntax.
 
+## Contracts
+
+The package includes typed contracts for kernel plans, native ABI metadata,
+benchmark samples, calibration cache entries and low-bit kernel diagnostics.
+
 Final rule:
 
 ```text

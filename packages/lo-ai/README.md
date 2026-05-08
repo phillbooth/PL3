@@ -29,6 +29,12 @@ BitNet-specific model format. Those belong in target or adapter packages.
 AI output is untrusted by default. Application policy must decide whether and
 how model output can influence business decisions.
 
+## Contracts
+
+The package includes typed contracts for model registry entries, model
+capabilities, prompt/options validation, target preference selection and
+inference reports.
+
 Final rule:
 
 ```text

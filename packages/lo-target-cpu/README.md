@@ -26,6 +26,12 @@ CPU AI inference target planning
 descriptions belong in `lo-cpu-kernels`; AI model adapters belong in `lo-ai`
 and `lo-bitnet`.
 
+## Contracts
+
+The package includes typed contracts for CPU feature probes, SIMD capability,
+threading policy, low-bit CPU path checks, fallback selection diagnostics and
+calibration reports.
+
 Final rule:
 
 ```text
