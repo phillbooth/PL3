@@ -22,6 +22,11 @@ These files describe the app being built, not the LO language itself.
 - `NEURAL_ACCELERATOR_PACKAGES.md` - neural, neuromorphic and AI accelerator package split
 - `PROJECT_GRAPH.md` - project knowledge graph tooling note
 
+## Package-Level Architecture Notes
+
+- `../packages/lo-agent-parallel-compute.md` - parallel AI agents, CPU/GPU
+  compute and supervised orchestration
+
 ## Language and Runtime Proposals
 
 - `lo-logic-compute-runtime-proposal.md` - future LO logic, compute type and

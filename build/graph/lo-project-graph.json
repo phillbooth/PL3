@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-09T09:26:50.495Z",
+  "generatedAt": "2026-05-09T09:38:14.558Z",
   "nodes": [
     {
       "id": "package:lo-core",
@@ -108,6 +108,16 @@
       "label": "lo-lowbit-ai",
       "sourcePath": "packages/lo-lowbit-ai/README.md",
       "summary": "LO low-bit AI inference contracts with BitNet as an optional backend.",
+      "tags": [
+        "package"
+      ]
+    },
+    {
+      "id": "package:lo-agent",
+      "kind": "Package",
+      "label": "lo-agent",
+      "sourcePath": "packages/lo-agent/README.md",
+      "summary": "LO supervised AI agent, tool permission, task group and report contracts.",
       "tags": [
         "package"
       ]
@@ -5090,6 +5100,146 @@
       ]
     },
     {
+      "id": "doc:packages/lo-agent/package.json",
+      "kind": "Document",
+      "label": "package.json",
+      "sourcePath": "packages/lo-agent/package.json",
+      "tags": [
+        "report",
+        "lo-agent"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-agent/README.md",
+      "kind": "Document",
+      "label": "README.md",
+      "sourcePath": "packages/lo-agent/README.md",
+      "tags": [
+        "document",
+        "lo-agent"
+      ]
+    },
+    {
+      "id": "type:lo-agent:AgentToolDecision",
+      "kind": "Type",
+      "label": "AgentToolDecision",
+      "sourcePath": "packages/lo-agent/src/index.ts",
+      "tags": [
+        "type",
+        "lo-agent"
+      ]
+    },
+    {
+      "id": "type:lo-agent:AgentFailureBehaviour",
+      "kind": "Type",
+      "label": "AgentFailureBehaviour",
+      "sourcePath": "packages/lo-agent/src/index.ts",
+      "tags": [
+        "type",
+        "lo-agent"
+      ]
+    },
+    {
+      "id": "type:lo-agent:AgentToolPermission",
+      "kind": "Type",
+      "label": "AgentToolPermission",
+      "sourcePath": "packages/lo-agent/src/index.ts",
+      "tags": [
+        "type",
+        "lo-agent"
+      ]
+    },
+    {
+      "id": "type:lo-agent:AgentLimits",
+      "kind": "Type",
+      "label": "AgentLimits",
+      "sourcePath": "packages/lo-agent/src/index.ts",
+      "tags": [
+        "type",
+        "lo-agent"
+      ]
+    },
+    {
+      "id": "type:lo-agent:AgentDefinition",
+      "kind": "Type",
+      "label": "AgentDefinition",
+      "sourcePath": "packages/lo-agent/src/index.ts",
+      "tags": [
+        "type",
+        "lo-agent"
+      ]
+    },
+    {
+      "id": "type:lo-agent:AgentTaskGroupPlan",
+      "kind": "Type",
+      "label": "AgentTaskGroupPlan",
+      "sourcePath": "packages/lo-agent/src/index.ts",
+      "tags": [
+        "type",
+        "lo-agent"
+      ]
+    },
+    {
+      "id": "type:lo-agent:AgentFinding",
+      "kind": "Type",
+      "label": "AgentFinding",
+      "sourcePath": "packages/lo-agent/src/index.ts",
+      "tags": [
+        "type",
+        "lo-agent"
+      ]
+    },
+    {
+      "id": "type:lo-agent:AgentResult",
+      "kind": "Type",
+      "label": "AgentResult",
+      "sourcePath": "packages/lo-agent/src/index.ts",
+      "tags": [
+        "type",
+        "lo-agent"
+      ]
+    },
+    {
+      "id": "type:lo-agent:AgentMergePolicy",
+      "kind": "Type",
+      "label": "AgentMergePolicy",
+      "sourcePath": "packages/lo-agent/src/index.ts",
+      "tags": [
+        "type",
+        "lo-agent"
+      ]
+    },
+    {
+      "id": "type:lo-agent:AgentReport",
+      "kind": "Type",
+      "label": "AgentReport",
+      "sourcePath": "packages/lo-agent/src/index.ts",
+      "tags": [
+        "type",
+        "lo-agent"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-agent/TODO.md",
+      "kind": "Document",
+      "label": "TODO.md",
+      "sourcePath": "packages/lo-agent/TODO.md",
+      "tags": [
+        "document",
+        "lo-agent"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-agent/tsconfig.json",
+      "kind": "Document",
+      "label": "tsconfig.json",
+      "sourcePath": "packages/lo-agent/tsconfig.json",
+      "tags": [
+        "report",
+        "lo-agent"
+      ]
+    },
+    {
       "id": "doc:packages/lo-neural/package.json",
       "kind": "Document",
       "label": "package.json",
@@ -7890,6 +8040,16 @@
       ]
     },
     {
+      "id": "doc:packages/lo-agent",
+      "kind": "Document",
+      "label": "agent",
+      "sourcePath": "packages/lo-agent",
+      "tags": [
+        "document",
+        "workspace-doc"
+      ]
+    },
+    {
       "id": "doc:packages/lo-neural",
       "kind": "Document",
       "label": "neural",
@@ -8159,6 +8319,13 @@
     },
     {
       "from": "doc:README.md",
+      "to": "package:lo-agent",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "README.md"
+    },
+    {
+      "from": "doc:README.md",
       "to": "package:lo-neural",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -8369,6 +8536,13 @@
     },
     {
       "from": "doc:docs/ARCHITECTURE.md",
+      "to": "package:lo-agent",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/ARCHITECTURE.md"
+    },
+    {
+      "from": "doc:docs/ARCHITECTURE.md",
       "to": "package:lo-neural",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -8552,6 +8726,13 @@
     {
       "from": "doc:docs/CHANGELOG.md",
       "to": "package:lo-lowbit-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/CHANGELOG.md"
+    },
+    {
+      "from": "doc:docs/CHANGELOG.md",
+      "to": "package:lo-agent",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/CHANGELOG.md"
@@ -8999,6 +9180,13 @@
     },
     {
       "from": "doc:docs/README.md",
+      "to": "package:lo-agent",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/README.md"
+    },
+    {
+      "from": "doc:docs/README.md",
       "to": "package:app",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -9077,6 +9265,13 @@
     {
       "from": "doc:docs/REQUIREMENTS.md",
       "to": "package:lo-lowbit-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/REQUIREMENTS.md"
+    },
+    {
+      "from": "doc:docs/REQUIREMENTS.md",
+      "to": "package:lo-agent",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/REQUIREMENTS.md"
@@ -9280,6 +9475,13 @@
     {
       "from": "doc:docs/TASKS.md",
       "to": "package:lo-lowbit-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/TASKS.md"
+    },
+    {
+      "from": "doc:docs/TASKS.md",
+      "to": "package:lo-agent",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/TASKS.md"
@@ -11421,6 +11623,13 @@
     },
     {
       "from": "doc:packages/lo-core/docs/package-boundaries.md",
+      "to": "package:lo-agent",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-core/docs/package-boundaries.md"
+    },
+    {
+      "from": "doc:packages/lo-core/docs/package-boundaries.md",
       "to": "package:lo-neural",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -11611,6 +11820,13 @@
     {
       "from": "doc:packages/lo-core/docs/package-use-registry.md",
       "to": "package:lo-lowbit-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-core/docs/package-use-registry.md"
+    },
+    {
+      "from": "doc:packages/lo-core/docs/package-use-registry.md",
+      "to": "package:lo-agent",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages/lo-core/docs/package-use-registry.md"
@@ -12871,6 +13087,13 @@
     {
       "from": "doc:packages/lo-core/README.md",
       "to": "package:lo-lowbit-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-core/README.md"
+    },
+    {
+      "from": "doc:packages/lo-core/README.md",
+      "to": "package:lo-agent",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages/lo-core/README.md"
@@ -15583,6 +15806,167 @@
       "kind": "owns",
       "confidence": "EXTRACTED",
       "evidencePath": "packages/lo-lowbit-ai/tsconfig.json"
+    },
+    {
+      "from": "package:lo-agent",
+      "to": "doc:packages/lo-agent/package.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-agent/package.json"
+    },
+    {
+      "from": "package:lo-agent",
+      "to": "doc:packages/lo-agent/README.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-agent/README.md"
+    },
+    {
+      "from": "doc:packages/lo-agent/README.md",
+      "to": "package:lo-runtime",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-agent/README.md"
+    },
+    {
+      "from": "doc:packages/lo-agent/README.md",
+      "to": "package:lo-security",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-agent/README.md"
+    },
+    {
+      "from": "doc:packages/lo-agent/README.md",
+      "to": "package:lo-vector",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-agent/README.md"
+    },
+    {
+      "from": "doc:packages/lo-agent/README.md",
+      "to": "package:lo-compute",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-agent/README.md"
+    },
+    {
+      "from": "doc:packages/lo-agent/README.md",
+      "to": "package:lo-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-agent/README.md"
+    },
+    {
+      "from": "doc:packages/lo-agent/README.md",
+      "to": "package:lo-agent",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-agent/README.md"
+    },
+    {
+      "from": "doc:packages/lo-agent/README.md",
+      "to": "package:lo-target-cpu",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-agent/README.md"
+    },
+    {
+      "from": "doc:packages/lo-agent/README.md",
+      "to": "package:lo-target-gpu",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-agent/README.md"
+    },
+    {
+      "from": "package:lo-agent",
+      "to": "type:lo-agent:AgentToolDecision",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-agent/src/index.ts"
+    },
+    {
+      "from": "package:lo-agent",
+      "to": "type:lo-agent:AgentFailureBehaviour",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-agent/src/index.ts"
+    },
+    {
+      "from": "package:lo-agent",
+      "to": "type:lo-agent:AgentToolPermission",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-agent/src/index.ts"
+    },
+    {
+      "from": "package:lo-agent",
+      "to": "type:lo-agent:AgentLimits",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-agent/src/index.ts"
+    },
+    {
+      "from": "package:lo-agent",
+      "to": "type:lo-agent:AgentDefinition",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-agent/src/index.ts"
+    },
+    {
+      "from": "package:lo-agent",
+      "to": "type:lo-agent:AgentTaskGroupPlan",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-agent/src/index.ts"
+    },
+    {
+      "from": "package:lo-agent",
+      "to": "type:lo-agent:AgentFinding",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-agent/src/index.ts"
+    },
+    {
+      "from": "package:lo-agent",
+      "to": "type:lo-agent:AgentResult",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-agent/src/index.ts"
+    },
+    {
+      "from": "package:lo-agent",
+      "to": "type:lo-agent:AgentMergePolicy",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-agent/src/index.ts"
+    },
+    {
+      "from": "package:lo-agent",
+      "to": "type:lo-agent:AgentReport",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-agent/src/index.ts"
+    },
+    {
+      "from": "package:lo-agent",
+      "to": "doc:packages/lo-agent/TODO.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-agent/TODO.md"
+    },
+    {
+      "from": "doc:packages/lo-agent/TODO.md",
+      "to": "package:lo-agent",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-agent/TODO.md"
+    },
+    {
+      "from": "package:lo-agent",
+      "to": "doc:packages/lo-agent/tsconfig.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-agent/tsconfig.json"
     },
     {
       "from": "package:lo-neural",

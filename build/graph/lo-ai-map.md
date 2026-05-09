@@ -161,6 +161,22 @@ Provides:
 - LowBitAiBackendAdapter
 - LowBitAiModelReference
 
+## lo-agent
+
+LO supervised AI agent, tool permission, task group and report contracts.
+
+Provides:
+- AgentToolDecision
+- AgentFailureBehaviour
+- AgentToolPermission
+- AgentLimits
+- AgentDefinition
+- AgentTaskGroupPlan
+- AgentFinding
+- AgentResult
+- AgentMergePolicy
+- AgentReport
+
 ## lo-neural
 
 LO neural network model, layer, inference and training boundary contracts.

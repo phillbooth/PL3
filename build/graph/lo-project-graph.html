@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>LO Project Graph</h1>
-<p>805 nodes, 1462 relationships.</p>
+<p>821 nodes, 1494 relationships.</p>
 <h2>Nodes</h2>
 <ul><li><strong>lo-core</strong> <span>Package</span></li>
 <li><strong>lo-compiler</strong> <span>Package</span></li>
@@ -20,6 +20,7 @@
 <li><strong>lo-compute</strong> <span>Package</span></li>
 <li><strong>lo-ai</strong> <span>Package</span></li>
 <li><strong>lo-lowbit-ai</strong> <span>Package</span></li>
+<li><strong>lo-agent</strong> <span>Package</span></li>
 <li><strong>lo-neural</strong> <span>Package</span></li>
 <li><strong>lo-neuromorphic</strong> <span>Package</span></li>
 <li><strong>lo-photonic</strong> <span>Package</span></li>
@@ -522,6 +523,20 @@
 <li><strong>tsconfig.json</strong> <span>Document</span></li>
 <li><strong>package.json</strong> <span>Document</span></li>
 <li><strong>README.md</strong> <span>Document</span></li>
+<li><strong>AgentToolDecision</strong> <span>Type</span></li>
+<li><strong>AgentFailureBehaviour</strong> <span>Type</span></li>
+<li><strong>AgentToolPermission</strong> <span>Type</span></li>
+<li><strong>AgentLimits</strong> <span>Type</span></li>
+<li><strong>AgentDefinition</strong> <span>Type</span></li>
+<li><strong>AgentTaskGroupPlan</strong> <span>Type</span></li>
+<li><strong>AgentFinding</strong> <span>Type</span></li>
+<li><strong>AgentResult</strong> <span>Type</span></li>
+<li><strong>AgentMergePolicy</strong> <span>Type</span></li>
+<li><strong>AgentReport</strong> <span>Type</span></li>
+<li><strong>TODO.md</strong> <span>Document</span></li>
+<li><strong>tsconfig.json</strong> <span>Document</span></li>
+<li><strong>package.json</strong> <span>Document</span></li>
+<li><strong>README.md</strong> <span>Document</span></li>
 <li><strong>NeuralTask</strong> <span>Type</span></li>
 <li><strong>ActivationFunction</strong> <span>Type</span></li>
 <li><strong>LossFunction</strong> <span>Type</span></li>
@@ -800,6 +815,7 @@
 <li><strong>compute</strong> <span>Document</span></li>
 <li><strong>ai</strong> <span>Document</span></li>
 <li><strong>lowBitAi</strong> <span>Document</span></li>
+<li><strong>agent</strong> <span>Document</span></li>
 <li><strong>neural</strong> <span>Document</span></li>
 <li><strong>neuromorphic</strong> <span>Document</span></li>
 <li><strong>photonic</strong> <span>Document</span></li>
@@ -833,6 +849,7 @@
 <li>doc:README.md <code>documents</code> package:lo-compute</li>
 <li>doc:README.md <code>documents</code> package:lo-ai</li>
 <li>doc:README.md <code>documents</code> package:lo-lowbit-ai</li>
+<li>doc:README.md <code>documents</code> package:lo-agent</li>
 <li>doc:README.md <code>documents</code> package:lo-neural</li>
 <li>doc:README.md <code>documents</code> package:lo-neuromorphic</li>
 <li>doc:README.md <code>documents</code> package:lo-photonic</li>
@@ -863,6 +880,7 @@
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-compute</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-ai</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-lowbit-ai</li>
+<li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-agent</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-neural</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-neuromorphic</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-photonic</li>
@@ -890,6 +908,7 @@
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-compute</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-ai</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-lowbit-ai</li>
+<li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-agent</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-neural</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-neuromorphic</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-photonic</li>
@@ -953,6 +972,7 @@
 <li>doc:docs/PROJECT_GRAPH.md <code>documents</code> package:lo-project-graph</li>
 <li>doc:docs/PROJECT_GRAPH.md <code>documents</code> package:app</li>
 <li>doc:docs/README.md <code>documents</code> package:lo-logic</li>
+<li>doc:docs/README.md <code>documents</code> package:lo-agent</li>
 <li>doc:docs/README.md <code>documents</code> package:app</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-core</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-compiler</li>
@@ -965,6 +985,7 @@
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-compute</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-ai</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-lowbit-ai</li>
+<li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-agent</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-neural</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-neuromorphic</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-photonic</li>
@@ -994,6 +1015,7 @@
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-compute</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-ai</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-lowbit-ai</li>
+<li>doc:docs/TASKS.md <code>documents</code> package:lo-agent</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-neural</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-neuromorphic</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-photonic</li>
@@ -1299,6 +1321,7 @@
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-compute</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-ai</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-lowbit-ai</li>
+<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-agent</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-neural</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-neuromorphic</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-photonic</li>
@@ -1307,13 +1330,6 @@
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-target-binary</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-target-wasm</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-target-gpu</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-target-ai-accelerator</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-target-photonic</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-app-kernel</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-api-server</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-cli</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-tasks</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-project-graph</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:app</li></ul>
+<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-target-ai-accelerator</li></ul>
 </body>
 </html>

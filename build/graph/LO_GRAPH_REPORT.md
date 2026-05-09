@@ -1,15 +1,15 @@
 # LO Graph Report
 
 Workspace: LO-app
-Generated: 2026-05-09T09:26:50.495Z
+Generated: 2026-05-09T09:38:14.558Z
 
 ## Summary
 
-- Packages: 27
-- Documents: 377
-- Types/interfaces: 265
+- Packages: 28
+- Documents: 382
+- Types/interfaces: 275
 - Functions: 93
-- Relationships: 1462
+- Relationships: 1494
 
 ## Package Nodes
 
@@ -24,6 +24,7 @@ Generated: 2026-05-09T09:26:50.495Z
 - lo-compute (packages/lo-compute/README.md)
 - lo-ai (packages/lo-ai/README.md)
 - lo-lowbit-ai (packages/lo-lowbit-ai/README.md)
+- lo-agent (packages/lo-agent/README.md)
 - lo-neural (packages/lo-neural/README.md)
 - lo-neuromorphic (packages/lo-neuromorphic/README.md)
 - lo-photonic (packages/lo-photonic/README.md)

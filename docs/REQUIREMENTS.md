@@ -23,6 +23,8 @@ must not be treated as implemented app functionality.
   backend-neutral.
 - Support neural-network workloads through typed packages and target planning,
   not by making neural networks part of normal app syntax.
+- Support parallel AI agents only as supervised, bounded, permissioned,
+  cancelable and reportable workloads.
 - Give AI coding tools enough generated context to understand package ownership
   without replacing compiler, runtime, security or test checks.
 - Provide safe task automation with explicit effects, permissions and reports.
@@ -99,6 +101,8 @@ The app package must remain deliberately small until a product domain is chosen.
   must live in `packages/lo-ai/`.
 - Low-bit and ternary AI inference contracts must live in
   `packages/lo-lowbit-ai/`, with BitNet represented only as a backend.
+- Supervised AI agent definitions, tool permissions, task groups, merge
+  policies and reports must live in `packages/lo-agent/`.
 - Neural-network model, layer, inference and training boundary contracts must
   live in `packages/lo-neural/`.
 - Neuromorphic spike, event-signal and spiking model contracts must live in
@@ -225,6 +229,8 @@ The app package must remain deliberately small until a product domain is chosen.
   selection concepts.
 - `lo-ai` must own generic AI inference contracts, prompt/response shapes, model
   capability metadata, memory estimates, safety policy and AI reports.
+- `lo-agent` must own typed agent definitions, tool permissions, agent limits,
+  supervised task group plans, merge policies and agent reports.
 - `lo-neural` must own neural-network model definitions, layers, activations,
   inference boundaries, training boundaries and neural reports.
 - `lo-neuromorphic` must own spikes, spike trains, event signals, spiking model
@@ -275,6 +281,12 @@ The app package must remain deliberately small until a product domain is chosen.
 ## AI and Low-Bit Backend Requirements
 
 - AI inference must be target-neutral at the `lo-ai` layer.
+- AI agents must declare input type, output type, tools, effects, permissions,
+  memory budget, timeout, rate limits and failure behaviour.
+- Parallel agents must run inside supervised task groups, queues, worker pools
+  or equivalent runtime supervision.
+- Agent outputs may inform decisions but must not directly authorize security,
+  payment, access-control or deployment decisions.
 - Neural-network support must live in `lo-neural`, not `lo-core`.
 - Neural workloads must use tensor shapes from `lo-vector`, compute planning
   from `lo-compute` and safety/report contracts from `lo-ai`.

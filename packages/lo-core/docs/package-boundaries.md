@@ -108,6 +108,14 @@ packages/lo-lowbit-ai
   CPU low-bit inference plans
   low-bit inference reports
 
+packages/lo-agent
+  agent definitions
+  agent tool permissions
+  agent limits
+  supervised task group plans
+  merge policies
+  agent reports
+
 packages/lo-neural
   neural model definitions
   neural layers
@@ -241,6 +249,12 @@ AI inference contracts
 Low-bit AI backend
   update packages/lo-lowbit-ai, packages/lo-target-cpu or packages/lo-cpu-kernels first
   update lo-core docs only if compute target syntax or report contracts change
+
+Parallel AI agent orchestration
+  update packages/lo-agent first
+  update packages/lo-runtime only if structured concurrency contracts change
+  update packages/lo-security only if permission or tool safety contracts change
+  update lo-core docs only if async/task_group/spawn syntax changes
 
 Neural model or training boundary changes
   update packages/lo-neural first

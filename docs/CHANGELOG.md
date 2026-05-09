@@ -89,6 +89,11 @@ All notable changes to this app should be documented here.
   neuromorphic, low-bit, AI accelerator and photonic package boundaries.
 - Expanded `lo-vector` with matrix, tensor, shape and numeric element contract
   placeholders.
+- Added `packages/lo-agent/` for supervised AI agent, tool permission, task
+  group, merge policy and report contracts.
+- Added `packages/lo-agent-parallel-compute.md` documenting parallel AI agents,
+  CPU/GPU compute separation, supervised task groups, target fallback and agent
+  safety rules.
 
 ### Changed
 

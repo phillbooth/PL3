@@ -73,6 +73,9 @@ packages/lo-ai/
 packages/lo-lowbit-ai/
   low-bit / ternary AI model references, backend selection and CPU inference plans
 
+packages/lo-agent/
+  supervised AI agent, tool permission, task group and report contracts
+
 packages/lo-neural/
   neural models, layers, inference and training boundary contracts
 

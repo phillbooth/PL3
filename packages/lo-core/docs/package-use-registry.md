@@ -73,6 +73,7 @@ lo-vector            = vector, matrix, tensor, lanes, dimensions and numeric ope
 lo-compute           = compute planning, capabilities, budgets and target selection
 lo-ai                = generic AI inference contracts and safety policy
 lo-lowbit-ai         = low-bit and ternary AI inference contracts
+lo-agent             = supervised AI agent, tool permission and task group contracts
 lo-neural            = neural model, layer, inference and training contracts
 lo-neuromorphic      = spike, event-signal and spiking model contracts
 lo-photonic          = wavelength, phase, amplitude and optical signal concepts

@@ -124,6 +124,7 @@ LO-app/
 |   |-- lo-compute/
 |   |-- lo-ai/
 |   |-- lo-lowbit-ai/
+|   |-- lo-agent/
 |   |-- lo-neural/
 |   |-- lo-neuromorphic/
 |   |-- lo-photonic/
@@ -165,6 +166,8 @@ LO-app/
   policy and AI reports.
 - `packages/lo-lowbit-ai/` - low-bit and ternary AI inference contracts, with
   BitNet represented as one optional backend rather than LO syntax.
+- `packages/lo-agent/` - supervised AI agent, tool permission, task group,
+  merge policy and agent report contracts.
 - `packages/lo-neural/` - neural model, layer, inference and training boundary
   contracts.
 - `packages/lo-neuromorphic/` - spike, event-signal and spiking model
@@ -230,8 +233,9 @@ Important boundary rules:
 - `lo-app-kernel` is an optional secure application boundary. It must not become
   a CMS, admin dashboard, ORM or frontend framework.
 - `lo-api-server` serves HTTP and delegates typed policy decisions.
-- `lo-ai`, `lo-neural`, `lo-neuromorphic` and `lo-lowbit-ai` are optional AI
-  package layers, not core syntax.
+- `lo-ai`, `lo-agent`, `lo-neural`, `lo-neuromorphic` and `lo-lowbit-ai` are
+  optional AI package layers, not core syntax.
+- Parallel agents must be supervised, bounded, permissioned and reportable.
 - BitNet is a backend option inside low-bit AI, not a language feature.
 - AI accelerators, GPUs and photonic chipsets are optional targets. CPU and
   binary-compatible fallback remain the baseline.

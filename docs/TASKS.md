@@ -36,6 +36,7 @@
   `lo-config`, `lo-reports`, `lo-target-wasm` and `lo-target-gpu`
 - [x] Add package scaffolds for `lo-ai`, `lo-lowbit-ai`, `lo-target-cpu` and
   `lo-cpu-kernels`
+- [x] Add package scaffold for `lo-agent`
 - [x] Add package scaffolds for `lo-neural`, `lo-neuromorphic` and
   `lo-target-ai-accelerator`
 - [x] Add package scaffold for `lo-project-graph`
@@ -75,6 +76,7 @@
 - [ ] Define photonic mappings from `lo-logic`
 - [ ] Add examples and tests for logic and photonic package boundaries
 - [x] Define `lo-vector` vector, matrix and tensor value contracts
+- [x] Define `lo-agent` supervised AI agent orchestration contracts
 - [x] Define `lo-neural` neural-network workload contracts
 - [x] Define `lo-neuromorphic` spiking/event workload contracts
 - [x] Define `lo-compute` compute planning and target selection rules
