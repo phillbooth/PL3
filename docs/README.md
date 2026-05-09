@@ -28,6 +28,8 @@ These files describe the app being built, not the LO language itself.
 
 - `../packages/lo-agent-parallel-compute.md` - parallel AI agents, CPU/GPU
   compute and supervised orchestration
+- `../packages/lo-benchmark/README.md` - benchmark diagnostics, fallback
+  checks, privacy-safe reports and future sharing payloads
 
 ## Language and Runtime Proposals
 

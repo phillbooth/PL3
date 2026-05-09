@@ -40,6 +40,7 @@
 - [x] Add package scaffolds for `lo-neural`, `lo-neuromorphic` and
   `lo-target-ai-accelerator`
 - [x] Add package scaffold for `lo-project-graph`
+- [x] Add package scaffold for `lo-benchmark`
 - [x] Add TODO documents for `lo-api-server` and `lo-app-kernel`
 - [x] Add README and TODO documents for `packages/app`
 - [ ] Add unit tests
@@ -68,6 +69,10 @@
 - [x] Define backend-neutral `lo-project-graph` backend policy contracts
 - [x] Add LO-native `lo-project-graph` workspace mapping support
 - [x] Add `lo graph` query, explain and path support
+- [x] Define `lo-benchmark` benchmark and diagnostics contracts
+- [ ] Implement `lo benchmark` runner integration
+- [ ] Add light benchmark report generation
+- [ ] Add benchmark privacy/shareable payload checks
 
 ## Phase 7: Logic and Photonic Packages
 

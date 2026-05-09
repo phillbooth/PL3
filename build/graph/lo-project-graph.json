@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-09T09:42:02.924Z",
+  "generatedAt": "2026-05-09T10:01:18.078Z",
   "nodes": [
     {
       "id": "package:lo-core",
@@ -258,6 +258,16 @@
       "label": "lo-tasks",
       "sourcePath": "packages/lo-tasks/README.md",
       "summary": "Safe typed task runner for LO project automation.",
+      "tags": [
+        "package"
+      ]
+    },
+    {
+      "id": "package:lo-benchmark",
+      "kind": "Package",
+      "label": "lo-benchmark",
+      "sourcePath": "packages/lo-benchmark/README.md",
+      "summary": "LO benchmark and diagnostics contracts for logic, compute targets, fallback behaviour and safe reporting.",
       "tags": [
         "package"
       ]
@@ -7419,6 +7429,176 @@
       ]
     },
     {
+      "id": "report:packages/lo-benchmark/examples/benchmark-report.example.json",
+      "kind": "Report",
+      "label": "benchmark-report.example.json",
+      "sourcePath": "packages/lo-benchmark/examples/benchmark-report.example.json",
+      "tags": [
+        "report",
+        "lo-benchmark"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-benchmark/package.json",
+      "kind": "Document",
+      "label": "package.json",
+      "sourcePath": "packages/lo-benchmark/package.json",
+      "tags": [
+        "report",
+        "lo-benchmark"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-benchmark/README.md",
+      "kind": "Document",
+      "label": "README.md",
+      "sourcePath": "packages/lo-benchmark/README.md",
+      "tags": [
+        "document",
+        "lo-benchmark"
+      ]
+    },
+    {
+      "id": "type:lo-benchmark:BenchmarkMode",
+      "kind": "Type",
+      "label": "BenchmarkMode",
+      "sourcePath": "packages/lo-benchmark/src/index.ts",
+      "tags": [
+        "type",
+        "lo-benchmark"
+      ]
+    },
+    {
+      "id": "type:lo-benchmark:BenchmarkTrigger",
+      "kind": "Type",
+      "label": "BenchmarkTrigger",
+      "sourcePath": "packages/lo-benchmark/src/index.ts",
+      "tags": [
+        "type",
+        "lo-benchmark"
+      ]
+    },
+    {
+      "id": "type:lo-benchmark:BenchmarkTarget",
+      "kind": "Type",
+      "label": "BenchmarkTarget",
+      "sourcePath": "packages/lo-benchmark/src/index.ts",
+      "tags": [
+        "type",
+        "lo-benchmark"
+      ]
+    },
+    {
+      "id": "type:lo-benchmark:BenchmarkStatus",
+      "kind": "Type",
+      "label": "BenchmarkStatus",
+      "sourcePath": "packages/lo-benchmark/src/index.ts",
+      "tags": [
+        "type",
+        "lo-benchmark"
+      ]
+    },
+    {
+      "id": "type:lo-benchmark:BenchmarkPrivacyPolicy",
+      "kind": "Type",
+      "label": "BenchmarkPrivacyPolicy",
+      "sourcePath": "packages/lo-benchmark/src/index.ts",
+      "tags": [
+        "type",
+        "lo-benchmark"
+      ]
+    },
+    {
+      "id": "type:lo-benchmark:BenchmarkConfig",
+      "kind": "Type",
+      "label": "BenchmarkConfig",
+      "sourcePath": "packages/lo-benchmark/src/index.ts",
+      "tags": [
+        "type",
+        "lo-benchmark"
+      ]
+    },
+    {
+      "id": "type:lo-benchmark:BenchmarkSystemInfo",
+      "kind": "Type",
+      "label": "BenchmarkSystemInfo",
+      "sourcePath": "packages/lo-benchmark/src/index.ts",
+      "tags": [
+        "type",
+        "lo-benchmark"
+      ]
+    },
+    {
+      "id": "type:lo-benchmark:BenchmarkTestResult",
+      "kind": "Type",
+      "label": "BenchmarkTestResult",
+      "sourcePath": "packages/lo-benchmark/src/index.ts",
+      "tags": [
+        "type",
+        "lo-benchmark"
+      ]
+    },
+    {
+      "id": "type:lo-benchmark:BenchmarkScores",
+      "kind": "Type",
+      "label": "BenchmarkScores",
+      "sourcePath": "packages/lo-benchmark/src/index.ts",
+      "tags": [
+        "type",
+        "lo-benchmark"
+      ]
+    },
+    {
+      "id": "type:lo-benchmark:BenchmarkReport",
+      "kind": "Type",
+      "label": "BenchmarkReport",
+      "sourcePath": "packages/lo-benchmark/src/index.ts",
+      "tags": [
+        "type",
+        "lo-benchmark"
+      ]
+    },
+    {
+      "id": "type:lo-benchmark:BenchmarkSubmitPayload",
+      "kind": "Type",
+      "label": "BenchmarkSubmitPayload",
+      "sourcePath": "packages/lo-benchmark/src/index.ts",
+      "tags": [
+        "type",
+        "lo-benchmark"
+      ]
+    },
+    {
+      "id": "type:lo-benchmark:DEFAULT_BENCHMARK_CONFIG",
+      "kind": "Type",
+      "label": "DEFAULT_BENCHMARK_CONFIG",
+      "sourcePath": "packages/lo-benchmark/src/index.ts",
+      "tags": [
+        "type",
+        "lo-benchmark"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-benchmark/TODO.md",
+      "kind": "Document",
+      "label": "TODO.md",
+      "sourcePath": "packages/lo-benchmark/TODO.md",
+      "tags": [
+        "document",
+        "lo-benchmark"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-benchmark/tsconfig.json",
+      "kind": "Document",
+      "label": "tsconfig.json",
+      "sourcePath": "packages/lo-benchmark/tsconfig.json",
+      "tags": [
+        "report",
+        "lo-benchmark"
+      ]
+    },
+    {
       "id": "doc:packages/lo-project-graph/examples/graph-build-plan.json",
       "kind": "Document",
       "label": "graph-build-plan.json",
@@ -8229,6 +8409,16 @@
       ]
     },
     {
+      "id": "doc:packages/lo-benchmark",
+      "kind": "Document",
+      "label": "benchmark",
+      "sourcePath": "packages/lo-benchmark",
+      "tags": [
+        "document",
+        "workspace-doc"
+      ]
+    },
+    {
       "id": "doc:packages/lo-project-graph",
       "kind": "Document",
       "label": "projectGraph",
@@ -8483,6 +8673,13 @@
     },
     {
       "from": "doc:README.md",
+      "to": "package:lo-benchmark",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "README.md"
+    },
+    {
+      "from": "doc:README.md",
       "to": "package:lo-project-graph",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -8700,6 +8897,13 @@
     },
     {
       "from": "doc:docs/ARCHITECTURE.md",
+      "to": "package:lo-benchmark",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/ARCHITECTURE.md"
+    },
+    {
+      "from": "doc:docs/ARCHITECTURE.md",
       "to": "package:lo-project-graph",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -8890,6 +9094,13 @@
     {
       "from": "doc:docs/CHANGELOG.md",
       "to": "package:lo-tasks",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/CHANGELOG.md"
+    },
+    {
+      "from": "doc:docs/CHANGELOG.md",
+      "to": "package:lo-benchmark",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/CHANGELOG.md"
@@ -9246,6 +9457,13 @@
     },
     {
       "from": "doc:docs/README.md",
+      "to": "package:lo-benchmark",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/README.md"
+    },
+    {
+      "from": "doc:docs/README.md",
       "to": "package:app",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -9429,6 +9647,13 @@
     {
       "from": "doc:docs/REQUIREMENTS.md",
       "to": "package:lo-tasks",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/REQUIREMENTS.md"
+    },
+    {
+      "from": "doc:docs/REQUIREMENTS.md",
+      "to": "package:lo-benchmark",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/REQUIREMENTS.md"
@@ -9688,6 +9913,13 @@
     {
       "from": "doc:docs/TASKS.md",
       "to": "package:lo-tasks",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/TASKS.md"
+    },
+    {
+      "from": "doc:docs/TASKS.md",
+      "to": "package:lo-benchmark",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/TASKS.md"
@@ -11836,6 +12068,13 @@
     },
     {
       "from": "doc:packages/lo-core/docs/package-boundaries.md",
+      "to": "package:lo-benchmark",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-core/docs/package-boundaries.md"
+    },
+    {
+      "from": "doc:packages/lo-core/docs/package-boundaries.md",
       "to": "package:lo-project-graph",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -12033,6 +12272,13 @@
     {
       "from": "doc:packages/lo-core/docs/package-use-registry.md",
       "to": "package:lo-tasks",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-core/docs/package-use-registry.md"
+    },
+    {
+      "from": "doc:packages/lo-core/docs/package-use-registry.md",
+      "to": "package:lo-benchmark",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages/lo-core/docs/package-use-registry.md"
@@ -12299,6 +12545,13 @@
     {
       "from": "doc:packages/lo-core/docs/README.md",
       "to": "package:lo-tasks",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-core/docs/README.md"
+    },
+    {
+      "from": "doc:packages/lo-core/docs/README.md",
+      "to": "package:lo-benchmark",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages/lo-core/docs/README.md"
@@ -13286,6 +13539,13 @@
     {
       "from": "doc:packages/lo-core/README.md",
       "to": "package:lo-api-server",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-core/README.md"
+    },
+    {
+      "from": "doc:packages/lo-core/README.md",
+      "to": "package:lo-benchmark",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages/lo-core/README.md"
@@ -17940,6 +18200,13 @@
     },
     {
       "from": "doc:packages/lo-cli/README.md",
+      "to": "package:lo-benchmark",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-cli/README.md"
+    },
+    {
+      "from": "doc:packages/lo-cli/README.md",
       "to": "package:lo-project-graph",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -18315,6 +18582,202 @@
       "kind": "owns",
       "confidence": "EXTRACTED",
       "evidencePath": "packages/lo-tasks/tsconfig.json"
+    },
+    {
+      "from": "package:lo-benchmark",
+      "to": "report:packages/lo-benchmark/examples/benchmark-report.example.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-benchmark/examples/benchmark-report.example.json"
+    },
+    {
+      "from": "package:lo-benchmark",
+      "to": "doc:packages/lo-benchmark/package.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-benchmark/package.json"
+    },
+    {
+      "from": "package:lo-benchmark",
+      "to": "doc:packages/lo-benchmark/README.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-benchmark/README.md"
+    },
+    {
+      "from": "doc:packages/lo-benchmark/README.md",
+      "to": "package:lo-core",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-benchmark/README.md"
+    },
+    {
+      "from": "doc:packages/lo-benchmark/README.md",
+      "to": "package:lo-security",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-benchmark/README.md"
+    },
+    {
+      "from": "doc:packages/lo-benchmark/README.md",
+      "to": "package:lo-logic",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-benchmark/README.md"
+    },
+    {
+      "from": "doc:packages/lo-benchmark/README.md",
+      "to": "package:lo-vector",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-benchmark/README.md"
+    },
+    {
+      "from": "doc:packages/lo-benchmark/README.md",
+      "to": "package:lo-compute",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-benchmark/README.md"
+    },
+    {
+      "from": "doc:packages/lo-benchmark/README.md",
+      "to": "package:lo-lowbit-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-benchmark/README.md"
+    },
+    {
+      "from": "doc:packages/lo-benchmark/README.md",
+      "to": "package:lo-target-cpu",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-benchmark/README.md"
+    },
+    {
+      "from": "doc:packages/lo-benchmark/README.md",
+      "to": "package:lo-target-gpu",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-benchmark/README.md"
+    },
+    {
+      "from": "doc:packages/lo-benchmark/README.md",
+      "to": "package:lo-target-ai-accelerator",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-benchmark/README.md"
+    },
+    {
+      "from": "doc:packages/lo-benchmark/README.md",
+      "to": "package:lo-benchmark",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-benchmark/README.md"
+    },
+    {
+      "from": "package:lo-benchmark",
+      "to": "type:lo-benchmark:BenchmarkMode",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-benchmark/src/index.ts"
+    },
+    {
+      "from": "package:lo-benchmark",
+      "to": "type:lo-benchmark:BenchmarkTrigger",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-benchmark/src/index.ts"
+    },
+    {
+      "from": "package:lo-benchmark",
+      "to": "type:lo-benchmark:BenchmarkTarget",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-benchmark/src/index.ts"
+    },
+    {
+      "from": "package:lo-benchmark",
+      "to": "type:lo-benchmark:BenchmarkStatus",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-benchmark/src/index.ts"
+    },
+    {
+      "from": "package:lo-benchmark",
+      "to": "type:lo-benchmark:BenchmarkPrivacyPolicy",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-benchmark/src/index.ts"
+    },
+    {
+      "from": "package:lo-benchmark",
+      "to": "type:lo-benchmark:BenchmarkConfig",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-benchmark/src/index.ts"
+    },
+    {
+      "from": "package:lo-benchmark",
+      "to": "type:lo-benchmark:BenchmarkSystemInfo",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-benchmark/src/index.ts"
+    },
+    {
+      "from": "package:lo-benchmark",
+      "to": "type:lo-benchmark:BenchmarkTestResult",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-benchmark/src/index.ts"
+    },
+    {
+      "from": "package:lo-benchmark",
+      "to": "type:lo-benchmark:BenchmarkScores",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-benchmark/src/index.ts"
+    },
+    {
+      "from": "package:lo-benchmark",
+      "to": "type:lo-benchmark:BenchmarkReport",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-benchmark/src/index.ts"
+    },
+    {
+      "from": "package:lo-benchmark",
+      "to": "type:lo-benchmark:BenchmarkSubmitPayload",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-benchmark/src/index.ts"
+    },
+    {
+      "from": "package:lo-benchmark",
+      "to": "type:lo-benchmark:DEFAULT_BENCHMARK_CONFIG",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-benchmark/src/index.ts"
+    },
+    {
+      "from": "package:lo-benchmark",
+      "to": "doc:packages/lo-benchmark/TODO.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-benchmark/TODO.md"
+    },
+    {
+      "from": "doc:packages/lo-benchmark/TODO.md",
+      "to": "package:lo-benchmark",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-benchmark/TODO.md"
+    },
+    {
+      "from": "package:lo-benchmark",
+      "to": "doc:packages/lo-benchmark/tsconfig.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-benchmark/tsconfig.json"
     },
     {
       "from": "package:lo-project-graph",

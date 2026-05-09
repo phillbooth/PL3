@@ -353,6 +353,24 @@ Provides:
 - TaskReport
 - TaskRunReport
 
+## lo-benchmark
+
+LO benchmark and diagnostics contracts for logic, compute targets, fallback behaviour and safe reporting.
+
+Provides:
+- BenchmarkMode
+- BenchmarkTrigger
+- BenchmarkTarget
+- BenchmarkStatus
+- BenchmarkPrivacyPolicy
+- BenchmarkConfig
+- BenchmarkSystemInfo
+- BenchmarkTestResult
+- BenchmarkScores
+- BenchmarkReport
+- BenchmarkSubmitPayload
+- DEFAULT_BENCHMARK_CONFIG
+
 ## lo-project-graph
 
 LO project knowledge graph contracts for package, document, policy and report relationships.

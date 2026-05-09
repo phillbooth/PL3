@@ -125,6 +125,7 @@ The app package must remain deliberately small until a product domain is chosen.
 - The built-in LO HTTP API server must live in `packages/lo-api-server/`.
 - The LO developer CLI must live in `packages/lo-cli/`.
 - Safe LO project automation must live in `packages/lo-tasks/`.
+- LO benchmark and diagnostics tooling must live in `packages/lo-benchmark/`.
 - LO project knowledge graph tooling must live in `packages/lo-project-graph/`.
 - Bespoke app source must live in `packages/app/`.
 - App documentation must live in `docs/`.
@@ -189,6 +190,33 @@ The app package must remain deliberately small until a product domain is chosen.
   timeout-limited, reported and redacted.
 - Both packages must redact secrets, bearer tokens, cookies, `SecureString`
   values and private key material from output and reports.
+
+## Benchmark Requirements
+
+- `lo-benchmark` must own benchmark configuration, task definitions, result
+  types, score categories, privacy policy and report payload contracts.
+- Benchmarking must prioritize correctness, fallback behavior and safe
+  execution before raw speed.
+- Light mode must be the default and must be bounded by total runtime, per-test
+  runtime and safe memory limits.
+- Full and stress modes must be explicit opt-in modes and must not run
+  automatically.
+- Benchmark runs must be manual, CI-explicit or development-only major-version
+  checks. They must never auto-run in production.
+- GPU, low-bit AI and future accelerator tests must be optional and must report
+  skipped or fallback status when unsupported.
+- Public benchmark names and LO syntax must stay backend-neutral. BitNet may be
+  selected as a low-bit backend, but benchmark categories should use
+  `low_bit_ai`, `ternary_ai` or `quantized_ai`.
+- Benchmark reports must omit hostname, username, project path, environment
+  variables, secrets, private repo names and raw benchmark input data.
+- Future benchmark sharing must be opt-in and must prepare an anonymous payload
+  by default.
+- Hash and byte-processing tests must be framed as generated-data throughput,
+  checksum or validation tests, not password cracking, token guessing or
+  malicious brute forcing.
+- MD5, if benchmarked, must be labelled as a legacy checksum throughput test and
+  not a secure-hashing recommendation.
 
 ## Project Graph Requirements
 

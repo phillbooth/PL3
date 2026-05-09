@@ -29,6 +29,7 @@
         "packages/lo-api-server",
         "packages/lo-cli",
         "packages/lo-tasks",
+        "packages/lo-benchmark",
         "packages/lo-project-graph",
         "packages/app"
     ],
@@ -59,6 +60,7 @@
     "apiServerPackage": "packages/lo-api-server",
     "cliPackage": "packages/lo-cli",
     "tasksPackage": "packages/lo-tasks",
+    "benchmarkPackage": "packages/lo-benchmark",
     "projectGraphPackage": "packages/lo-project-graph",
     "strict": true,
     "targets": [
@@ -99,6 +101,7 @@
         "targetPhotonic": "packages/lo-target-photonic",
         "runtimeKernel": "packages/lo-app-kernel",
         "cliAndTasks": "packages/lo-cli-and-lo-tasks-requirements.md",
+        "benchmark": "packages/lo-benchmark",
         "projectGraph": "packages/lo-project-graph"
     },
     "tools": {

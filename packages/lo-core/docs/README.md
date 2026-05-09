@@ -66,6 +66,7 @@ updated first:
 ../../lo-api-server/README.md
 ../../lo-cli/README.md
 ../../lo-tasks/README.md
+../../lo-benchmark/README.md
 ../../lo-project-graph/README.md
 ```
 

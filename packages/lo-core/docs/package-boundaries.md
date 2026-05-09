@@ -216,6 +216,14 @@ packages/lo-tasks
   task reports
   unsafe shell gates
 
+packages/lo-benchmark
+  benchmark configuration
+  benchmark task definitions
+  light/full/stress benchmark modes
+  target fallback diagnostics
+  privacy-safe benchmark reports
+  shareable benchmark payload contracts
+
 packages/lo-project-graph
   project graph nodes and relationships
   package ownership maps
@@ -312,6 +320,12 @@ Safe task automation
   update packages/lo-tasks first
   update lo-core docs only if package registry or task syntax changes
 
+Benchmark diagnostics
+  update packages/lo-benchmark first
+  update target packages only if capability detection contracts change
+  update packages/lo-reports only if shared report schemas change
+  update lo-core docs only if benchmark syntax or package registry contracts change
+
 Project knowledge graph tooling
   update packages/lo-project-graph first
   update lo-core docs only if compiler reports or package registry contracts change
@@ -328,6 +342,7 @@ compiler report contracts.
 HTTP server internals
 auth provider implementation
 task runner execution
+benchmark runner implementation
 project graph extraction implementation
 photonic hardware backend code
 binary emitter implementation

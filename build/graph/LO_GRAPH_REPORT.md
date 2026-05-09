@@ -1,15 +1,15 @@
 # LO Graph Report
 
 Workspace: LO-app
-Generated: 2026-05-09T09:42:02.924Z
+Generated: 2026-05-09T10:01:18.078Z
 
 ## Summary
 
-- Packages: 28
-- Documents: 383
-- Types/interfaces: 279
+- Packages: 29
+- Documents: 388
+- Types/interfaces: 291
 - Functions: 94
-- Relationships: 1506
+- Relationships: 1545
 
 ## Package Nodes
 
@@ -39,6 +39,7 @@ Generated: 2026-05-09T09:42:02.924Z
 - lo-api-server (packages/lo-api-server/README.md)
 - lo-cli (packages/lo-cli/README.md)
 - lo-tasks (packages/lo-tasks/README.md)
+- lo-benchmark (packages/lo-benchmark/README.md)
 - lo-project-graph (packages/lo-project-graph/README.md)
 - app (packages/app/README.md)
 

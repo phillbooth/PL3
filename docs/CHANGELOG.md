@@ -98,6 +98,11 @@ All notable changes to this app should be documented here.
   flows, retries, quarantine, checkpoints, memory/system failure policy and
   partial success reporting.
 - Added `lo-reports` processing report contracts for resilient/batch flows.
+- Added `packages/lo-benchmark/` for LO benchmark and diagnostics contracts,
+  including light/full modes, target fallback checks, privacy-safe reports and
+  optional future sharing payloads.
+- Added a placeholder `lo benchmark` CLI command entry for the future benchmark
+  runner.
 
 ### Changed
 
@@ -133,6 +138,8 @@ All notable changes to this app should be documented here.
   generated graph report outputs.
 - Added graph query, explain and path helpers to `lo-project-graph` and exposed
   them through `lo graph query`, `lo graph explain` and `lo graph path`.
+- Updated workspace package mapping so `lo-benchmark` is tracked by the project
+  graph and package registry.
 
 ### Removed
 

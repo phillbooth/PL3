@@ -106,6 +106,9 @@ packages/lo-target-ai-accelerator/
 packages/lo-target-photonic/
   photonic backend target plans using lo-photonic concepts
 
+packages/lo-benchmark/
+  development diagnostics, benchmark configs, fallback checks and privacy-safe reports
+
 packages/lo-project-graph/
   project knowledge graph contracts for packages, docs, policies and reports
 ```

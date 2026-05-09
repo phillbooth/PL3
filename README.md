@@ -139,6 +139,7 @@ LO-app/
 |   |-- lo-api-server/
 |   |-- lo-cli/
 |   |-- lo-tasks/
+|   |-- lo-benchmark/
 |   |-- lo-project-graph/
 |   `-- app/
 `-- tools/
@@ -195,6 +196,8 @@ LO-app/
   build, run, serve, reports, routes and security commands.
 - `packages/lo-tasks/` - safe typed project automation with declared effects,
   permissions, dependency planning and reports.
+- `packages/lo-benchmark/` - development diagnostics and benchmark contracts
+  for logic, CPU/GPU/low-bit fallback, privacy-safe reports and comparisons.
 - `packages/lo-project-graph/` - project graph contracts and mapper for package,
   document, policy and report relationships.
 - `packages/app/` - bespoke application source, routes, modules, tests and app
@@ -221,7 +224,7 @@ LO API Server
   HTTP transport that normalises requests and calls the app kernel
 
 LO CLI / Tasks / Project Graph
-  developer tooling, safe automation and AI-readable project maps
+  developer tooling, safe automation, benchmarks and AI-readable project maps
 
 Full Frameworks
   CMS, admin UI, page builders, ORMs, template engines and frontend adapters
@@ -239,6 +242,9 @@ Important boundary rules:
 - BitNet is a backend option inside low-bit AI, not a language feature.
 - AI accelerators, GPUs and photonic chipsets are optional targets. CPU and
   binary-compatible fallback remain the baseline.
+- `lo-benchmark` is development diagnostics. It must not auto-run in production
+  and must report skipped targets and fallbacks without exposing private machine
+  or project data.
 - `lo-project-graph` explains the repository. It does not enforce compiler,
   runtime or security rules.
 
@@ -255,6 +261,11 @@ node packages\lo-cli\dist\index.js graph path package:lo-project-graph report:pr
 node packages\lo-cli\dist\index.js task --file packages\lo-tasks\examples\tasks.lo
 node packages\lo-cli\dist\index.js task buildApi --file packages\lo-tasks\examples\tasks.lo --dry-run
 ```
+
+`lo benchmark` is registered as a future command placeholder. Benchmark modes,
+report shapes and safety rules are documented in
+`packages/lo-benchmark/README.md`; the runnable benchmark runner is still on
+the package TODO list.
 
 Once `lo-cli` is installed or linked, the intended shorthand is:
 

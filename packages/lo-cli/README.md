@@ -36,12 +36,16 @@ lo serve
 lo reports
 lo security:check
 lo routes
+lo benchmark
 lo task
 lo graph
 lo graph query
 lo graph explain
 lo graph path
 ```
+
+`lo benchmark` is currently a placeholder command. The benchmark contracts,
+recommended modes and report shape live in `packages/lo-benchmark/README.md`.
 
 ## Graph Command
 

@@ -26,6 +26,7 @@ export const commands: readonly CliCommand[] = [
   createPlaceholderCommand("reports", "Generate or display reports."),
   createPlaceholderCommand("security:check", "Check security rules and unsafe features."),
   createPlaceholderCommand("routes", "List declared API routes."),
+  createPlaceholderCommand("benchmark", "Run LO benchmark diagnostics."),
   {
     name: "task",
     description: "Run a safe task through lo-tasks.",

@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>LO Project Graph</h1>
-<p>827 nodes, 1506 relationships.</p>
+<p>846 nodes, 1545 relationships.</p>
 <h2>Nodes</h2>
 <ul><li><strong>lo-core</strong> <span>Package</span></li>
 <li><strong>lo-compiler</strong> <span>Package</span></li>
@@ -35,6 +35,7 @@
 <li><strong>lo-api-server</strong> <span>Package</span></li>
 <li><strong>lo-cli</strong> <span>Package</span></li>
 <li><strong>lo-tasks</strong> <span>Package</span></li>
+<li><strong>lo-benchmark</strong> <span>Package</span></li>
 <li><strong>lo-project-graph</strong> <span>Package</span></li>
 <li><strong>app</strong> <span>Package</span></li>
 <li><strong>AGENTS.md</strong> <span>Document</span></li>
@@ -753,6 +754,23 @@
 <li><strong>TaskResult</strong> <span>Type</span></li>
 <li><strong>TODO.md</strong> <span>Document</span></li>
 <li><strong>tsconfig.json</strong> <span>Document</span></li>
+<li><strong>benchmark-report.example.json</strong> <span>Report</span></li>
+<li><strong>package.json</strong> <span>Document</span></li>
+<li><strong>README.md</strong> <span>Document</span></li>
+<li><strong>BenchmarkMode</strong> <span>Type</span></li>
+<li><strong>BenchmarkTrigger</strong> <span>Type</span></li>
+<li><strong>BenchmarkTarget</strong> <span>Type</span></li>
+<li><strong>BenchmarkStatus</strong> <span>Type</span></li>
+<li><strong>BenchmarkPrivacyPolicy</strong> <span>Type</span></li>
+<li><strong>BenchmarkConfig</strong> <span>Type</span></li>
+<li><strong>BenchmarkSystemInfo</strong> <span>Type</span></li>
+<li><strong>BenchmarkTestResult</strong> <span>Type</span></li>
+<li><strong>BenchmarkScores</strong> <span>Type</span></li>
+<li><strong>BenchmarkReport</strong> <span>Type</span></li>
+<li><strong>BenchmarkSubmitPayload</strong> <span>Type</span></li>
+<li><strong>DEFAULT_BENCHMARK_CONFIG</strong> <span>Type</span></li>
+<li><strong>TODO.md</strong> <span>Document</span></li>
+<li><strong>tsconfig.json</strong> <span>Document</span></li>
 <li><strong>graph-build-plan.json</strong> <span>Document</span></li>
 <li><strong>lo-project-graph.json</strong> <span>Document</span></li>
 <li><strong>package.json</strong> <span>Document</span></li>
@@ -834,6 +852,7 @@
 <li><strong>targetPhotonic</strong> <span>Document</span></li>
 <li><strong>runtimeKernel</strong> <span>Document</span></li>
 <li><strong>cliAndTasks</strong> <span>Document</span></li>
+<li><strong>benchmark</strong> <span>Document</span></li>
 <li><strong>projectGraph</strong> <span>Document</span></li>
 <li><strong>LO Project Graph Report</strong> <span>Report</span></li></ul>
 <h2>Relationships</h2>
@@ -870,6 +889,7 @@
 <li>doc:README.md <code>documents</code> package:lo-api-server</li>
 <li>doc:README.md <code>documents</code> package:lo-cli</li>
 <li>doc:README.md <code>documents</code> package:lo-tasks</li>
+<li>doc:README.md <code>documents</code> package:lo-benchmark</li>
 <li>doc:README.md <code>documents</code> package:lo-project-graph</li>
 <li>doc:README.md <code>documents</code> package:app</li>
 <li>doc:docs/API.md <code>documents</code> package:lo-app-kernel</li>
@@ -901,6 +921,7 @@
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-api-server</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-cli</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-tasks</li>
+<li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-benchmark</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-project-graph</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:app</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-core</li>
@@ -929,6 +950,7 @@
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-api-server</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-cli</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-tasks</li>
+<li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-benchmark</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-project-graph</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:app</li>
 <li>doc:docs/COMPILED_APP_GIT.md <code>documents</code> package:app</li>
@@ -979,6 +1001,7 @@
 <li>doc:docs/PROJECT_GRAPH.md <code>documents</code> package:app</li>
 <li>doc:docs/README.md <code>documents</code> package:lo-logic</li>
 <li>doc:docs/README.md <code>documents</code> package:lo-agent</li>
+<li>doc:docs/README.md <code>documents</code> package:lo-benchmark</li>
 <li>doc:docs/README.md <code>documents</code> package:app</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-core</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-compiler</li>
@@ -1006,6 +1029,7 @@
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-api-server</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-cli</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-tasks</li>
+<li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-benchmark</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-project-graph</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:app</li>
 <li>doc:docs/RESILIENT_FLOWS.md <code>documents</code> package:lo-core</li>
@@ -1043,6 +1067,7 @@
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-api-server</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-cli</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-tasks</li>
+<li>doc:docs/TASKS.md <code>documents</code> package:lo-benchmark</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-project-graph</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:app</li>
 <li>doc:docs/testing.md <code>documents</code> package:lo-app-kernel</li>
@@ -1330,12 +1355,6 @@
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-config</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-reports</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-logic</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-vector</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-compute</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-ai</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-lowbit-ai</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-agent</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-neural</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-neuromorphic</li></ul>
+<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-vector</li></ul>
 </body>
 </html>

@@ -88,6 +88,7 @@ lo-app-kernel        = secure application/API runtime boundary
 lo-api-server        = built-in HTTP transport package
 lo-cli               = developer command-line tooling
 lo-tasks             = safe project automation
+lo-benchmark         = benchmark diagnostics and privacy-safe reports
 lo-project-graph     = project knowledge graph and AI assistant map contracts
 ```
 

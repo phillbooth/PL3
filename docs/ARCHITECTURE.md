@@ -28,7 +28,8 @@ lives in `packages/lo-target-photonic/`. The
 optional Secure App Kernel design lives in `packages/lo-app-kernel/`. The
 built-in HTTP API server package lives in `packages/lo-api-server/`. Developer command
 tooling lives in `packages/lo-cli/`, and safe project automation lives in
-`packages/lo-tasks/`. Project knowledge graph tooling lives in
+`packages/lo-tasks/`. Development benchmark diagnostics live in
+`packages/lo-benchmark/`. Project knowledge graph tooling lives in
 `packages/lo-project-graph/`. App source and build configuration live in
 `packages/app/`. App planning and operational documentation live in `docs/`.
 
@@ -66,6 +67,7 @@ LO-app/
 |   |-- lo-api-server/
 |   |-- lo-cli/
 |   |-- lo-tasks/
+|   |-- lo-benchmark/
 |   |-- lo-project-graph/
 |   `-- app/
 `-- tools/
@@ -104,6 +106,7 @@ light-framework/
 |   |-- lo-api-server/
 |   |-- lo-cli/
 |   |-- lo-tasks/
+|   |-- lo-benchmark/
 |   `-- lo-project-graph/
 |-- app/
 `-- framework files
@@ -195,6 +198,9 @@ LO CLI
 LO Tasks
   safe typed project automation with declared effects and permissions
 
+LO Benchmark
+  development diagnostics for logic, CPU, GPU, low-bit fallback and safe reports
+
 LO Project Graph
   project graph maps for packages, docs, policies, reports and AI assistance
 
@@ -221,6 +227,12 @@ server and task packages, but it must not own application behaviour.
 effects and permissions. Raw shell is disabled by default and should only exist
 later as explicit unsafe compatibility.
 
+`lo-benchmark` is developer diagnostics. It should test correctness,
+predictability, target fallback and privacy-safe reporting across normal
+machines, CPU-only systems, GPU systems and future accelerator targets. It must
+not run automatically in production, and light mode must stay bounded so it is
+safe for ordinary development machines.
+
 `lo-project-graph` is developer tooling for architecture inspection and AI
 assistant context. It may generate graph JSON, an HTML view, a graph report and
 an AI map, but it must not become a source of truth for compiler validation,
@@ -242,6 +254,8 @@ plans. `lo-target-cpu` owns CPU capability and fallback planning, while
 `lo-target-wasm`, `lo-target-gpu`, `lo-target-ai-accelerator` and
 `lo-target-photonic` own target-specific planning for binary/native,
 WebAssembly, GPU, AI accelerator and photonic backends.
+`lo-benchmark` may consume these packages to test target behavior, but target
+capability semantics stay in the target packages.
 
 Neural networks are typed compute workloads, not normal app syntax. LO can
 define model, inference and training boundaries through `lo-neural`, while

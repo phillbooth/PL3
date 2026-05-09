@@ -26,7 +26,8 @@ export async function runCli(args: readonly string[], cwd: string): Promise<CliR
     return {
       ok: true,
       code: 0,
-      message: "Usage: lo <check|build|run|serve|reports|security:check|routes|task|graph> [options]"
+      message:
+        "Usage: lo <check|build|run|serve|reports|security:check|routes|benchmark|task|graph> [options]"
     };
   }
 

@@ -1,0 +1,60 @@
+{
+  "schema": "lo.benchmark.report.v1",
+  "benchmarkId": "bench_2026_05_09_001",
+  "mode": "light",
+  "trigger": "manual",
+  "loVersion": "2.0.0",
+  "system": {
+    "osFamily": "linux",
+    "architecture": "arm64",
+    "cpuCoresBucket": "8",
+    "memoryBucket": "16GB",
+    "gpuBackend": "none",
+    "lowBitBackend": "cpu_reference"
+  },
+  "durationMs": 74200,
+  "summary": {
+    "logic": "passed",
+    "cpu": "passed",
+    "json": "passed",
+    "vector": "passed",
+    "gpu": "skipped",
+    "low_bit_ai": "fallback",
+    "recovery": "passed",
+    "compare": "skipped"
+  },
+  "scores": {
+    "logic": 8240,
+    "cpu": 6910,
+    "json": 7120,
+    "vector": 5440,
+    "lowBitAi": 1200,
+    "fallbackReliability": 7600,
+    "memoryBehaviour": 7000,
+    "overall": 5850
+  },
+  "tests": [
+    {
+      "id": "logic.tri_match",
+      "target": "logic",
+      "status": "passed",
+      "durationMs": 420,
+      "operations": 1000000,
+      "score": 8100
+    },
+    {
+      "id": "gpu.vector_small_if_available",
+      "target": "gpu",
+      "status": "skipped",
+      "reason": "No supported GPU backend available"
+    }
+  ],
+  "privacy": {
+    "shareable": true,
+    "containsPersonalData": false,
+    "machineId": "not_included",
+    "hostname": "not_included",
+    "username": "not_included",
+    "projectPath": "not_included"
+  }
+}
