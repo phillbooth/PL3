@@ -96,8 +96,15 @@ LO vector value, lane, operation and report concepts.
 
 Provides:
 - VectorDimension
+- NumericElementType
 - VectorType
+- MatrixShape
+- MatrixType
+- TensorShape
+- TensorType
+- QuantizedType
 - VectorOperation
+- TensorOperation
 - VectorReport
 
 ## lo-compute
@@ -153,6 +160,35 @@ Provides:
 - LowBitAiDiagnostic
 - LowBitAiBackendAdapter
 - LowBitAiModelReference
+
+## lo-neural
+
+LO neural network model, layer, inference and training boundary contracts.
+
+Provides:
+- NeuralTask
+- ActivationFunction
+- LossFunction
+- OptimizerName
+- TensorShapeRef
+- NeuralTensorRef
+- NeuralLayer
+- NeuralModelDefinition
+- NeuralInferencePlan
+- NeuralTrainingPlan
+- NeuralReport
+
+## lo-neuromorphic
+
+LO neuromorphic and spiking event model contracts.
+
+Provides:
+- Spike
+- SpikeTrain
+- EventSignal
+- SpikingModel
+- NeuromorphicPlan
+- NeuromorphicReport
 
 ## lo-photonic
 
@@ -228,6 +264,16 @@ Provides:
 - GpuTargetCapability
 - GpuKernelPlan
 - GpuTargetReport
+
+## lo-target-ai-accelerator
+
+LO NPU, TPU and AI accelerator target planning contracts.
+
+Provides:
+- AiAcceleratorKind
+- AiAcceleratorCapability
+- AiAcceleratorPlan
+- AiAcceleratorReport
 
 ## lo-target-photonic
 

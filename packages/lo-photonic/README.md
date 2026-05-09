@@ -55,10 +55,17 @@ target reports or fallback decisions. Those belong in `lo-target-photonic`.
 Photonic may map logic states to light properties:
 
 ```text
+Tri.Negative / -1 -> phase 180deg
+Tri.Neutral  /  0 -> amplitude 0
+Tri.Positive / +1 -> phase 0deg
+
 Decision.Deny   -> phase 180deg
 Decision.Review -> amplitude 0
 Decision.Allow  -> phase 0deg
 ```
+
+This is a representation mapping, not ownership of `Tri`. The truth semantics
+for `-1`, `0` and `+1` stay in `lo-logic`.
 
 Example signal:
 
@@ -110,6 +117,8 @@ execution and generates the target plan/report.
 | `lo-vector` | Vector, matrix, tensor types and operations |
 | `lo-compute` | `compute auto`, target selection and fallback planning |
 | `lo-target-binary` | Normal CPU/native binary output |
+| `lo-neural` | Neural model, layer, inference and training boundaries |
+| `lo-target-ai-accelerator` | NPU, TPU and AI-chip target planning |
 
 Final rule:
 

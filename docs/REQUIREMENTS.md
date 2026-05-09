@@ -21,6 +21,8 @@ must not be treated as implemented app functionality.
   practical baseline.
 - Keep GPU, photonic, low-bit AI and other accelerator support optional and
   backend-neutral.
+- Support neural-network workloads through typed packages and target planning,
+  not by making neural networks part of normal app syntax.
 - Give AI coding tools enough generated context to understand package ownership
   without replacing compiler, runtime, security or test checks.
 - Provide safe task automation with explicit effects, permissions and reports.
@@ -97,6 +99,10 @@ The app package must remain deliberately small until a product domain is chosen.
   must live in `packages/lo-ai/`.
 - Low-bit and ternary AI inference contracts must live in
   `packages/lo-lowbit-ai/`, with BitNet represented only as a backend.
+- Neural-network model, layer, inference and training boundary contracts must
+  live in `packages/lo-neural/`.
+- Neuromorphic spike, event-signal and spiking model contracts must live in
+  `packages/lo-neuromorphic/`.
 - Photonic and wavelength hardware concepts must live in
   `packages/lo-photonic/`.
 - CPU target planning, feature detection and fallback reports must live in
@@ -105,6 +111,8 @@ The app package must remain deliberately small until a product domain is chosen.
 - Binary/native target planning must live in `packages/lo-target-binary/`.
 - WebAssembly target planning must live in `packages/lo-target-wasm/`.
 - GPU target planning must live in `packages/lo-target-gpu/`.
+- AI accelerator target planning for NPU, TPU and AI-chip backends must live in
+  `packages/lo-target-ai-accelerator/`.
 - Photonic backend target planning must live in
   `packages/lo-target-photonic/`.
 - The optional LO Secure App Kernel must live in `packages/lo-app-kernel/`.
@@ -211,10 +219,16 @@ The app package must remain deliberately small until a product domain is chosen.
   representations, but it must not own the logic semantics.
 - `lo-vector` must own vector values, dimensions, lanes, vector operation rules
   and vector reports.
+- `lo-vector` must also own matrix, tensor, shape and numeric element contracts
+  used by neural and compute workloads.
 - `lo-compute` must own compute planning, capability, budget, offload and target
   selection concepts.
 - `lo-ai` must own generic AI inference contracts, prompt/response shapes, model
   capability metadata, memory estimates, safety policy and AI reports.
+- `lo-neural` must own neural-network model definitions, layers, activations,
+  inference boundaries, training boundaries and neural reports.
+- `lo-neuromorphic` must own spikes, spike trains, event signals, spiking model
+  contracts and neuromorphic reports.
 - `lo-lowbit-ai` must own low-bit and ternary model references, GGUF metadata,
   quantization declarations, backend selection, CPU inference limits and low-bit
   AI inference reports.
@@ -229,6 +243,9 @@ The app package must remain deliberately small until a product domain is chosen.
   import/export contracts.
 - `lo-target-gpu` must own GPU target planning, kernel mapping, precision and
   data movement reports.
+- `lo-target-ai-accelerator` must own NPU, TPU, AI-chip capability reports,
+  precision support, model operation mapping plans and accelerator fallback
+  reports.
 - `lo-target-photonic` must own photonic backend target planning and may use
   `lo-photonic` concepts.
 
@@ -258,6 +275,13 @@ The app package must remain deliberately small until a product domain is chosen.
 ## AI and Low-Bit Backend Requirements
 
 - AI inference must be target-neutral at the `lo-ai` layer.
+- Neural-network support must live in `lo-neural`, not `lo-core`.
+- Neural workloads must use tensor shapes from `lo-vector`, compute planning
+  from `lo-compute` and safety/report contracts from `lo-ai`.
+- Training flows must declare dataset reference, data policy, loss function,
+  optimizer, epochs, batch size, memory limit and timeout.
+- Neuromorphic support must live in `lo-neuromorphic`, separate from normal
+  tensor neural networks.
 - Low-bit AI support must be optional and must not be required by `lo-core`.
 - LO source syntax must use generic targets such as `low_bit_ai` and
   `ternary_ai`, not a backend name such as BitNet.
@@ -273,6 +297,8 @@ The app package must remain deliberately small until a product domain is chosen.
 - Compute target selection reports must record when `low_bit_ai` or
   `ternary_ai` was selected, which backend was used and why higher-preference
   targets were not selected.
+- AI accelerator and photonic targets must be optional. CPU-compatible fallback
+  must remain the baseline for LO developer workflows.
 
 ## Runtime Naming Requirement
 
@@ -289,6 +315,8 @@ The app package must remain deliberately small until a product domain is chosen.
 - Mandatory ORM, CMS, admin UI, template engine or frontend framework design.
 - Treating project graph output as a security or compiler authority.
 - Treating BitNet, Graphify or any named backend as LO language syntax.
+- Treating neural networks, neuromorphic models or AI accelerators as mandatory
+  core language features.
 - Requiring future hardware for the baseline LO developer workflow.
 
 ## Success Criteria

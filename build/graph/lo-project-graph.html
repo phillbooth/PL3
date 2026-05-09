@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>LO Project Graph</h1>
-<p>758 nodes, 1359 relationships.</p>
+<p>805 nodes, 1462 relationships.</p>
 <h2>Nodes</h2>
 <ul><li><strong>lo-core</strong> <span>Package</span></li>
 <li><strong>lo-compiler</strong> <span>Package</span></li>
@@ -20,12 +20,15 @@
 <li><strong>lo-compute</strong> <span>Package</span></li>
 <li><strong>lo-ai</strong> <span>Package</span></li>
 <li><strong>lo-lowbit-ai</strong> <span>Package</span></li>
+<li><strong>lo-neural</strong> <span>Package</span></li>
+<li><strong>lo-neuromorphic</strong> <span>Package</span></li>
 <li><strong>lo-photonic</strong> <span>Package</span></li>
 <li><strong>lo-target-cpu</strong> <span>Package</span></li>
 <li><strong>lo-cpu-kernels</strong> <span>Package</span></li>
 <li><strong>lo-target-binary</strong> <span>Package</span></li>
 <li><strong>lo-target-wasm</strong> <span>Package</span></li>
 <li><strong>lo-target-gpu</strong> <span>Package</span></li>
+<li><strong>lo-target-ai-accelerator</strong> <span>Package</span></li>
 <li><strong>lo-target-photonic</strong> <span>Package</span></li>
 <li><strong>lo-app-kernel</strong> <span>Package</span></li>
 <li><strong>lo-api-server</strong> <span>Package</span></li>
@@ -47,6 +50,7 @@
 <li><strong>ERROR_HANDLING.md</strong> <span>Document</span></li>
 <li><strong>lo-logic-compute-runtime-proposal.md</strong> <span>Document</span></li>
 <li><strong>LOWBIT_AI_BACKENDS.md</strong> <span>Document</span></li>
+<li><strong>NEURAL_ACCELERATOR_PACKAGES.md</strong> <span>Document</span></li>
 <li><strong>OBSERVABILITY.md</strong> <span>Document</span></li>
 <li><strong>PROJECT_GRAPH.md</strong> <span>Document</span></li>
 <li><strong>README.md</strong> <span>Document</span></li>
@@ -422,8 +426,15 @@
 <li><strong>package.json</strong> <span>Document</span></li>
 <li><strong>README.md</strong> <span>Document</span></li>
 <li><strong>VectorDimension</strong> <span>Type</span></li>
+<li><strong>NumericElementType</strong> <span>Type</span></li>
 <li><strong>VectorType</strong> <span>Type</span></li>
+<li><strong>MatrixShape</strong> <span>Type</span></li>
+<li><strong>MatrixType</strong> <span>Type</span></li>
+<li><strong>TensorShape</strong> <span>Type</span></li>
+<li><strong>TensorType</strong> <span>Type</span></li>
+<li><strong>QuantizedType</strong> <span>Type</span></li>
 <li><strong>VectorOperation</strong> <span>Type</span></li>
+<li><strong>TensorOperation</strong> <span>Type</span></li>
 <li><strong>VectorReport</strong> <span>Type</span></li>
 <li><strong>TODO.md</strong> <span>Document</span></li>
 <li><strong>tsconfig.json</strong> <span>Document</span></li>
@@ -511,6 +522,31 @@
 <li><strong>tsconfig.json</strong> <span>Document</span></li>
 <li><strong>package.json</strong> <span>Document</span></li>
 <li><strong>README.md</strong> <span>Document</span></li>
+<li><strong>NeuralTask</strong> <span>Type</span></li>
+<li><strong>ActivationFunction</strong> <span>Type</span></li>
+<li><strong>LossFunction</strong> <span>Type</span></li>
+<li><strong>OptimizerName</strong> <span>Type</span></li>
+<li><strong>TensorShapeRef</strong> <span>Type</span></li>
+<li><strong>NeuralTensorRef</strong> <span>Type</span></li>
+<li><strong>NeuralLayer</strong> <span>Type</span></li>
+<li><strong>NeuralModelDefinition</strong> <span>Type</span></li>
+<li><strong>NeuralInferencePlan</strong> <span>Type</span></li>
+<li><strong>NeuralTrainingPlan</strong> <span>Type</span></li>
+<li><strong>NeuralReport</strong> <span>Type</span></li>
+<li><strong>TODO.md</strong> <span>Document</span></li>
+<li><strong>tsconfig.json</strong> <span>Document</span></li>
+<li><strong>package.json</strong> <span>Document</span></li>
+<li><strong>README.md</strong> <span>Document</span></li>
+<li><strong>Spike</strong> <span>Type</span></li>
+<li><strong>SpikeTrain</strong> <span>Type</span></li>
+<li><strong>EventSignal</strong> <span>Type</span></li>
+<li><strong>SpikingModel</strong> <span>Type</span></li>
+<li><strong>NeuromorphicPlan</strong> <span>Type</span></li>
+<li><strong>NeuromorphicReport</strong> <span>Type</span></li>
+<li><strong>TODO.md</strong> <span>Document</span></li>
+<li><strong>tsconfig.json</strong> <span>Document</span></li>
+<li><strong>package.json</strong> <span>Document</span></li>
+<li><strong>README.md</strong> <span>Document</span></li>
 <li><strong>Wavelength</strong> <span>Type</span></li>
 <li><strong>Phase</strong> <span>Type</span></li>
 <li><strong>Amplitude</strong> <span>Type</span></li>
@@ -580,6 +616,14 @@
 <li><strong>GpuTargetCapability</strong> <span>Type</span></li>
 <li><strong>GpuKernelPlan</strong> <span>Type</span></li>
 <li><strong>GpuTargetReport</strong> <span>Type</span></li>
+<li><strong>TODO.md</strong> <span>Document</span></li>
+<li><strong>tsconfig.json</strong> <span>Document</span></li>
+<li><strong>package.json</strong> <span>Document</span></li>
+<li><strong>README.md</strong> <span>Document</span></li>
+<li><strong>AiAcceleratorKind</strong> <span>Type</span></li>
+<li><strong>AiAcceleratorCapability</strong> <span>Type</span></li>
+<li><strong>AiAcceleratorPlan</strong> <span>Type</span></li>
+<li><strong>AiAcceleratorReport</strong> <span>Type</span></li>
 <li><strong>TODO.md</strong> <span>Document</span></li>
 <li><strong>tsconfig.json</strong> <span>Document</span></li>
 <li><strong>photonic-target-report.json</strong> <span>Report</span></li>
@@ -756,12 +800,15 @@
 <li><strong>compute</strong> <span>Document</span></li>
 <li><strong>ai</strong> <span>Document</span></li>
 <li><strong>lowBitAi</strong> <span>Document</span></li>
+<li><strong>neural</strong> <span>Document</span></li>
+<li><strong>neuromorphic</strong> <span>Document</span></li>
 <li><strong>photonic</strong> <span>Document</span></li>
 <li><strong>targetCpu</strong> <span>Document</span></li>
 <li><strong>cpuKernels</strong> <span>Document</span></li>
 <li><strong>targetBinary</strong> <span>Document</span></li>
 <li><strong>targetWasm</strong> <span>Document</span></li>
 <li><strong>targetGpu</strong> <span>Document</span></li>
+<li><strong>targetAiAccelerator</strong> <span>Document</span></li>
 <li><strong>targetPhotonic</strong> <span>Document</span></li>
 <li><strong>runtimeKernel</strong> <span>Document</span></li>
 <li><strong>cliAndTasks</strong> <span>Document</span></li>
@@ -786,12 +833,15 @@
 <li>doc:README.md <code>documents</code> package:lo-compute</li>
 <li>doc:README.md <code>documents</code> package:lo-ai</li>
 <li>doc:README.md <code>documents</code> package:lo-lowbit-ai</li>
+<li>doc:README.md <code>documents</code> package:lo-neural</li>
+<li>doc:README.md <code>documents</code> package:lo-neuromorphic</li>
 <li>doc:README.md <code>documents</code> package:lo-photonic</li>
 <li>doc:README.md <code>documents</code> package:lo-target-cpu</li>
 <li>doc:README.md <code>documents</code> package:lo-cpu-kernels</li>
 <li>doc:README.md <code>documents</code> package:lo-target-binary</li>
 <li>doc:README.md <code>documents</code> package:lo-target-wasm</li>
 <li>doc:README.md <code>documents</code> package:lo-target-gpu</li>
+<li>doc:README.md <code>documents</code> package:lo-target-ai-accelerator</li>
 <li>doc:README.md <code>documents</code> package:lo-target-photonic</li>
 <li>doc:README.md <code>documents</code> package:lo-app-kernel</li>
 <li>doc:README.md <code>documents</code> package:lo-api-server</li>
@@ -813,12 +863,15 @@
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-compute</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-ai</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-lowbit-ai</li>
+<li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-neural</li>
+<li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-neuromorphic</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-photonic</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-target-cpu</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-cpu-kernels</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-target-binary</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-target-wasm</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-target-gpu</li>
+<li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-target-ai-accelerator</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-target-photonic</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-app-kernel</li>
 <li>doc:docs/ARCHITECTURE.md <code>documents</code> package:lo-api-server</li>
@@ -837,12 +890,15 @@
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-compute</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-ai</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-lowbit-ai</li>
+<li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-neural</li>
+<li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-neuromorphic</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-photonic</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-target-cpu</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-cpu-kernels</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-target-binary</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-target-wasm</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-target-gpu</li>
+<li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-target-ai-accelerator</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-target-photonic</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-app-kernel</li>
 <li>doc:docs/CHANGELOG.md <code>documents</code> package:lo-api-server</li>
@@ -878,6 +934,17 @@
 <li>doc:docs/LOWBIT_AI_BACKENDS.md <code>documents</code> package:lo-target-cpu</li>
 <li>doc:docs/LOWBIT_AI_BACKENDS.md <code>documents</code> package:lo-cpu-kernels</li>
 <li>doc:docs/LOWBIT_AI_BACKENDS.md <code>documents</code> package:app</li>
+<li>doc:docs/NEURAL_ACCELERATOR_PACKAGES.md <code>documents</code> package:lo-logic</li>
+<li>doc:docs/NEURAL_ACCELERATOR_PACKAGES.md <code>documents</code> package:lo-vector</li>
+<li>doc:docs/NEURAL_ACCELERATOR_PACKAGES.md <code>documents</code> package:lo-compute</li>
+<li>doc:docs/NEURAL_ACCELERATOR_PACKAGES.md <code>documents</code> package:lo-ai</li>
+<li>doc:docs/NEURAL_ACCELERATOR_PACKAGES.md <code>documents</code> package:lo-lowbit-ai</li>
+<li>doc:docs/NEURAL_ACCELERATOR_PACKAGES.md <code>documents</code> package:lo-neural</li>
+<li>doc:docs/NEURAL_ACCELERATOR_PACKAGES.md <code>documents</code> package:lo-neuromorphic</li>
+<li>doc:docs/NEURAL_ACCELERATOR_PACKAGES.md <code>documents</code> package:lo-photonic</li>
+<li>doc:docs/NEURAL_ACCELERATOR_PACKAGES.md <code>documents</code> package:lo-target-ai-accelerator</li>
+<li>doc:docs/NEURAL_ACCELERATOR_PACKAGES.md <code>documents</code> package:lo-target-photonic</li>
+<li>doc:docs/NEURAL_ACCELERATOR_PACKAGES.md <code>documents</code> package:app</li>
 <li>doc:docs/OBSERVABILITY.md <code>documents</code> package:app</li>
 <li>doc:docs/PROJECT_GRAPH.md <code>documents</code> package:lo-security</li>
 <li>doc:docs/PROJECT_GRAPH.md <code>documents</code> package:lo-ai</li>
@@ -898,12 +965,15 @@
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-compute</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-ai</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-lowbit-ai</li>
+<li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-neural</li>
+<li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-neuromorphic</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-photonic</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-target-cpu</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-cpu-kernels</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-target-binary</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-target-wasm</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-target-gpu</li>
+<li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-target-ai-accelerator</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-target-photonic</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-app-kernel</li>
 <li>doc:docs/REQUIREMENTS.md <code>documents</code> package:lo-api-server</li>
@@ -924,12 +994,15 @@
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-compute</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-ai</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-lowbit-ai</li>
+<li>doc:docs/TASKS.md <code>documents</code> package:lo-neural</li>
+<li>doc:docs/TASKS.md <code>documents</code> package:lo-neuromorphic</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-photonic</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-target-cpu</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-cpu-kernels</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-target-binary</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-target-wasm</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-target-gpu</li>
+<li>doc:docs/TASKS.md <code>documents</code> package:lo-target-ai-accelerator</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-target-photonic</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-app-kernel</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-api-server</li>
@@ -1226,47 +1299,21 @@
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-compute</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-ai</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-lowbit-ai</li>
+<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-neural</li>
+<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-neuromorphic</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-photonic</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-target-cpu</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-cpu-kernels</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-target-binary</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-target-wasm</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-target-gpu</li>
+<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-target-ai-accelerator</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-target-photonic</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-app-kernel</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-api-server</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-cli</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-tasks</li>
 <li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-project-graph</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:app</li>
-<li>package:lo-core <code>owns</code> doc:packages/lo-core/docs/package-use-registry.md</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-core</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-compiler</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-runtime</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-security</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-config</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-reports</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-logic</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-vector</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-compute</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-ai</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-lowbit-ai</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-photonic</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-target-cpu</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-cpu-kernels</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-target-binary</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-target-wasm</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-target-gpu</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-target-photonic</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-app-kernel</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-api-server</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-cli</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-tasks</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:lo-project-graph</li>
-<li>doc:packages/lo-core/docs/package-use-registry.md <code>documents</code> package:app</li>
-<li>package:lo-core <code>owns</code> doc:packages/lo-core/docs/pending-additions.md</li>
-<li>doc:packages/lo-core/docs/pending-additions.md <code>documents</code> package:lo-core</li>
-<li>doc:packages/lo-core/docs/pending-additions.md <code>documents</code> package:app</li>
-<li>package:lo-core <code>owns</code> doc:packages/lo-core/docs/pending-lo-additions.md</li></ul>
+<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:app</li></ul>
 </body>
 </html>

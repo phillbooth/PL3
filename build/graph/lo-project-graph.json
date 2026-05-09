@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-08T20:33:51.013Z",
+  "generatedAt": "2026-05-09T09:26:50.495Z",
   "nodes": [
     {
       "id": "package:lo-core",
@@ -113,6 +113,26 @@
       ]
     },
     {
+      "id": "package:lo-neural",
+      "kind": "Package",
+      "label": "lo-neural",
+      "sourcePath": "packages/lo-neural/README.md",
+      "summary": "LO neural network model, layer, inference and training boundary contracts.",
+      "tags": [
+        "package"
+      ]
+    },
+    {
+      "id": "package:lo-neuromorphic",
+      "kind": "Package",
+      "label": "lo-neuromorphic",
+      "sourcePath": "packages/lo-neuromorphic/README.md",
+      "summary": "LO neuromorphic and spiking event model contracts.",
+      "tags": [
+        "package"
+      ]
+    },
+    {
       "id": "package:lo-photonic",
       "kind": "Package",
       "label": "lo-photonic",
@@ -168,6 +188,16 @@
       "label": "lo-target-gpu",
       "sourcePath": "packages/lo-target-gpu/README.md",
       "summary": "LO GPU target planning and output contracts.",
+      "tags": [
+        "package"
+      ]
+    },
+    {
+      "id": "package:lo-target-ai-accelerator",
+      "kind": "Package",
+      "label": "lo-target-ai-accelerator",
+      "sourcePath": "packages/lo-target-ai-accelerator/README.md",
+      "summary": "LO NPU, TPU and AI accelerator target planning contracts.",
       "tags": [
         "package"
       ]
@@ -364,6 +394,15 @@
       "kind": "Document",
       "label": "LOWBIT_AI_BACKENDS.md",
       "sourcePath": "docs/LOWBIT_AI_BACKENDS.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/NEURAL_ACCELERATOR_PACKAGES.md",
+      "kind": "Document",
+      "label": "NEURAL_ACCELERATOR_PACKAGES.md",
+      "sourcePath": "docs/NEURAL_ACCELERATOR_PACKAGES.md",
       "tags": [
         "document"
       ]
@@ -4111,6 +4150,16 @@
       ]
     },
     {
+      "id": "type:lo-vector:NumericElementType",
+      "kind": "Type",
+      "label": "NumericElementType",
+      "sourcePath": "packages/lo-vector/src/index.ts",
+      "tags": [
+        "type",
+        "lo-vector"
+      ]
+    },
+    {
       "id": "type:lo-vector:VectorType",
       "kind": "Type",
       "label": "VectorType",
@@ -4121,9 +4170,69 @@
       ]
     },
     {
+      "id": "type:lo-vector:MatrixShape",
+      "kind": "Type",
+      "label": "MatrixShape",
+      "sourcePath": "packages/lo-vector/src/index.ts",
+      "tags": [
+        "type",
+        "lo-vector"
+      ]
+    },
+    {
+      "id": "type:lo-vector:MatrixType",
+      "kind": "Type",
+      "label": "MatrixType",
+      "sourcePath": "packages/lo-vector/src/index.ts",
+      "tags": [
+        "type",
+        "lo-vector"
+      ]
+    },
+    {
+      "id": "type:lo-vector:TensorShape",
+      "kind": "Type",
+      "label": "TensorShape",
+      "sourcePath": "packages/lo-vector/src/index.ts",
+      "tags": [
+        "type",
+        "lo-vector"
+      ]
+    },
+    {
+      "id": "type:lo-vector:TensorType",
+      "kind": "Type",
+      "label": "TensorType",
+      "sourcePath": "packages/lo-vector/src/index.ts",
+      "tags": [
+        "type",
+        "lo-vector"
+      ]
+    },
+    {
+      "id": "type:lo-vector:QuantizedType",
+      "kind": "Type",
+      "label": "QuantizedType",
+      "sourcePath": "packages/lo-vector/src/index.ts",
+      "tags": [
+        "type",
+        "lo-vector"
+      ]
+    },
+    {
       "id": "type:lo-vector:VectorOperation",
       "kind": "Type",
       "label": "VectorOperation",
+      "sourcePath": "packages/lo-vector/src/index.ts",
+      "tags": [
+        "type",
+        "lo-vector"
+      ]
+    },
+    {
+      "id": "type:lo-vector:TensorOperation",
+      "kind": "Type",
+      "label": "TensorOperation",
       "sourcePath": "packages/lo-vector/src/index.ts",
       "tags": [
         "type",
@@ -4981,6 +5090,256 @@
       ]
     },
     {
+      "id": "doc:packages/lo-neural/package.json",
+      "kind": "Document",
+      "label": "package.json",
+      "sourcePath": "packages/lo-neural/package.json",
+      "tags": [
+        "report",
+        "lo-neural"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-neural/README.md",
+      "kind": "Document",
+      "label": "README.md",
+      "sourcePath": "packages/lo-neural/README.md",
+      "tags": [
+        "document",
+        "lo-neural"
+      ]
+    },
+    {
+      "id": "type:lo-neural:NeuralTask",
+      "kind": "Type",
+      "label": "NeuralTask",
+      "sourcePath": "packages/lo-neural/src/index.ts",
+      "tags": [
+        "type",
+        "lo-neural"
+      ]
+    },
+    {
+      "id": "type:lo-neural:ActivationFunction",
+      "kind": "Type",
+      "label": "ActivationFunction",
+      "sourcePath": "packages/lo-neural/src/index.ts",
+      "tags": [
+        "type",
+        "lo-neural"
+      ]
+    },
+    {
+      "id": "type:lo-neural:LossFunction",
+      "kind": "Type",
+      "label": "LossFunction",
+      "sourcePath": "packages/lo-neural/src/index.ts",
+      "tags": [
+        "type",
+        "lo-neural"
+      ]
+    },
+    {
+      "id": "type:lo-neural:OptimizerName",
+      "kind": "Type",
+      "label": "OptimizerName",
+      "sourcePath": "packages/lo-neural/src/index.ts",
+      "tags": [
+        "type",
+        "lo-neural"
+      ]
+    },
+    {
+      "id": "type:lo-neural:TensorShapeRef",
+      "kind": "Type",
+      "label": "TensorShapeRef",
+      "sourcePath": "packages/lo-neural/src/index.ts",
+      "tags": [
+        "type",
+        "lo-neural"
+      ]
+    },
+    {
+      "id": "type:lo-neural:NeuralTensorRef",
+      "kind": "Type",
+      "label": "NeuralTensorRef",
+      "sourcePath": "packages/lo-neural/src/index.ts",
+      "tags": [
+        "type",
+        "lo-neural"
+      ]
+    },
+    {
+      "id": "type:lo-neural:NeuralLayer",
+      "kind": "Type",
+      "label": "NeuralLayer",
+      "sourcePath": "packages/lo-neural/src/index.ts",
+      "tags": [
+        "type",
+        "lo-neural"
+      ]
+    },
+    {
+      "id": "type:lo-neural:NeuralModelDefinition",
+      "kind": "Type",
+      "label": "NeuralModelDefinition",
+      "sourcePath": "packages/lo-neural/src/index.ts",
+      "tags": [
+        "type",
+        "lo-neural"
+      ]
+    },
+    {
+      "id": "type:lo-neural:NeuralInferencePlan",
+      "kind": "Type",
+      "label": "NeuralInferencePlan",
+      "sourcePath": "packages/lo-neural/src/index.ts",
+      "tags": [
+        "type",
+        "lo-neural"
+      ]
+    },
+    {
+      "id": "type:lo-neural:NeuralTrainingPlan",
+      "kind": "Type",
+      "label": "NeuralTrainingPlan",
+      "sourcePath": "packages/lo-neural/src/index.ts",
+      "tags": [
+        "type",
+        "lo-neural"
+      ]
+    },
+    {
+      "id": "type:lo-neural:NeuralReport",
+      "kind": "Type",
+      "label": "NeuralReport",
+      "sourcePath": "packages/lo-neural/src/index.ts",
+      "tags": [
+        "type",
+        "lo-neural"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-neural/TODO.md",
+      "kind": "Document",
+      "label": "TODO.md",
+      "sourcePath": "packages/lo-neural/TODO.md",
+      "tags": [
+        "document",
+        "lo-neural"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-neural/tsconfig.json",
+      "kind": "Document",
+      "label": "tsconfig.json",
+      "sourcePath": "packages/lo-neural/tsconfig.json",
+      "tags": [
+        "report",
+        "lo-neural"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-neuromorphic/package.json",
+      "kind": "Document",
+      "label": "package.json",
+      "sourcePath": "packages/lo-neuromorphic/package.json",
+      "tags": [
+        "report",
+        "lo-neuromorphic"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-neuromorphic/README.md",
+      "kind": "Document",
+      "label": "README.md",
+      "sourcePath": "packages/lo-neuromorphic/README.md",
+      "tags": [
+        "document",
+        "lo-neuromorphic"
+      ]
+    },
+    {
+      "id": "type:lo-neuromorphic:Spike",
+      "kind": "Type",
+      "label": "Spike",
+      "sourcePath": "packages/lo-neuromorphic/src/index.ts",
+      "tags": [
+        "type",
+        "lo-neuromorphic"
+      ]
+    },
+    {
+      "id": "type:lo-neuromorphic:SpikeTrain",
+      "kind": "Type",
+      "label": "SpikeTrain",
+      "sourcePath": "packages/lo-neuromorphic/src/index.ts",
+      "tags": [
+        "type",
+        "lo-neuromorphic"
+      ]
+    },
+    {
+      "id": "type:lo-neuromorphic:EventSignal",
+      "kind": "Type",
+      "label": "EventSignal",
+      "sourcePath": "packages/lo-neuromorphic/src/index.ts",
+      "tags": [
+        "type",
+        "lo-neuromorphic"
+      ]
+    },
+    {
+      "id": "type:lo-neuromorphic:SpikingModel",
+      "kind": "Type",
+      "label": "SpikingModel",
+      "sourcePath": "packages/lo-neuromorphic/src/index.ts",
+      "tags": [
+        "type",
+        "lo-neuromorphic"
+      ]
+    },
+    {
+      "id": "type:lo-neuromorphic:NeuromorphicPlan",
+      "kind": "Type",
+      "label": "NeuromorphicPlan",
+      "sourcePath": "packages/lo-neuromorphic/src/index.ts",
+      "tags": [
+        "type",
+        "lo-neuromorphic"
+      ]
+    },
+    {
+      "id": "type:lo-neuromorphic:NeuromorphicReport",
+      "kind": "Type",
+      "label": "NeuromorphicReport",
+      "sourcePath": "packages/lo-neuromorphic/src/index.ts",
+      "tags": [
+        "type",
+        "lo-neuromorphic"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-neuromorphic/TODO.md",
+      "kind": "Document",
+      "label": "TODO.md",
+      "sourcePath": "packages/lo-neuromorphic/TODO.md",
+      "tags": [
+        "document",
+        "lo-neuromorphic"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-neuromorphic/tsconfig.json",
+      "kind": "Document",
+      "label": "tsconfig.json",
+      "sourcePath": "packages/lo-neuromorphic/tsconfig.json",
+      "tags": [
+        "report",
+        "lo-neuromorphic"
+      ]
+    },
+    {
       "id": "doc:packages/lo-photonic/package.json",
       "kind": "Document",
       "label": "package.json",
@@ -5708,6 +6067,86 @@
       "tags": [
         "report",
         "lo-target-gpu"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-target-ai-accelerator/package.json",
+      "kind": "Document",
+      "label": "package.json",
+      "sourcePath": "packages/lo-target-ai-accelerator/package.json",
+      "tags": [
+        "report",
+        "lo-target-ai-accelerator"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-target-ai-accelerator/README.md",
+      "kind": "Document",
+      "label": "README.md",
+      "sourcePath": "packages/lo-target-ai-accelerator/README.md",
+      "tags": [
+        "document",
+        "lo-target-ai-accelerator"
+      ]
+    },
+    {
+      "id": "type:lo-target-ai-accelerator:AiAcceleratorKind",
+      "kind": "Type",
+      "label": "AiAcceleratorKind",
+      "sourcePath": "packages/lo-target-ai-accelerator/src/index.ts",
+      "tags": [
+        "type",
+        "lo-target-ai-accelerator"
+      ]
+    },
+    {
+      "id": "type:lo-target-ai-accelerator:AiAcceleratorCapability",
+      "kind": "Type",
+      "label": "AiAcceleratorCapability",
+      "sourcePath": "packages/lo-target-ai-accelerator/src/index.ts",
+      "tags": [
+        "type",
+        "lo-target-ai-accelerator"
+      ]
+    },
+    {
+      "id": "type:lo-target-ai-accelerator:AiAcceleratorPlan",
+      "kind": "Type",
+      "label": "AiAcceleratorPlan",
+      "sourcePath": "packages/lo-target-ai-accelerator/src/index.ts",
+      "tags": [
+        "type",
+        "lo-target-ai-accelerator"
+      ]
+    },
+    {
+      "id": "type:lo-target-ai-accelerator:AiAcceleratorReport",
+      "kind": "Type",
+      "label": "AiAcceleratorReport",
+      "sourcePath": "packages/lo-target-ai-accelerator/src/index.ts",
+      "tags": [
+        "type",
+        "lo-target-ai-accelerator"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-target-ai-accelerator/TODO.md",
+      "kind": "Document",
+      "label": "TODO.md",
+      "sourcePath": "packages/lo-target-ai-accelerator/TODO.md",
+      "tags": [
+        "document",
+        "lo-target-ai-accelerator"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-target-ai-accelerator/tsconfig.json",
+      "kind": "Document",
+      "label": "tsconfig.json",
+      "sourcePath": "packages/lo-target-ai-accelerator/tsconfig.json",
+      "tags": [
+        "report",
+        "lo-target-ai-accelerator"
       ]
     },
     {
@@ -7451,6 +7890,26 @@
       ]
     },
     {
+      "id": "doc:packages/lo-neural",
+      "kind": "Document",
+      "label": "neural",
+      "sourcePath": "packages/lo-neural",
+      "tags": [
+        "document",
+        "workspace-doc"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-neuromorphic",
+      "kind": "Document",
+      "label": "neuromorphic",
+      "sourcePath": "packages/lo-neuromorphic",
+      "tags": [
+        "document",
+        "workspace-doc"
+      ]
+    },
+    {
       "id": "doc:packages/lo-photonic",
       "kind": "Document",
       "label": "photonic",
@@ -7505,6 +7964,16 @@
       "kind": "Document",
       "label": "targetGpu",
       "sourcePath": "packages/lo-target-gpu",
+      "tags": [
+        "document",
+        "workspace-doc"
+      ]
+    },
+    {
+      "id": "doc:packages/lo-target-ai-accelerator",
+      "kind": "Document",
+      "label": "targetAiAccelerator",
+      "sourcePath": "packages/lo-target-ai-accelerator",
       "tags": [
         "document",
         "workspace-doc"
@@ -7690,6 +8159,20 @@
     },
     {
       "from": "doc:README.md",
+      "to": "package:lo-neural",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "README.md"
+    },
+    {
+      "from": "doc:README.md",
+      "to": "package:lo-neuromorphic",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "README.md"
+    },
+    {
+      "from": "doc:README.md",
       "to": "package:lo-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -7726,6 +8209,13 @@
     {
       "from": "doc:README.md",
       "to": "package:lo-target-gpu",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "README.md"
+    },
+    {
+      "from": "doc:README.md",
+      "to": "package:lo-target-ai-accelerator",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "README.md"
@@ -7879,6 +8369,20 @@
     },
     {
       "from": "doc:docs/ARCHITECTURE.md",
+      "to": "package:lo-neural",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/ARCHITECTURE.md"
+    },
+    {
+      "from": "doc:docs/ARCHITECTURE.md",
+      "to": "package:lo-neuromorphic",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/ARCHITECTURE.md"
+    },
+    {
+      "from": "doc:docs/ARCHITECTURE.md",
       "to": "package:lo-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -7915,6 +8419,13 @@
     {
       "from": "doc:docs/ARCHITECTURE.md",
       "to": "package:lo-target-gpu",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/ARCHITECTURE.md"
+    },
+    {
+      "from": "doc:docs/ARCHITECTURE.md",
+      "to": "package:lo-target-ai-accelerator",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/ARCHITECTURE.md"
@@ -8047,6 +8558,20 @@
     },
     {
       "from": "doc:docs/CHANGELOG.md",
+      "to": "package:lo-neural",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/CHANGELOG.md"
+    },
+    {
+      "from": "doc:docs/CHANGELOG.md",
+      "to": "package:lo-neuromorphic",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/CHANGELOG.md"
+    },
+    {
+      "from": "doc:docs/CHANGELOG.md",
       "to": "package:lo-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -8083,6 +8608,13 @@
     {
       "from": "doc:docs/CHANGELOG.md",
       "to": "package:lo-target-gpu",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/CHANGELOG.md"
+    },
+    {
+      "from": "doc:docs/CHANGELOG.md",
+      "to": "package:lo-target-ai-accelerator",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/CHANGELOG.md"
@@ -8333,6 +8865,83 @@
       "evidencePath": "docs/LOWBIT_AI_BACKENDS.md"
     },
     {
+      "from": "doc:docs/NEURAL_ACCELERATOR_PACKAGES.md",
+      "to": "package:lo-logic",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/NEURAL_ACCELERATOR_PACKAGES.md"
+    },
+    {
+      "from": "doc:docs/NEURAL_ACCELERATOR_PACKAGES.md",
+      "to": "package:lo-vector",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/NEURAL_ACCELERATOR_PACKAGES.md"
+    },
+    {
+      "from": "doc:docs/NEURAL_ACCELERATOR_PACKAGES.md",
+      "to": "package:lo-compute",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/NEURAL_ACCELERATOR_PACKAGES.md"
+    },
+    {
+      "from": "doc:docs/NEURAL_ACCELERATOR_PACKAGES.md",
+      "to": "package:lo-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/NEURAL_ACCELERATOR_PACKAGES.md"
+    },
+    {
+      "from": "doc:docs/NEURAL_ACCELERATOR_PACKAGES.md",
+      "to": "package:lo-lowbit-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/NEURAL_ACCELERATOR_PACKAGES.md"
+    },
+    {
+      "from": "doc:docs/NEURAL_ACCELERATOR_PACKAGES.md",
+      "to": "package:lo-neural",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/NEURAL_ACCELERATOR_PACKAGES.md"
+    },
+    {
+      "from": "doc:docs/NEURAL_ACCELERATOR_PACKAGES.md",
+      "to": "package:lo-neuromorphic",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/NEURAL_ACCELERATOR_PACKAGES.md"
+    },
+    {
+      "from": "doc:docs/NEURAL_ACCELERATOR_PACKAGES.md",
+      "to": "package:lo-photonic",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/NEURAL_ACCELERATOR_PACKAGES.md"
+    },
+    {
+      "from": "doc:docs/NEURAL_ACCELERATOR_PACKAGES.md",
+      "to": "package:lo-target-ai-accelerator",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/NEURAL_ACCELERATOR_PACKAGES.md"
+    },
+    {
+      "from": "doc:docs/NEURAL_ACCELERATOR_PACKAGES.md",
+      "to": "package:lo-target-photonic",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/NEURAL_ACCELERATOR_PACKAGES.md"
+    },
+    {
+      "from": "doc:docs/NEURAL_ACCELERATOR_PACKAGES.md",
+      "to": "package:app",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/NEURAL_ACCELERATOR_PACKAGES.md"
+    },
+    {
       "from": "doc:docs/OBSERVABILITY.md",
       "to": "package:app",
       "kind": "documents",
@@ -8474,6 +9083,20 @@
     },
     {
       "from": "doc:docs/REQUIREMENTS.md",
+      "to": "package:lo-neural",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/REQUIREMENTS.md"
+    },
+    {
+      "from": "doc:docs/REQUIREMENTS.md",
+      "to": "package:lo-neuromorphic",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/REQUIREMENTS.md"
+    },
+    {
+      "from": "doc:docs/REQUIREMENTS.md",
       "to": "package:lo-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -8510,6 +9133,13 @@
     {
       "from": "doc:docs/REQUIREMENTS.md",
       "to": "package:lo-target-gpu",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/REQUIREMENTS.md"
+    },
+    {
+      "from": "doc:docs/REQUIREMENTS.md",
+      "to": "package:lo-target-ai-accelerator",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/REQUIREMENTS.md"
@@ -8656,6 +9286,20 @@
     },
     {
       "from": "doc:docs/TASKS.md",
+      "to": "package:lo-neural",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/TASKS.md"
+    },
+    {
+      "from": "doc:docs/TASKS.md",
+      "to": "package:lo-neuromorphic",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/TASKS.md"
+    },
+    {
+      "from": "doc:docs/TASKS.md",
       "to": "package:lo-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -8692,6 +9336,13 @@
     {
       "from": "doc:docs/TASKS.md",
       "to": "package:lo-target-gpu",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/TASKS.md"
+    },
+    {
+      "from": "doc:docs/TASKS.md",
+      "to": "package:lo-target-ai-accelerator",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/TASKS.md"
@@ -10770,6 +11421,20 @@
     },
     {
       "from": "doc:packages/lo-core/docs/package-boundaries.md",
+      "to": "package:lo-neural",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-core/docs/package-boundaries.md"
+    },
+    {
+      "from": "doc:packages/lo-core/docs/package-boundaries.md",
+      "to": "package:lo-neuromorphic",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-core/docs/package-boundaries.md"
+    },
+    {
+      "from": "doc:packages/lo-core/docs/package-boundaries.md",
       "to": "package:lo-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -10806,6 +11471,13 @@
     {
       "from": "doc:packages/lo-core/docs/package-boundaries.md",
       "to": "package:lo-target-gpu",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-core/docs/package-boundaries.md"
+    },
+    {
+      "from": "doc:packages/lo-core/docs/package-boundaries.md",
+      "to": "package:lo-target-ai-accelerator",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages/lo-core/docs/package-boundaries.md"
@@ -10945,6 +11617,20 @@
     },
     {
       "from": "doc:packages/lo-core/docs/package-use-registry.md",
+      "to": "package:lo-neural",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-core/docs/package-use-registry.md"
+    },
+    {
+      "from": "doc:packages/lo-core/docs/package-use-registry.md",
+      "to": "package:lo-neuromorphic",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-core/docs/package-use-registry.md"
+    },
+    {
+      "from": "doc:packages/lo-core/docs/package-use-registry.md",
       "to": "package:lo-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -10981,6 +11667,13 @@
     {
       "from": "doc:packages/lo-core/docs/package-use-registry.md",
       "to": "package:lo-target-gpu",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-core/docs/package-use-registry.md"
+    },
+    {
+      "from": "doc:packages/lo-core/docs/package-use-registry.md",
+      "to": "package:lo-target-ai-accelerator",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages/lo-core/docs/package-use-registry.md"
@@ -12184,6 +12877,20 @@
     },
     {
       "from": "doc:packages/lo-core/README.md",
+      "to": "package:lo-neural",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-core/README.md"
+    },
+    {
+      "from": "doc:packages/lo-core/README.md",
+      "to": "package:lo-neuromorphic",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-core/README.md"
+    },
+    {
+      "from": "doc:packages/lo-core/README.md",
       "to": "package:lo-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -12220,6 +12927,13 @@
     {
       "from": "doc:packages/lo-core/README.md",
       "to": "package:lo-target-gpu",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-core/README.md"
+    },
+    {
+      "from": "doc:packages/lo-core/README.md",
+      "to": "package:lo-target-ai-accelerator",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages/lo-core/README.md"
@@ -14039,6 +14753,20 @@
     },
     {
       "from": "doc:packages/lo-vector/README.md",
+      "to": "package:lo-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-vector/README.md"
+    },
+    {
+      "from": "doc:packages/lo-vector/README.md",
+      "to": "package:lo-neural",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-vector/README.md"
+    },
+    {
+      "from": "doc:packages/lo-vector/README.md",
       "to": "package:lo-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -14060,6 +14788,13 @@
     },
     {
       "from": "package:lo-vector",
+      "to": "type:lo-vector:NumericElementType",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-vector/src/index.ts"
+    },
+    {
+      "from": "package:lo-vector",
       "to": "type:lo-vector:VectorType",
       "kind": "provides",
       "confidence": "EXTRACTED",
@@ -14067,7 +14802,49 @@
     },
     {
       "from": "package:lo-vector",
+      "to": "type:lo-vector:MatrixShape",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-vector/src/index.ts"
+    },
+    {
+      "from": "package:lo-vector",
+      "to": "type:lo-vector:MatrixType",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-vector/src/index.ts"
+    },
+    {
+      "from": "package:lo-vector",
+      "to": "type:lo-vector:TensorShape",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-vector/src/index.ts"
+    },
+    {
+      "from": "package:lo-vector",
+      "to": "type:lo-vector:TensorType",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-vector/src/index.ts"
+    },
+    {
+      "from": "package:lo-vector",
+      "to": "type:lo-vector:QuantizedType",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-vector/src/index.ts"
+    },
+    {
+      "from": "package:lo-vector",
       "to": "type:lo-vector:VectorOperation",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-vector/src/index.ts"
+    },
+    {
+      "from": "package:lo-vector",
+      "to": "type:lo-vector:TensorOperation",
       "kind": "provides",
       "confidence": "EXTRACTED",
       "evidencePath": "packages/lo-vector/src/index.ts"
@@ -14808,6 +15585,272 @@
       "evidencePath": "packages/lo-lowbit-ai/tsconfig.json"
     },
     {
+      "from": "package:lo-neural",
+      "to": "doc:packages/lo-neural/package.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neural/package.json"
+    },
+    {
+      "from": "package:lo-neural",
+      "to": "doc:packages/lo-neural/README.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neural/README.md"
+    },
+    {
+      "from": "doc:packages/lo-neural/README.md",
+      "to": "package:lo-core",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-neural/README.md"
+    },
+    {
+      "from": "doc:packages/lo-neural/README.md",
+      "to": "package:lo-vector",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-neural/README.md"
+    },
+    {
+      "from": "doc:packages/lo-neural/README.md",
+      "to": "package:lo-compute",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-neural/README.md"
+    },
+    {
+      "from": "doc:packages/lo-neural/README.md",
+      "to": "package:lo-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-neural/README.md"
+    },
+    {
+      "from": "doc:packages/lo-neural/README.md",
+      "to": "package:lo-lowbit-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-neural/README.md"
+    },
+    {
+      "from": "doc:packages/lo-neural/README.md",
+      "to": "package:lo-neural",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-neural/README.md"
+    },
+    {
+      "from": "doc:packages/lo-neural/README.md",
+      "to": "package:app",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-neural/README.md"
+    },
+    {
+      "from": "package:lo-neural",
+      "to": "type:lo-neural:NeuralTask",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neural/src/index.ts"
+    },
+    {
+      "from": "package:lo-neural",
+      "to": "type:lo-neural:ActivationFunction",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neural/src/index.ts"
+    },
+    {
+      "from": "package:lo-neural",
+      "to": "type:lo-neural:LossFunction",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neural/src/index.ts"
+    },
+    {
+      "from": "package:lo-neural",
+      "to": "type:lo-neural:OptimizerName",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neural/src/index.ts"
+    },
+    {
+      "from": "package:lo-neural",
+      "to": "type:lo-neural:TensorShapeRef",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neural/src/index.ts"
+    },
+    {
+      "from": "package:lo-neural",
+      "to": "type:lo-neural:NeuralTensorRef",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neural/src/index.ts"
+    },
+    {
+      "from": "package:lo-neural",
+      "to": "type:lo-neural:NeuralLayer",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neural/src/index.ts"
+    },
+    {
+      "from": "package:lo-neural",
+      "to": "type:lo-neural:NeuralModelDefinition",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neural/src/index.ts"
+    },
+    {
+      "from": "package:lo-neural",
+      "to": "type:lo-neural:NeuralInferencePlan",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neural/src/index.ts"
+    },
+    {
+      "from": "package:lo-neural",
+      "to": "type:lo-neural:NeuralTrainingPlan",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neural/src/index.ts"
+    },
+    {
+      "from": "package:lo-neural",
+      "to": "type:lo-neural:NeuralReport",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neural/src/index.ts"
+    },
+    {
+      "from": "package:lo-neural",
+      "to": "doc:packages/lo-neural/TODO.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neural/TODO.md"
+    },
+    {
+      "from": "doc:packages/lo-neural/TODO.md",
+      "to": "package:lo-vector",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-neural/TODO.md"
+    },
+    {
+      "from": "doc:packages/lo-neural/TODO.md",
+      "to": "package:lo-neural",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-neural/TODO.md"
+    },
+    {
+      "from": "package:lo-neural",
+      "to": "doc:packages/lo-neural/tsconfig.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neural/tsconfig.json"
+    },
+    {
+      "from": "package:lo-neuromorphic",
+      "to": "doc:packages/lo-neuromorphic/package.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neuromorphic/package.json"
+    },
+    {
+      "from": "package:lo-neuromorphic",
+      "to": "doc:packages/lo-neuromorphic/README.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neuromorphic/README.md"
+    },
+    {
+      "from": "doc:packages/lo-neuromorphic/README.md",
+      "to": "package:lo-compute",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-neuromorphic/README.md"
+    },
+    {
+      "from": "doc:packages/lo-neuromorphic/README.md",
+      "to": "package:lo-neural",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-neuromorphic/README.md"
+    },
+    {
+      "from": "doc:packages/lo-neuromorphic/README.md",
+      "to": "package:lo-neuromorphic",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-neuromorphic/README.md"
+    },
+    {
+      "from": "package:lo-neuromorphic",
+      "to": "type:lo-neuromorphic:Spike",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neuromorphic/src/index.ts"
+    },
+    {
+      "from": "package:lo-neuromorphic",
+      "to": "type:lo-neuromorphic:SpikeTrain",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neuromorphic/src/index.ts"
+    },
+    {
+      "from": "package:lo-neuromorphic",
+      "to": "type:lo-neuromorphic:EventSignal",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neuromorphic/src/index.ts"
+    },
+    {
+      "from": "package:lo-neuromorphic",
+      "to": "type:lo-neuromorphic:SpikingModel",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neuromorphic/src/index.ts"
+    },
+    {
+      "from": "package:lo-neuromorphic",
+      "to": "type:lo-neuromorphic:NeuromorphicPlan",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neuromorphic/src/index.ts"
+    },
+    {
+      "from": "package:lo-neuromorphic",
+      "to": "type:lo-neuromorphic:NeuromorphicReport",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neuromorphic/src/index.ts"
+    },
+    {
+      "from": "package:lo-neuromorphic",
+      "to": "doc:packages/lo-neuromorphic/TODO.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neuromorphic/TODO.md"
+    },
+    {
+      "from": "doc:packages/lo-neuromorphic/TODO.md",
+      "to": "package:lo-neuromorphic",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-neuromorphic/TODO.md"
+    },
+    {
+      "from": "package:lo-neuromorphic",
+      "to": "doc:packages/lo-neuromorphic/tsconfig.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-neuromorphic/tsconfig.json"
+    },
+    {
       "from": "package:lo-photonic",
       "to": "doc:packages/lo-photonic/package.json",
       "kind": "owns",
@@ -14844,6 +15887,13 @@
     },
     {
       "from": "doc:packages/lo-photonic/README.md",
+      "to": "package:lo-neural",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-photonic/README.md"
+    },
+    {
+      "from": "doc:packages/lo-photonic/README.md",
       "to": "package:lo-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -14852,6 +15902,13 @@
     {
       "from": "doc:packages/lo-photonic/README.md",
       "to": "package:lo-target-binary",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-photonic/README.md"
+    },
+    {
+      "from": "doc:packages/lo-photonic/README.md",
+      "to": "package:lo-target-ai-accelerator",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages/lo-photonic/README.md"
@@ -15541,6 +16598,139 @@
       "kind": "owns",
       "confidence": "EXTRACTED",
       "evidencePath": "packages/lo-target-gpu/tsconfig.json"
+    },
+    {
+      "from": "package:lo-target-ai-accelerator",
+      "to": "doc:packages/lo-target-ai-accelerator/package.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-ai-accelerator/package.json"
+    },
+    {
+      "from": "package:lo-target-ai-accelerator",
+      "to": "doc:packages/lo-target-ai-accelerator/README.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-ai-accelerator/README.md"
+    },
+    {
+      "from": "doc:packages/lo-target-ai-accelerator/README.md",
+      "to": "package:lo-vector",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-target-ai-accelerator/README.md"
+    },
+    {
+      "from": "doc:packages/lo-target-ai-accelerator/README.md",
+      "to": "package:lo-compute",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-target-ai-accelerator/README.md"
+    },
+    {
+      "from": "doc:packages/lo-target-ai-accelerator/README.md",
+      "to": "package:lo-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-target-ai-accelerator/README.md"
+    },
+    {
+      "from": "doc:packages/lo-target-ai-accelerator/README.md",
+      "to": "package:lo-lowbit-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-target-ai-accelerator/README.md"
+    },
+    {
+      "from": "doc:packages/lo-target-ai-accelerator/README.md",
+      "to": "package:lo-neural",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-target-ai-accelerator/README.md"
+    },
+    {
+      "from": "doc:packages/lo-target-ai-accelerator/README.md",
+      "to": "package:lo-target-cpu",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-target-ai-accelerator/README.md"
+    },
+    {
+      "from": "doc:packages/lo-target-ai-accelerator/README.md",
+      "to": "package:lo-target-gpu",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-target-ai-accelerator/README.md"
+    },
+    {
+      "from": "doc:packages/lo-target-ai-accelerator/README.md",
+      "to": "package:lo-target-ai-accelerator",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-target-ai-accelerator/README.md"
+    },
+    {
+      "from": "doc:packages/lo-target-ai-accelerator/README.md",
+      "to": "package:lo-target-photonic",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-target-ai-accelerator/README.md"
+    },
+    {
+      "from": "doc:packages/lo-target-ai-accelerator/README.md",
+      "to": "package:app",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-target-ai-accelerator/README.md"
+    },
+    {
+      "from": "package:lo-target-ai-accelerator",
+      "to": "type:lo-target-ai-accelerator:AiAcceleratorKind",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-ai-accelerator/src/index.ts"
+    },
+    {
+      "from": "package:lo-target-ai-accelerator",
+      "to": "type:lo-target-ai-accelerator:AiAcceleratorCapability",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-ai-accelerator/src/index.ts"
+    },
+    {
+      "from": "package:lo-target-ai-accelerator",
+      "to": "type:lo-target-ai-accelerator:AiAcceleratorPlan",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-ai-accelerator/src/index.ts"
+    },
+    {
+      "from": "package:lo-target-ai-accelerator",
+      "to": "type:lo-target-ai-accelerator:AiAcceleratorReport",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-ai-accelerator/src/index.ts"
+    },
+    {
+      "from": "package:lo-target-ai-accelerator",
+      "to": "doc:packages/lo-target-ai-accelerator/TODO.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-ai-accelerator/TODO.md"
+    },
+    {
+      "from": "doc:packages/lo-target-ai-accelerator/TODO.md",
+      "to": "package:lo-target-ai-accelerator",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-target-ai-accelerator/TODO.md"
+    },
+    {
+      "from": "package:lo-target-ai-accelerator",
+      "to": "doc:packages/lo-target-ai-accelerator/tsconfig.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-ai-accelerator/tsconfig.json"
     },
     {
       "from": "package:lo-target-photonic",

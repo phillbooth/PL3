@@ -19,6 +19,7 @@ These files describe the app being built, not the LO language itself.
 - `DECISIONS.md` — technical decisions
 - `CHANGELOG.md` — project changes
 - `LOWBIT_AI_BACKENDS.md` - low-bit AI backend architecture note
+- `NEURAL_ACCELERATOR_PACKAGES.md` - neural, neuromorphic and AI accelerator package split
 - `PROJECT_GRAPH.md` - project knowledge graph tooling note
 
 ## Language and Runtime Proposals

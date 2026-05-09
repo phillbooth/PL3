@@ -36,6 +36,8 @@
   `lo-config`, `lo-reports`, `lo-target-wasm` and `lo-target-gpu`
 - [x] Add package scaffolds for `lo-ai`, `lo-lowbit-ai`, `lo-target-cpu` and
   `lo-cpu-kernels`
+- [x] Add package scaffolds for `lo-neural`, `lo-neuromorphic` and
+  `lo-target-ai-accelerator`
 - [x] Add package scaffold for `lo-project-graph`
 - [x] Add TODO documents for `lo-api-server` and `lo-app-kernel`
 - [x] Add README and TODO documents for `packages/app`
@@ -72,7 +74,9 @@
 - [ ] Define `lo-photonic` wavelength, phase and amplitude model
 - [ ] Define photonic mappings from `lo-logic`
 - [ ] Add examples and tests for logic and photonic package boundaries
-- [ ] Define `lo-vector` vector value and operation rules
+- [x] Define `lo-vector` vector, matrix and tensor value contracts
+- [x] Define `lo-neural` neural-network workload contracts
+- [x] Define `lo-neuromorphic` spiking/event workload contracts
 - [x] Define `lo-compute` compute planning and target selection rules
 - [x] Define `lo-ai` generic AI inference and safety policy contracts
 - [x] Define `lo-lowbit-ai` backend contracts for low-bit AI inference
@@ -81,6 +85,7 @@
 - [ ] Define `lo-target-binary` binary/native target plans
 - [ ] Define `lo-target-wasm` WebAssembly target plans
 - [ ] Define `lo-target-gpu` GPU target plans
+- [x] Define `lo-target-ai-accelerator` target planning contracts
 - [ ] Define `lo-target-photonic` photonic backend target plans
 
 ## Phase 8: Core Infrastructure Packages

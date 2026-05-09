@@ -3,11 +3,11 @@
 ### LO, short for Logic Omni
 
 ```text
-Designed to be backwards compatiable with binary while supporting photonic Tri logic.
+Designed to be backwards compatible with binary while supporting photonic Tri logic.
 
 Easy to code and learn for Humans
 
-AI Friendly sytax and mapping
+AI friendly syntax and mapping
 ```
 
 This repository is a starter workspace for building a bespoke application with
@@ -124,12 +124,15 @@ LO-app/
 |   |-- lo-compute/
 |   |-- lo-ai/
 |   |-- lo-lowbit-ai/
+|   |-- lo-neural/
+|   |-- lo-neuromorphic/
 |   |-- lo-photonic/
 |   |-- lo-target-cpu/
 |   |-- lo-cpu-kernels/
 |   |-- lo-target-binary/
 |   |-- lo-target-wasm/
 |   |-- lo-target-gpu/
+|   |-- lo-target-ai-accelerator/
 |   |-- lo-target-photonic/
 |   |-- lo-app-kernel/
 |   |-- lo-api-server/
@@ -154,13 +157,18 @@ LO-app/
 - `packages/lo-reports/` - shared report schemas and report-writing contracts.
 - `packages/lo-logic/` - `Tri`, `Logic<N>`, Decision, RiskLevel and future Omni
   logic concepts.
-- `packages/lo-vector/` - vector value, lane, dimension and operation concepts.
+- `packages/lo-vector/` - vector, matrix, tensor, lane, dimension and numeric
+  operation concepts.
 - `packages/lo-compute/` - compute planning, capabilities, effects, budgets and
   target selection.
 - `packages/lo-ai/` - generic AI inference contracts, model metadata, safety
   policy and AI reports.
 - `packages/lo-lowbit-ai/` - low-bit and ternary AI inference contracts, with
   BitNet represented as one optional backend rather than LO syntax.
+- `packages/lo-neural/` - neural model, layer, inference and training boundary
+  contracts.
+- `packages/lo-neuromorphic/` - spike, event-signal and spiking model
+  contracts.
 - `packages/lo-photonic/` - photonic and wavelength concepts, simulation and
   logic-to-light mapping contracts.
 - `packages/lo-target-cpu/` - CPU capability detection, threading, memory limits
@@ -172,6 +180,8 @@ LO-app/
 - `packages/lo-target-wasm/` - WebAssembly target planning and module metadata.
 - `packages/lo-target-gpu/` - GPU target planning, kernel mapping and data
   movement reports.
+- `packages/lo-target-ai-accelerator/` - NPU, TPU and AI-chip target planning
+  contracts.
 - `packages/lo-target-photonic/` - photonic backend target planning that uses
   `lo-photonic`.
 - `packages/lo-app-kernel/` - optional secure application kernel for typed API
@@ -198,7 +208,7 @@ LO Core
 LO Compiler / Runtime / Security / Config / Reports
   compiler pipeline, execution, shared security, configuration and report contracts
 
-LO Logic / Vector / Compute / AI / Photonic / Target Packages
+LO Logic / Vector / Compute / AI / Neural / Photonic / Target Packages
   specialised concepts and target planning outside the core language package
 
 LO Secure App Kernel
@@ -220,8 +230,11 @@ Important boundary rules:
 - `lo-app-kernel` is an optional secure application boundary. It must not become
   a CMS, admin dashboard, ORM or frontend framework.
 - `lo-api-server` serves HTTP and delegates typed policy decisions.
-- `lo-ai` and `lo-lowbit-ai` are optional AI package layers, not core syntax.
+- `lo-ai`, `lo-neural`, `lo-neuromorphic` and `lo-lowbit-ai` are optional AI
+  package layers, not core syntax.
 - BitNet is a backend option inside low-bit AI, not a language feature.
+- AI accelerators, GPUs and photonic chipsets are optional targets. CPU and
+  binary-compatible fallback remain the baseline.
 - `lo-project-graph` explains the repository. It does not enforce compiler,
   runtime or security rules.
 

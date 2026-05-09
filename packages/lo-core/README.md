@@ -62,7 +62,7 @@ packages/lo-logic/
   Tri, Logic<N>, Decision, RiskLevel, Omni logic, truth tables, logic reports
 
 packages/lo-vector/
-  Vector<T, N>, lanes, dimensions, vector operations and vector reports
+  Vector<T, N>, Matrix<T>, Tensor<T>, Shape, lanes, dimensions, vector operations and vector reports
 
 packages/lo-compute/
   compute planning, capabilities, budgets, offload and target selection
@@ -72,6 +72,12 @@ packages/lo-ai/
 
 packages/lo-lowbit-ai/
   low-bit / ternary AI model references, backend selection and CPU inference plans
+
+packages/lo-neural/
+  neural models, layers, inference and training boundary contracts
+
+packages/lo-neuromorphic/
+  Spike, SpikeTrain, EventSignal and spiking model contracts
 
 packages/lo-photonic/
   Wavelength, Phase, Amplitude, OpticalSignal, OpticalChannel
@@ -90,6 +96,9 @@ packages/lo-target-wasm/
 
 packages/lo-target-gpu/
   GPU target planning, kernel mapping, precision and data movement reports
+
+packages/lo-target-ai-accelerator/
+  NPU, TPU and AI-chip target planning contracts
 
 packages/lo-target-photonic/
   photonic backend target plans using lo-photonic concepts

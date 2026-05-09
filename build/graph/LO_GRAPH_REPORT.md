@@ -1,15 +1,15 @@
 # LO Graph Report
 
 Workspace: LO-app
-Generated: 2026-05-08T20:33:51.013Z
+Generated: 2026-05-09T09:26:50.495Z
 
 ## Summary
 
-- Packages: 24
-- Documents: 361
-- Types/interfaces: 237
+- Packages: 27
+- Documents: 377
+- Types/interfaces: 265
 - Functions: 93
-- Relationships: 1359
+- Relationships: 1462
 
 ## Package Nodes
 
@@ -24,12 +24,15 @@ Generated: 2026-05-08T20:33:51.013Z
 - lo-compute (packages/lo-compute/README.md)
 - lo-ai (packages/lo-ai/README.md)
 - lo-lowbit-ai (packages/lo-lowbit-ai/README.md)
+- lo-neural (packages/lo-neural/README.md)
+- lo-neuromorphic (packages/lo-neuromorphic/README.md)
 - lo-photonic (packages/lo-photonic/README.md)
 - lo-target-cpu (packages/lo-target-cpu/README.md)
 - lo-cpu-kernels (packages/lo-cpu-kernels/README.md)
 - lo-target-binary (packages/lo-target-binary/README.md)
 - lo-target-wasm (packages/lo-target-wasm/README.md)
 - lo-target-gpu (packages/lo-target-gpu/README.md)
+- lo-target-ai-accelerator (packages/lo-target-ai-accelerator/README.md)
 - lo-target-photonic (packages/lo-target-photonic/README.md)
 - lo-app-kernel (packages/lo-app-kernel/README.md)
 - lo-api-server (packages/lo-api-server/README.md)

@@ -73,9 +73,14 @@ packages/lo-logic
 
 packages/lo-vector
   Vector<T, N>
+  Matrix<T, R, C>
+  Tensor<T, Shape>
+  Shape
+  numeric element contracts
   vector dimensions
   vector lanes
   vector operations
+  tensor operations
   vector safety rules
   vector reports
 
@@ -102,6 +107,21 @@ packages/lo-lowbit-ai
   backend selection contracts
   CPU low-bit inference plans
   low-bit inference reports
+
+packages/lo-neural
+  neural model definitions
+  neural layers
+  activation functions
+  inference boundaries
+  training boundaries
+  neural reports
+
+packages/lo-neuromorphic
+  Spike
+  SpikeTrain
+  EventSignal<T>
+  spiking model contracts
+  neuromorphic reports
 
 packages/lo-photonic
   Wavelength
@@ -144,6 +164,13 @@ packages/lo-target-gpu
   GPU plan output
   kernel mapping plans
   precision and data movement reports
+
+packages/lo-target-ai-accelerator
+  NPU and TPU target capabilities
+  AI-chip target planning
+  precision compatibility reports
+  model operation mapping plans
+  accelerator fallback reports
 
 packages/lo-target-photonic
   photonic backend target plans
@@ -214,6 +241,19 @@ AI inference contracts
 Low-bit AI backend
   update packages/lo-lowbit-ai, packages/lo-target-cpu or packages/lo-cpu-kernels first
   update lo-core docs only if compute target syntax or report contracts change
+
+Neural model or training boundary changes
+  update packages/lo-neural first
+  update packages/lo-vector only if tensor shape contracts change
+  update lo-core docs only if language-level compute syntax changes
+
+Neuromorphic event or spiking model changes
+  update packages/lo-neuromorphic first
+  update target packages only if hardware planning changes
+
+AI accelerator target changes
+  update packages/lo-target-ai-accelerator first
+  update packages/lo-compute only if target selection contracts change
 
 Photonic wavelength model
   update packages/lo-photonic first

@@ -12,15 +12,18 @@ Configuration and shared reports live in `packages/lo-config/` and
 Vector concepts live in `packages/lo-vector/`. Compute planning concepts live in
 `packages/lo-compute/`. Generic AI inference contracts live in
 `packages/lo-ai/`, and low-bit/ternary AI inference support lives in
-`packages/lo-lowbit-ai/`. BitNet is one optional backend there. Photonic and
-wavelength concepts live in
+`packages/lo-lowbit-ai/`. Neural-network workload contracts live in
+`packages/lo-neural/`, and neuromorphic spike/event contracts live in
+`packages/lo-neuromorphic/`. BitNet is one optional backend for low-bit AI.
+Photonic and wavelength concepts live in
 `packages/lo-photonic/`. CPU target planning lives in
 `packages/lo-target-cpu/`, optimized CPU kernel contracts live in
 `packages/lo-cpu-kernels/`, and binary/native target planning lives in
 `packages/lo-target-binary/`, WebAssembly target planning lives in
 `packages/lo-target-wasm/`, GPU target planning lives in
-`packages/lo-target-gpu/`, and photonic target backend planning lives in
-`packages/lo-target-photonic/`. The
+`packages/lo-target-gpu/`, AI accelerator target planning lives in
+`packages/lo-target-ai-accelerator/`, and photonic target backend planning
+lives in `packages/lo-target-photonic/`. The
 optional Secure App Kernel design lives in `packages/lo-app-kernel/`. The
 built-in HTTP API server package lives in `packages/lo-api-server/`. Developer command
 tooling lives in `packages/lo-cli/`, and safe project automation lives in
@@ -47,12 +50,15 @@ LO-app/
 |   |-- lo-compute/
 |   |-- lo-ai/
 |   |-- lo-lowbit-ai/
+|   |-- lo-neural/
+|   |-- lo-neuromorphic/
 |   |-- lo-photonic/
 |   |-- lo-target-cpu/
 |   |-- lo-cpu-kernels/
 |   |-- lo-target-binary/
 |   |-- lo-target-wasm/
 |   |-- lo-target-gpu/
+|   |-- lo-target-ai-accelerator/
 |   |-- lo-target-photonic/
 |   |-- lo-app-kernel/
 |   |-- lo-api-server/
@@ -81,12 +87,15 @@ light-framework/
 |   |-- lo-compute/
 |   |-- lo-ai/
 |   |-- lo-lowbit-ai/
+|   |-- lo-neural/
+|   |-- lo-neuromorphic/
 |   |-- lo-photonic/
 |   |-- lo-target-cpu/
 |   |-- lo-cpu-kernels/
 |   |-- lo-target-binary/
 |   |-- lo-target-wasm/
 |   |-- lo-target-gpu/
+|   |-- lo-target-ai-accelerator/
 |   |-- lo-target-photonic/
 |   |-- lo-app-kernel/
 |   |-- lo-api-server/
@@ -138,6 +147,12 @@ LO AI
 LO Low-Bit AI
   low-bit / ternary model references, backend selection and CPU inference plans
 
+LO Neural
+  neural models, layers, inference and training boundary contracts
+
+LO Neuromorphic
+  spike trains, event signals and spiking model contracts
+
 LO Photonic
   wavelength, phase, amplitude, optical channels and logic-to-light mapping
 
@@ -155,6 +170,9 @@ LO Target WASM
 
 LO Target GPU
   GPU target planning, kernel mapping, precision and data movement reports
+
+LO Target AI Accelerator
+  NPU, TPU and AI-chip capability, precision and operation mapping plans
 
 LO Target Photonic
   photonic backend target plans that use lo-photonic concepts
@@ -206,22 +224,28 @@ runtime enforcement or security decisions.
 owns photonic representation and target planning. Photonic mappings may consume
 logic states, but logic semantics stay in `lo-logic`.
 
-`lo-vector` owns vector values and vector operation concepts. `lo-compute` owns
+`lo-vector` owns vector, matrix and tensor value concepts. `lo-compute` owns
 compute planning and target selection. `lo-ai` owns generic AI inference
-contracts and safety policy. `lo-lowbit-ai` owns low-bit and ternary model
-references, backend selection and CPU inference plans. `lo-target-cpu` owns CPU
-capability and fallback planning, while `lo-cpu-kernels` owns optimized CPU
-kernel contracts. `lo-target-binary`, `lo-target-wasm`, `lo-target-gpu` and
-`lo-target-photonic` own target-specific planning for binary/native,
-WebAssembly, GPU and photonic backends.
+contracts and safety policy. `lo-neural` owns neural-network model, layer,
+inference and training boundaries. `lo-neuromorphic` owns spike/event-driven
+model contracts. `lo-lowbit-ai` owns low-bit and ternary model references,
+backend selection and CPU inference plans. `lo-target-cpu` owns CPU capability
+and fallback planning, while `lo-cpu-kernels` owns optimized CPU kernel
+contracts. `lo-target-binary`, `lo-target-wasm`, `lo-target-gpu`,
+`lo-target-ai-accelerator` and `lo-target-photonic` own target-specific
+planning for binary/native, WebAssembly, GPU, AI accelerator and photonic
+backends.
 
+Neural networks are typed compute workloads, not normal app syntax. LO can
+define model, inference and training boundaries through `lo-neural`, while
+tensor shapes stay in `lo-vector` and target selection stays in `lo-compute`.
 Low-bit AI is a CPU fallback path for AI inference, not a core language feature.
-When a compute policy requests AI inference, LO can prefer GPU or NPU targets
-and fall back to `low_bit_ai` when the model, backend and CPU capability checks
-pass. BitNet may be selected as the backend today, but LO source syntax should
-remain generic so future low-bit standards can replace it. Target selection
-reports must record the selected backend, fallback reason, token and memory
-limits, thread limit and warnings.
+When a compute policy requests AI inference, LO can prefer AI accelerator, GPU
+or NPU targets and fall back to `low_bit_ai` or CPU when the model, backend and
+capability checks pass. BitNet may be selected as the backend today, but LO
+source syntax should remain generic so future low-bit standards can replace it.
+Target selection reports must record the selected backend, fallback reason,
+token and memory limits, thread limit and warnings.
 
 `lo-security` owns shared security primitives and report contracts. Runtime auth
 and API policy enforcement remain in `lo-app-kernel`. `lo-config` owns

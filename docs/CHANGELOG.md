@@ -79,6 +79,16 @@ All notable changes to this app should be documented here.
 - Reworked `docs/DESIGN.md` from generic UI placeholders into a template and
   developer-experience design guide for docs, tooling, reports and future app
   UX boundaries.
+- Added `packages/lo-neural/` for neural model, layer, inference and training
+  boundary contracts.
+- Added `packages/lo-neuromorphic/` for spike, event-signal and spiking model
+  contracts.
+- Added `packages/lo-target-ai-accelerator/` for NPU, TPU and AI-chip target
+  planning contracts.
+- Added `docs/NEURAL_ACCELERATOR_PACKAGES.md` to document neural,
+  neuromorphic, low-bit, AI accelerator and photonic package boundaries.
+- Expanded `lo-vector` with matrix, tensor, shape and numeric element contract
+  placeholders.
 
 ### Changed
 
