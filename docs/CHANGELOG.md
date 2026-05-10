@@ -103,6 +103,14 @@ All notable changes to this app should be documented here.
   optional future sharing payloads.
 - Added a placeholder `lo benchmark` CLI command entry for the future benchmark
   runner.
+- Added `docs/RUST_FINANCIAL_MARKETS.md` covering Rust's role in financial
+  market systems and the related design lessons for LO.
+- Added `docs/OPTICAL_IO.md` documenting `optical_io` as a high-speed
+  interconnect/data-movement target for Intel Silicon Photonics and OCI-style
+  systems, distinct from photonic compute.
+- Added `docs/AI_ACCELERATOR_TARGETS.md` documenting passive AI accelerator
+  target profiles, with Intel Gaudi 3 represented as a backend profile rather
+  than LO syntax.
 
 ### Changed
 
@@ -140,6 +148,10 @@ All notable changes to this app should be documented here.
   them through `lo graph query`, `lo graph explain` and `lo graph path`.
 - Updated workspace package mapping so `lo-benchmark` is tracked by the project
   graph and package registry.
+- Added `optical_io` to compute, benchmark and photonic target planning
+  contracts as an interconnect-aware data movement target.
+- Added generic `ai_accelerator` planning support and an Intel Gaudi 3 backend
+  profile to AI accelerator, compute and benchmark contracts.
 
 ### Removed
 

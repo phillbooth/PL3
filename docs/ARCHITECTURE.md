@@ -23,8 +23,10 @@ Photonic and wavelength concepts live in
 `packages/lo-target-binary/`, WebAssembly target planning lives in
 `packages/lo-target-wasm/`, GPU target planning lives in
 `packages/lo-target-gpu/`, AI accelerator target planning lives in
-`packages/lo-target-ai-accelerator/`, and photonic target backend planning
-lives in `packages/lo-target-photonic/`. The
+`packages/lo-target-ai-accelerator/` with passive backend profiles for devices
+such as Intel Gaudi 3, and photonic target backend planning lives in
+`packages/lo-target-photonic/`, including optical I/O interconnect planning as a
+data-movement target. The
 optional Secure App Kernel design lives in `packages/lo-app-kernel/`. The
 built-in HTTP API server package lives in `packages/lo-api-server/`. Developer command
 tooling lives in `packages/lo-cli/`, and safe project automation lives in
@@ -181,10 +183,10 @@ LO Target GPU
   GPU target planning, kernel mapping, precision and data movement reports
 
 LO Target AI Accelerator
-  NPU, TPU and AI-chip capability, precision and operation mapping plans
+  NPU, TPU, AI-chip and passive backend profiles, precision and operation plans
 
 LO Target Photonic
-  photonic backend target plans that use lo-photonic concepts
+  photonic backend target plans and optical I/O interconnect planning
 
 LO Secure App Kernel
   request lifecycle, validation, security, auth, rate limits, jobs and reports
@@ -253,9 +255,27 @@ plans. `lo-target-cpu` owns CPU capability and fallback planning, while
 `lo-cpu-kernels` owns optimized CPU kernel contracts. `lo-target-binary`,
 `lo-target-wasm`, `lo-target-gpu`, `lo-target-ai-accelerator` and
 `lo-target-photonic` own target-specific planning for binary/native,
-WebAssembly, GPU, AI accelerator and photonic backends.
+WebAssembly, GPU, AI accelerator, optical I/O and photonic backends.
 `lo-benchmark` may consume these packages to test target behavior, but target
 capability semantics stay in the target packages.
+
+AI accelerator support is passive and vendor-neutral. LO source should prefer
+`ai_accelerator`; concrete devices such as Intel Gaudi 3 are backend profiles in
+`lo-target-ai-accelerator`, selected by config, adapter policy or capability
+detection. The first practical integration path should use controlled adapters
+over existing AI frameworks rather than a native LO compiler backend. Reports
+should record backend profile, framework adapter, precision, memory tier,
+topology and fallback.
+
+Optical I/O is different from photonic compute. LO should model Intel Silicon
+Photonics and OCI-style devices as high-bandwidth interconnects for moving data
+between CPUs, GPUs, accelerators, memory pools and storage. They are not a
+photonic CPU target. `lo-compute` owns the `optical_io` target selection and
+data-movement cost model, while `lo-target-photonic` owns optical I/O planning
+reports, topology hints, fallback paths and transfer-format recommendations.
+This lets LO optimize data locality, tensor streaming, schema-compressed
+transfers, accelerator placement and remote memory safety without pretending
+that optical I/O performs normal application computation.
 
 Neural networks are typed compute workloads, not normal app syntax. LO can
 define model, inference and training boundaries through `lo-neural`, while

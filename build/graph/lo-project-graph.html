@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>LO Project Graph</h1>
-<p>846 nodes, 1545 relationships.</p>
+<p>861 nodes, 1583 relationships.</p>
 <h2>Nodes</h2>
 <ul><li><strong>lo-core</strong> <span>Package</span></li>
 <li><strong>lo-compiler</strong> <span>Package</span></li>
@@ -41,6 +41,7 @@
 <li><strong>AGENTS.md</strong> <span>Document</span></li>
 <li><strong>README.md</strong> <span>Document</span></li>
 <li><strong>lo.workspace.json</strong> <span>Document</span></li>
+<li><strong>AI_ACCELERATOR_TARGETS.md</strong> <span>Document</span></li>
 <li><strong>API.md</strong> <span>Document</span></li>
 <li><strong>ARCHITECTURE.md</strong> <span>Document</span></li>
 <li><strong>CHANGELOG.md</strong> <span>Document</span></li>
@@ -54,10 +55,12 @@
 <li><strong>LOWBIT_AI_BACKENDS.md</strong> <span>Document</span></li>
 <li><strong>NEURAL_ACCELERATOR_PACKAGES.md</strong> <span>Document</span></li>
 <li><strong>OBSERVABILITY.md</strong> <span>Document</span></li>
+<li><strong>OPTICAL_IO.md</strong> <span>Document</span></li>
 <li><strong>PROJECT_GRAPH.md</strong> <span>Document</span></li>
 <li><strong>README.md</strong> <span>Document</span></li>
 <li><strong>REQUIREMENTS.md</strong> <span>Document</span></li>
 <li><strong>RESILIENT_FLOWS.md</strong> <span>Document</span></li>
+<li><strong>RUST_FINANCIAL_MARKETS.md</strong> <span>Document</span></li>
 <li><strong>SECURITY.md</strong> <span>Document</span></li>
 <li><strong>TASKS.md</strong> <span>Document</span></li>
 <li><strong>testing.md</strong> <span>Document</span></li>
@@ -643,9 +646,16 @@
 <li><strong>package.json</strong> <span>Document</span></li>
 <li><strong>README.md</strong> <span>Document</span></li>
 <li><strong>AiAcceleratorKind</strong> <span>Type</span></li>
+<li><strong>AiAcceleratorWorkloadKind</strong> <span>Type</span></li>
+<li><strong>AiAcceleratorPrecision</strong> <span>Type</span></li>
+<li><strong>AiAcceleratorFramework</strong> <span>Type</span></li>
+<li><strong>AiAcceleratorTopology</strong> <span>Type</span></li>
+<li><strong>AiAcceleratorMemoryProfile</strong> <span>Type</span></li>
+<li><strong>AiAcceleratorBackendProfile</strong> <span>Type</span></li>
 <li><strong>AiAcceleratorCapability</strong> <span>Type</span></li>
 <li><strong>AiAcceleratorPlan</strong> <span>Type</span></li>
 <li><strong>AiAcceleratorReport</strong> <span>Type</span></li>
+<li><strong>INTEL_GAUDI3_HL338_PROFILE</strong> <span>Type</span></li>
 <li><strong>TODO.md</strong> <span>Document</span></li>
 <li><strong>tsconfig.json</strong> <span>Document</span></li>
 <li><strong>photonic-target-report.json</strong> <span>Report</span></li>
@@ -654,13 +664,18 @@
 <li><strong>PhotonicActualTarget</strong> <span>Type</span></li>
 <li><strong>PhotonicTargetStatus</strong> <span>Type</span></li>
 <li><strong>PhotonicOperationKind</strong> <span>Type</span></li>
+<li><strong>OpticalInterconnectMode</strong> <span>Type</span></li>
+<li><strong>OpticalTransferFormat</strong> <span>Type</span></li>
 <li><strong>PhotonicTargetCapability</strong> <span>Type</span></li>
+<li><strong>OpticalIoCapability</strong> <span>Type</span></li>
 <li><strong>PhotonicTargetInput</strong> <span>Type</span></li>
 <li><strong>PhotonicLoweringPlan</strong> <span>Type</span></li>
 <li><strong>PhotonicOperationMapping</strong> <span>Type</span></li>
 <li><strong>UnsupportedPhotonicOperation</strong> <span>Type</span></li>
 <li><strong>PhotonicSimulationTarget</strong> <span>Type</span></li>
 <li><strong>PhotonicExecutionPlan</strong> <span>Type</span></li>
+<li><strong>OpticalIoPlacementRecommendation</strong> <span>Type</span></li>
+<li><strong>OpticalIoTransferPlan</strong> <span>Type</span></li>
 <li><strong>PhotonicHardwareMappingFile</strong> <span>Type</span></li>
 <li><strong>PhotonicFallbackReport</strong> <span>Type</span></li>
 <li><strong>OpticalChannelLayout</strong> <span>Type</span></li>
@@ -892,6 +907,13 @@
 <li>doc:README.md <code>documents</code> package:lo-benchmark</li>
 <li>doc:README.md <code>documents</code> package:lo-project-graph</li>
 <li>doc:README.md <code>documents</code> package:app</li>
+<li>doc:docs/AI_ACCELERATOR_TARGETS.md <code>documents</code> package:lo-vector</li>
+<li>doc:docs/AI_ACCELERATOR_TARGETS.md <code>documents</code> package:lo-compute</li>
+<li>doc:docs/AI_ACCELERATOR_TARGETS.md <code>documents</code> package:lo-ai</li>
+<li>doc:docs/AI_ACCELERATOR_TARGETS.md <code>documents</code> package:lo-neural</li>
+<li>doc:docs/AI_ACCELERATOR_TARGETS.md <code>documents</code> package:lo-target-ai-accelerator</li>
+<li>doc:docs/AI_ACCELERATOR_TARGETS.md <code>documents</code> package:lo-benchmark</li>
+<li>doc:docs/AI_ACCELERATOR_TARGETS.md <code>documents</code> package:app</li>
 <li>doc:docs/API.md <code>documents</code> package:lo-app-kernel</li>
 <li>doc:docs/API.md <code>documents</code> package:lo-api-server</li>
 <li>doc:docs/API.md <code>documents</code> package:app</li>
@@ -993,6 +1015,13 @@
 <li>doc:docs/NEURAL_ACCELERATOR_PACKAGES.md <code>documents</code> package:lo-target-photonic</li>
 <li>doc:docs/NEURAL_ACCELERATOR_PACKAGES.md <code>documents</code> package:app</li>
 <li>doc:docs/OBSERVABILITY.md <code>documents</code> package:app</li>
+<li>doc:docs/OPTICAL_IO.md <code>documents</code> package:lo-security</li>
+<li>doc:docs/OPTICAL_IO.md <code>documents</code> package:lo-reports</li>
+<li>doc:docs/OPTICAL_IO.md <code>documents</code> package:lo-vector</li>
+<li>doc:docs/OPTICAL_IO.md <code>documents</code> package:lo-compute</li>
+<li>doc:docs/OPTICAL_IO.md <code>documents</code> package:lo-target-photonic</li>
+<li>doc:docs/OPTICAL_IO.md <code>documents</code> package:lo-benchmark</li>
+<li>doc:docs/OPTICAL_IO.md <code>documents</code> package:app</li>
 <li>doc:docs/PROJECT_GRAPH.md <code>documents</code> package:lo-security</li>
 <li>doc:docs/PROJECT_GRAPH.md <code>documents</code> package:lo-ai</li>
 <li>doc:docs/PROJECT_GRAPH.md <code>documents</code> package:lo-api-server</li>
@@ -1039,6 +1068,14 @@
 <li>doc:docs/RESILIENT_FLOWS.md <code>documents</code> package:lo-app-kernel</li>
 <li>doc:docs/RESILIENT_FLOWS.md <code>documents</code> package:lo-tasks</li>
 <li>doc:docs/RESILIENT_FLOWS.md <code>documents</code> package:app</li>
+<li>doc:docs/RUST_FINANCIAL_MARKETS.md <code>documents</code> package:lo-core</li>
+<li>doc:docs/RUST_FINANCIAL_MARKETS.md <code>documents</code> package:lo-runtime</li>
+<li>doc:docs/RUST_FINANCIAL_MARKETS.md <code>documents</code> package:lo-security</li>
+<li>doc:docs/RUST_FINANCIAL_MARKETS.md <code>documents</code> package:lo-reports</li>
+<li>doc:docs/RUST_FINANCIAL_MARKETS.md <code>documents</code> package:lo-vector</li>
+<li>doc:docs/RUST_FINANCIAL_MARKETS.md <code>documents</code> package:lo-compute</li>
+<li>doc:docs/RUST_FINANCIAL_MARKETS.md <code>documents</code> package:lo-benchmark</li>
+<li>doc:docs/RUST_FINANCIAL_MARKETS.md <code>documents</code> package:app</li>
 <li>doc:docs/SECURITY.md <code>documents</code> package:lo-lowbit-ai</li>
 <li>doc:docs/SECURITY.md <code>documents</code> package:app</li>
 <li>doc:docs/TASKS.md <code>documents</code> package:lo-core</li>
@@ -1333,28 +1370,6 @@
 <li>doc:packages/lo-core/docs/logic-targets.md <code>documents</code> package:lo-target-photonic</li>
 <li>doc:packages/lo-core/docs/logic-targets.md <code>documents</code> package:app</li>
 <li>package:lo-core <code>owns</code> doc:packages/lo-core/docs/logic-widths.md</li>
-<li>package:lo-core <code>owns</code> doc:packages/lo-core/docs/memory-and-variable-use.md</li>
-<li>doc:packages/lo-core/docs/memory-and-variable-use.md <code>documents</code> package:app</li>
-<li>package:lo-core <code>owns</code> doc:packages/lo-core/docs/memory-error-correction.md</li>
-<li>doc:packages/lo-core/docs/memory-error-correction.md <code>documents</code> package:app</li>
-<li>package:lo-core <code>owns</code> doc:packages/lo-core/docs/memory-pressure-and-disk-spill.md</li>
-<li>doc:packages/lo-core/docs/memory-pressure-and-disk-spill.md <code>documents</code> package:app</li>
-<li>package:lo-core <code>owns</code> doc:packages/lo-core/docs/memory-safety.md</li>
-<li>doc:packages/lo-core/docs/memory-safety.md <code>documents</code> package:app</li>
-<li>package:lo-core <code>owns</code> doc:packages/lo-core/docs/modules-and-visibility.md</li>
-<li>doc:packages/lo-core/docs/modules-and-visibility.md <code>documents</code> package:app</li>
-<li>package:lo-core <code>owns</code> doc:packages/lo-core/docs/observability.md</li>
-<li>package:lo-core <code>owns</code> doc:packages/lo-core/docs/omni-logic.md</li>
-<li>doc:packages/lo-core/docs/omni-logic.md <code>documents</code> package:lo-core</li>
-<li>doc:packages/lo-core/docs/omni-logic.md <code>documents</code> package:lo-logic</li>
-<li>package:lo-core <code>owns</code> doc:packages/lo-core/docs/package-boundaries.md</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-core</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-compiler</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-runtime</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-security</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-config</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-reports</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-logic</li>
-<li>doc:packages/lo-core/docs/package-boundaries.md <code>documents</code> package:lo-vector</li></ul>
+<li>package:lo-core <code>owns</code> doc:packages/lo-core/docs/memory-and-variable-use.md</li></ul>
 </body>
 </html>

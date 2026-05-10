@@ -15,6 +15,9 @@
 [x] Define fallback report format
 [x] Define optical channel layout report format
 [x] Define matrix operation mapping report format
+[x] Define optical I/O interconnect capability model
+[x] Define optical I/O transfer report format
+[x] Define data movement and topology report direction
 [x] Add examples
 [ ] Add tests
 ```

@@ -10,7 +10,9 @@
     "cpuCoresBucket": "8",
     "memoryBucket": "16GB",
     "gpuBackend": "none",
-    "lowBitBackend": "cpu_reference"
+    "aiAcceleratorBackend": "intel.gaudi3.hl338",
+    "lowBitBackend": "cpu_reference",
+    "opticalIoBackend": "none"
   },
   "durationMs": 74200,
   "summary": {
@@ -19,7 +21,9 @@
     "json": "passed",
     "vector": "passed",
     "gpu": "skipped",
+    "ai_accelerator": "partial",
     "low_bit_ai": "fallback",
+    "optical_io": "skipped",
     "recovery": "passed",
     "compare": "skipped"
   },
@@ -28,7 +32,9 @@
     "cpu": 6910,
     "json": 7120,
     "vector": 5440,
+    "aiAccelerator": 6200,
     "lowBitAi": 1200,
+    "opticalIo": null,
     "fallbackReliability": 7600,
     "memoryBehaviour": 7000,
     "overall": 5850
@@ -41,6 +47,13 @@
       "durationMs": 420,
       "operations": 1000000,
       "score": 8100
+    },
+    {
+      "id": "ai_accelerator.llm_batch_if_available",
+      "target": "ai_accelerator",
+      "backend": "intel.gaudi3.hl338",
+      "status": "partial",
+      "reason": "Backend profile detected; runnable benchmark adapter is not implemented yet"
     },
     {
       "id": "gpu.vector_small_if_available",

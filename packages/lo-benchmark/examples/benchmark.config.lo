@@ -8,7 +8,9 @@ benchmark {
     cpu true
     vector true
     gpu optional
+    ai_accelerator optional
     low_bit_ai optional
+    optical_io optional
   }
 
   privacy {

@@ -61,6 +61,8 @@ updated first:
 ../../lo-target-binary/README.md
 ../../lo-target-wasm/README.md
 ../../lo-target-gpu/README.md
+../../../docs/AI_ACCELERATOR_TARGETS.md
+../../../docs/OPTICAL_IO.md
 ../../lo-target-photonic/README.md
 ../../lo-app-kernel/README.md
 ../../lo-api-server/README.md

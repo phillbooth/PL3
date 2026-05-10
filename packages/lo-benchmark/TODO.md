@@ -89,7 +89,9 @@
 [ ] Add optional 1GB generated JSON streaming test
 [ ] Add medium matrix multiply
 [ ] Add GPU benchmark if available
+[ ] Add generic AI accelerator benchmark if available
 [ ] Add low-bit AI backend benchmark if available
+[ ] Add optical I/O interconnect benchmark if available
 [ ] Add fallback tests
 ```
 

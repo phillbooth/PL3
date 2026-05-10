@@ -70,7 +70,9 @@
         "wasm",
         "binary",
         "gpu-plan",
+        "ai_accelerator",
         "ai-accelerator-plan",
+        "optical_io",
         "neuromorphic",
         "ternary-sim",
         "photonic-sim"

@@ -19,10 +19,16 @@ These files describe the app being built, not the LO language itself.
 - `DECISIONS.md` — technical decisions
 - `CHANGELOG.md` — project changes
 - `LOWBIT_AI_BACKENDS.md` - low-bit AI backend architecture note
+- `AI_ACCELERATOR_TARGETS.md` - passive AI accelerator target profiles,
+  including Intel Gaudi 3 as a backend profile rather than LO syntax
 - `NEURAL_ACCELERATOR_PACKAGES.md` - neural, neuromorphic and AI accelerator package split
+- `OPTICAL_IO.md` - optical I/O, Intel Silicon Photonics/OCI direction and
+  data-movement-aware compute planning
 - `PROJECT_GRAPH.md` - project knowledge graph tooling note
 - `RESILIENT_FLOWS.md` - controlled recovery, resilient flows and partial
   success reporting
+- `RUST_FINANCIAL_MARKETS.md` - Rust benefits and design lessons for financial
+  market systems and LO finance-facing direction
 
 ## Package-Level Architecture Notes
 

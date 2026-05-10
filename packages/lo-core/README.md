@@ -101,7 +101,7 @@ packages/lo-target-gpu/
   GPU target planning, kernel mapping, precision and data movement reports
 
 packages/lo-target-ai-accelerator/
-  NPU, TPU and AI-chip target planning contracts
+  NPU, TPU, AI-chip and passive accelerator backend profile planning contracts
 
 packages/lo-target-photonic/
   photonic backend target plans using lo-photonic concepts

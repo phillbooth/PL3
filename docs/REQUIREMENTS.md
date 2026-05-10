@@ -282,8 +282,38 @@ The app package must remain deliberately small until a product domain is chosen.
 - `lo-target-ai-accelerator` must own NPU, TPU, AI-chip capability reports,
   precision support, model operation mapping plans and accelerator fallback
   reports.
+- AI accelerator support must be passive and vendor-neutral. LO source syntax
+  should use `ai_accelerator`, not vendor-specific targets such as `gaudi`.
+- Vendor devices such as Intel Gaudi 3 must be represented as backend profiles
+  selected by config, adapter policy or capability detection.
+- AI accelerator profiles must report preferred workloads, supported
+  precisions, memory tiers, framework adapters, topology, fallback target and
+  warnings.
+- Intel Gaudi 3 should be documented as an AI accelerator profile for LLM
+  inference, fine-tuning, RAG, embeddings, multimodal AI and tensor batching,
+  not as a normal CPU or GPU.
+- First AI accelerator implementations should prefer controlled adapters over
+  existing ecosystems such as PyTorch, vLLM, Hugging Face, DeepSpeed,
+  TensorFlow or PyTorch Lightning before native backend work.
 - `lo-target-photonic` must own photonic backend target planning and may use
   `lo-photonic` concepts.
+- `optical_io` must be treated as a high-speed data-movement and interconnect
+  target, not as a normal CPU, GPU or photonic compute target.
+- Intel Silicon Photonics and OCI-style devices must be documented as optical
+  connectivity for distributed compute, AI infrastructure, accelerator
+  communication, GPU disaggregation and memory pooling.
+- `lo-compute` must model data movement as a first-class cost for optical I/O
+  planning, including transfer size, data locality, target placement, fallback
+  path and serialization format.
+- Optical I/O reports must include detected interconnect, provider, bandwidth
+  estimate, latency estimate, fallback path, largest transfers, compression or
+  binary format use, remote memory status and security/encryption policy.
+- Remote memory or memory-pool access over optical I/O must require typed access
+  policy, bounds checks, timeout handling, fallback rules, audit logging and
+  redacted reports.
+- `lo-benchmark` should support a future `optical_io` benchmark target for
+  latency, throughput, tensor transfer, schema-compressed transfer, remote
+  memory read and fallback diagnostics.
 
 ## Compiler, Runtime, Security, Config and Report Requirements
 

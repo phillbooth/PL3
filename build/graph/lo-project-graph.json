@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-09T10:01:18.078Z",
+  "generatedAt": "2026-05-09T19:08:35.941Z",
   "nodes": [
     {
       "id": "package:lo-core",
@@ -320,6 +320,15 @@
       ]
     },
     {
+      "id": "doc:docs/AI_ACCELERATOR_TARGETS.md",
+      "kind": "Document",
+      "label": "AI_ACCELERATOR_TARGETS.md",
+      "sourcePath": "docs/AI_ACCELERATOR_TARGETS.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
       "id": "doc:docs/API.md",
       "kind": "Document",
       "label": "API.md",
@@ -437,6 +446,15 @@
       ]
     },
     {
+      "id": "doc:docs/OPTICAL_IO.md",
+      "kind": "Document",
+      "label": "OPTICAL_IO.md",
+      "sourcePath": "docs/OPTICAL_IO.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
       "id": "doc:docs/PROJECT_GRAPH.md",
       "kind": "Document",
       "label": "PROJECT_GRAPH.md",
@@ -468,6 +486,15 @@
       "kind": "Document",
       "label": "RESILIENT_FLOWS.md",
       "sourcePath": "docs/RESILIENT_FLOWS.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/RUST_FINANCIAL_MARKETS.md",
+      "kind": "Document",
+      "label": "RUST_FINANCIAL_MARKETS.md",
+      "sourcePath": "docs/RUST_FINANCIAL_MARKETS.md",
       "tags": [
         "document"
       ]
@@ -6319,6 +6346,66 @@
       ]
     },
     {
+      "id": "type:lo-target-ai-accelerator:AiAcceleratorWorkloadKind",
+      "kind": "Type",
+      "label": "AiAcceleratorWorkloadKind",
+      "sourcePath": "packages/lo-target-ai-accelerator/src/index.ts",
+      "tags": [
+        "type",
+        "lo-target-ai-accelerator"
+      ]
+    },
+    {
+      "id": "type:lo-target-ai-accelerator:AiAcceleratorPrecision",
+      "kind": "Type",
+      "label": "AiAcceleratorPrecision",
+      "sourcePath": "packages/lo-target-ai-accelerator/src/index.ts",
+      "tags": [
+        "type",
+        "lo-target-ai-accelerator"
+      ]
+    },
+    {
+      "id": "type:lo-target-ai-accelerator:AiAcceleratorFramework",
+      "kind": "Type",
+      "label": "AiAcceleratorFramework",
+      "sourcePath": "packages/lo-target-ai-accelerator/src/index.ts",
+      "tags": [
+        "type",
+        "lo-target-ai-accelerator"
+      ]
+    },
+    {
+      "id": "type:lo-target-ai-accelerator:AiAcceleratorTopology",
+      "kind": "Type",
+      "label": "AiAcceleratorTopology",
+      "sourcePath": "packages/lo-target-ai-accelerator/src/index.ts",
+      "tags": [
+        "type",
+        "lo-target-ai-accelerator"
+      ]
+    },
+    {
+      "id": "type:lo-target-ai-accelerator:AiAcceleratorMemoryProfile",
+      "kind": "Type",
+      "label": "AiAcceleratorMemoryProfile",
+      "sourcePath": "packages/lo-target-ai-accelerator/src/index.ts",
+      "tags": [
+        "type",
+        "lo-target-ai-accelerator"
+      ]
+    },
+    {
+      "id": "type:lo-target-ai-accelerator:AiAcceleratorBackendProfile",
+      "kind": "Type",
+      "label": "AiAcceleratorBackendProfile",
+      "sourcePath": "packages/lo-target-ai-accelerator/src/index.ts",
+      "tags": [
+        "type",
+        "lo-target-ai-accelerator"
+      ]
+    },
+    {
       "id": "type:lo-target-ai-accelerator:AiAcceleratorCapability",
       "kind": "Type",
       "label": "AiAcceleratorCapability",
@@ -6342,6 +6429,16 @@
       "id": "type:lo-target-ai-accelerator:AiAcceleratorReport",
       "kind": "Type",
       "label": "AiAcceleratorReport",
+      "sourcePath": "packages/lo-target-ai-accelerator/src/index.ts",
+      "tags": [
+        "type",
+        "lo-target-ai-accelerator"
+      ]
+    },
+    {
+      "id": "type:lo-target-ai-accelerator:INTEL_GAUDI3_HL338_PROFILE",
+      "kind": "Type",
+      "label": "INTEL_GAUDI3_HL338_PROFILE",
       "sourcePath": "packages/lo-target-ai-accelerator/src/index.ts",
       "tags": [
         "type",
@@ -6429,9 +6526,39 @@
       ]
     },
     {
+      "id": "type:lo-target-photonic:OpticalInterconnectMode",
+      "kind": "Type",
+      "label": "OpticalInterconnectMode",
+      "sourcePath": "packages/lo-target-photonic/src/index.ts",
+      "tags": [
+        "type",
+        "lo-target-photonic"
+      ]
+    },
+    {
+      "id": "type:lo-target-photonic:OpticalTransferFormat",
+      "kind": "Type",
+      "label": "OpticalTransferFormat",
+      "sourcePath": "packages/lo-target-photonic/src/index.ts",
+      "tags": [
+        "type",
+        "lo-target-photonic"
+      ]
+    },
+    {
       "id": "type:lo-target-photonic:PhotonicTargetCapability",
       "kind": "Type",
       "label": "PhotonicTargetCapability",
+      "sourcePath": "packages/lo-target-photonic/src/index.ts",
+      "tags": [
+        "type",
+        "lo-target-photonic"
+      ]
+    },
+    {
+      "id": "type:lo-target-photonic:OpticalIoCapability",
+      "kind": "Type",
+      "label": "OpticalIoCapability",
       "sourcePath": "packages/lo-target-photonic/src/index.ts",
       "tags": [
         "type",
@@ -6492,6 +6619,26 @@
       "id": "type:lo-target-photonic:PhotonicExecutionPlan",
       "kind": "Type",
       "label": "PhotonicExecutionPlan",
+      "sourcePath": "packages/lo-target-photonic/src/index.ts",
+      "tags": [
+        "type",
+        "lo-target-photonic"
+      ]
+    },
+    {
+      "id": "type:lo-target-photonic:OpticalIoPlacementRecommendation",
+      "kind": "Type",
+      "label": "OpticalIoPlacementRecommendation",
+      "sourcePath": "packages/lo-target-photonic/src/index.ts",
+      "tags": [
+        "type",
+        "lo-target-photonic"
+      ]
+    },
+    {
+      "id": "type:lo-target-photonic:OpticalIoTransferPlan",
+      "kind": "Type",
+      "label": "OpticalIoTransferPlan",
       "sourcePath": "packages/lo-target-photonic/src/index.ts",
       "tags": [
         "type",
@@ -8693,6 +8840,55 @@
       "evidencePath": "README.md"
     },
     {
+      "from": "doc:docs/AI_ACCELERATOR_TARGETS.md",
+      "to": "package:lo-vector",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/AI_ACCELERATOR_TARGETS.md"
+    },
+    {
+      "from": "doc:docs/AI_ACCELERATOR_TARGETS.md",
+      "to": "package:lo-compute",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/AI_ACCELERATOR_TARGETS.md"
+    },
+    {
+      "from": "doc:docs/AI_ACCELERATOR_TARGETS.md",
+      "to": "package:lo-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/AI_ACCELERATOR_TARGETS.md"
+    },
+    {
+      "from": "doc:docs/AI_ACCELERATOR_TARGETS.md",
+      "to": "package:lo-neural",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/AI_ACCELERATOR_TARGETS.md"
+    },
+    {
+      "from": "doc:docs/AI_ACCELERATOR_TARGETS.md",
+      "to": "package:lo-target-ai-accelerator",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/AI_ACCELERATOR_TARGETS.md"
+    },
+    {
+      "from": "doc:docs/AI_ACCELERATOR_TARGETS.md",
+      "to": "package:lo-benchmark",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/AI_ACCELERATOR_TARGETS.md"
+    },
+    {
+      "from": "doc:docs/AI_ACCELERATOR_TARGETS.md",
+      "to": "package:app",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/AI_ACCELERATOR_TARGETS.md"
+    },
+    {
       "from": "doc:docs/API.md",
       "to": "package:lo-app-kernel",
       "kind": "documents",
@@ -9400,6 +9596,55 @@
       "evidencePath": "docs/OBSERVABILITY.md"
     },
     {
+      "from": "doc:docs/OPTICAL_IO.md",
+      "to": "package:lo-security",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/OPTICAL_IO.md"
+    },
+    {
+      "from": "doc:docs/OPTICAL_IO.md",
+      "to": "package:lo-reports",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/OPTICAL_IO.md"
+    },
+    {
+      "from": "doc:docs/OPTICAL_IO.md",
+      "to": "package:lo-vector",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/OPTICAL_IO.md"
+    },
+    {
+      "from": "doc:docs/OPTICAL_IO.md",
+      "to": "package:lo-compute",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/OPTICAL_IO.md"
+    },
+    {
+      "from": "doc:docs/OPTICAL_IO.md",
+      "to": "package:lo-target-photonic",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/OPTICAL_IO.md"
+    },
+    {
+      "from": "doc:docs/OPTICAL_IO.md",
+      "to": "package:lo-benchmark",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/OPTICAL_IO.md"
+    },
+    {
+      "from": "doc:docs/OPTICAL_IO.md",
+      "to": "package:app",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/OPTICAL_IO.md"
+    },
+    {
       "from": "doc:docs/PROJECT_GRAPH.md",
       "to": "package:lo-security",
       "kind": "documents",
@@ -9720,6 +9965,62 @@
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/RESILIENT_FLOWS.md"
+    },
+    {
+      "from": "doc:docs/RUST_FINANCIAL_MARKETS.md",
+      "to": "package:lo-core",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/RUST_FINANCIAL_MARKETS.md"
+    },
+    {
+      "from": "doc:docs/RUST_FINANCIAL_MARKETS.md",
+      "to": "package:lo-runtime",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/RUST_FINANCIAL_MARKETS.md"
+    },
+    {
+      "from": "doc:docs/RUST_FINANCIAL_MARKETS.md",
+      "to": "package:lo-security",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/RUST_FINANCIAL_MARKETS.md"
+    },
+    {
+      "from": "doc:docs/RUST_FINANCIAL_MARKETS.md",
+      "to": "package:lo-reports",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/RUST_FINANCIAL_MARKETS.md"
+    },
+    {
+      "from": "doc:docs/RUST_FINANCIAL_MARKETS.md",
+      "to": "package:lo-vector",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/RUST_FINANCIAL_MARKETS.md"
+    },
+    {
+      "from": "doc:docs/RUST_FINANCIAL_MARKETS.md",
+      "to": "package:lo-compute",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/RUST_FINANCIAL_MARKETS.md"
+    },
+    {
+      "from": "doc:docs/RUST_FINANCIAL_MARKETS.md",
+      "to": "package:lo-benchmark",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/RUST_FINANCIAL_MARKETS.md"
+    },
+    {
+      "from": "doc:docs/RUST_FINANCIAL_MARKETS.md",
+      "to": "package:app",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/RUST_FINANCIAL_MARKETS.md"
     },
     {
       "from": "doc:docs/SECURITY.md",
@@ -15568,6 +15869,13 @@
     },
     {
       "from": "doc:packages/lo-compute/README.md",
+      "to": "package:lo-target-ai-accelerator",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-compute/README.md"
+    },
+    {
+      "from": "doc:packages/lo-compute/README.md",
       "to": "package:lo-target-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -17465,6 +17773,13 @@
     },
     {
       "from": "doc:packages/lo-target-ai-accelerator/README.md",
+      "to": "package:lo-benchmark",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-target-ai-accelerator/README.md"
+    },
+    {
+      "from": "doc:packages/lo-target-ai-accelerator/README.md",
       "to": "package:app",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -17473,6 +17788,48 @@
     {
       "from": "package:lo-target-ai-accelerator",
       "to": "type:lo-target-ai-accelerator:AiAcceleratorKind",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-ai-accelerator/src/index.ts"
+    },
+    {
+      "from": "package:lo-target-ai-accelerator",
+      "to": "type:lo-target-ai-accelerator:AiAcceleratorWorkloadKind",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-ai-accelerator/src/index.ts"
+    },
+    {
+      "from": "package:lo-target-ai-accelerator",
+      "to": "type:lo-target-ai-accelerator:AiAcceleratorPrecision",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-ai-accelerator/src/index.ts"
+    },
+    {
+      "from": "package:lo-target-ai-accelerator",
+      "to": "type:lo-target-ai-accelerator:AiAcceleratorFramework",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-ai-accelerator/src/index.ts"
+    },
+    {
+      "from": "package:lo-target-ai-accelerator",
+      "to": "type:lo-target-ai-accelerator:AiAcceleratorTopology",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-ai-accelerator/src/index.ts"
+    },
+    {
+      "from": "package:lo-target-ai-accelerator",
+      "to": "type:lo-target-ai-accelerator:AiAcceleratorMemoryProfile",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-ai-accelerator/src/index.ts"
+    },
+    {
+      "from": "package:lo-target-ai-accelerator",
+      "to": "type:lo-target-ai-accelerator:AiAcceleratorBackendProfile",
       "kind": "provides",
       "confidence": "EXTRACTED",
       "evidencePath": "packages/lo-target-ai-accelerator/src/index.ts"
@@ -17494,6 +17851,13 @@
     {
       "from": "package:lo-target-ai-accelerator",
       "to": "type:lo-target-ai-accelerator:AiAcceleratorReport",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-ai-accelerator/src/index.ts"
+    },
+    {
+      "from": "package:lo-target-ai-accelerator",
+      "to": "type:lo-target-ai-accelerator:INTEL_GAUDI3_HL338_PROFILE",
       "kind": "provides",
       "confidence": "EXTRACTED",
       "evidencePath": "packages/lo-target-ai-accelerator/src/index.ts"
@@ -17619,6 +17983,13 @@
     },
     {
       "from": "doc:packages/lo-target-photonic/README.md",
+      "to": "package:lo-benchmark",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-target-photonic/README.md"
+    },
+    {
+      "from": "doc:packages/lo-target-photonic/README.md",
       "to": "package:app",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -17647,7 +18018,28 @@
     },
     {
       "from": "package:lo-target-photonic",
+      "to": "type:lo-target-photonic:OpticalInterconnectMode",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-photonic/src/index.ts"
+    },
+    {
+      "from": "package:lo-target-photonic",
+      "to": "type:lo-target-photonic:OpticalTransferFormat",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-photonic/src/index.ts"
+    },
+    {
+      "from": "package:lo-target-photonic",
       "to": "type:lo-target-photonic:PhotonicTargetCapability",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-photonic/src/index.ts"
+    },
+    {
+      "from": "package:lo-target-photonic",
+      "to": "type:lo-target-photonic:OpticalIoCapability",
       "kind": "provides",
       "confidence": "EXTRACTED",
       "evidencePath": "packages/lo-target-photonic/src/index.ts"
@@ -17690,6 +18082,20 @@
     {
       "from": "package:lo-target-photonic",
       "to": "type:lo-target-photonic:PhotonicExecutionPlan",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-photonic/src/index.ts"
+    },
+    {
+      "from": "package:lo-target-photonic",
+      "to": "type:lo-target-photonic:OpticalIoPlacementRecommendation",
+      "kind": "provides",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages/lo-target-photonic/src/index.ts"
+    },
+    {
+      "from": "package:lo-target-photonic",
+      "to": "type:lo-target-photonic:OpticalIoTransferPlan",
       "kind": "provides",
       "confidence": "EXTRACTED",
       "evidencePath": "packages/lo-target-photonic/src/index.ts"
@@ -18663,6 +19069,13 @@
     {
       "from": "doc:packages/lo-benchmark/README.md",
       "to": "package:lo-target-ai-accelerator",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages/lo-benchmark/README.md"
+    },
+    {
+      "from": "doc:packages/lo-benchmark/README.md",
+      "to": "package:lo-target-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages/lo-benchmark/README.md"

@@ -8,7 +8,9 @@ export type BenchmarkTarget =
   | "json"
   | "vector"
   | "gpu"
+  | "ai_accelerator"
   | "low_bit_ai"
+  | "optical_io"
   | "recovery"
   | "compare";
 
@@ -43,7 +45,9 @@ export interface BenchmarkSystemInfo {
   readonly cpuCoresBucket: string;
   readonly memoryBucket: string;
   readonly gpuBackend: string | "none";
+  readonly aiAcceleratorBackend?: string | "none";
   readonly lowBitBackend: string | "none";
+  readonly opticalIoBackend?: string | "none";
 }
 
 export interface BenchmarkTestResult {
@@ -64,7 +68,9 @@ export interface BenchmarkScores {
   readonly json?: number;
   readonly vector?: number;
   readonly gpu?: number;
+  readonly aiAccelerator?: number;
   readonly lowBitAi?: number;
+  readonly opticalIo?: number;
   readonly fallbackReliability?: number;
   readonly memoryBehaviour?: number;
   readonly overall: number;
@@ -115,7 +121,9 @@ export const DEFAULT_BENCHMARK_CONFIG: BenchmarkConfig = {
     json: true,
     vector: true,
     gpu: "optional",
+    ai_accelerator: "optional",
     low_bit_ai: "optional",
+    optical_io: "optional",
     recovery: true,
     compare: false,
   },

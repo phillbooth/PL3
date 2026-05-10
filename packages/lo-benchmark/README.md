@@ -18,7 +18,9 @@ small VPS machines
 machines without GPUs
 machines with GPUs
 machines with AI/low-bit support
+machines with AI accelerator support
 future accelerator targets
+future optical I/O interconnect targets
 ```
 
 ## Purpose
@@ -39,6 +41,8 @@ CPU scalar execution
 CPU vector execution
 low-bit AI backend if available
 GPU backend if available
+AI accelerator backend if available
+optical I/O interconnect if available
 JSON decode / validation / streaming
 hashing / byte processing
 memory pressure behaviour
@@ -99,7 +103,9 @@ lo benchmark --light
 lo benchmark --full
 lo benchmark --target cpu
 lo benchmark --target gpu
+lo benchmark --target ai_accelerator
 lo benchmark --target low_bit_ai
+lo benchmark --target optical_io
 lo benchmark --json
 lo benchmark --save
 lo benchmark --compare python
@@ -231,10 +237,11 @@ Related packages:
 /packages/lo-logic
 /packages/lo-vector
 /packages/lo-compute
+/packages/lo-target-ai-accelerator
 /packages/lo-lowbit-ai
 /packages/lo-target-cpu
 /packages/lo-target-gpu
-/packages/lo-target-ai-accelerator
+/packages/lo-target-photonic
 /packages/lo-security
 ```
 
@@ -368,6 +375,82 @@ GPU warmup time should be reported separately
 GPU test should not dominate light mode
 ```
 
+### AI Accelerator Benchmarks
+
+AI accelerator benchmarks should stay vendor-neutral at the command level.
+
+Use:
+
+```bash
+lo benchmark --target ai_accelerator
+```
+
+Reports may identify the selected backend profile:
+
+```json
+{
+  "target": "ai_accelerator",
+  "backend": "intel.gaudi3.hl338"
+}
+```
+
+Possible tests:
+
+```text
+LLM token throughput
+batch inference throughput
+embedding throughput
+RAG retrieval plus generation
+multimodal batch workload
+host-to-accelerator transfer cost
+accelerator memory pressure
+multi-card scaling where available
+precision comparison such as FP8 versus BF16
+fallback to GPU or CPU
+```
+
+Do not expose permanent vendor-specific benchmark categories such as `gaudi` in
+normal LO syntax. Keep the category generic and put vendor/device details in the
+backend report.
+
+### Optical I/O Benchmarks
+
+Optical I/O tests should run only if a supported optical interconnect backend or
+test harness is available.
+
+Public benchmark names should use:
+
+```text
+optical_io
+interconnect
+data_movement
+```
+
+Do not describe Intel Silicon Photonics or OCI as a normal CPU or photonic
+compute backend.
+
+Possible tests:
+
+```text
+small message latency
+large tensor transfer
+schema-compressed JSON transfer
+binary record transfer
+streaming throughput
+remote memory read
+multi-node reduce
+fallback performance
+```
+
+Example IDs:
+
+```text
+optical_io.latency_small_if_available
+optical_io.tensor_transfer_if_available
+optical_io.schema_compressed_json_if_available
+optical_io.fallback_to_network
+```
+
 ### Low-Bit AI Benchmarks
 
 Low-bit AI should be generic.
@@ -464,7 +547,9 @@ Tests:
 
 ```text
 GPU unavailable -> CPU fallback
+ai_accelerator unavailable -> GPU or CPU fallback
 low_bit_ai unavailable -> CPU reference fallback
+optical_io unavailable -> PCIe, Ethernet or standard network fallback
 memory pressure -> reduce batch size
 bad JSON item -> quarantine and continue
 timeout -> cancel task group
@@ -505,7 +590,9 @@ vector.cosine_batch_small
 compute.cpu_fallback_check
 
 gpu.vector_small_if_available
+ai_accelerator.llm_batch_if_available
 low_bit_ai.reference_small_if_available
+optical_io.latency_small_if_available
 ```
 
 Expected time:
@@ -547,12 +634,20 @@ vector.embedding_rank_large
 gpu.matrix_multiply_if_available
 gpu.embedding_batch_if_available
 
+ai_accelerator.llm_batch_if_available
+ai_accelerator.rag_if_available
+ai_accelerator.precision_fp8_bf16_if_available
+
 low_bit_ai.ternary_matmul_if_available
 low_bit_ai.inference_small_if_available
+optical_io.tensor_transfer_if_available
+optical_io.schema_compressed_json_if_available
 
 resilient.import_bad_rows_100k
 fallback.gpu_to_cpu
+fallback.ai_accelerator_to_gpu_or_cpu
 fallback.lowbit_to_cpu
+fallback.optical_io_to_network
 
 compare.python_json_100mb_optional
 compare.cpp_json_100mb_optional
@@ -896,7 +991,9 @@ benchmark {
     cpu true
     vector true
     gpu optional
+    ai_accelerator optional
     low_bit_ai optional
+    optical_io optional
   }
 
   privacy {

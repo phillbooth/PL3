@@ -6,6 +6,9 @@
 - [x] Split partial framework guidance into `packages/lo-app-kernel/`
 - [x] Add LO logic, compute type and secure runtime future-support proposal
 - [x] Add `packages/lo-api-server/` HTTP API serving package documentation
+- [x] Add Rust financial markets design note
+- [x] Add optical I/O and Intel Silicon Photonics design note
+- [x] Add passive AI accelerator and Intel Gaudi profile design note
 - [x] Complete `docs/REQUIREMENTS.md`
 - [x] Complete `docs/DESIGN.md`
 - [ ] Complete `docs/ARCHITECTURE.md`
@@ -93,6 +96,8 @@
 - [ ] Define `lo-target-wasm` WebAssembly target plans
 - [ ] Define `lo-target-gpu` GPU target plans
 - [x] Define `lo-target-ai-accelerator` target planning contracts
+- [x] Define Intel Gaudi 3 as a passive AI accelerator backend profile
+- [x] Define `optical_io` as a high-speed interconnect/data-movement target
 - [ ] Define `lo-target-photonic` photonic backend target plans
 
 ## Phase 8: Core Infrastructure Packages

@@ -38,7 +38,7 @@ packages/lo-compute
   compute auto, target selection and fallback reports
 
 packages/lo-target-ai-accelerator
-  NPU, TPU and AI-chip target planning
+  NPU, TPU, AI-chip and passive accelerator backend profile planning
 
 packages/lo-target-photonic
   future photonic target planning
@@ -121,6 +121,14 @@ fallback cpu
 ```
 
 Do not make source syntax depend on one backend, chipset or vendor.
+
+Vendor-specific AI accelerators should be backend profiles. For example, Intel
+Gaudi 3 can be selected as `intel.gaudi3.hl338` under the generic
+`ai_accelerator` target, but LO source should not need `target gaudi`.
+
+The practical first implementation should generate controlled adapter plans for
+existing AI ecosystems such as PyTorch, vLLM, Hugging Face, DeepSpeed,
+TensorFlow or PyTorch Lightning before attempting native backend integration.
 
 Reports should record:
 

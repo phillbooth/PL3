@@ -7,7 +7,9 @@ export type ComputeTarget =
   | "binary"
   | "vector"
   | "gpu"
+  | "ai_accelerator"
   | "npu"
+  | "optical_io"
   | "photonic";
 
 export type ComputeWorkloadKind =
@@ -15,6 +17,8 @@ export type ComputeWorkloadKind =
   | "vector"
   | "matrix"
   | "ai-inference"
+  | "distributed-ai"
+  | "tensor-transfer"
   | "io-bound";
 
 export type ComputeDiagnosticSeverity = "warning" | "error";
@@ -66,13 +70,22 @@ export interface ComputeTargetSelection {
   readonly warnings: readonly string[];
 }
 
-export type ComputeDataLocation = "host" | "target" | "shared" | "remote";
+export type ComputeDataLocation =
+  | "host"
+  | "target"
+  | "accelerator"
+  | "memory_pool"
+  | "storage"
+  | "shared"
+  | "remote";
 
 export interface ComputeDataMovement {
   readonly from: ComputeDataLocation;
   readonly to: ComputeDataLocation;
   readonly bytes: number;
   readonly reason: string;
+  readonly interconnect?: ComputeTarget;
+  readonly format?: "json" | "schema-compressed" | "binary-record" | "tensor-binary" | "columnar";
 }
 
 export interface ComputeOffloadStage {

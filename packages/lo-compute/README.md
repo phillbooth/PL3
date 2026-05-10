@@ -18,7 +18,10 @@ compute effects
 target selection
 offload planning
 fallback planning
+AI accelerator selection
 low-bit AI fallback planning
+optical I/O data-movement planning
+topology-aware placement planning
 compute reports
 ```
 
@@ -28,13 +31,29 @@ compute reports
 not own target-specific binary output, AI model formats, CPU kernels or
 photonic mapping.
 
+`optical_io` is a data-movement and interconnect target, not a compute device
+that runs application code by itself. LO uses it to estimate transfer cost,
+prefer data locality, choose efficient transfer formats and report fallback to
+PCIe, Ethernet or standard network paths.
+
 For AI inference, `lo-compute` may express preference and fallback order such
 as:
 
 ```text
 prefer gpu
+prefer ai_accelerator
 fallback npu
 fallback low_bit_ai
+fallback cpu.generic
+```
+
+For distributed tensor or AI workloads, `lo-compute` may express interconnect
+preference:
+
+```text
+prefer gpu
+prefer optical_io for large tensor transfer
+fallback ethernet
 fallback cpu.generic
 ```
 
@@ -54,6 +73,7 @@ Final rule:
 lo-compute plans work.
 lo-ai describes AI inference.
 lo-lowbit-ai describes low-bit AI backend inference.
+lo-target-ai-accelerator describes passive accelerator backend profiles.
 lo-target-binary emits binary/native target plans.
-lo-target-photonic emits photonic target plans.
+lo-target-photonic emits photonic target plans and optical I/O reports.
 ```

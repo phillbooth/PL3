@@ -177,14 +177,19 @@ packages/lo-target-gpu
 packages/lo-target-ai-accelerator
   NPU and TPU target capabilities
   AI-chip target planning
+  passive accelerator backend profiles
   precision compatibility reports
+  accelerator memory and topology reports
   model operation mapping plans
   accelerator fallback reports
 
 packages/lo-target-photonic
   photonic backend target plans
+  optical I/O interconnect plans
   photonic target capabilities
+  optical interconnect capabilities
   logic-to-photonic lowering plans
+  data movement reports
   photonic target reports
 
 packages/lo-app-kernel
@@ -278,6 +283,11 @@ AI accelerator target changes
   update packages/lo-target-ai-accelerator first
   update packages/lo-compute only if target selection contracts change
 
+AI accelerator vendor profile changes
+  update docs/AI_ACCELERATOR_TARGETS.md and packages/lo-target-ai-accelerator first
+  update packages/lo-benchmark only if benchmark target contracts change
+  update lo-core docs only if target syntax or package registry contracts change
+
 Photonic wavelength model
   update packages/lo-photonic first
   update lo-core docs only if language-level target declarations change
@@ -285,6 +295,12 @@ Photonic wavelength model
 Photonic backend lowering
   update packages/lo-target-photonic first
   update lo-core docs only if target report contracts change
+
+Optical I/O or interconnect planning
+  update docs/OPTICAL_IO.md and packages/lo-target-photonic first
+  update packages/lo-compute only if target selection or data movement contracts change
+  update packages/lo-benchmark only if benchmark target contracts change
+  update lo-core docs only if target syntax or package registry contracts change
 
 WASM or GPU target backend changes
   update packages/lo-target-wasm or packages/lo-target-gpu first

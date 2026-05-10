@@ -36,9 +36,9 @@ how LO packages, app files, tooling, reports and generated project graph outputs
 fit together.
 
 The practical baseline is CPU-compatible checked execution and deterministic
-developer tooling. GPU, low-bit AI, photonic, ternary and Omni-logic support are
-package contracts, planning layers or simulation/report artefacts until real
-backends exist.
+developer tooling. GPU, generic AI accelerator, low-bit AI, optical I/O,
+photonic compute, ternary and Omni-logic support are package contracts, planning
+layers or simulation/report artefacts until real backends exist.
 
 ## Core Ideas
 
@@ -54,6 +54,7 @@ typed JSON and API contracts
 source maps and machine-readable reports
 AI-readable project context
 CPU compatibility by default
+optical I/O and data-movement awareness
 optional accelerator planning
 optional AI inference packages
 ```
@@ -72,6 +73,17 @@ silent target fallback
 framework-specific language syntax
 mandatory future hardware
 ```
+
+LO explicitly supports `optical_io` as a future data-movement and interconnect
+planning target. Intel Silicon Photonics and OCI-style devices should be treated
+as high-speed optical I/O for distributed compute, AI clusters, accelerator
+communication and memory pooling, not as normal CPUs or a direct replacement for
+photonic compute targets.
+
+LO also supports `ai_accelerator` as a generic accelerator planning target.
+Vendor devices such as Intel Gaudi 3 should be passive backend profiles selected
+by config, adapter policy or capability detection. They should not become
+permanent LO syntax such as `target gaudi`.
 
 ## Quick Start
 
@@ -184,10 +196,10 @@ LO-app/
 - `packages/lo-target-wasm/` - WebAssembly target planning and module metadata.
 - `packages/lo-target-gpu/` - GPU target planning, kernel mapping and data
   movement reports.
-- `packages/lo-target-ai-accelerator/` - NPU, TPU and AI-chip target planning
-  contracts.
-- `packages/lo-target-photonic/` - photonic backend target planning that uses
-  `lo-photonic`.
+- `packages/lo-target-ai-accelerator/` - NPU, TPU, AI-chip and passive
+  accelerator backend profile planning contracts.
+- `packages/lo-target-photonic/` - photonic backend target planning and
+  optical I/O interconnect planning that uses `lo-photonic`.
 - `packages/lo-app-kernel/` - optional secure application kernel for typed API
   boundaries, validation, auth, rate limits, jobs and runtime reports.
 - `packages/lo-api-server/` - built-in HTTP API transport that delegates typed
@@ -240,8 +252,12 @@ Important boundary rules:
   optional AI package layers, not core syntax.
 - Parallel agents must be supervised, bounded, permissioned and reportable.
 - BitNet is a backend option inside low-bit AI, not a language feature.
-- AI accelerators, GPUs and photonic chipsets are optional targets. CPU and
-  binary-compatible fallback remain the baseline.
+- AI accelerators, GPUs, optical I/O and photonic chipsets are optional targets.
+  CPU and binary-compatible fallback remain the baseline.
+- `ai_accelerator` is the public LO target category. Intel Gaudi and similar
+  hardware are backend profiles selected by policy and reported after planning.
+- `optical_io` means high-speed interconnect/data movement planning. It is not a
+  claim that Intel Silicon Photonics or OCI devices are general-purpose CPUs.
 - `lo-benchmark` is development diagnostics. It must not auto-run in production
   and must report skipped targets and fallbacks without exposing private machine
   or project data.

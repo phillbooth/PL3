@@ -287,9 +287,16 @@ LO NPU, TPU and AI accelerator target planning contracts.
 
 Provides:
 - AiAcceleratorKind
+- AiAcceleratorWorkloadKind
+- AiAcceleratorPrecision
+- AiAcceleratorFramework
+- AiAcceleratorTopology
+- AiAcceleratorMemoryProfile
+- AiAcceleratorBackendProfile
 - AiAcceleratorCapability
 - AiAcceleratorPlan
 - AiAcceleratorReport
+- INTEL_GAUDI3_HL338_PROFILE
 
 ## lo-target-photonic
 
@@ -299,15 +306,15 @@ Provides:
 - PhotonicActualTarget
 - PhotonicTargetStatus
 - PhotonicOperationKind
+- OpticalInterconnectMode
+- OpticalTransferFormat
 - PhotonicTargetCapability
+- OpticalIoCapability
 - PhotonicTargetInput
 - PhotonicLoweringPlan
 - PhotonicOperationMapping
 - UnsupportedPhotonicOperation
 - PhotonicSimulationTarget
-- PhotonicExecutionPlan
-- PhotonicHardwareMappingFile
-- PhotonicFallbackReport
 
 ## lo-app-kernel
 
