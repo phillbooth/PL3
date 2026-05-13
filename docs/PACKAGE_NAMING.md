@@ -25,11 +25,10 @@ already clear:
 ```text
 lo-core
 lo-ai
-lo-photonic
 ```
 
 `lo-core` is the language root. `lo-ai` is the generic AI contract root.
-`lo-photonic` is the photonic concept/model root, not a compiler target.
+`lo-core-photonic` is the photonic concept/model root, not a compiler target.
 
 ## Package Families
 
@@ -38,7 +37,7 @@ lo-photonic
 | `lo-core-*` | Core language, toolchain, runtime and safe developer automation | `lo-core-compiler`, `lo-core-runtime`, `lo-core-security`, `lo-core-cli`, `lo-core-tasks` |
 | `lo-ai-*` | AI workload, model, agent and AI compute-model packages | `lo-ai-agent`, `lo-ai-neural`, `lo-ai-neuromorphic`, `lo-ai-lowbit` |
 | `lo-target-*` | Compiler/output targets and backend planning | `lo-target-cpu`, `lo-target-gpu`, `lo-target-wasm`, `lo-target-photonic` |
-| `lo-cpu-*` | CPU implementation and optimized kernel packages | `lo-cpu-kernels` |
+| `lo-cpu-*` | CPU implementation and optimized kernel packages | `lo-cpu-kernels`, future `lo-cpu-photonic-sim` |
 | `lo-gpu-*` | GPU implementation and optimized kernel packages | future `lo-gpu-kernels` |
 | `lo-framework-*` | Optional framework, server and app boundary packages | `lo-framework-app-kernel`, `lo-framework-api-server`, `lo-framework-example-app` |
 | `lo-devtools-*` | Development-only tools not needed by production installs | `lo-devtools-project-graph` |
@@ -58,6 +57,7 @@ lo-core-compiler
 lo-core-compute
 lo-core-config
 lo-core-logic
+lo-core-photonic
 lo-core-reports
 lo-core-runtime
 lo-core-security
@@ -68,7 +68,6 @@ lo-ai-agent
 lo-ai-lowbit
 lo-ai-neural
 lo-ai-neuromorphic
-lo-photonic
 lo-target-ai-accelerator
 lo-target-binary
 lo-target-cpu
@@ -112,6 +111,22 @@ lo-io-photonic
 ```
 
 These should not replace compiler target packages.
+
+## Photonic Rule
+
+Use these names for photonic work:
+
+```text
+lo-core-photonic      photonic concepts, types, models, APIs and simulations
+lo-target-photonic    compiler target planning for photonic hardware, simulators or plans
+lo-cpu-photonic-sim   future CPU implementation package for photonic simulation
+lo-cpu-photonic-kernels future CPU kernels for photonic-style numerical simulation
+```
+
+Do not use `lo-core-potonic`; that is a typo. Do not use a bare
+`lo-photonic` package name under the grouped naming scheme. Do not use
+`lo-cpu-photonic` for the general concept package, because CPU packages should
+own CPU implementations or kernels, not photonic vocabulary.
 
 ## Rename Checklist
 

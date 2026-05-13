@@ -2,7 +2,7 @@
 
 Ownership note: logic semantics belong in `packages-lo/lo-core-logic/`, vector concepts
 belong in `packages-lo/lo-core-vector/`, compute planning belongs in
-`packages-lo/lo-core-compute/`, photonic vocabulary belongs in `packages-lo/lo-photonic/`
+`packages-lo/lo-core-compute/`, photonic vocabulary belongs in `packages-lo/lo-core-photonic/`
 and photonic backend target planning belongs in `packages-lo/lo-target-photonic/`.
 
 This document describes the proposed **Hybrid Logic and Wavelength Compute**

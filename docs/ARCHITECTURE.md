@@ -17,7 +17,7 @@ Vector concepts live in `packages-lo/lo-core-vector/`. Compute planning concepts
 `packages-lo/lo-ai-neural/`, and neuromorphic spike/event contracts live in
 `packages-lo/lo-ai-neuromorphic/`. BitNet is one optional backend for low-bit AI.
 Photonic and wavelength concepts live in
-`packages-lo/lo-photonic/`. CPU target planning lives in
+`packages-lo/lo-core-photonic/`. CPU target planning lives in
 `packages-lo/lo-target-cpu/`, optimized CPU kernel contracts live in
 `packages-lo/lo-cpu-kernels/`, and binary/native target planning lives in
 `packages-lo/lo-target-binary/`, WebAssembly target planning lives in
@@ -62,7 +62,7 @@ LO-app/
 |   |-- lo-ai-agent/
 |   |-- lo-ai-neural/
 |   |-- lo-ai-neuromorphic/
-|   |-- lo-photonic/
+|   |-- lo-core-photonic/
 |   |-- lo-target-cpu/
 |   |-- lo-cpu-kernels/
 |   |-- lo-target-binary/
@@ -104,7 +104,7 @@ light-framework/
 |   |-- lo-ai-agent/
 |   |-- lo-ai-neural/
 |   |-- lo-ai-neuromorphic/
-|   |-- lo-photonic/
+|   |-- lo-core-photonic/
 |   |-- lo-target-cpu/
 |   |-- lo-cpu-kernels/
 |   |-- lo-target-binary/
@@ -291,9 +291,10 @@ calendar/session rules and risk/pricing boundaries. It must not make LO a live
 exchange engine, HFT engine, broker-dealer platform, settlement system,
 clearing system or custody platform.
 
-`lo-core-logic` owns logic semantics such as `Tri`, `Logic<N>` and Omni. `lo-photonic`
-owns photonic representation and target planning. Photonic mappings may consume
-logic states, but logic semantics stay in `lo-core-logic`.
+`lo-core-logic` owns logic semantics such as `Tri`, `Logic<N>` and Omni.
+`lo-core-photonic` owns photonic concepts, representation models and simulation
+vocabulary. Photonic mappings may consume logic states, but logic semantics stay
+in `lo-core-logic`, and backend target planning stays in `lo-target-photonic`.
 
 `lo-core-vector` owns vector, matrix and tensor value concepts. `lo-core-compute` owns
 compute planning and target selection. `lo-ai` owns generic AI inference

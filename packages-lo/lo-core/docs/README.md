@@ -56,7 +56,7 @@ updated first:
 ../../lo-core-compute/README.md
 ../../lo-ai/README.md
 ../../lo-ai-lowbit/README.md
-../../lo-photonic/README.md
+../../lo-core-photonic/README.md
 ../../lo-target-cpu/README.md
 ../../lo-cpu-kernels/README.md
 ../../lo-target-binary/README.md

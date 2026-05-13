@@ -46,7 +46,7 @@ Neural-network packages may consume vector, matrix and tensor contracts from
 `lo-core-compute`.
 
 `lo-core-vector` should not own photonic representation. That belongs in
-`lo-photonic` and `lo-target-photonic`.
+`lo-core-photonic` and `lo-target-photonic`.
 
 `lo-core-vector` should not own neural-network layers, training, inference or model
 metadata. Those belong in `lo-ai-neural` and `lo-ai`.

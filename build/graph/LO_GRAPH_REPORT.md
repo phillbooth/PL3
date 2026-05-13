@@ -1,7 +1,7 @@
 # LO Graph Report
 
 Workspace: LO-app
-Generated: 2026-05-13T12:02:36.631Z
+Generated: 2026-05-13T13:24:08.133Z
 
 ## Summary
 
@@ -27,7 +27,7 @@ Generated: 2026-05-13T12:02:36.631Z
 - lo-ai-agent (packages-lo/lo-ai-agent/README.md)
 - lo-ai-neural (packages-lo/lo-ai-neural/README.md)
 - lo-ai-neuromorphic (packages-lo/lo-ai-neuromorphic/README.md)
-- lo-photonic (packages-lo/lo-photonic/README.md)
+- lo-core-photonic (packages-lo/lo-core-photonic/README.md)
 - lo-target-cpu (packages-lo/lo-target-cpu/README.md)
 - lo-cpu-kernels (packages-lo/lo-cpu-kernels/README.md)
 - lo-target-binary (packages-lo/lo-target-binary/README.md)

@@ -39,7 +39,7 @@
 - [x] Add app-kernel hello-world checked Run Mode test
 - [x] Add app-kernel vector, sum, decimal and JSON checked Run Mode fixtures
 - [x] Add package scaffolds for `lo-core-cli`, `lo-core-tasks`, `lo-core-logic` and
-  `lo-photonic`
+  `lo-core-photonic`
 - [x] Add package scaffolds for `lo-core-vector`, `lo-core-compute`,
   `lo-target-binary` and `lo-target-photonic`
 - [x] Add package scaffolds for `lo-core-compiler`, `lo-core-runtime`, `lo-core-security`,
@@ -87,7 +87,7 @@
 ## Phase 7: Logic and Photonic Packages
 
 - [ ] Define `lo-core-logic` syntax and reports for `Tri`, `Logic<N>` and Omni
-- [ ] Define `lo-photonic` wavelength, phase and amplitude model
+- [ ] Define `lo-core-photonic` wavelength, phase and amplitude model
 - [ ] Define photonic mappings from `lo-core-logic`
 - [ ] Add examples and tests for logic and photonic package boundaries
 - [x] Define `lo-core-vector` vector, matrix and tensor value contracts

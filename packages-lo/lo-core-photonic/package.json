@@ -1,7 +1,7 @@
 {
-  "name": "@lo/photonic",
+  "name": "@lo/core-photonic",
   "version": "0.1.0-beta.0",
-  "description": "LO photonic and wavelength hardware concepts and target mapping.",
+  "description": "LO photonic and wavelength concepts, models, APIs and simulation contracts.",
   "license": "Apache-2.0",
   "private": true,
   "type": "module",

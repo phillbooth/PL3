@@ -1,17 +1,17 @@
 # LO Photonic
 
-`lo-photonic` is the package for photonic concepts, types, models and APIs.
+`lo-core-photonic` is the package for photonic concepts, types, models and APIs.
 
 It belongs in:
 
 ```text
-/packages-lo/lo-photonic
+/packages-lo/lo-core-photonic
 ```
 
 Think of it as:
 
 ```text
-lo-photonic teaches LO what photonic computing means.
+lo-core-photonic teaches LO what photonic computing means.
 ```
 
 Use this package for:
@@ -31,7 +31,7 @@ photonic simulation
 logic-to-light mapping
 ```
 
-`lo-photonic` is about what the developer can express.
+`lo-core-photonic` is about what the developer can express.
 
 It answers:
 
@@ -46,10 +46,10 @@ How do we simulate photonic behaviour?
 
 ## Boundary
 
-`lo-photonic` must not own `Tri`, `Logic<N>` or Omni logic semantics. Those
+`lo-core-photonic` must not own `Tri`, `Logic<N>` or Omni logic semantics. Those
 belong in `lo-core-logic`.
 
-`lo-photonic` must not own compiler backend output, hardware mapping files,
+`lo-core-photonic` must not own compiler backend output, hardware mapping files,
 target reports or fallback decisions. Those belong in `lo-target-photonic`.
 
 Photonic may map logic states to light properties:
@@ -104,7 +104,7 @@ photonic vector flow multiplyFast(input: Matrix<Float32>) -> Matrix<Float32> {
 }
 ```
 
-In that example, `lo-photonic` provides `photonic.matmul()` and the modelling
+In that example, `lo-core-photonic` provides `photonic.matmul()` and the modelling
 types. `lo-target-photonic` checks whether the flow can target photonic
 execution and generates the target plan/report.
 
@@ -112,7 +112,7 @@ execution and generates the target plan/report.
 
 | Package | Responsibility |
 | --- | --- |
-| `lo-photonic` | Photonic types, models, APIs and simulations |
+| `lo-core-photonic` | Photonic types, models, APIs and simulations |
 | `lo-target-photonic` | Compiler backend, output target and hardware or simulator mapping |
 | `lo-core-vector` | Vector, matrix, tensor types and operations |
 | `lo-core-compute` | `compute auto`, target selection and fallback planning |
@@ -124,6 +124,6 @@ Final rule:
 
 ```text
 lo-core-logic handles the logic model.
-lo-photonic handles what photonic means.
+lo-core-photonic handles what photonic means.
 lo-target-photonic handles how LO outputs to photonic systems.
 ```

@@ -150,7 +150,7 @@ LO-app/
 |   |-- lo-ai-agent/
 |   |-- lo-ai-neural/
 |   |-- lo-ai-neuromorphic/
-|   |-- lo-photonic/
+|   |-- lo-core-photonic/
 |   |-- lo-target-cpu/
 |   |-- lo-cpu-kernels/
 |   |-- lo-target-binary/
@@ -197,7 +197,7 @@ LO-app/
   contracts.
 - `packages-lo/lo-ai-neuromorphic/` - spike, event-signal and spiking model
   contracts.
-- `packages-lo/lo-photonic/` - photonic and wavelength concepts, simulation and
+- `packages-lo/lo-core-photonic/` - photonic and wavelength concepts, simulation and
   logic-to-light mapping contracts.
 - `packages-lo/lo-target-cpu/` - CPU capability detection, threading, memory limits
   and fallback planning.
@@ -211,7 +211,7 @@ LO-app/
 - `packages-lo/lo-target-ai-accelerator/` - NPU, TPU, AI-chip and passive
   accelerator backend profile planning contracts.
 - `packages-lo/lo-target-photonic/` - photonic backend target planning and
-  optical I/O interconnect planning that uses `lo-photonic`.
+  optical I/O interconnect planning that uses `lo-core-photonic`.
 - `packages-lo/lo-framework-app-kernel/` - optional secure application kernel for typed API
   boundaries, validation, auth, rate limits, jobs and runtime reports.
 - `packages-lo/lo-framework-api-server/` - built-in HTTP API transport that delegates typed

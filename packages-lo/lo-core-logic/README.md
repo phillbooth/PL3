@@ -36,7 +36,7 @@ Final rule:
 ```text
 lo-core-logic handles Tri, Logic<N> and Omni.
 lo-ai-lowbit handles low-bit and ternary model weights.
-lo-photonic handles how logic may be represented using light.
+lo-core-photonic handles how logic may be represented using light.
 ```
 
 ## Naming Decision

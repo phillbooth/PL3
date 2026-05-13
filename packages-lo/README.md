@@ -65,7 +65,7 @@ not mistaken for production runtime dependencies.
 - `lo-ai-lowbit/` - low-bit and ternary AI backend contracts.
 - `lo-ai-neural/` - neural workload contracts.
 - `lo-ai-neuromorphic/` - spike and event-signal workload contracts.
-- `lo-photonic/` - photonic concepts, models, APIs and simulations.
+- `lo-core-photonic/` - photonic concepts, models, APIs and simulations.
 - `lo-target-*` - compiler/output target packages.
 - `lo-cpu-kernels/` - optimized CPU kernel contracts.
 - `lo-framework-app-kernel/` - optional secure application kernel.

@@ -38,7 +38,7 @@ All notable changes to this app should be documented here.
 - Added `packages-lo/lo-core-tasks/` as the safe typed project automation package
   scaffold.
 - Added `packages-lo/lo-core-logic/` for `Tri`, `Logic<N>` and future Omni logic.
-- Added `packages-lo/lo-photonic/` for photonic and wavelength hardware concepts.
+- Added `packages-lo/lo-core-photonic/` for photonic and wavelength hardware concepts.
 - Added `packages-lo/lo-core-vector/` for vector value, lane and operation concepts.
 - Added `packages-lo/lo-core-compute/` for compute planning and target selection
   concepts.

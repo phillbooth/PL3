@@ -132,7 +132,7 @@ packages-lo/lo-ai-neuromorphic
   spiking model contracts
   neuromorphic reports
 
-packages-lo/lo-photonic
+packages-lo/lo-core-photonic
   Wavelength
   Phase
   Amplitude
@@ -289,7 +289,7 @@ AI accelerator vendor profile changes
   update lo-core docs only if target syntax or package registry contracts change
 
 Photonic wavelength model
-  update packages-lo/lo-photonic first
+  update packages-lo/lo-core-photonic first
   update lo-core docs only if language-level target declarations change
 
 Photonic backend lowering

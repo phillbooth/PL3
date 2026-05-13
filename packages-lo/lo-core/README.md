@@ -82,7 +82,7 @@ packages-lo/lo-ai-neural/
 packages-lo/lo-ai-neuromorphic/
   Spike, SpikeTrain, EventSignal and spiking model contracts
 
-packages-lo/lo-photonic/
+packages-lo/lo-core-photonic/
   Wavelength, Phase, Amplitude, OpticalSignal, OpticalChannel
 
 packages-lo/lo-target-cpu/
@@ -104,7 +104,7 @@ packages-lo/lo-target-ai-accelerator/
   NPU, TPU, AI-chip and passive accelerator backend profile planning contracts
 
 packages-lo/lo-target-photonic/
-  photonic backend target plans using lo-photonic concepts
+  photonic backend target plans using lo-core-photonic concepts
 
 packages-lo/lo-tools-benchmark/
   development diagnostics, benchmark configs, fallback checks and privacy-safe reports

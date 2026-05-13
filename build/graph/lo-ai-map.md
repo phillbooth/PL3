@@ -206,9 +206,9 @@ Provides:
 - NeuromorphicPlan
 - NeuromorphicReport
 
-## lo-photonic
+## lo-core-photonic
 
-LO photonic and wavelength hardware concepts and target mapping.
+LO photonic and wavelength concepts, models, APIs and simulation contracts.
 
 Provides:
 - Wavelength

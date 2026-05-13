@@ -120,7 +120,7 @@ The app package must remain deliberately small until a product domain is chosen.
 - Neuromorphic spike, event-signal and spiking model contracts must live in
   `packages-lo/lo-ai-neuromorphic/`.
 - Photonic and wavelength hardware concepts must live in
-  `packages-lo/lo-photonic/`.
+  `packages-lo/lo-core-photonic/`.
 - CPU target planning, feature detection and fallback reports must live in
   `packages-lo/lo-target-cpu/`.
 - Optimized CPU kernel contracts must live in `packages-lo/lo-cpu-kernels/`.
@@ -302,9 +302,9 @@ The app package must remain deliberately small until a product domain is chosen.
 
 - `lo-core-logic` must own `Tri`, `Logic<N>`, future Omni logic, multi-state truth
   tables, conversion rules and logic reports.
-- `lo-photonic` must own wavelength, phase, amplitude, optical signal, optical
-  channel, photonic simulation and photonic target planning concepts.
-- `lo-photonic` may map logic states from `lo-core-logic` to photonic
+- `lo-core-photonic` must own wavelength, phase, amplitude, optical signal,
+  optical channel, photonic modelling and photonic simulation concepts.
+- `lo-core-photonic` may map logic states from `lo-core-logic` to photonic
   representations, but it must not own the logic semantics.
 - `lo-core-vector` must own vector values, dimensions, lanes, vector operation rules
   and vector reports.
@@ -351,7 +351,7 @@ The app package must remain deliberately small until a product domain is chosen.
   existing ecosystems such as PyTorch, vLLM, Hugging Face, DeepSpeed,
   TensorFlow or PyTorch Lightning before native backend work.
 - `lo-target-photonic` must own photonic backend target planning and may use
-  `lo-photonic` concepts.
+  `lo-core-photonic` concepts.
 - `optical_io` must be treated as a high-speed data-movement and interconnect
   target, not as a normal CPU, GPU or photonic compute target.
 - Intel Silicon Photonics and OCI-style devices must be documented as optical

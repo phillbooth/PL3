@@ -66,7 +66,7 @@ packages-lo/lo-core-vector
 packages-lo/lo-core-compute
 packages-lo/lo-ai
 packages-lo/lo-ai-lowbit
-packages-lo/lo-photonic
+packages-lo/lo-core-photonic
 packages-lo/lo-target-cpu
 packages-lo/lo-cpu-kernels
 packages-lo/lo-target-binary
@@ -1910,7 +1910,7 @@ lo-core-vector            = vector values, dimensions, lanes and vector operatio
 lo-core-compute           = compute planning, capabilities, budgets and target selection
 lo-ai                = generic AI inference contracts and safety policy
 lo-ai-lowbit            = low-bit and ternary AI inference contracts
-lo-photonic          = wavelength, phase, amplitude and optical signal concepts
+lo-core-photonic     = wavelength, phase, amplitude and optical signal concepts
 lo-target-cpu        = CPU target capability and fallback planning
 lo-cpu-kernels       = optimized CPU kernel contracts
 lo-target-binary     = binary/native target planning and artefact metadata

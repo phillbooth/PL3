@@ -88,7 +88,7 @@ package boundaries
 [x] Separate LO core language concerns from the optional Secure App Kernel layer
 [x] Support simple `console.log("...")` output in checked Run Mode
 [x] Document package boundaries from `lo-core` to `lo-core-logic`, `lo-core-vector`,
-    `lo-core-compute`, `lo-photonic`, target packages, CLI and task packages
+    `lo-core-compute`, `lo-core-photonic`, target packages, CLI and task packages
 [x] Split compiler, runtime, security, config, reports, WASM target and GPU
     target responsibilities into dedicated package TODOs
 [x] Split AI inference, low-bit AI backend, CPU target and CPU kernel
@@ -141,7 +141,7 @@ Vector work should update packages-lo/lo-core-vector first.
 Compute planning work should update packages-lo/lo-core-compute first.
 AI inference work should update packages-lo/lo-ai first.
 Low-bit AI backend work should update packages-lo/lo-ai-lowbit first.
-Photonic vocabulary should update packages-lo/lo-photonic first.
+Photonic vocabulary should update packages-lo/lo-core-photonic first.
 Target backend work should update packages-lo/lo-target-binary or
 packages-lo/lo-target-cpu, packages-lo/lo-target-wasm, packages-lo/lo-target-gpu or
 packages-lo/lo-target-photonic first.
@@ -165,7 +165,7 @@ Vector values, lanes and operation semantics -> packages-lo/lo-core-vector/TODO.
 Compute planning and target selection -> packages-lo/lo-core-compute/TODO.md
 AI inference contracts -> packages-lo/lo-ai/TODO.md
 Low-bit AI backend -> packages-lo/lo-ai-lowbit/TODO.md
-Photonic concepts and simulation helpers -> packages-lo/lo-photonic/TODO.md
+Photonic concepts and simulation helpers -> packages-lo/lo-core-photonic/TODO.md
 CPU target planning -> packages-lo/lo-target-cpu/TODO.md
 CPU kernel planning -> packages-lo/lo-cpu-kernels/TODO.md
 Binary/native target output -> packages-lo/lo-target-binary/TODO.md

@@ -106,7 +106,7 @@ Example:
 - Added docs/react-native-target.md and updated framework target planning so React Native is supported as generated mobile adapter/package interop, not LO Core UI syntax.
 - Added `packages-lo/lo-framework-api-server/` positioning across LO core docs as the built-in HTTP API server that delegates to the Secure App Kernel.
 - Added `docs/package-boundaries.md` and cross-references from LO core docs to
-  sibling packages: `lo-core-logic`, `lo-core-vector`, `lo-core-compute`, `lo-photonic`,
+  sibling packages: `lo-core-logic`, `lo-core-vector`, `lo-core-compute`, `lo-core-photonic`,
   `lo-target-binary`, `lo-target-photonic`, `lo-framework-app-kernel`, `lo-framework-api-server`,
   `lo-core-cli` and `lo-core-tasks`.
 - Added LO core package-boundary references for `lo-ai`, `lo-ai-lowbit`,

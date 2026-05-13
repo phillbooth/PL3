@@ -1,11 +1,11 @@
 # LO Photonic TODO
 
 ```text
-[x] Create /packages-lo/lo-photonic
+[x] Create /packages-lo/lo-core-photonic
 [x] Document package boundary
 [x] Add package metadata
 [x] Add initial typed exports
-[x] Clarify that lo-photonic owns concepts, types, models and APIs
+[x] Clarify that lo-core-photonic owns concepts, types, models and APIs
 [ ] Define wavelength model
 [ ] Define phase and amplitude model
 [ ] Define PhotonicMode

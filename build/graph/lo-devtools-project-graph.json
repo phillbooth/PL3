@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-13T12:02:36.631Z",
+  "generatedAt": "2026-05-13T13:24:08.133Z",
   "nodes": [
     {
       "id": "package:lo-core",
@@ -143,11 +143,11 @@
       ]
     },
     {
-      "id": "package:lo-photonic",
+      "id": "package:lo-core-photonic",
       "kind": "Package",
-      "label": "lo-photonic",
-      "sourcePath": "packages-lo/lo-photonic/README.md",
-      "summary": "LO photonic and wavelength hardware concepts and target mapping.",
+      "label": "lo-core-photonic",
+      "sourcePath": "packages-lo/lo-core-photonic/README.md",
+      "summary": "LO photonic and wavelength concepts, models, APIs and simulation contracts.",
       "tags": [
         "package"
       ]
@@ -4872,103 +4872,103 @@
       ]
     },
     {
-      "id": "doc:packages-lo/lo-photonic/package.json",
+      "id": "doc:packages-lo/lo-core-photonic/package.json",
       "kind": "Document",
       "label": "package.json",
-      "sourcePath": "packages-lo/lo-photonic/package.json",
+      "sourcePath": "packages-lo/lo-core-photonic/package.json",
       "tags": [
         "report",
-        "lo-photonic"
+        "lo-core-photonic"
       ]
     },
     {
-      "id": "doc:packages-lo/lo-photonic/README.md",
+      "id": "doc:packages-lo/lo-core-photonic/README.md",
       "kind": "Document",
       "label": "README.md",
-      "sourcePath": "packages-lo/lo-photonic/README.md",
+      "sourcePath": "packages-lo/lo-core-photonic/README.md",
       "tags": [
         "document",
-        "lo-photonic"
+        "lo-core-photonic"
       ]
     },
     {
-      "id": "type:lo-photonic:Wavelength",
+      "id": "type:lo-core-photonic:Wavelength",
       "kind": "Type",
       "label": "Wavelength",
-      "sourcePath": "packages-lo/lo-photonic/src/index.ts",
+      "sourcePath": "packages-lo/lo-core-photonic/src/index.ts",
       "tags": [
         "type",
-        "lo-photonic"
+        "lo-core-photonic"
       ]
     },
     {
-      "id": "type:lo-photonic:Phase",
+      "id": "type:lo-core-photonic:Phase",
       "kind": "Type",
       "label": "Phase",
-      "sourcePath": "packages-lo/lo-photonic/src/index.ts",
+      "sourcePath": "packages-lo/lo-core-photonic/src/index.ts",
       "tags": [
         "type",
-        "lo-photonic"
+        "lo-core-photonic"
       ]
     },
     {
-      "id": "type:lo-photonic:Amplitude",
+      "id": "type:lo-core-photonic:Amplitude",
       "kind": "Type",
       "label": "Amplitude",
-      "sourcePath": "packages-lo/lo-photonic/src/index.ts",
+      "sourcePath": "packages-lo/lo-core-photonic/src/index.ts",
       "tags": [
         "type",
-        "lo-photonic"
+        "lo-core-photonic"
       ]
     },
     {
-      "id": "type:lo-photonic:OpticalSignal",
+      "id": "type:lo-core-photonic:OpticalSignal",
       "kind": "Type",
       "label": "OpticalSignal",
-      "sourcePath": "packages-lo/lo-photonic/src/index.ts",
+      "sourcePath": "packages-lo/lo-core-photonic/src/index.ts",
       "tags": [
         "type",
-        "lo-photonic"
+        "lo-core-photonic"
       ]
     },
     {
-      "id": "type:lo-photonic:OpticalChannel",
+      "id": "type:lo-core-photonic:OpticalChannel",
       "kind": "Type",
       "label": "OpticalChannel",
-      "sourcePath": "packages-lo/lo-photonic/src/index.ts",
+      "sourcePath": "packages-lo/lo-core-photonic/src/index.ts",
       "tags": [
         "type",
-        "lo-photonic"
+        "lo-core-photonic"
       ]
     },
     {
-      "id": "type:lo-photonic:PhotonicMapping",
+      "id": "type:lo-core-photonic:PhotonicMapping",
       "kind": "Type",
       "label": "PhotonicMapping",
-      "sourcePath": "packages-lo/lo-photonic/src/index.ts",
+      "sourcePath": "packages-lo/lo-core-photonic/src/index.ts",
       "tags": [
         "type",
-        "lo-photonic"
+        "lo-core-photonic"
       ]
     },
     {
-      "id": "doc:packages-lo/lo-photonic/TODO.md",
+      "id": "doc:packages-lo/lo-core-photonic/TODO.md",
       "kind": "Document",
       "label": "TODO.md",
-      "sourcePath": "packages-lo/lo-photonic/TODO.md",
+      "sourcePath": "packages-lo/lo-core-photonic/TODO.md",
       "tags": [
         "document",
-        "lo-photonic"
+        "lo-core-photonic"
       ]
     },
     {
-      "id": "doc:packages-lo/lo-photonic/tsconfig.json",
+      "id": "doc:packages-lo/lo-core-photonic/tsconfig.json",
       "kind": "Document",
       "label": "tsconfig.json",
-      "sourcePath": "packages-lo/lo-photonic/tsconfig.json",
+      "sourcePath": "packages-lo/lo-core-photonic/tsconfig.json",
       "tags": [
         "report",
-        "lo-photonic"
+        "lo-core-photonic"
       ]
     },
     {
@@ -7482,10 +7482,10 @@
       ]
     },
     {
-      "id": "doc:packages-lo/lo-photonic",
+      "id": "doc:packages-lo/lo-core-photonic",
       "kind": "Document",
       "label": "photonic",
-      "sourcePath": "packages-lo/lo-photonic",
+      "sourcePath": "packages-lo/lo-core-photonic",
       "tags": [
         "document",
         "workspace-doc"
@@ -7779,7 +7779,7 @@
     },
     {
       "from": "doc:README.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "README.md"
@@ -8052,7 +8052,7 @@
     },
     {
       "from": "doc:docs/ARCHITECTURE.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/ARCHITECTURE.md"
@@ -8262,7 +8262,7 @@
     },
     {
       "from": "doc:docs/CHANGELOG.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/CHANGELOG.md"
@@ -8598,7 +8598,7 @@
     },
     {
       "from": "doc:docs/NEURAL_ACCELERATOR_PACKAGES.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/NEURAL_ACCELERATOR_PACKAGES.md"
@@ -8808,7 +8808,7 @@
     },
     {
       "from": "doc:docs/PACKAGE_NAMING.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/PACKAGE_NAMING.md"
@@ -9095,7 +9095,7 @@
     },
     {
       "from": "doc:docs/REQUIREMENTS.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/REQUIREMENTS.md"
@@ -9410,7 +9410,7 @@
     },
     {
       "from": "doc:docs/TASKS.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/TASKS.md"
@@ -9599,7 +9599,7 @@
     },
     {
       "from": "doc:packages-lo/lo-core/ARCHITECTURE.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages-lo/lo-core/ARCHITECTURE.md"
@@ -9711,7 +9711,7 @@
     },
     {
       "from": "doc:packages-lo/lo-core/CHANGELOG.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages-lo/lo-core/CHANGELOG.md"
@@ -10257,7 +10257,7 @@
     },
     {
       "from": "doc:packages-lo/lo-core/docs/hybrid-logic-and-wavelength-compute.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages-lo/lo-core/docs/hybrid-logic-and-wavelength-compute.md"
@@ -10397,7 +10397,7 @@
     },
     {
       "from": "doc:packages-lo/lo-core/docs/logic-targets.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages-lo/lo-core/docs/logic-targets.md"
@@ -10586,7 +10586,7 @@
     },
     {
       "from": "doc:packages-lo/lo-core/docs/package-boundaries.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages-lo/lo-core/docs/package-boundaries.md"
@@ -10789,7 +10789,7 @@
     },
     {
       "from": "doc:packages-lo/lo-core/docs/package-use-registry.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages-lo/lo-core/docs/package-use-registry.md"
@@ -11027,7 +11027,7 @@
     },
     {
       "from": "doc:packages-lo/lo-core/docs/README.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages-lo/lo-core/docs/README.md"
@@ -11713,7 +11713,7 @@
     },
     {
       "from": "doc:packages-lo/lo-core/README.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages-lo/lo-core/README.md"
@@ -11846,7 +11846,7 @@
     },
     {
       "from": "doc:packages-lo/lo-core/REQUIREMENTS.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages-lo/lo-core/REQUIREMENTS.md"
@@ -12168,7 +12168,7 @@
     },
     {
       "from": "doc:packages-lo/lo-core/TASKS.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages-lo/lo-core/TASKS.md"
@@ -13470,7 +13470,7 @@
     },
     {
       "from": "doc:packages-lo/lo-core-logic/README.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages-lo/lo-core-logic/README.md"
@@ -13589,7 +13589,7 @@
     },
     {
       "from": "doc:packages-lo/lo-core-vector/README.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages-lo/lo-core-vector/README.md"
@@ -14918,165 +14918,165 @@
       "evidencePath": "packages-lo/lo-ai-neuromorphic/tsconfig.json"
     },
     {
-      "from": "package:lo-photonic",
-      "to": "doc:packages-lo/lo-photonic/package.json",
+      "from": "package:lo-core-photonic",
+      "to": "doc:packages-lo/lo-core-photonic/package.json",
       "kind": "owns",
       "confidence": "EXTRACTED",
-      "evidencePath": "packages-lo/lo-photonic/package.json"
+      "evidencePath": "packages-lo/lo-core-photonic/package.json"
     },
     {
-      "from": "package:lo-photonic",
-      "to": "doc:packages-lo/lo-photonic/README.md",
+      "from": "package:lo-core-photonic",
+      "to": "doc:packages-lo/lo-core-photonic/README.md",
       "kind": "owns",
       "confidence": "EXTRACTED",
-      "evidencePath": "packages-lo/lo-photonic/README.md"
+      "evidencePath": "packages-lo/lo-core-photonic/README.md"
     },
     {
-      "from": "doc:packages-lo/lo-photonic/README.md",
+      "from": "doc:packages-lo/lo-core-photonic/README.md",
       "to": "package:lo-core",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "packages-lo/lo-photonic/README.md"
+      "evidencePath": "packages-lo/lo-core-photonic/README.md"
     },
     {
-      "from": "doc:packages-lo/lo-photonic/README.md",
+      "from": "doc:packages-lo/lo-core-photonic/README.md",
       "to": "package:lo-core-logic",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "packages-lo/lo-photonic/README.md"
+      "evidencePath": "packages-lo/lo-core-photonic/README.md"
     },
     {
-      "from": "doc:packages-lo/lo-photonic/README.md",
+      "from": "doc:packages-lo/lo-core-photonic/README.md",
       "to": "package:lo-core-vector",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "packages-lo/lo-photonic/README.md"
+      "evidencePath": "packages-lo/lo-core-photonic/README.md"
     },
     {
-      "from": "doc:packages-lo/lo-photonic/README.md",
+      "from": "doc:packages-lo/lo-core-photonic/README.md",
       "to": "package:lo-core-compute",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "packages-lo/lo-photonic/README.md"
+      "evidencePath": "packages-lo/lo-core-photonic/README.md"
     },
     {
-      "from": "doc:packages-lo/lo-photonic/README.md",
+      "from": "doc:packages-lo/lo-core-photonic/README.md",
       "to": "package:lo-ai",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "packages-lo/lo-photonic/README.md"
+      "evidencePath": "packages-lo/lo-core-photonic/README.md"
     },
     {
-      "from": "doc:packages-lo/lo-photonic/README.md",
+      "from": "doc:packages-lo/lo-core-photonic/README.md",
       "to": "package:lo-ai-neural",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "packages-lo/lo-photonic/README.md"
+      "evidencePath": "packages-lo/lo-core-photonic/README.md"
     },
     {
-      "from": "doc:packages-lo/lo-photonic/README.md",
-      "to": "package:lo-photonic",
+      "from": "doc:packages-lo/lo-core-photonic/README.md",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "packages-lo/lo-photonic/README.md"
+      "evidencePath": "packages-lo/lo-core-photonic/README.md"
     },
     {
-      "from": "doc:packages-lo/lo-photonic/README.md",
+      "from": "doc:packages-lo/lo-core-photonic/README.md",
       "to": "package:lo-target-binary",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "packages-lo/lo-photonic/README.md"
+      "evidencePath": "packages-lo/lo-core-photonic/README.md"
     },
     {
-      "from": "doc:packages-lo/lo-photonic/README.md",
+      "from": "doc:packages-lo/lo-core-photonic/README.md",
       "to": "package:lo-target-ai-accelerator",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "packages-lo/lo-photonic/README.md"
+      "evidencePath": "packages-lo/lo-core-photonic/README.md"
     },
     {
-      "from": "doc:packages-lo/lo-photonic/README.md",
+      "from": "doc:packages-lo/lo-core-photonic/README.md",
       "to": "package:lo-target-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "packages-lo/lo-photonic/README.md"
+      "evidencePath": "packages-lo/lo-core-photonic/README.md"
     },
     {
-      "from": "package:lo-photonic",
-      "to": "type:lo-photonic:Wavelength",
+      "from": "package:lo-core-photonic",
+      "to": "type:lo-core-photonic:Wavelength",
       "kind": "provides",
       "confidence": "EXTRACTED",
-      "evidencePath": "packages-lo/lo-photonic/src/index.ts"
+      "evidencePath": "packages-lo/lo-core-photonic/src/index.ts"
     },
     {
-      "from": "package:lo-photonic",
-      "to": "type:lo-photonic:Phase",
+      "from": "package:lo-core-photonic",
+      "to": "type:lo-core-photonic:Phase",
       "kind": "provides",
       "confidence": "EXTRACTED",
-      "evidencePath": "packages-lo/lo-photonic/src/index.ts"
+      "evidencePath": "packages-lo/lo-core-photonic/src/index.ts"
     },
     {
-      "from": "package:lo-photonic",
-      "to": "type:lo-photonic:Amplitude",
+      "from": "package:lo-core-photonic",
+      "to": "type:lo-core-photonic:Amplitude",
       "kind": "provides",
       "confidence": "EXTRACTED",
-      "evidencePath": "packages-lo/lo-photonic/src/index.ts"
+      "evidencePath": "packages-lo/lo-core-photonic/src/index.ts"
     },
     {
-      "from": "package:lo-photonic",
-      "to": "type:lo-photonic:OpticalSignal",
+      "from": "package:lo-core-photonic",
+      "to": "type:lo-core-photonic:OpticalSignal",
       "kind": "provides",
       "confidence": "EXTRACTED",
-      "evidencePath": "packages-lo/lo-photonic/src/index.ts"
+      "evidencePath": "packages-lo/lo-core-photonic/src/index.ts"
     },
     {
-      "from": "package:lo-photonic",
-      "to": "type:lo-photonic:OpticalChannel",
+      "from": "package:lo-core-photonic",
+      "to": "type:lo-core-photonic:OpticalChannel",
       "kind": "provides",
       "confidence": "EXTRACTED",
-      "evidencePath": "packages-lo/lo-photonic/src/index.ts"
+      "evidencePath": "packages-lo/lo-core-photonic/src/index.ts"
     },
     {
-      "from": "package:lo-photonic",
-      "to": "type:lo-photonic:PhotonicMapping",
+      "from": "package:lo-core-photonic",
+      "to": "type:lo-core-photonic:PhotonicMapping",
       "kind": "provides",
       "confidence": "EXTRACTED",
-      "evidencePath": "packages-lo/lo-photonic/src/index.ts"
+      "evidencePath": "packages-lo/lo-core-photonic/src/index.ts"
     },
     {
-      "from": "package:lo-photonic",
-      "to": "doc:packages-lo/lo-photonic/TODO.md",
+      "from": "package:lo-core-photonic",
+      "to": "doc:packages-lo/lo-core-photonic/TODO.md",
       "kind": "owns",
       "confidence": "EXTRACTED",
-      "evidencePath": "packages-lo/lo-photonic/TODO.md"
+      "evidencePath": "packages-lo/lo-core-photonic/TODO.md"
     },
     {
-      "from": "doc:packages-lo/lo-photonic/TODO.md",
+      "from": "doc:packages-lo/lo-core-photonic/TODO.md",
       "to": "package:lo-core",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "packages-lo/lo-photonic/TODO.md"
+      "evidencePath": "packages-lo/lo-core-photonic/TODO.md"
     },
     {
-      "from": "doc:packages-lo/lo-photonic/TODO.md",
+      "from": "doc:packages-lo/lo-core-photonic/TODO.md",
       "to": "package:lo-core-logic",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "packages-lo/lo-photonic/TODO.md"
+      "evidencePath": "packages-lo/lo-core-photonic/TODO.md"
     },
     {
-      "from": "doc:packages-lo/lo-photonic/TODO.md",
-      "to": "package:lo-photonic",
+      "from": "doc:packages-lo/lo-core-photonic/TODO.md",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "packages-lo/lo-photonic/TODO.md"
+      "evidencePath": "packages-lo/lo-core-photonic/TODO.md"
     },
     {
-      "from": "package:lo-photonic",
-      "to": "doc:packages-lo/lo-photonic/tsconfig.json",
+      "from": "package:lo-core-photonic",
+      "to": "doc:packages-lo/lo-core-photonic/tsconfig.json",
       "kind": "owns",
       "confidence": "EXTRACTED",
-      "evidencePath": "packages-lo/lo-photonic/tsconfig.json"
+      "evidencePath": "packages-lo/lo-core-photonic/tsconfig.json"
     },
     {
       "from": "package:lo-target-cpu",
@@ -15941,7 +15941,7 @@
     },
     {
       "from": "doc:packages-lo/lo-target-photonic/README.md",
-      "to": "package:lo-photonic",
+      "to": "package:lo-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages-lo/lo-target-photonic/README.md"

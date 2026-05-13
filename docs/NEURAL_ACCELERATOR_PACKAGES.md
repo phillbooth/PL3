@@ -56,7 +56,7 @@ lo-core-logic
 lo-ai-lowbit
   ternary or low-bit model weights
 
-lo-photonic
+lo-core-photonic
   possible optical signal mappings for logic or compute states
 
 lo-target-photonic

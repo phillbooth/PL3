@@ -83,7 +83,7 @@ LO Target Binary
   binary/native target planning and artefact metadata
 
 LO Target Photonic
-  photonic backend target plans that use lo-photonic concepts
+  photonic backend target plans that use lo-core-photonic concepts
 
 LO Secure App Kernel
   request lifecycle, validation, security, auth, rate limits, jobs and reports
@@ -120,7 +120,7 @@ vector values and lanes    -> packages-lo/lo-core-vector
 compute target selection   -> packages-lo/lo-core-compute
 AI inference contracts     -> packages-lo/lo-ai
 Low-bit AI backend         -> packages-lo/lo-ai-lowbit
-photonic concepts          -> packages-lo/lo-photonic
+photonic concepts          -> packages-lo/lo-core-photonic
 CPU target planning        -> packages-lo/lo-target-cpu
 CPU kernel contracts       -> packages-lo/lo-cpu-kernels
 binary target backend      -> packages-lo/lo-target-binary
@@ -1540,7 +1540,7 @@ packages-lo/lo-core
 packages-lo/lo-core-logic
 packages-lo/lo-core-vector
 packages-lo/lo-core-compute
-packages-lo/lo-photonic
+packages-lo/lo-core-photonic
 packages-lo/lo-target-binary
 packages-lo/lo-target-photonic
 packages-lo/lo-framework-app-kernel

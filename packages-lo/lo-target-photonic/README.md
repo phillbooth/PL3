@@ -116,12 +116,12 @@ The package can report both families, but it must keep them distinct.
 
 ## Boundary
 
-`lo-target-photonic` should use `lo-photonic` concepts such as wavelength,
+`lo-target-photonic` should use `lo-core-photonic` concepts such as wavelength,
 phase, amplitude, optical signal and optical channel. It should not own the
 general photonic vocabulary itself.
 
 `lo-target-photonic` should consume plans from `lo-core-compute` and concepts from
-`lo-photonic`, then produce target-specific outputs.
+`lo-core-photonic`, then produce target-specific outputs.
 
 It should not own:
 
@@ -134,7 +134,7 @@ runtime API/auth policy
 general compiler parsing/checking
 ```
 
-Those belong in `lo-core-logic`, `lo-core-vector`, `lo-core-compute`, `lo-photonic`,
+Those belong in `lo-core-logic`, `lo-core-vector`, `lo-core-compute`, `lo-core-photonic`,
 `lo-framework-app-kernel` and `lo-core-compiler`.
 
 ## Inputs
@@ -145,7 +145,7 @@ Expected inputs:
 checked flow or IR summary from lo-core-compiler
 compute plan from lo-core-compute
 vector/matrix operation summary from lo-core-vector
-photonic concepts from lo-photonic
+photonic concepts from lo-core-photonic
 target preferences from project config
 available target capability map
 ```
@@ -261,7 +261,7 @@ photonic vector flow multiplyFast(input: Matrix<Float32>) -> Matrix<Float32> {
 Package roles in that flow:
 
 ```text
-lo-photonic
+lo-core-photonic
   provides photonic.matmul()
   provides photonic modelling types
   understands wavelength/phase/amplitude concepts
@@ -277,7 +277,7 @@ lo-target-photonic
 
 | Package | Responsibility |
 | --- | --- |
-| `lo-photonic` | Photonic types, models, APIs and simulations |
+| `lo-core-photonic` | Photonic types, models, APIs and simulations |
 | `lo-target-photonic` | Compiler backend, output target and hardware or simulator mapping |
 | `lo-core-vector` | Vector, matrix, tensor types and operations |
 | `lo-core-compute` | `compute auto`, target selection and fallback planning |
@@ -319,6 +319,6 @@ general photonic vocabulary ownership
 Final rule:
 
 ```text
-lo-photonic defines photonic concepts.
+lo-core-photonic defines photonic concepts.
 lo-target-photonic maps compiled LO code to photonic hardware, simulators or plans.
 ```
