@@ -16,7 +16,11 @@ Vector concepts live in `packages-logicn/logicn-core-vector/`. Compute planning 
 `packages-logicn/logicn-ai-lowbit/`. Supervised AI agent contracts live in
 `packages-logicn/logicn-ai-agent/`. Neural-network workload contracts live in
 `packages-logicn/logicn-ai-neural/`, and neuromorphic spike/event contracts live in
-`packages-logicn/logicn-ai-neuromorphic/`. BitNet is one optional backend for low-bit AI.
+`packages-logicn/logicn-ai-neuromorphic/`. Compliance and privacy policy
+contracts live in `packages-logicn/logicn-compliance/` and the
+`packages-logicn/logicn-compliance-*` package family. Data-processing contracts
+live in `packages-logicn/logicn-data/` and the
+`packages-logicn/logicn-data-*` package family. BitNet is one optional backend for low-bit AI.
 Photonic and wavelength concepts live in
 `packages-logicn/logicn-core-photonic/`. CPU target planning lives in
 `packages-logicn/logicn-target-cpu/`, optimized CPU kernel contracts live in
@@ -114,6 +118,24 @@ logicn-app/
 |   |-- logicn-ai-agent/
 |   |-- logicn-ai-neural/
 |   |-- logicn-ai-neuromorphic/
+|   |-- logicn-compliance/
+|   |-- logicn-compliance-privacy/
+|   |-- logicn-compliance-security/
+|   |-- logicn-compliance-data/
+|   |-- logicn-compliance-audit/
+|   |-- logicn-compliance-retention/
+|   |-- logicn-compliance-ai/
+|   |-- logicn-compliance-accessibility/
+|   |-- logicn-compliance-deployment/
+|   |-- logicn-compliance-reports/
+|   |-- logicn-data/
+|   |-- logicn-data-html/
+|   |-- logicn-data-search/
+|   |-- logicn-data-archive/
+|   |-- logicn-data-json/
+|   |-- logicn-data-database/
+|   |-- logicn-data-pipeline/
+|   |-- logicn-data-reports/
 |   |-- logicn-core-photonic/
 |   |-- logicn-target-cpu/
 |   |-- logicn-cpu-kernels/

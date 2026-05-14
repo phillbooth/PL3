@@ -16,6 +16,10 @@
 - [x] Add Rust financial markets design note
 - [x] Add application-security positioning compared with Rust, C++ and Python
 - [x] Add network and Ethernet I/O positioning plus `logicn-core-network` package
+- [x] Add C++/Rust maturity gap analysis for missing LogicN language-core work
+- [x] Add compliance and privacy framework docs plus `logicn-compliance-*`
+  package scaffolds
+- [x] Add data-processing framework docs plus `logicn-data-*` package scaffolds
 - [x] Add optical I/O and Intel Silicon Photonics design note
 - [x] Add passive AI accelerator and Intel Gaudi profile design note
 - [x] Add electrical infrastructure and OT package planning note
@@ -140,6 +144,12 @@
 - [ ] Define IDE/LSP, debugger, source-map and test-framework roadmap
 - [ ] Define exhaustive match, sealed variant, generic constraint and protocol
   requirements for production-readiness
+- [ ] Define deterministic resource cleanup model for files, sockets, streams,
+  handles, DB connections and secrets
+- [ ] Define FFI/trusted module model with ownership, nullability, layout and
+  audit reports
+- [ ] Define package manager and registry design with lockfile, permissions and
+  reproducible builds
 - [x] Define resilient flow controlled recovery and processing report direction
 - [x] Define LogicN Structured Await language, runtime, kernel and report direction
 - [x] Define conservative storage-aware performance and cache planning direction
@@ -178,6 +188,10 @@
   `logicn-ai-neuromorphic` under the `logicn-ai-*` naming family
 - [ ] Define first `logicn-io-*` package contracts without replacing target
   packages
+- [ ] Define implementation-level compliance report schemas after core parser,
+  checker and package manager contracts are stable
+- [ ] Define implementation-level data-processing report schemas after core
+  parser, checker and package manager contracts are stable
 
 ## Phase 10: Finance Packages
 

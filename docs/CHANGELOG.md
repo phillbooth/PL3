@@ -6,6 +6,19 @@ All notable changes to this app should be documented here.
 
 ### Added
 
+- Added `packages-logicn/logicn-core/docs/cpp-rust-maturity-gap.md` to track
+  missing LogicN language-core maturity items compared with modern C++ and Rust,
+  including compiler pipeline, traits/protocols, deterministic cleanup, FFI,
+  package management, testing, async runtime, source-mapped runtime errors and
+  standard library work.
+- Added `packages-logicn/logicn-core/docs/compliance-and-privacy.md` plus the
+  `logicn-compliance` package family for privacy, security control mapping,
+  data governance, audit, retention, AI governance, accessibility, deployment
+  policy and compliance report contracts.
+- Added `packages-logicn/logicn-core/docs/data-processing.md` plus the
+  `logicn-data` package family for HTML, search, archive, JSON, database
+  archive, streaming pipeline, memory-limit, security and data-processing
+  report contracts.
 - Added `docs/APPLICATION_SECURITY_POSITIONING.md` to position LogicN's
   security advantage as application policy, deployment checks, package
   permissions, typed APIs, security reports and AI-safe context rather than a

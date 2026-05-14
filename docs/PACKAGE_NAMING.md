@@ -41,6 +41,8 @@ remove the stale ungrouped package folder.
 |---|---|---|
 | `logicn-core-*` | Core language, toolchain, runtime, network policy and safe developer automation | `logicn-core-compiler`, `logicn-core-runtime`, `logicn-core-network`, `logicn-core-security`, `logicn-core-cli`, `logicn-core-tasks` |
 | `logicn-ai-*` | AI workload, model, agent and AI compute-model packages | `logicn-ai-agent`, `logicn-ai-neural`, `logicn-ai-neuromorphic`, `logicn-ai-lowbit` |
+| `logicn-compliance-*` | Compliance, privacy, governance, audit, retention and policy report contracts | `logicn-compliance-privacy`, `logicn-compliance-audit`, `logicn-compliance-reports` |
+| `logicn-data-*` | Data processing, parsing, search, archive, streaming and report contracts | `logicn-data-html`, `logicn-data-search`, `logicn-data-archive` |
 | `logicn-target-*` | Compiler/output targets and backend planning | `logicn-target-cpu`, `logicn-target-gpu`, `logicn-target-wasm`, `logicn-target-photonic` |
 | `logicn-cpu-*` | CPU implementation and optimized kernel packages | `logicn-cpu-kernels`, future `logicn-cpu-photonic-sim` |
 | `LogicN-gpu-*` | GPU implementation and optimized kernel packages | future `LogicN-gpu-kernels` |
@@ -76,6 +78,24 @@ logicn-ai-agent
 logicn-ai-lowbit
 logicn-ai-neural
 logicn-ai-neuromorphic
+logicn-compliance
+logicn-compliance-accessibility
+logicn-compliance-ai
+logicn-compliance-audit
+logicn-compliance-data
+logicn-compliance-deployment
+logicn-compliance-privacy
+logicn-compliance-reports
+logicn-compliance-retention
+logicn-compliance-security
+logicn-data
+logicn-data-archive
+logicn-data-database
+logicn-data-html
+logicn-data-json
+logicn-data-pipeline
+logicn-data-reports
+logicn-data-search
 logicn-target-ai-accelerator
 logicn-target-binary
 logicn-target-cpu

@@ -8,6 +8,13 @@ This changelog should track major decisions, design changes, documentation updat
 
 ---
 
+## Unreleased
+
+- Added `docs/cpp-rust-maturity-gap.md` to document missing LogicN language-core
+  maturity work compared with modern C++ and Rust.
+
+---
+
 ## Changelog Format
 
 This project should foLOw a simple changelog format:

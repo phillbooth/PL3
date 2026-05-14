@@ -220,6 +220,78 @@ Provides:
 - NeuromorphicPlan
 - NeuromorphicReport
 
+## logicn-compliance
+
+LogicN compliance framework policy, evidence and report index contracts.
+
+## logicn-compliance-privacy
+
+LogicN privacy classification, minimisation and privacy report contracts.
+
+## logicn-compliance-security
+
+LogicN compliance security control mapping and evidence contracts.
+
+## logicn-compliance-data
+
+LogicN data governance, lineage, classification and residency contracts.
+
+## logicn-compliance-audit
+
+LogicN audit event, evidence reference and exception approval contracts.
+
+## logicn-compliance-retention
+
+LogicN retention, deletion, legal hold and disposal evidence contracts.
+
+## logicn-compliance-ai
+
+LogicN AI governance, provenance, review and high-impact decision policy contracts.
+
+## logicn-compliance-accessibility
+
+LogicN accessibility requirement, check and report contracts.
+
+## logicn-compliance-deployment
+
+LogicN deployment approval, release attestation and runtime control contracts.
+
+## logicn-compliance-reports
+
+LogicN compliance, privacy, audit, retention, accessibility, AI and deployment report contracts.
+
+## logicn-data
+
+LogicN data processing package umbrella contracts.
+
+## logicn-data-html
+
+LogicN HTML parse, sanitize, render and search document contracts.
+
+## logicn-data-search
+
+LogicN search document, indexing, query and search report contracts.
+
+## logicn-data-archive
+
+LogicN archive manifest, integrity and restore report contracts.
+
+## logicn-data-json
+
+LogicN JSON streaming, validation, redaction and archive contracts.
+
+## logicn-data-database
+
+LogicN database export, snapshot, checksum and archive contracts.
+
+## logicn-data-pipeline
+
+LogicN bounded streaming data pipeline, backpressure and checkpoint contracts.
+
+## logicn-data-reports
+
+LogicN data processing, HTML, search, archive and pipeline report contracts.
+
 ## logicn-core-photonic
 
 LogicN photonic and wavelength concepts, models, APIs and simulation contracts.

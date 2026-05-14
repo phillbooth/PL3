@@ -22,6 +22,11 @@ reports
 Anything outside that list is post-v1 unless it is needed to define core
 semantics.
 
+The C++/Rust maturity gap analysis lives in
+`packages-logicn/logicn-core/docs/cpp-rust-maturity-gap.md`. It is the
+foundation checklist for making LogicN credible next to mature systems
+languages without pretending the current prototype is already there.
+
 ## Hard Scope Rules
 
 - Do not add active domain packages before the v1 parser and checker are
@@ -33,6 +38,9 @@ semantics.
   effects/imports, typed errors, source maps, stable diagnostics and
   machine-readable reports.
 - Do not expose future/package complexity as normal language syntax.
+- Do not claim maturity next to C++ or Rust until the parser, AST, symbol table,
+  type checker, memory checker, effect checker, module system, FFI boundary,
+  test model and standard library have enforceable implementations.
 
 ## Phase 0: Workspace Freeze
 
@@ -205,3 +213,20 @@ production package registry
 5. Finalise the memory model document.
 6. Implement type/effect/memory checker slices against the examples.
 7. Generate reports from real checker facts.
+
+## Maturity Work Order
+
+After the first parser/checker slices are working, prioritise the missing
+language-core pieces in this order:
+
+1. Real compiler pipeline: parser, AST, symbol table, type checker, memory
+   checker, effect checker, IR and output.
+2. Traits, protocols and generic constraints.
+3. Deterministic cleanup for resources and secrets.
+4. Testing syntax and `LogicN test` model.
+5. FFI and trusted module system.
+6. Package manager and registry design.
+7. Async streams, cancellation, timeouts, bounded queues and backpressure.
+8. Source-mapped runtime errors across checked, binary and WASM targets.
+9. Small real standard library.
+10. Debug/profile/lint tooling.

@@ -68,6 +68,23 @@ of the network: typed network APIs, deny-by-default network permissions, TLS
 policy, route limits, backpressure, timeout policy, zero-copy planning where
 available, platform-aware I/O backend selection and network reports.
 
+LogicN should also not claim maturity next to modern C++ or Rust until the
+language core is enforceable. The missing maturity checklist lives in
+`docs/cpp-rust-maturity-gap.md` and covers the real compiler pipeline,
+traits/protocols, deterministic cleanup, FFI, package management, tests,
+async runtime semantics, source-mapped runtime errors and standard library
+baseline.
+
+LogicN should not claim legal or regulatory compliance automatically.
+`docs/compliance-and-privacy.md` defines the compliance and privacy framework
+direction, and the `logicn-compliance` package family owns related policy,
+evidence and report contracts.
+
+LogicN data processing belongs in packages, not directly in the core language.
+`docs/data-processing.md` defines the `logicn-data` package family for HTML,
+search, archive, JSON, database archive, streaming pipeline, memory-limit,
+security and report contracts.
+
 ## Layer Boundary
 
 LogicN core is the language, compiler and standard safety contract. It may define

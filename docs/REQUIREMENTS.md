@@ -48,6 +48,11 @@ must not be treated as implemented app functionality.
 - LogicN must not claim to be faster than C#, Python, C or C++ until the compiler,
   memory model and benchmark methodology exist. Current performance wording
   must be framed as a goal or opportunity, not a measured fact.
+- LogicN must not claim maturity next to modern C++ or Rust until it has an
+  enforceable language core: parser, AST, symbol table, type checker, memory
+  checker, effect checker, module system, traits/protocols, FFI boundary, test
+  model, standard library, source-mapped runtime errors and build/release
+  modes.
 - LogicN must not claim to be more memory-safe than Rust. Security positioning
   must be framed as an application-level goal: stronger default policy for
   permissions, APIs, secrets, package effects, interop, deployment and
@@ -61,6 +66,11 @@ must not be treated as implemented app functionality.
   hybrid ownership: immutable sharing by default, one active mutable owner,
   read-only and mutable borrows, explicit moves for resources, bounds-checked
   collections and no raw pointers in normal application code.
+- LogicN must define deterministic cleanup for explicit resources such as files,
+  sockets, locks, GPU buffers, model handles, DB connections, streams and
+  temporary secrets.
+- LogicN must define traits, protocols or generic constraints before building a
+  large reusable library ecosystem.
 - Recoverable errors must be explicit in syntax and types through
   `Result<T, E>` or an equivalent typed result form. Hidden exceptions must not
   be the default application error model.
@@ -73,6 +83,14 @@ must not be treated as implemented app functionality.
   explicit effects, explicit imports, typed errors, source maps, stable
   diagnostics and machine-readable reports. It must not be a vague marketing
   label.
+- LogicN must not claim legal, privacy, security, accessibility, AI governance
+  or deployment compliance automatically. Compliance packages may define
+  policy, evidence, review and report contracts, but compliance depends on
+  jurisdiction, organisation process, deployment controls and human review.
+- LogicN data processing must be package-owned and bounded. HTML parsing,
+  search indexing, archive manifests, JSON/database archiving and streaming
+  pipelines must live in `logicn-data-*` packages rather than becoming native
+  core-language features.
 - Before adding more active packages, the project must include at least 20 real
   `.lln` example programs covering basic, intermediate and advanced syntax.
 
@@ -459,6 +477,20 @@ the active v1 build graph.
 - `logicn-ai-lowbit` must own low-bit and ternary model references, GGUF metadata,
   quantization declarations, backend selection, CPU inference limits and low-bit
   AI inference reports.
+- `logicn-compliance` must own umbrella compliance profile, evidence manifest
+  and compliance report index contracts.
+- `logicn-compliance-*` packages must own focused policy/report contracts for
+  privacy, security control mapping, data governance, audit, retention, AI
+  governance, accessibility, deployment policy and compliance reports. They
+  must not provide legal advice, certification claims, audit databases,
+  identity providers, data warehouses, frontend frameworks or CI/CD systems.
+- `logicn-data` must own umbrella data-processing vocabulary, package policy,
+  memory-limit, archive-integrity and report index contracts.
+- `logicn-data-*` packages must own focused contracts for HTML processing,
+  search, archive integrity, JSON archive, database export/archive, streaming
+  pipelines and data-processing reports. They must not implement browser
+  engines, database engines, search engines, object storage, unsafe parsers or
+  unbounded scraping frameworks.
 - `logicn-target-binary` must own binary/native target planning and artefact
   metadata.
 - `logicn-target-cpu` must own CPU capability, feature, thread, memory and fallback
@@ -510,6 +542,10 @@ the active v1 build graph.
 
 - `logicn-core-compiler` must own compiler pipeline contracts for lexing, parsing, AST,
   checkers, IR, diagnostics, source maps and compiler reports.
+- `logicn-core-compiler` must treat the C++/Rust maturity gap as a foundation
+  checklist: real parser, AST, symbol table, type checker, memory checker,
+  effect checker, IR, output, debug/release modes and source-mapped runtime
+  errors.
 - Until the full parser/checker exists, `logicn-core-compiler` must provide a
   conservative syntax safety scan for the frozen v1 core risks: direct Tri
   branch conditions, implicit Tri/Decision/Bool boundary assignments,

@@ -27,6 +27,9 @@ These files describe the app being built, not the LogicN language itself.
 - `PROJECT_GRAPH.md` - project knowledge graph tooling note
 - `RESILIENT_FLOWS.md` - controlled recovery, resilient flows and partial success reporting
 - `RUST_FINANCIAL_MARKETS.md` - Rust benefits and design lessons for financial market systems and LogicN finance-facing direction
+- `../packages-logicn/logicn-core/docs/cpp-rust-maturity-gap.md` - missing LogicN language-core maturity items compared with modern C++ and Rust
+- `../packages-logicn/logicn-core/docs/compliance-and-privacy.md` - LogicN compliance and privacy framework direction
+- `../packages-logicn/logicn-core/docs/data-processing.md` - LogicN data-processing package family direction
 
 ## Package-Level Architecture Notes
 

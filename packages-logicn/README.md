@@ -86,6 +86,13 @@ not mistaken for production runtime dependencies.
 - `logicn-ai-lowbit/` - post-v1 low-bit and ternary AI backend contracts.
 - `logicn-ai-neural/` - post-v1 neural workload contracts.
 - `logicn-ai-neuromorphic/` - post-v1 spike and event-signal workload contracts.
+- `logicn-compliance/` - post-v1 compliance framework policy, evidence and report index contracts.
+- `logicn-compliance-*` - post-v1 privacy, security, data governance, audit,
+  retention, AI governance, accessibility, deployment and compliance report
+  contracts.
+- `logicn-data/` - post-v1 data-processing package umbrella contracts.
+- `logicn-data-*` - post-v1 HTML, search, archive, JSON, database archive,
+  streaming pipeline and data-processing report contracts.
 - `logicn-core-photonic/` - post-v1 photonic concepts, models, APIs and simulations.
 - `logicn-target-cpu/` and `logicn-target-wasm/` - v1 compiler/output target packages.
 - Other `logicn-target-*` packages - post-v1 target planning.

@@ -1,15 +1,15 @@
 # LogicN Graph Report
 
 Workspace: LogicN-app
-Generated: 2026-05-14T13:24:14.446Z
+Generated: 2026-05-14T16:35:03.044Z
 
 ## Summary
 
-- Packages: 30
-- Documents: 349
+- Packages: 48
+- Documents: 404
 - Types/interfaces: 326
 - Functions: 113
-- Relationships: 1501
+- Relationships: 1684
 
 ## Package Nodes
 
@@ -28,6 +28,24 @@ Generated: 2026-05-14T13:24:14.446Z
 - logicn-ai-agent (packages-logicn/logicn-ai-agent/README.md)
 - logicn-ai-neural (packages-logicn/logicn-ai-neural/README.md)
 - logicn-ai-neuromorphic (packages-logicn/logicn-ai-neuromorphic/README.md)
+- logicn-compliance (packages-logicn/logicn-compliance/README.md)
+- logicn-compliance-privacy (packages-logicn/logicn-compliance-privacy/README.md)
+- logicn-compliance-security (packages-logicn/logicn-compliance-security/README.md)
+- logicn-compliance-data (packages-logicn/logicn-compliance-data/README.md)
+- logicn-compliance-audit (packages-logicn/logicn-compliance-audit/README.md)
+- logicn-compliance-retention (packages-logicn/logicn-compliance-retention/README.md)
+- logicn-compliance-ai (packages-logicn/logicn-compliance-ai/README.md)
+- logicn-compliance-accessibility (packages-logicn/logicn-compliance-accessibility/README.md)
+- logicn-compliance-deployment (packages-logicn/logicn-compliance-deployment/README.md)
+- logicn-compliance-reports (packages-logicn/logicn-compliance-reports/README.md)
+- logicn-data (packages-logicn/logicn-data/README.md)
+- logicn-data-html (packages-logicn/logicn-data-html/README.md)
+- logicn-data-search (packages-logicn/logicn-data-search/README.md)
+- logicn-data-archive (packages-logicn/logicn-data-archive/README.md)
+- logicn-data-json (packages-logicn/logicn-data-json/README.md)
+- logicn-data-database (packages-logicn/logicn-data-database/README.md)
+- logicn-data-pipeline (packages-logicn/logicn-data-pipeline/README.md)
+- logicn-data-reports (packages-logicn/logicn-data-reports/README.md)
 - logicn-core-photonic (packages-logicn/logicn-core-photonic/README.md)
 - logicn-target-cpu (packages-logicn/logicn-target-cpu/README.md)
 - logicn-cpu-kernels (packages-logicn/logicn-cpu-kernels/README.md)

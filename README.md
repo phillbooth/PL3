@@ -89,6 +89,15 @@ permissions, TLS policy, backpressure, timeouts, zero-copy planning where
 available, platform-aware async I/O, reports and deployment profiles. See
 `docs/NETWORK_ETHERNET_IO.md` and `packages-logicn/logicn-core-network/`.
 
+LogicN should not claim legal, privacy, security, accessibility, AI governance
+or deployment compliance automatically. The `logicn-compliance` package family
+defines policy, evidence and report contracts so compliance-relevant behavior
+can be reviewed before deployment.
+
+LogicN data processing should be package-owned rather than added directly to the
+language core. The `logicn-data` package family defines typed, streaming-capable,
+memory-bounded, security-aware and archive-verifiable data-processing contracts.
+
 LogicN avoids:
 
 ```text
@@ -173,6 +182,24 @@ logicn-app/
 |   |-- logicn-ai-agent/
 |   |-- logicn-ai-neural/
 |   |-- logicn-ai-neuromorphic/
+|   |-- logicn-compliance/
+|   |-- logicn-compliance-privacy/
+|   |-- logicn-compliance-security/
+|   |-- logicn-compliance-data/
+|   |-- logicn-compliance-audit/
+|   |-- logicn-compliance-retention/
+|   |-- logicn-compliance-ai/
+|   |-- logicn-compliance-accessibility/
+|   |-- logicn-compliance-deployment/
+|   |-- logicn-compliance-reports/
+|   |-- logicn-data/
+|   |-- logicn-data-html/
+|   |-- logicn-data-search/
+|   |-- logicn-data-archive/
+|   |-- logicn-data-json/
+|   |-- logicn-data-database/
+|   |-- logicn-data-pipeline/
+|   |-- logicn-data-reports/
 |   |-- logicn-core-photonic/
 |   |-- logicn-target-cpu/
 |   |-- logicn-cpu-kernels/
@@ -225,6 +252,12 @@ logicn-app/
   contracts.
 - `packages-logicn/logicn-ai-neuromorphic/` - spike, event-signal and spiking model
   contracts.
+- `packages-logicn/logicn-compliance/` and `packages-logicn/logicn-compliance-*` -
+  compliance, privacy, governance, audit, retention, accessibility, AI governance,
+  deployment policy and compliance report contracts.
+- `packages-logicn/logicn-data/` and `packages-logicn/logicn-data-*` - data
+  processing, HTML, search, archive, JSON, database archive, streaming pipeline
+  and data-processing report contracts.
 - `packages-logicn/logicn-core-photonic/` - photonic and wavelength concepts, simulation and
   logic-to-light mapping contracts.
 - `packages-logicn/logicn-target-cpu/` - CPU capability detection, threading, memory limits
