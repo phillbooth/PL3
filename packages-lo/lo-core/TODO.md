@@ -8,12 +8,13 @@ Use this file as a practical checklist while the project moves from concept to d
 
 ---
 
-## V1 Surface Freeze
+## V1 Package Freeze And Core Focus
 
 ```text
-[ ] Freeze core syntax and grammar before adding more active package surfaces
+[ ] Freeze non-essential package expansion while core syntax and grammar are defined
 [ ] Keep v1 target scope to CPU and WASM
 [ ] Treat GPU, AI accelerator, photonic, optical I/O and domain packages as post-v1
+[ ] Work actively on core syntax, grammar and logic semantics
 [ ] Commit the hybrid ownership memory-safety model
 [ ] Finalise Bool, Tri, Decision, Option and Result semantics
 [ ] Add at least 20 real .lo examples for the v1 syntax subset
