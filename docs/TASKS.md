@@ -14,6 +14,7 @@
 - [x] Add LogicN logic, compute type and secure runtime future-support proposal
 - [x] Add `packages-logicn/logicn-framework-api-server/` HTTP API serving package documentation
 - [x] Add Rust financial markets design note
+- [x] Add application-security positioning compared with Rust, C++ and Python
 - [x] Add optical I/O and Intel Silicon Photonics design note
 - [x] Add passive AI accelerator and Intel Gaudi profile design note
 - [x] Add electrical infrastructure and OT package planning note

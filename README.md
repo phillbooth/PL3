@@ -76,6 +76,13 @@ For v1, these are goals unless backed by implemented compiler checks and tests.
 LogicN should not claim measured speed over C#, Python, C or C++ until the compiler,
 memory model and benchmark methodology exist.
 
+LogicN should also avoid claiming that it is more memory-safe than Rust. Its
+strongest security position is application-level policy: deny-by-default
+permissions, typed API boundaries, secret-safe reporting, controlled interop,
+production gates and AI-safe project context. See
+`docs/APPLICATION_SECURITY_POSITIONING.md` for the full position compared with
+Rust, C++ and Python.
+
 LogicN avoids:
 
 ```text

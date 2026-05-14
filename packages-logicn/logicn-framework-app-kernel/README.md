@@ -48,6 +48,10 @@ Frameworks provide opinions and user-facing structure.
 - Typed API request and response boundaries.
 - Runtime enforcement of `boot.lln` security policy.
 - Strict input validation before handlers run.
+- Deny-by-default application effects for file, network, database, shell, AI,
+  GPU and interop access unless declared by policy.
+- Production gates for auth, rate limits, typed input, secret-safe logging,
+  unsafe interop, raw SQL and shell execution.
 - Auth provider boundaries for bearer tokens, JWT, OAuth2/OIDC, DPoP, mTLS,
   API keys, webhook signatures and capability tokens.
 - Idempotency and replay protection policy.

@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-14T13:03:14.576Z",
+  "generatedAt": "2026-05-14T13:13:40.049Z",
   "nodes": [
     {
       "id": "package:logicn-core",
@@ -333,6 +333,15 @@
       "kind": "Document",
       "label": "API.md",
       "sourcePath": "docs/API.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/APPLICATION_SECURITY_POSITIONING.md",
+      "kind": "Document",
+      "label": "APPLICATION_SECURITY_POSITIONING.md",
+      "sourcePath": "docs/APPLICATION_SECURITY_POSITIONING.md",
       "tags": [
         "document"
       ]
@@ -9642,20 +9651,6 @@
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/PROJECT_GRAPH.md"
-    },
-    {
-      "from": "doc:docs/README.md",
-      "to": "package:logicn-core",
-      "kind": "documents",
-      "confidence": "INFERRED",
-      "evidencePath": "docs/README.md"
-    },
-    {
-      "from": "doc:docs/README.md",
-      "to": "package:logicn-core-logic",
-      "kind": "documents",
-      "confidence": "INFERRED",
-      "evidencePath": "docs/README.md"
     },
     {
       "from": "doc:docs/README.md",

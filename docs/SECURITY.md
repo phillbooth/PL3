@@ -8,7 +8,12 @@
 
 ## Security Summary
 
-Describe the main security concerns for this app.
+LogicN's strongest security position is application-level policy, not a claim
+that it is more memory-safe than Rust or universally safer than C++ or Python.
+The project should make permissions, typed API boundaries, package effects,
+secrets, interop, production rules and AI-readable reports visible before code
+runs. See `docs/APPLICATION_SECURITY_POSITIONING.md` for the comparison with
+Rust, C++ and Python.
 
 ## Core Rules
 
@@ -18,6 +23,12 @@ Describe the main security concerns for this app.
 - Handle errors safely.
 - Avoid exposing internal error details to users.
 - Log enough detail for debugging without logging sensitive data.
+- Deny file, network, database, shell, AI, GPU and interop effects unless they
+  are explicitly declared by package and application policy.
+- Treat raw SQL, raw shell execution, unsafe interop and untrusted
+  deserialization as denied-by-default production risks.
+- Generate security reports that show risky permissions, secret flows, package
+  effects, route policy gaps and production overrides.
 
 ## Environment Variables
 
@@ -29,6 +40,10 @@ Example variables should be stored in `.env.example`.
 
 All external input should be validated before use.
 
+API inputs should decode into strict typed request contracts before application
+handler logic runs. Unknown fields, oversized JSON, invalid types and unsafe
+payload shapes should fail at the boundary.
+
 ## Error Handling
 
 Errors should be handled in a controlled way.
@@ -39,7 +54,7 @@ Internal logs may include more detail, but must not include passwords, API keys 
 
 ## Secrets
 
-The foLOwing must never be committed:
+The following must never be committed:
 
 - API keys
 - Database passwords
@@ -85,6 +100,21 @@ memory limits, context limits, output token limits, thread limits and timeouts.
 Prompts and reports must be redacted before logging when they may contain
 secrets or user-sensitive data.
 
+AI-readable project context must be generated from redacted summaries and
+machine-readable reports. It must not leak secrets, private data, credentials or
+unsafe runtime controls.
+
+## Production Policy
+
+Production builds should fail when core application security controls are
+missing. Required release checks include typed input, auth on private routes,
+rate limits for sensitive endpoints, HTTPS or equivalent transport policy,
+secret-safe logging and a passing security report.
+
+Production policy must deny debug mode, unsafe interop, raw SQL, shell
+execution and wildcard network access unless an explicit, reviewed and reported
+override exists.
+
 ## Security Checklist
 
 - [ ] `.env` is ignored by Git.
@@ -94,3 +124,8 @@ secrets or user-sensitive data.
 - [ ] Secrets are not logged.
 - [ ] Build output does not contain secrets.
 - [ ] AI output cannot directly authorize high-impact actions.
+- [ ] Package and application effects are explicitly declared.
+- [ ] Raw SQL, shell execution and unsafe interop are denied or covered by a
+      reviewed production override.
+- [ ] Security reports pass before production release.
+- [ ] AI-readable project context is redacted before use.

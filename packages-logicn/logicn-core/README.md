@@ -57,6 +57,11 @@ state performance goals and design opportunities, but measured performance
 claims require an implemented compiler, a settled memory model and reproducible
 benchmarks.
 
+LogicN should also not claim to be more memory-safe than Rust. Its stronger
+security claim is application-level: deny-by-default effects, typed API
+boundaries, secret-safe reports, package permissions, controlled interop,
+production gates and AI-safe generated project context.
+
 ## Layer Boundary
 
 LogicN core is the language, compiler and standard safety contract. It may define

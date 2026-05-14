@@ -48,6 +48,10 @@ must not be treated as implemented app functionality.
 - LogicN must not claim to be faster than C#, Python, C or C++ until the compiler,
   memory model and benchmark methodology exist. Current performance wording
   must be framed as a goal or opportunity, not a measured fact.
+- LogicN must not claim to be more memory-safe than Rust. Security positioning
+  must be framed as an application-level goal: stronger default policy for
+  permissions, APIs, secrets, package effects, interop, deployment and
+  AI-readable reports.
 - Memory safety must be tied to an explicit mechanism. The current candidate is
   hybrid ownership: immutable sharing by default, one active mutable owner,
   read-only and mutable borrows, explicit moves for resources, bounds-checked
@@ -127,6 +131,15 @@ The app package must remain deliberately small until a product domain is chosen.
 - The template must be secure by default.
 - The template must validate external input at typed boundaries.
 - Errors must be explicit and safely reportable.
+- Application effects must be deny-by-default. File, network, database, shell,
+  AI, GPU and interop access must be declared before use.
+- API handlers must receive typed, validated request values by default; unknown
+  fields, oversized JSON and invalid payload shapes must be rejected at the
+  boundary.
+- Raw SQL, unsafe interop, raw shell execution and untrusted deserialization
+  must be denied by default in production policy.
+- Security reports must include risky permissions, package effects, route
+  policy gaps, secret-flow risks, interop adapters and production overrides.
 - CLI and task output must redact secrets, bearer tokens, cookies, private keys
   and `SecureString` values.
 - Runtime configuration must stay separate from compiled output.
@@ -487,6 +500,9 @@ the active v1 build graph.
 - `logicn-core-runtime` must own execution contracts for checked and compiled LogicN code.
 - `logicn-core-security` must own reusable security primitives, redaction rules,
   permission models, security diagnostics and security report contracts.
+- `logicn-core-security` must support application-security positioning where
+  LogicN is secure by default, typed by default, permissioned by default,
+  reportable by default, deployment-aware by default and AI-safe by default.
 - Security primitives must represent sensitive values as redacted references in
   reports and diagnostics, not as raw secret values.
 - Security helpers must provide reusable redaction, safe token/cookie/header

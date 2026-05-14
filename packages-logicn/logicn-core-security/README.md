@@ -3,6 +3,12 @@
 `logicn-core-security` is the package for reusable LogicN security primitives and security
 report contracts.
 
+LogicN's strongest honest security position is application security policy. It
+should not claim to be more memory-safe than Rust. Instead, this package helps
+make permissions, typed API boundaries, package effects, secrets, interop,
+production rules and AI-readable reports visible and enforceable before code
+runs.
+
 It belongs in:
 
 ```text
@@ -71,6 +77,8 @@ permission models deny by default
 explicit deny grants take precedence over allow grants
 default-allow and wildcard-allow permission models are diagnosed
 weak crypto algorithms must not appear in allowed algorithm lists
+raw SQL, shell execution and unsafe interop are production risks by default
+secret flows to logs, AI prompts, external APIs and errors are reported
 ```
 
 Callers can choose `onInvalidRule: "skip"` or `"throw"` for compatibility, but

@@ -6,6 +6,10 @@ All notable changes to this app should be documented here.
 
 ### Added
 
+- Added `docs/APPLICATION_SECURITY_POSITIONING.md` to position LogicN's
+  security advantage as application policy, deployment checks, package
+  permissions, typed APIs, security reports and AI-safe context rather than a
+  claim of stronger memory safety than Rust.
 - Added `logicn-core-logic` Tri helpers, explicit Tri-to-Bool conversion policy,
   LogicN definition validation, truth-table validation and contract tests.
 - Added an initial `logicn-core-compiler` core syntax safety scan for unsafe

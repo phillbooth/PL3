@@ -41,6 +41,12 @@ Development-only packages should use `logicn-devtools-*` or
 `logicn-tools-*` names and must not be resolved by production applications by
 default.
 
+LogicN's security architecture is application-policy first. It should not claim
+to be more memory-safe than Rust; the intended advantage is broader policy:
+deny-by-default effects, typed API boundaries, secret-safe reports, controlled
+interop, production gates and AI-safe context generation. The detailed
+positioning lives in `docs/APPLICATION_SECURITY_POSITIONING.md`.
+
 ## V1 Surface Freeze
 
 The v1 architecture is frozen around a small language surface:

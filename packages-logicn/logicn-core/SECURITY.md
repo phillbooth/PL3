@@ -1,10 +1,15 @@
 # LogicN Security
 
-This document describes the security model and security goals for **LogicN / LogicN**.
+This document describes the security model and security goals for **LogicN**.
 
 LogicN is a strict, memory-safe, security-first, JSON-native, API-native and accelerator-aware programming language concept.
 
 Security should not be added later as a framework feature. Security should be part of the language, compiler, runtime, package system, build process and deployment model from the beginning.
+
+LogicN should not claim to be more memory-safe than Rust. Its strongest
+defensible security position is broader application policy: typed APIs,
+deny-by-default effects, secret-safe reporting, controlled interop, production
+gates and AI-safe project context.
 
 ---
 
@@ -37,7 +42,7 @@ LogicN should make safe code easier to write than unsafe code.
 
 ## Core Security Principles
 
-LogicN should foLOw these principles:
+LogicN should follow these principles:
 
 ```text
 No undefined.
@@ -82,7 +87,7 @@ The default project should be safe even if the developer does not configure adva
 
 ## Threat Model
 
-LogicN should be designed with the foLOwing threats in mind:
+LogicN should be designed with the following threats in mind:
 
 ```text
 malicious API requests
