@@ -18,10 +18,19 @@ logicn-data
 logicn-data-html
 logicn-data-search
 logicn-data-archive
+logicn-data-db
+logicn-data-model
+logicn-data-query
+logicn-data-response
 logicn-data-json
 logicn-data-database
 logicn-data-pipeline
 logicn-data-reports
+logicn-db-postgres
+logicn-db-mysql
+logicn-db-sqlite
+logicn-db-opensearch
+logicn-db-firestore
 ```
 
 `logicn-data` is the umbrella package. Focused packages own parse, search,
@@ -35,6 +44,7 @@ Use data packages for:
 HTML parse, sanitize, render and search contracts
 JSON streaming and archive contracts
 database archive/export contracts
+typed database model, query and response contracts
 search indexing and query contracts
 bounded streaming pipelines
 data processing security policy
@@ -163,6 +173,245 @@ redaction and classification hooks
 
 Database archive packages must not become an ORM or migration system.
 
+## Database Models And Responses
+
+LogicN should support databases as a typed model and response layer, not as raw
+SQL strings.
+
+The main flow is:
+
+```text
+Database
+  -> typed model
+  -> validation
+  -> service logic
+  -> typed response
+  -> API / archive / report
+```
+
+Database data should not be returned directly. Database data should pass through
+a typed response model before it leaves the server.
+
+```text
+Model       = how data is stored
+Input       = what the user/API may send
+Query       = how data is read
+Command     = how data is changed
+Response    = what leaves the server
+Archive     = what is retained
+Report      = what proves the behaviour
+```
+
+### Model Package
+
+`logicn-data-model` should define typed storage model contracts:
+
+```text
+model User {
+    table: "users"
+
+    id: UUID primary
+    email: Email unique
+    name: Text
+    role: UserRole
+    createdAt: DateTime
+    updatedAt: DateTime
+}
+```
+
+The model contract should make these facts inspectable:
+
+```text
+table or collection mapping
+field names
+field types
+primary and unique keys
+private fields
+personal data fields
+secret fields
+fields allowed in API responses
+archive and retention metadata
+```
+
+### Separate Storage Models From Response Models
+
+A database model may contain fields that must not be returned to the browser or
+API.
+
+```text
+model User {
+    id: UUID primary
+    email: PersonalData<Text>
+    passwordHash: SecretData<Text>
+    resetToken: SecretData<Text> optional
+    name: Text
+    role: UserRole
+    createdAt: DateTime
+}
+```
+
+Safe API response:
+
+```text
+response UserResponse {
+    id: UUID
+    name: Text
+    role: UserRole
+}
+```
+
+LogicN should block returning the raw model from public routes when it contains
+personal, secret, hidden or internal fields:
+
+```text
+Security error:
+User model contains SecretData fields.
+Return a safe response model such as UserResponse.
+```
+
+### Typed Query Results
+
+`logicn-data-query` should define typed query contracts.
+
+```text
+query GetUserById(id: UUID) -> Option<User> {
+    from User
+    where User.id == id
+}
+```
+
+The result type is known:
+
+```text
+Option<User>
+```
+
+The missing case must be handled:
+
+```text
+match user {
+    Some(found) => return UserResponse.from(found)
+    None => return NotFound("User not found")
+}
+```
+
+Raw SQL should be denied by default. Parameterised or typed query contracts are
+the normal path.
+
+### Safe Response Mapping
+
+`logicn-data-response` should define safe model-to-response mapping contracts.
+
+```text
+response UserResponse from User {
+    id
+    name
+    role
+}
+```
+
+This prevents accidental leaks such as:
+
+```text
+passwordHash
+resetToken
+adminNotes
+internalFlags
+paymentReference
+```
+
+### Model Permissions
+
+Models can declare operation policy:
+
+```text
+model User {
+    allow read by ["admin", "self"]
+    allow create by ["public"]
+    allow update by ["admin", "self"]
+    deny delete unless role == "admin"
+
+    fields {
+        email: PersonalData<Text>
+        passwordHash: SecretData<Text> hidden
+    }
+}
+```
+
+Model permissions should integrate with `logicn-core-security`,
+`logicn-compliance-privacy` and the app kernel.
+
+### Validation Before Insert Or Update
+
+Input must be validated before it reaches the database.
+
+```text
+schema CreateUserInput {
+    email: Email
+    name: Text min 2 max 100
+    password: SecretData<Text> min 12
+}
+```
+
+Unsafe direct inserts should be blocked unless the request body has been typed
+and validated:
+
+```text
+User.create(request.body)
+```
+
+### Database Styles
+
+LogicN should support a consistent model/query/command/response/archive/report
+shape across:
+
+```text
+SQL databases
+document databases
+search indexes
+key-value stores
+graph databases
+time-series databases
+object storage metadata
+```
+
+Provider packages should be separate:
+
+```text
+logicn-db-postgres
+logicn-db-mysql
+logicn-db-sqlite
+logicn-db-firestore
+logicn-db-opensearch
+```
+
+Provider packages define adapter contracts. They must not bypass typed models,
+permissions, validation, safe response mapping or reports.
+
+### Database Archive Support
+
+```text
+archive UserAuditArchive {
+    source: UserEvent
+
+    store {
+        database: "audit.user_events"
+        jsonl: "./archive/user-events.jsonl"
+    }
+
+    retention {
+        keepForYears: 6
+    }
+
+    integrity {
+        hash: sha256
+        appendOnly: true
+    }
+}
+```
+
+This fits `logicn-data-archive` and `logicn-compliance-retention`.
+
 ## Streaming Pipelines
 
 `logicn-data-pipeline` should define bounded pipeline contracts:
@@ -249,6 +498,10 @@ app.archive-report.json
 app.archive-integrity-report.json
 app.json-archive-report.json
 app.database-archive-report.json
+app.database-report.json
+app.model-report.json
+app.query-report.json
+app.response-report.json
 app.pipeline-report.json
 ```
 

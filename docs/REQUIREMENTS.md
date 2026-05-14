@@ -91,6 +91,10 @@ must not be treated as implemented app functionality.
   search indexing, archive manifests, JSON/database archiving and streaming
   pipelines must live in `logicn-data-*` packages rather than becoming native
   core-language features.
+- LogicN database access must be typed, validated, permissioned and reportable.
+  Database storage models must be distinct from API response models, and raw
+  database models containing personal, secret, hidden or internal fields must
+  not be returned by public routes.
 - Before adding more active packages, the project must include at least 20 real
   `.lln` example programs covering basic, intermediate and advanced syntax.
 
@@ -491,6 +495,14 @@ the active v1 build graph.
   pipelines and data-processing reports. They must not implement browser
   engines, database engines, search engines, object storage, unsafe parsers or
   unbounded scraping frameworks.
+- `logicn-data-db`, `logicn-data-model`, `logicn-data-query` and
+  `logicn-data-response` must own typed database boundary, storage model,
+  query/command and safe response mapping contracts. Raw SQL must be denied by
+  default unless an explicit reviewed and reported override exists.
+- `logicn-db-*` packages must own provider adapter contracts only. PostgreSQL,
+  MySQL, SQLite, OpenSearch and Firestore adapters must not bypass typed
+  models, validation, permissions, parameterised access, safe response mapping,
+  archive policy or report output.
 - `logicn-target-binary` must own binary/native target planning and artefact
   metadata.
 - `logicn-target-cpu` must own CPU capability, feature, thread, memory and fallback

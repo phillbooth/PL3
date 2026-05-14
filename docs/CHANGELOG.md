@@ -19,6 +19,10 @@ All notable changes to this app should be documented here.
   `logicn-data` package family for HTML, search, archive, JSON, database
   archive, streaming pipeline, memory-limit, security and data-processing
   report contracts.
+- Expanded `packages-logicn/logicn-core/docs/data-processing.md` with typed
+  database model, query, command, response and archive boundaries, and added
+  `logicn-data-db`, `logicn-data-model`, `logicn-data-query`,
+  `logicn-data-response` and initial `logicn-db-*` provider adapter scaffolds.
 - Added `docs/APPLICATION_SECURITY_POSITIONING.md` to position LogicN's
   security advantage as application policy, deployment checks, package
   permissions, typed APIs, security reports and AI-safe context rather than a

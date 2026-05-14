@@ -276,6 +276,22 @@ LogicN search document, indexing, query and search report contracts.
 
 LogicN archive manifest, integrity and restore report contracts.
 
+## logicn-data-db
+
+LogicN typed database boundary contracts for model, query, command, response, archive and report flows.
+
+## logicn-data-model
+
+LogicN typed database model, field classification and storage mapping contracts.
+
+## logicn-data-query
+
+LogicN typed query, command, parameterisation and database access report contracts.
+
+## logicn-data-response
+
+LogicN safe database-model-to-response mapping and response report contracts.
+
 ## logicn-data-json
 
 LogicN JSON streaming, validation, redaction and archive contracts.
@@ -291,6 +307,26 @@ LogicN bounded streaming data pipeline, backpressure and checkpoint contracts.
 ## logicn-data-reports
 
 LogicN data processing, HTML, search, archive and pipeline report contracts.
+
+## logicn-db-postgres
+
+LogicN PostgreSQL adapter contract placeholder.
+
+## logicn-db-mysql
+
+LogicN MySQL adapter contract placeholder.
+
+## logicn-db-sqlite
+
+LogicN SQLite adapter contract placeholder.
+
+## logicn-db-opensearch
+
+LogicN OpenSearch adapter contract placeholder.
+
+## logicn-db-firestore
+
+LogicN Firestore adapter contract placeholder.
 
 ## logicn-core-photonic
 

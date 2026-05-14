@@ -42,7 +42,8 @@ remove the stale ungrouped package folder.
 | `logicn-core-*` | Core language, toolchain, runtime, network policy and safe developer automation | `logicn-core-compiler`, `logicn-core-runtime`, `logicn-core-network`, `logicn-core-security`, `logicn-core-cli`, `logicn-core-tasks` |
 | `logicn-ai-*` | AI workload, model, agent and AI compute-model packages | `logicn-ai-agent`, `logicn-ai-neural`, `logicn-ai-neuromorphic`, `logicn-ai-lowbit` |
 | `logicn-compliance-*` | Compliance, privacy, governance, audit, retention and policy report contracts | `logicn-compliance-privacy`, `logicn-compliance-audit`, `logicn-compliance-reports` |
-| `logicn-data-*` | Data processing, parsing, search, archive, streaming and report contracts | `logicn-data-html`, `logicn-data-search`, `logicn-data-archive` |
+| `logicn-data-*` | Data processing, parsing, search, archive, typed database boundary, streaming and report contracts | `logicn-data-html`, `logicn-data-search`, `logicn-data-db`, `logicn-data-response` |
+| `logicn-db-*` | Database provider adapter contract packages | `logicn-db-postgres`, `logicn-db-mysql`, `logicn-db-sqlite` |
 | `logicn-target-*` | Compiler/output targets and backend planning | `logicn-target-cpu`, `logicn-target-gpu`, `logicn-target-wasm`, `logicn-target-photonic` |
 | `logicn-cpu-*` | CPU implementation and optimized kernel packages | `logicn-cpu-kernels`, future `logicn-cpu-photonic-sim` |
 | `LogicN-gpu-*` | GPU implementation and optimized kernel packages | future `LogicN-gpu-kernels` |
@@ -91,11 +92,20 @@ logicn-compliance-security
 logicn-data
 logicn-data-archive
 logicn-data-database
+logicn-data-db
 logicn-data-html
 logicn-data-json
+logicn-data-model
 logicn-data-pipeline
+logicn-data-query
 logicn-data-reports
+logicn-data-response
 logicn-data-search
+logicn-db-firestore
+logicn-db-mysql
+logicn-db-opensearch
+logicn-db-postgres
+logicn-db-sqlite
 logicn-target-ai-accelerator
 logicn-target-binary
 logicn-target-cpu

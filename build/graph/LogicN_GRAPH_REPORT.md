@@ -1,15 +1,15 @@
 # LogicN Graph Report
 
 Workspace: LogicN-app
-Generated: 2026-05-14T16:35:03.044Z
+Generated: 2026-05-14T16:39:42.227Z
 
 ## Summary
 
-- Packages: 48
-- Documents: 404
+- Packages: 57
+- Documents: 431
 - Types/interfaces: 326
 - Functions: 113
-- Relationships: 1684
+- Relationships: 1786
 
 ## Package Nodes
 
@@ -42,10 +42,19 @@ Generated: 2026-05-14T16:35:03.044Z
 - logicn-data-html (packages-logicn/logicn-data-html/README.md)
 - logicn-data-search (packages-logicn/logicn-data-search/README.md)
 - logicn-data-archive (packages-logicn/logicn-data-archive/README.md)
+- logicn-data-db (packages-logicn/logicn-data-db/README.md)
+- logicn-data-model (packages-logicn/logicn-data-model/README.md)
+- logicn-data-query (packages-logicn/logicn-data-query/README.md)
+- logicn-data-response (packages-logicn/logicn-data-response/README.md)
 - logicn-data-json (packages-logicn/logicn-data-json/README.md)
 - logicn-data-database (packages-logicn/logicn-data-database/README.md)
 - logicn-data-pipeline (packages-logicn/logicn-data-pipeline/README.md)
 - logicn-data-reports (packages-logicn/logicn-data-reports/README.md)
+- logicn-db-postgres (packages-logicn/logicn-db-postgres/README.md)
+- logicn-db-mysql (packages-logicn/logicn-db-mysql/README.md)
+- logicn-db-sqlite (packages-logicn/logicn-db-sqlite/README.md)
+- logicn-db-opensearch (packages-logicn/logicn-db-opensearch/README.md)
+- logicn-db-firestore (packages-logicn/logicn-db-firestore/README.md)
 - logicn-core-photonic (packages-logicn/logicn-core-photonic/README.md)
 - logicn-target-cpu (packages-logicn/logicn-target-cpu/README.md)
 - logicn-cpu-kernels (packages-logicn/logicn-cpu-kernels/README.md)

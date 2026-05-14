@@ -85,6 +85,11 @@ LogicN data processing belongs in packages, not directly in the core language.
 search, archive, JSON, database archive, streaming pipeline, memory-limit,
 security and report contracts.
 
+Database support should stay inside the data package family. `logicn-data-db`,
+`logicn-data-model`, `logicn-data-query` and `logicn-data-response` define the
+typed database boundary so stored models, inputs, queries, commands, responses,
+archives and reports remain separate.
+
 ## Layer Boundary
 
 LogicN core is the language, compiler and standard safety contract. It may define

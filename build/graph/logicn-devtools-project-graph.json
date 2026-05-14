@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-14T16:35:03.044Z",
+  "generatedAt": "2026-05-14T16:39:42.227Z",
   "nodes": [
     {
       "id": "package:logicn-core",
@@ -293,6 +293,46 @@
       ]
     },
     {
+      "id": "package:logicn-data-db",
+      "kind": "Package",
+      "label": "logicn-data-db",
+      "sourcePath": "packages-logicn/logicn-data-db/README.md",
+      "summary": "LogicN typed database boundary contracts for model, query, command, response, archive and report flows.",
+      "tags": [
+        "package"
+      ]
+    },
+    {
+      "id": "package:logicn-data-model",
+      "kind": "Package",
+      "label": "logicn-data-model",
+      "sourcePath": "packages-logicn/logicn-data-model/README.md",
+      "summary": "LogicN typed database model, field classification and storage mapping contracts.",
+      "tags": [
+        "package"
+      ]
+    },
+    {
+      "id": "package:logicn-data-query",
+      "kind": "Package",
+      "label": "logicn-data-query",
+      "sourcePath": "packages-logicn/logicn-data-query/README.md",
+      "summary": "LogicN typed query, command, parameterisation and database access report contracts.",
+      "tags": [
+        "package"
+      ]
+    },
+    {
+      "id": "package:logicn-data-response",
+      "kind": "Package",
+      "label": "logicn-data-response",
+      "sourcePath": "packages-logicn/logicn-data-response/README.md",
+      "summary": "LogicN safe database-model-to-response mapping and response report contracts.",
+      "tags": [
+        "package"
+      ]
+    },
+    {
       "id": "package:logicn-data-json",
       "kind": "Package",
       "label": "logicn-data-json",
@@ -328,6 +368,56 @@
       "label": "logicn-data-reports",
       "sourcePath": "packages-logicn/logicn-data-reports/README.md",
       "summary": "LogicN data processing, HTML, search, archive and pipeline report contracts.",
+      "tags": [
+        "package"
+      ]
+    },
+    {
+      "id": "package:logicn-db-postgres",
+      "kind": "Package",
+      "label": "logicn-db-postgres",
+      "sourcePath": "packages-logicn/logicn-db-postgres/README.md",
+      "summary": "LogicN PostgreSQL adapter contract placeholder.",
+      "tags": [
+        "package"
+      ]
+    },
+    {
+      "id": "package:logicn-db-mysql",
+      "kind": "Package",
+      "label": "logicn-db-mysql",
+      "sourcePath": "packages-logicn/logicn-db-mysql/README.md",
+      "summary": "LogicN MySQL adapter contract placeholder.",
+      "tags": [
+        "package"
+      ]
+    },
+    {
+      "id": "package:logicn-db-sqlite",
+      "kind": "Package",
+      "label": "logicn-db-sqlite",
+      "sourcePath": "packages-logicn/logicn-db-sqlite/README.md",
+      "summary": "LogicN SQLite adapter contract placeholder.",
+      "tags": [
+        "package"
+      ]
+    },
+    {
+      "id": "package:logicn-db-opensearch",
+      "kind": "Package",
+      "label": "logicn-db-opensearch",
+      "sourcePath": "packages-logicn/logicn-db-opensearch/README.md",
+      "summary": "LogicN OpenSearch adapter contract placeholder.",
+      "tags": [
+        "package"
+      ]
+    },
+    {
+      "id": "package:logicn-db-firestore",
+      "kind": "Package",
+      "label": "logicn-db-firestore",
+      "sourcePath": "packages-logicn/logicn-db-firestore/README.md",
+      "summary": "LogicN Firestore adapter contract placeholder.",
       "tags": [
         "package"
       ]
@@ -6168,6 +6258,86 @@
       ]
     },
     {
+      "id": "doc:packages-logicn/logicn-data-db/package.json",
+      "kind": "Document",
+      "label": "package.json",
+      "sourcePath": "packages-logicn/logicn-data-db/package.json",
+      "tags": [
+        "report",
+        "logicn-data-db"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-data-db/README.md",
+      "kind": "Document",
+      "label": "README.md",
+      "sourcePath": "packages-logicn/logicn-data-db/README.md",
+      "tags": [
+        "document",
+        "logicn-data-db"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-data-model/package.json",
+      "kind": "Document",
+      "label": "package.json",
+      "sourcePath": "packages-logicn/logicn-data-model/package.json",
+      "tags": [
+        "report",
+        "logicn-data-model"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-data-model/README.md",
+      "kind": "Document",
+      "label": "README.md",
+      "sourcePath": "packages-logicn/logicn-data-model/README.md",
+      "tags": [
+        "document",
+        "logicn-data-model"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-data-query/package.json",
+      "kind": "Document",
+      "label": "package.json",
+      "sourcePath": "packages-logicn/logicn-data-query/package.json",
+      "tags": [
+        "report",
+        "logicn-data-query"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-data-query/README.md",
+      "kind": "Document",
+      "label": "README.md",
+      "sourcePath": "packages-logicn/logicn-data-query/README.md",
+      "tags": [
+        "document",
+        "logicn-data-query"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-data-response/package.json",
+      "kind": "Document",
+      "label": "package.json",
+      "sourcePath": "packages-logicn/logicn-data-response/package.json",
+      "tags": [
+        "report",
+        "logicn-data-response"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-data-response/README.md",
+      "kind": "Document",
+      "label": "README.md",
+      "sourcePath": "packages-logicn/logicn-data-response/README.md",
+      "tags": [
+        "document",
+        "logicn-data-response"
+      ]
+    },
+    {
       "id": "doc:packages-logicn/logicn-data-json/package.json",
       "kind": "Document",
       "label": "package.json",
@@ -6245,6 +6415,106 @@
       "tags": [
         "document",
         "logicn-data-reports"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-db-postgres/package.json",
+      "kind": "Document",
+      "label": "package.json",
+      "sourcePath": "packages-logicn/logicn-db-postgres/package.json",
+      "tags": [
+        "report",
+        "logicn-db-postgres"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-db-postgres/README.md",
+      "kind": "Document",
+      "label": "README.md",
+      "sourcePath": "packages-logicn/logicn-db-postgres/README.md",
+      "tags": [
+        "document",
+        "logicn-db-postgres"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-db-mysql/package.json",
+      "kind": "Document",
+      "label": "package.json",
+      "sourcePath": "packages-logicn/logicn-db-mysql/package.json",
+      "tags": [
+        "report",
+        "logicn-db-mysql"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-db-mysql/README.md",
+      "kind": "Document",
+      "label": "README.md",
+      "sourcePath": "packages-logicn/logicn-db-mysql/README.md",
+      "tags": [
+        "document",
+        "logicn-db-mysql"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-db-sqlite/package.json",
+      "kind": "Document",
+      "label": "package.json",
+      "sourcePath": "packages-logicn/logicn-db-sqlite/package.json",
+      "tags": [
+        "report",
+        "logicn-db-sqlite"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-db-sqlite/README.md",
+      "kind": "Document",
+      "label": "README.md",
+      "sourcePath": "packages-logicn/logicn-db-sqlite/README.md",
+      "tags": [
+        "document",
+        "logicn-db-sqlite"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-db-opensearch/package.json",
+      "kind": "Document",
+      "label": "package.json",
+      "sourcePath": "packages-logicn/logicn-db-opensearch/package.json",
+      "tags": [
+        "report",
+        "logicn-db-opensearch"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-db-opensearch/README.md",
+      "kind": "Document",
+      "label": "README.md",
+      "sourcePath": "packages-logicn/logicn-db-opensearch/README.md",
+      "tags": [
+        "document",
+        "logicn-db-opensearch"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-db-firestore/package.json",
+      "kind": "Document",
+      "label": "package.json",
+      "sourcePath": "packages-logicn/logicn-db-firestore/package.json",
+      "tags": [
+        "report",
+        "logicn-db-firestore"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-db-firestore/README.md",
+      "kind": "Document",
+      "label": "README.md",
+      "sourcePath": "packages-logicn/logicn-db-firestore/README.md",
+      "tags": [
+        "document",
+        "logicn-db-firestore"
       ]
     },
     {
@@ -8978,6 +9248,46 @@
       ]
     },
     {
+      "id": "doc:packages-logicn/logicn-data-db",
+      "kind": "Document",
+      "label": "dataDb",
+      "sourcePath": "packages-logicn/logicn-data-db",
+      "tags": [
+        "document",
+        "workspace-doc"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-data-model",
+      "kind": "Document",
+      "label": "dataModel",
+      "sourcePath": "packages-logicn/logicn-data-model",
+      "tags": [
+        "document",
+        "workspace-doc"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-data-query",
+      "kind": "Document",
+      "label": "dataQuery",
+      "sourcePath": "packages-logicn/logicn-data-query",
+      "tags": [
+        "document",
+        "workspace-doc"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-data-response",
+      "kind": "Document",
+      "label": "dataResponse",
+      "sourcePath": "packages-logicn/logicn-data-response",
+      "tags": [
+        "document",
+        "workspace-doc"
+      ]
+    },
+    {
       "id": "doc:packages-logicn/logicn-data-json",
       "kind": "Document",
       "label": "dataJson",
@@ -9012,6 +9322,56 @@
       "kind": "Document",
       "label": "dataReports",
       "sourcePath": "packages-logicn/logicn-data-reports",
+      "tags": [
+        "document",
+        "workspace-doc"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-db-postgres",
+      "kind": "Document",
+      "label": "dbPostgres",
+      "sourcePath": "packages-logicn/logicn-db-postgres",
+      "tags": [
+        "document",
+        "workspace-doc"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-db-mysql",
+      "kind": "Document",
+      "label": "dbMysql",
+      "sourcePath": "packages-logicn/logicn-db-mysql",
+      "tags": [
+        "document",
+        "workspace-doc"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-db-sqlite",
+      "kind": "Document",
+      "label": "dbSqlite",
+      "sourcePath": "packages-logicn/logicn-db-sqlite",
+      "tags": [
+        "document",
+        "workspace-doc"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-db-opensearch",
+      "kind": "Document",
+      "label": "dbOpensearch",
+      "sourcePath": "packages-logicn/logicn-db-opensearch",
+      "tags": [
+        "document",
+        "workspace-doc"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-db-firestore",
+      "kind": "Document",
+      "label": "dbFirestore",
+      "sourcePath": "packages-logicn/logicn-db-firestore",
       "tags": [
         "document",
         "workspace-doc"
@@ -9403,6 +9763,34 @@
     },
     {
       "from": "doc:README.md",
+      "to": "package:logicn-data-db",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "README.md"
+    },
+    {
+      "from": "doc:README.md",
+      "to": "package:logicn-data-model",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "README.md"
+    },
+    {
+      "from": "doc:README.md",
+      "to": "package:logicn-data-query",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "README.md"
+    },
+    {
+      "from": "doc:README.md",
+      "to": "package:logicn-data-response",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "README.md"
+    },
+    {
+      "from": "doc:README.md",
       "to": "package:logicn-data-json",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -9425,6 +9813,41 @@
     {
       "from": "doc:README.md",
       "to": "package:logicn-data-reports",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "README.md"
+    },
+    {
+      "from": "doc:README.md",
+      "to": "package:logicn-db-postgres",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "README.md"
+    },
+    {
+      "from": "doc:README.md",
+      "to": "package:logicn-db-mysql",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "README.md"
+    },
+    {
+      "from": "doc:README.md",
+      "to": "package:logicn-db-sqlite",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "README.md"
+    },
+    {
+      "from": "doc:README.md",
+      "to": "package:logicn-db-opensearch",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "README.md"
+    },
+    {
+      "from": "doc:README.md",
+      "to": "package:logicn-db-firestore",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "README.md"
@@ -9802,6 +10225,34 @@
     },
     {
       "from": "doc:docs/ARCHITECTURE.md",
+      "to": "package:logicn-data-db",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/ARCHITECTURE.md"
+    },
+    {
+      "from": "doc:docs/ARCHITECTURE.md",
+      "to": "package:logicn-data-model",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/ARCHITECTURE.md"
+    },
+    {
+      "from": "doc:docs/ARCHITECTURE.md",
+      "to": "package:logicn-data-query",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/ARCHITECTURE.md"
+    },
+    {
+      "from": "doc:docs/ARCHITECTURE.md",
+      "to": "package:logicn-data-response",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/ARCHITECTURE.md"
+    },
+    {
+      "from": "doc:docs/ARCHITECTURE.md",
       "to": "package:logicn-data-json",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -9824,6 +10275,41 @@
     {
       "from": "doc:docs/ARCHITECTURE.md",
       "to": "package:logicn-data-reports",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/ARCHITECTURE.md"
+    },
+    {
+      "from": "doc:docs/ARCHITECTURE.md",
+      "to": "package:logicn-db-postgres",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/ARCHITECTURE.md"
+    },
+    {
+      "from": "doc:docs/ARCHITECTURE.md",
+      "to": "package:logicn-db-mysql",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/ARCHITECTURE.md"
+    },
+    {
+      "from": "doc:docs/ARCHITECTURE.md",
+      "to": "package:logicn-db-sqlite",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/ARCHITECTURE.md"
+    },
+    {
+      "from": "doc:docs/ARCHITECTURE.md",
+      "to": "package:logicn-db-opensearch",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/ARCHITECTURE.md"
+    },
+    {
+      "from": "doc:docs/ARCHITECTURE.md",
+      "to": "package:logicn-db-firestore",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/ARCHITECTURE.md"
@@ -10048,6 +10534,34 @@
     {
       "from": "doc:docs/CHANGELOG.md",
       "to": "package:logicn-data",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/CHANGELOG.md"
+    },
+    {
+      "from": "doc:docs/CHANGELOG.md",
+      "to": "package:logicn-data-db",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/CHANGELOG.md"
+    },
+    {
+      "from": "doc:docs/CHANGELOG.md",
+      "to": "package:logicn-data-model",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/CHANGELOG.md"
+    },
+    {
+      "from": "doc:docs/CHANGELOG.md",
+      "to": "package:logicn-data-query",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/CHANGELOG.md"
+    },
+    {
+      "from": "doc:docs/CHANGELOG.md",
+      "to": "package:logicn-data-response",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/CHANGELOG.md"
@@ -10726,6 +11240,34 @@
     },
     {
       "from": "doc:docs/PACKAGE_NAMING.md",
+      "to": "package:logicn-data-db",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/PACKAGE_NAMING.md"
+    },
+    {
+      "from": "doc:docs/PACKAGE_NAMING.md",
+      "to": "package:logicn-data-model",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/PACKAGE_NAMING.md"
+    },
+    {
+      "from": "doc:docs/PACKAGE_NAMING.md",
+      "to": "package:logicn-data-query",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/PACKAGE_NAMING.md"
+    },
+    {
+      "from": "doc:docs/PACKAGE_NAMING.md",
+      "to": "package:logicn-data-response",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/PACKAGE_NAMING.md"
+    },
+    {
+      "from": "doc:docs/PACKAGE_NAMING.md",
       "to": "package:logicn-data-json",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -10754,6 +11296,41 @@
     },
     {
       "from": "doc:docs/PACKAGE_NAMING.md",
+      "to": "package:logicn-db-postgres",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/PACKAGE_NAMING.md"
+    },
+    {
+      "from": "doc:docs/PACKAGE_NAMING.md",
+      "to": "package:logicn-db-mysql",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/PACKAGE_NAMING.md"
+    },
+    {
+      "from": "doc:docs/PACKAGE_NAMING.md",
+      "to": "package:logicn-db-sqlite",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/PACKAGE_NAMING.md"
+    },
+    {
+      "from": "doc:docs/PACKAGE_NAMING.md",
+      "to": "package:logicn-db-opensearch",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/PACKAGE_NAMING.md"
+    },
+    {
+      "from": "doc:docs/PACKAGE_NAMING.md",
+      "to": "package:logicn-db-firestore",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/PACKAGE_NAMING.md"
+    },
+    {
+      "from": "doc:docs/PACKAGE_NAMING.md",
       "to": "package:logicn-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -11048,6 +11625,34 @@
     },
     {
       "from": "doc:docs/REQUIREMENTS.md",
+      "to": "package:logicn-data-db",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/REQUIREMENTS.md"
+    },
+    {
+      "from": "doc:docs/REQUIREMENTS.md",
+      "to": "package:logicn-data-model",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/REQUIREMENTS.md"
+    },
+    {
+      "from": "doc:docs/REQUIREMENTS.md",
+      "to": "package:logicn-data-query",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/REQUIREMENTS.md"
+    },
+    {
+      "from": "doc:docs/REQUIREMENTS.md",
+      "to": "package:logicn-data-response",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/REQUIREMENTS.md"
+    },
+    {
+      "from": "doc:docs/REQUIREMENTS.md",
       "to": "package:logicn-core-photonic",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -11413,6 +12018,13 @@
     {
       "from": "doc:docs/TASKS.md",
       "to": "package:logicn-data",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/TASKS.md"
+    },
+    {
+      "from": "doc:docs/TASKS.md",
+      "to": "package:logicn-data-db",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "docs/TASKS.md"
@@ -12434,6 +13046,41 @@
     },
     {
       "from": "doc:packages-logicn/logicn-core/docs/data-processing.md",
+      "to": "package:logicn-core",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/docs/data-processing.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/docs/data-processing.md",
+      "to": "package:logicn-core-security",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/docs/data-processing.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/docs/data-processing.md",
+      "to": "package:logicn-compliance",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/docs/data-processing.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/docs/data-processing.md",
+      "to": "package:logicn-compliance-privacy",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/docs/data-processing.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/docs/data-processing.md",
+      "to": "package:logicn-compliance-retention",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/docs/data-processing.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/docs/data-processing.md",
       "to": "package:logicn-data",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -12462,6 +13109,34 @@
     },
     {
       "from": "doc:packages-logicn/logicn-core/docs/data-processing.md",
+      "to": "package:logicn-data-db",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/docs/data-processing.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/docs/data-processing.md",
+      "to": "package:logicn-data-model",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/docs/data-processing.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/docs/data-processing.md",
+      "to": "package:logicn-data-query",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/docs/data-processing.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/docs/data-processing.md",
+      "to": "package:logicn-data-response",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/docs/data-processing.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/docs/data-processing.md",
       "to": "package:logicn-data-json",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -12484,6 +13159,41 @@
     {
       "from": "doc:packages-logicn/logicn-core/docs/data-processing.md",
       "to": "package:logicn-data-reports",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/docs/data-processing.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/docs/data-processing.md",
+      "to": "package:logicn-db-postgres",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/docs/data-processing.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/docs/data-processing.md",
+      "to": "package:logicn-db-mysql",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/docs/data-processing.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/docs/data-processing.md",
+      "to": "package:logicn-db-sqlite",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/docs/data-processing.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/docs/data-processing.md",
+      "to": "package:logicn-db-opensearch",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/docs/data-processing.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/docs/data-processing.md",
+      "to": "package:logicn-db-firestore",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages-logicn/logicn-core/docs/data-processing.md"
@@ -14164,6 +14874,34 @@
     {
       "from": "doc:packages-logicn/logicn-core/README.md",
       "to": "package:logicn-data",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/README.md",
+      "to": "package:logicn-data-db",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/README.md",
+      "to": "package:logicn-data-model",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/README.md",
+      "to": "package:logicn-data-query",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/README.md",
+      "to": "package:logicn-data-response",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages-logicn/logicn-core/README.md"
@@ -18313,6 +19051,118 @@
       "evidencePath": "packages-logicn/logicn-data-archive/README.md"
     },
     {
+      "from": "package:logicn-data-db",
+      "to": "doc:packages-logicn/logicn-data-db/package.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-data-db/package.json"
+    },
+    {
+      "from": "package:logicn-data-db",
+      "to": "doc:packages-logicn/logicn-data-db/README.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-data-db/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-data-db/README.md",
+      "to": "package:logicn-data",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-data-db/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-data-db/README.md",
+      "to": "package:logicn-data-db",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-data-db/README.md"
+    },
+    {
+      "from": "package:logicn-data-model",
+      "to": "doc:packages-logicn/logicn-data-model/package.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-data-model/package.json"
+    },
+    {
+      "from": "package:logicn-data-model",
+      "to": "doc:packages-logicn/logicn-data-model/README.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-data-model/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-data-model/README.md",
+      "to": "package:logicn-data",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-data-model/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-data-model/README.md",
+      "to": "package:logicn-data-model",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-data-model/README.md"
+    },
+    {
+      "from": "package:logicn-data-query",
+      "to": "doc:packages-logicn/logicn-data-query/package.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-data-query/package.json"
+    },
+    {
+      "from": "package:logicn-data-query",
+      "to": "doc:packages-logicn/logicn-data-query/README.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-data-query/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-data-query/README.md",
+      "to": "package:logicn-data",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-data-query/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-data-query/README.md",
+      "to": "package:logicn-data-query",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-data-query/README.md"
+    },
+    {
+      "from": "package:logicn-data-response",
+      "to": "doc:packages-logicn/logicn-data-response/package.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-data-response/package.json"
+    },
+    {
+      "from": "package:logicn-data-response",
+      "to": "doc:packages-logicn/logicn-data-response/README.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-data-response/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-data-response/README.md",
+      "to": "package:logicn-data",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-data-response/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-data-response/README.md",
+      "to": "package:logicn-data-response",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-data-response/README.md"
+    },
+    {
       "from": "package:logicn-data-json",
       "to": "doc:packages-logicn/logicn-data-json/package.json",
       "kind": "owns",
@@ -18423,6 +19273,230 @@
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages-logicn/logicn-data-reports/README.md"
+    },
+    {
+      "from": "package:logicn-db-postgres",
+      "to": "doc:packages-logicn/logicn-db-postgres/package.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-db-postgres/package.json"
+    },
+    {
+      "from": "package:logicn-db-postgres",
+      "to": "doc:packages-logicn/logicn-db-postgres/README.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-db-postgres/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-postgres/README.md",
+      "to": "package:logicn-data",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-postgres/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-postgres/README.md",
+      "to": "package:logicn-data-db",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-postgres/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-postgres/README.md",
+      "to": "package:logicn-data-model",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-postgres/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-postgres/README.md",
+      "to": "package:logicn-data-query",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-postgres/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-postgres/README.md",
+      "to": "package:logicn-data-response",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-postgres/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-postgres/README.md",
+      "to": "package:logicn-db-postgres",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-postgres/README.md"
+    },
+    {
+      "from": "package:logicn-db-mysql",
+      "to": "doc:packages-logicn/logicn-db-mysql/package.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-db-mysql/package.json"
+    },
+    {
+      "from": "package:logicn-db-mysql",
+      "to": "doc:packages-logicn/logicn-db-mysql/README.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-db-mysql/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-mysql/README.md",
+      "to": "package:logicn-data",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-mysql/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-mysql/README.md",
+      "to": "package:logicn-data-db",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-mysql/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-mysql/README.md",
+      "to": "package:logicn-data-model",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-mysql/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-mysql/README.md",
+      "to": "package:logicn-data-query",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-mysql/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-mysql/README.md",
+      "to": "package:logicn-data-response",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-mysql/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-mysql/README.md",
+      "to": "package:logicn-db-mysql",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-mysql/README.md"
+    },
+    {
+      "from": "package:logicn-db-sqlite",
+      "to": "doc:packages-logicn/logicn-db-sqlite/package.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-db-sqlite/package.json"
+    },
+    {
+      "from": "package:logicn-db-sqlite",
+      "to": "doc:packages-logicn/logicn-db-sqlite/README.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-db-sqlite/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-sqlite/README.md",
+      "to": "package:logicn-data",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-sqlite/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-sqlite/README.md",
+      "to": "package:logicn-data-db",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-sqlite/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-sqlite/README.md",
+      "to": "package:logicn-data-model",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-sqlite/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-sqlite/README.md",
+      "to": "package:logicn-data-query",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-sqlite/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-sqlite/README.md",
+      "to": "package:logicn-data-response",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-sqlite/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-sqlite/README.md",
+      "to": "package:logicn-db-sqlite",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-sqlite/README.md"
+    },
+    {
+      "from": "package:logicn-db-opensearch",
+      "to": "doc:packages-logicn/logicn-db-opensearch/package.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-db-opensearch/package.json"
+    },
+    {
+      "from": "package:logicn-db-opensearch",
+      "to": "doc:packages-logicn/logicn-db-opensearch/README.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-db-opensearch/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-opensearch/README.md",
+      "to": "package:logicn-data",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-opensearch/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-opensearch/README.md",
+      "to": "package:logicn-data-search",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-opensearch/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-opensearch/README.md",
+      "to": "package:logicn-db-opensearch",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-opensearch/README.md"
+    },
+    {
+      "from": "package:logicn-db-firestore",
+      "to": "doc:packages-logicn/logicn-db-firestore/package.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-db-firestore/package.json"
+    },
+    {
+      "from": "package:logicn-db-firestore",
+      "to": "doc:packages-logicn/logicn-db-firestore/README.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-db-firestore/README.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-db-firestore/README.md",
+      "to": "package:logicn-db-firestore",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-db-firestore/README.md"
     },
     {
       "from": "package:logicn-core-photonic",

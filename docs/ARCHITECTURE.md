@@ -20,7 +20,8 @@ Vector concepts live in `packages-logicn/logicn-core-vector/`. Compute planning 
 contracts live in `packages-logicn/logicn-compliance/` and the
 `packages-logicn/logicn-compliance-*` package family. Data-processing contracts
 live in `packages-logicn/logicn-data/` and the
-`packages-logicn/logicn-data-*` package family. BitNet is one optional backend for low-bit AI.
+`packages-logicn/logicn-data-*` package family. Database provider adapter
+contracts live in `packages-logicn/logicn-db-*`. BitNet is one optional backend for low-bit AI.
 Photonic and wavelength concepts live in
 `packages-logicn/logicn-core-photonic/`. CPU target planning lives in
 `packages-logicn/logicn-target-cpu/`, optimized CPU kernel contracts live in
@@ -132,10 +133,19 @@ logicn-app/
 |   |-- logicn-data-html/
 |   |-- logicn-data-search/
 |   |-- logicn-data-archive/
+|   |-- logicn-data-db/
+|   |-- logicn-data-model/
+|   |-- logicn-data-query/
+|   |-- logicn-data-response/
 |   |-- logicn-data-json/
 |   |-- logicn-data-database/
 |   |-- logicn-data-pipeline/
 |   |-- logicn-data-reports/
+|   |-- logicn-db-postgres/
+|   |-- logicn-db-mysql/
+|   |-- logicn-db-sqlite/
+|   |-- logicn-db-opensearch/
+|   |-- logicn-db-firestore/
 |   |-- logicn-core-photonic/
 |   |-- logicn-target-cpu/
 |   |-- logicn-cpu-kernels/

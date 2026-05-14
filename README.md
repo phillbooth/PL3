@@ -196,10 +196,19 @@ logicn-app/
 |   |-- logicn-data-html/
 |   |-- logicn-data-search/
 |   |-- logicn-data-archive/
+|   |-- logicn-data-db/
+|   |-- logicn-data-model/
+|   |-- logicn-data-query/
+|   |-- logicn-data-response/
 |   |-- logicn-data-json/
 |   |-- logicn-data-database/
 |   |-- logicn-data-pipeline/
 |   |-- logicn-data-reports/
+|   |-- logicn-db-postgres/
+|   |-- logicn-db-mysql/
+|   |-- logicn-db-sqlite/
+|   |-- logicn-db-opensearch/
+|   |-- logicn-db-firestore/
 |   |-- logicn-core-photonic/
 |   |-- logicn-target-cpu/
 |   |-- logicn-cpu-kernels/
@@ -258,6 +267,10 @@ logicn-app/
 - `packages-logicn/logicn-data/` and `packages-logicn/logicn-data-*` - data
   processing, HTML, search, archive, JSON, database archive, streaming pipeline
   and data-processing report contracts.
+- `packages-logicn/logicn-data-db/`, `logicn-data-model`, `logicn-data-query`
+  and `logicn-data-response` - typed database boundary, storage model, query and
+  safe response mapping contracts.
+- `packages-logicn/logicn-db-*` - future database provider adapter contracts.
 - `packages-logicn/logicn-core-photonic/` - photonic and wavelength concepts, simulation and
   logic-to-light mapping contracts.
 - `packages-logicn/logicn-target-cpu/` - CPU capability detection, threading, memory limits

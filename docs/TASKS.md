@@ -20,6 +20,8 @@
 - [x] Add compliance and privacy framework docs plus `logicn-compliance-*`
   package scaffolds
 - [x] Add data-processing framework docs plus `logicn-data-*` package scaffolds
+- [x] Add typed database model/query/response docs plus `logicn-data-db` and
+  `logicn-db-*` package scaffolds
 - [x] Add optical I/O and Intel Silicon Photonics design note
 - [x] Add passive AI accelerator and Intel Gaudi profile design note
 - [x] Add electrical infrastructure and OT package planning note
@@ -192,6 +194,8 @@
   checker and package manager contracts are stable
 - [ ] Define implementation-level data-processing report schemas after core
   parser, checker and package manager contracts are stable
+- [ ] Define implementation-level database model, query, response and provider
+  adapter report schemas after core parser and checker contracts are stable
 
 ## Phase 10: Finance Packages
 

@@ -92,7 +92,10 @@ not mistaken for production runtime dependencies.
   contracts.
 - `logicn-data/` - post-v1 data-processing package umbrella contracts.
 - `logicn-data-*` - post-v1 HTML, search, archive, JSON, database archive,
-  streaming pipeline and data-processing report contracts.
+  typed database boundary, model, query, response, streaming pipeline and
+  data-processing report contracts.
+- `logicn-db-*` - post-v1 database provider adapter contracts for PostgreSQL,
+  MySQL, SQLite, OpenSearch and Firestore-style systems.
 - `logicn-core-photonic/` - post-v1 photonic concepts, models, APIs and simulations.
 - `logicn-target-cpu/` and `logicn-target-wasm/` - v1 compiler/output target packages.
 - Other `logicn-target-*` packages - post-v1 target planning.
