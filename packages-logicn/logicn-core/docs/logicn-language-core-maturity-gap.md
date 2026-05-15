@@ -1,9 +1,9 @@
-# C++ And Rust Maturity Gap
+# LogicN Language Core Maturity Gap
 
 ## Purpose
 
 This document records what LogicN still needs before it can look serious next
-to modern C++ and Rust, ignoring legacy baggage in those languages.
+to mature systems languages, ignoring legacy baggage in those languages.
 
 LogicN already has a strong direction:
 
@@ -46,7 +46,14 @@ build and release modes
 package manager
 ```
 
-## Missing Compared With Modern C++
+## Systems Language Baseline
+
+The comparison baseline includes mature native compilers and memory-safe
+systems languages. C++ and Rust are useful references in this document only
+because they expose concrete maturity expectations for compiler pipelines,
+resource safety, package tooling and low-level integration.
+
+## Missing Compared With Mature Native Toolchains
 
 | Area | What C++ Has | What LogicN Needs |
 | --- | --- | --- |
@@ -63,7 +70,7 @@ package manager
 | Debug/profiling ecosystem | Debuggers, profilers, sanitizers and performance tools. | `LogicN debug`, `LogicN profile`, allocation reports, flamegraph-style output and source-mapped runtime errors. |
 | Build/release modes | Debug/release builds, optimisation flags, link modes and deployment targets. | Final debug/release modes, build layout, signing, source-map output rules and deployment workflow. |
 
-## Missing Compared With Rust
+## Missing Compared With Memory-Safe Systems Toolchains
 
 | Area | What Rust Has | What LogicN Needs |
 | --- | --- | --- |
@@ -127,8 +134,8 @@ syntax outside the standard library.
 
 ## Honest Positioning
 
-LogicN can stand apart from C++ and Rust only if it converts its design goals
-into enforceable compiler and runtime behavior.
+LogicN can stand apart only if it converts its design goals into enforceable
+compiler and runtime behavior.
 
 Required wording:
 

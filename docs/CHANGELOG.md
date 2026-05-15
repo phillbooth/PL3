@@ -6,7 +6,7 @@ All notable changes to this app should be documented here.
 
 ### Added
 
-- Added `packages-logicn/logicn-core/docs/cpp-rust-maturity-gap.md` to track
+- Added `packages-logicn/logicn-core/docs/logicn-language-core-maturity-gap.md` to track
   missing LogicN language-core maturity items compared with modern C++ and Rust,
   including compiler pipeline, traits/protocols, deterministic cleanup, FFI,
   package management, testing, async runtime, source-mapped runtime errors and
@@ -23,6 +23,20 @@ All notable changes to this app should be documented here.
   database model, query, command, response and archive boundaries, and added
   `logicn-data-db`, `logicn-data-model`, `logicn-data-query`,
   `logicn-data-response` and initial `logicn-db-*` provider adapter scaffolds.
+- Added `docs/WEB_RENDERING.md`, `logicn-web`, focused `logicn-web-*` package
+  scaffolds and `logicn-target-js` for typed browser rendering, client state,
+  safe HTML, streaming render and JavaScript output planning contracts.
+- Added `docs/KUBERNETES_DEPLOYMENT.md` documenting Kubernetes as an optional
+  deployment target with secure manifest generation, probes, secret references,
+  rollout checks and enterprise-only hardened policy-pack boundaries.
+- Added `docs/LEARNING_MODE.md` documenting a safe LogicN Learning Mode for
+  students, children, teachers and beginners, including progressive lessons,
+  friendly diagnostics, sandbox defaults, AI tutor boundaries and child-safe
+  reporting.
+- Added `docs/CSRF_PROTECTION.md` documenting default CSRF policy for
+  cookie-authenticated state-changing routes, including token modes, Fetch
+  Metadata, Origin/Referer checks, SameSite cookie policy, state-changing GET
+  rejection and route-level reports.
 - Added `docs/APPLICATION_SECURITY_POSITIONING.md` to position LogicN's
   security advantage as application policy, deployment checks, package
   permissions, typed APIs, security reports and AI-safe context rather than a
@@ -31,6 +45,10 @@ All notable changes to this app should be documented here.
   to define LogicN network and Ethernet I/O positioning, deny-by-default
   network policy, TLS policy, backpressure, zero-copy planning, XDP/eBPF and
   DPDK adapter boundaries, deployment profiles and network reports.
+- Expanded `docs/OPTICAL_IO.md` with LogicN Optical I/O Layer positioning:
+  optical I/O as topology-aware, encrypted, typed data movement for AI clusters,
+  accelerator links, memory pooling, fallback reports and future benchmarks,
+  not raw light control or photonic compute.
 - Expanded LogicN safe-networking policy to clarify that packets cannot be made
   invisible, while packet contents should be encrypted, authenticated,
   permissioned, minimised and auditable with TLS 1.3 policy, mTLS, service
@@ -190,8 +208,8 @@ All notable changes to this app should be documented here.
   optional future sharing payloads.
 - Added a placeholder `LogicN benchmark` CLI command entry for the future benchmark
   runner.
-- Added `docs/RUST_FINANCIAL_MARKETS.md` covering Rust's role in financial
-  market systems and the related design lessons for LogicN.
+- Added `docs/LOGICN_FINANCIAL_MARKETS.md` covering LogicN-centered financial
+  market contracts, runtime direction, safety rules and adapter boundaries.
 - Added `docs/OPTICAL_IO.md` documenting `optical_io` as a high-speed
   interconnect/data-movement target for Intel Silicon Photonics and OCI-style
   systems, distinct from photonic compute.

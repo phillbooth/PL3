@@ -18,7 +18,7 @@ language-supported-primitives.md
 language-non-supported-primitives.md
 legacy-and-compatibility-boundaries.md
 backend-language-gap-analysis.md
-cpp-rust-maturity-gap.md
+logicn-language-core-maturity-gap.md
 compliance-and-privacy.md
 data-processing.md
 concurrency.md

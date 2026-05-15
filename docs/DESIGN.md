@@ -68,6 +68,17 @@ node packages-logicn\logicn-core-cli\dist\index.js task buildApi --file packages
 3. Review the task report at `build/reports/task-report.json` unless a custom
    report path was passed.
 
+### Learn LogicN
+
+1. Start with `docs/LEARNING_MODE.md`.
+2. Pick the learner level: guided blocks/forms, simple text syntax, typed app
+   syntax, errors and missing values, security/effects, or packages and reports.
+3. Run only safe examples with no shell, secrets, filesystem writes or external
+   network unless the lesson explicitly grants a reviewed permission.
+4. Read friendly diagnostics first, then reveal the precise compiler diagnostic.
+5. Use reports to understand progress, common mistakes and blocked unsafe
+   actions.
+
 ### Add App Features Later
 
 1. Add product requirements to `docs/REQUIREMENTS.md`.
@@ -158,6 +169,10 @@ Task reports must show:
 Future reports should follow the same shape: metadata first, summary second,
 diagnostics and detailed records after that.
 
+Learning reports should show lesson, exercise, status, hint usage, diagnostic
+topics and blocked unsafe actions without exposing secrets, unnecessary personal
+data or raw student identifiers in shareable outputs.
+
 ## Future App UI Design
 
 The app has no selected product domain yet. When a product is chosen, this
@@ -210,6 +225,8 @@ Future app UI must:
 - Putting frontend framework syntax into `logicn-core`.
 - Treating generated graph HTML as the production app UI.
 - Treating task or graph reports as a substitute for tests.
+- Creating a separate fake LogicN language for beginners.
+- Turning Learning Mode into classroom surveillance or an unbounded AI tutor.
 
 ## Success Criteria
 

@@ -834,10 +834,10 @@
       ]
     },
     {
-      "id": "doc:docs/RUST_FINANCIAL_MARKETS.md",
+      "id": "doc:docs/LOGICN_FINANCIAL_MARKETS.md",
       "kind": "Document",
-      "label": "RUST_FINANCIAL_MARKETS.md",
-      "sourcePath": "docs/RUST_FINANCIAL_MARKETS.md",
+      "label": "LOGICN_FINANCIAL_MARKETS.md",
+      "sourcePath": "docs/LOGICN_FINANCIAL_MARKETS.md",
       "tags": [
         "document"
       ]
@@ -1428,10 +1428,10 @@
       ]
     },
     {
-      "id": "doc:packages-logicn/logicn-core/docs/cpp-rust-maturity-gap.md",
+      "id": "doc:packages-logicn/logicn-core/docs/logicn-language-core-maturity-gap.md",
       "kind": "Document",
-      "label": "cpp-rust-maturity-gap.md",
-      "sourcePath": "packages-logicn/logicn-core/docs/cpp-rust-maturity-gap.md",
+      "label": "logicn-language-core-maturity-gap.md",
+      "sourcePath": "packages-logicn/logicn-core/docs/logicn-language-core-maturity-gap.md",
       "tags": [
         "document",
         "logicn-core"
@@ -11799,53 +11799,53 @@
       "evidencePath": "docs/RESILIENT_FLOWS.md"
     },
     {
-      "from": "doc:docs/RUST_FINANCIAL_MARKETS.md",
+      "from": "doc:docs/LOGICN_FINANCIAL_MARKETS.md",
       "to": "package:logicn-core",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "docs/RUST_FINANCIAL_MARKETS.md"
+      "evidencePath": "docs/LOGICN_FINANCIAL_MARKETS.md"
     },
     {
-      "from": "doc:docs/RUST_FINANCIAL_MARKETS.md",
+      "from": "doc:docs/LOGICN_FINANCIAL_MARKETS.md",
       "to": "package:logicn-core-runtime",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "docs/RUST_FINANCIAL_MARKETS.md"
+      "evidencePath": "docs/LOGICN_FINANCIAL_MARKETS.md"
     },
     {
-      "from": "doc:docs/RUST_FINANCIAL_MARKETS.md",
+      "from": "doc:docs/LOGICN_FINANCIAL_MARKETS.md",
       "to": "package:logicn-core-security",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "docs/RUST_FINANCIAL_MARKETS.md"
+      "evidencePath": "docs/LOGICN_FINANCIAL_MARKETS.md"
     },
     {
-      "from": "doc:docs/RUST_FINANCIAL_MARKETS.md",
+      "from": "doc:docs/LOGICN_FINANCIAL_MARKETS.md",
       "to": "package:logicn-core-reports",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "docs/RUST_FINANCIAL_MARKETS.md"
+      "evidencePath": "docs/LOGICN_FINANCIAL_MARKETS.md"
     },
     {
-      "from": "doc:docs/RUST_FINANCIAL_MARKETS.md",
+      "from": "doc:docs/LOGICN_FINANCIAL_MARKETS.md",
       "to": "package:logicn-core-vector",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "docs/RUST_FINANCIAL_MARKETS.md"
+      "evidencePath": "docs/LOGICN_FINANCIAL_MARKETS.md"
     },
     {
-      "from": "doc:docs/RUST_FINANCIAL_MARKETS.md",
+      "from": "doc:docs/LOGICN_FINANCIAL_MARKETS.md",
       "to": "package:logicn-core-compute",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "docs/RUST_FINANCIAL_MARKETS.md"
+      "evidencePath": "docs/LOGICN_FINANCIAL_MARKETS.md"
     },
     {
-      "from": "doc:docs/RUST_FINANCIAL_MARKETS.md",
+      "from": "doc:docs/LOGICN_FINANCIAL_MARKETS.md",
       "to": "package:logicn-tools-benchmark",
       "kind": "documents",
       "confidence": "INFERRED",
-      "evidencePath": "docs/RUST_FINANCIAL_MARKETS.md"
+      "evidencePath": "docs/LOGICN_FINANCIAL_MARKETS.md"
     },
     {
       "from": "doc:docs/SECURITY.md",
@@ -13025,10 +13025,10 @@
     },
     {
       "from": "package:logicn-core",
-      "to": "doc:packages-logicn/logicn-core/docs/cpp-rust-maturity-gap.md",
+      "to": "doc:packages-logicn/logicn-core/docs/logicn-language-core-maturity-gap.md",
       "kind": "owns",
       "confidence": "EXTRACTED",
-      "evidencePath": "packages-logicn/logicn-core/docs/cpp-rust-maturity-gap.md"
+      "evidencePath": "packages-logicn/logicn-core/docs/logicn-language-core-maturity-gap.md"
     },
     {
       "from": "package:logicn-core",

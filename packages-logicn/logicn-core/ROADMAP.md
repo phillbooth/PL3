@@ -35,7 +35,7 @@ release while compiler, runtime, package and documentation contracts are still
 being shaped.
 
 LogicN should not claim maturity next to modern C++ or Rust until the missing
-language-core work in `docs/cpp-rust-maturity-gap.md` is implemented: real
+language-core work in `docs/logicn-language-core-maturity-gap.md` is implemented: real
 compiler pipeline, traits/protocols, deterministic cleanup, FFI, package
 management, testing, async runtime semantics, source-mapped runtime errors and a
 small standard library.

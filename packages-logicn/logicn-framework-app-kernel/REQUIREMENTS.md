@@ -12,6 +12,13 @@
   into the same route graph and does not hide auth, CSRF, object access,
   idempotency, validation, limits, audit or effects.
 - Support auth provider declarations without hard-coding one identity system.
+- Enforce CSRF policy before state-changing cookie-authenticated route handlers
+  run.
+- Reject state-changing `GET`, `HEAD` and `OPTIONS` routes during route checks.
+- Distinguish cookie/session authentication, where CSRF is required, from
+  explicit bearer-token/API-header authentication, where CSRF may be explicitly
+  marked not required.
+- Generate CSRF route report fields for protected, exempted and unsafe routes.
 - Support idempotency and replay protection for risky side effects.
 - Support memory, timeout, concurrency and rate-limit policies.
 - Support request-scoped Structured Await policy so child work is cancelled,

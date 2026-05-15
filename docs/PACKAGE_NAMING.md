@@ -43,6 +43,7 @@ remove the stale ungrouped package folder.
 | `logicn-ai-*` | AI workload, model, agent and AI compute-model packages | `logicn-ai-agent`, `logicn-ai-neural`, `logicn-ai-neuromorphic`, `logicn-ai-lowbit` |
 | `logicn-compliance-*` | Compliance, privacy, governance, audit, retention and policy report contracts | `logicn-compliance-privacy`, `logicn-compliance-audit`, `logicn-compliance-reports` |
 | `logicn-data-*` | Data processing, parsing, search, archive, typed database boundary, streaming and report contracts | `logicn-data-html`, `logicn-data-search`, `logicn-data-db`, `logicn-data-response` |
+| `logicn-web-*` | Browser-safe web rendering, state, component, router and event contracts | `logicn-web-render`, `logicn-web-state`, `logicn-web-components` |
 | `logicn-db-*` | Database provider adapter contract packages | `logicn-db-postgres`, `logicn-db-mysql`, `logicn-db-sqlite` |
 | `logicn-target-*` | Compiler/output targets and backend planning | `logicn-target-cpu`, `logicn-target-gpu`, `logicn-target-wasm`, `logicn-target-photonic` |
 | `logicn-cpu-*` | CPU implementation and optimized kernel packages | `logicn-cpu-kernels`, future `logicn-cpu-photonic-sim` |
@@ -101,6 +102,12 @@ logicn-data-query
 logicn-data-reports
 logicn-data-response
 logicn-data-search
+logicn-web
+logicn-web-render
+logicn-web-state
+logicn-web-components
+logicn-web-router
+logicn-web-events
 logicn-db-firestore
 logicn-db-mysql
 logicn-db-opensearch
@@ -110,6 +117,7 @@ logicn-target-ai-accelerator
 logicn-target-binary
 logicn-target-cpu
 logicn-target-gpu
+logicn-target-js
 logicn-target-photonic
 logicn-target-wasm
 logicn-cpu-kernels

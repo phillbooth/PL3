@@ -65,6 +65,9 @@ Frameworks provide opinions and user-facing structure.
   unsafe interop, raw SQL and shell execution.
 - Auth provider boundaries for bearer tokens, JWT, OAuth2/OIDC, DPoP, mTLS,
   API keys, webhook signatures and capability tokens.
+- CSRF policy enforcement for cookie-authenticated state-changing browser
+  routes, including token checks, Fetch Metadata checks, Origin/Referer checks,
+  SameSite cookie posture and denial of state-changing read-safe methods.
 - Idempotency and replay protection policy.
 - Workload control for rate limits, concurrency limits, memory budgets,
   timeouts, queue handoff and backpressure.
@@ -102,6 +105,7 @@ Kernel-enabled builds should be able to generate:
 app.api-manifest.json
 app.security-report.json
 app.auth-report.json
+app.csrf-report.json
 app.idempotency-report.json
 app.memory-report.json
 app.load-control-report.json

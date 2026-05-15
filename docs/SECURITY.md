@@ -37,6 +37,11 @@ Rust, C++ and Python.
   network tools must be denied unless declared and reported.
 - Require TLS policy, route-level rate limits, timeout policy and backpressure
   for production public network routes unless a reviewed override exists.
+- Require CSRF protection for cookie-authenticated state-changing browser
+  routes. State-changing routes must prove user intent through CSRF tokens,
+  Fetch Metadata, Origin/Referer checks and SameSite cookie policy unless a
+  safe non-cookie auth model explicitly exempts the route.
+- Deny state-changing `GET`, `HEAD` and `OPTIONS` routes.
 - Deny plaintext fallback, silent TLS downgrade, disabled certificate
   validation, disabled hostname validation, debug proxying and secrets in URLs
   for production networked apps.
@@ -92,6 +97,30 @@ All external input should be validated before use.
 API inputs should decode into strict typed request contracts before application
 handler logic runs. Unknown fields, oversized JSON, invalid types and unsafe
 payload shapes should fail at the boundary.
+
+## CSRF Protection
+
+LogicN should make CSRF protection a default route policy for browser apps that
+use automatic cookie authentication.
+
+Core rule:
+
+```text
+Any route that changes state must prove user intent.
+```
+
+State-changing methods such as `POST`, `PUT`, `PATCH` and `DELETE` should
+require CSRF protection when session cookies or other automatically attached
+browser credentials are used. `GET`, `HEAD` and `OPTIONS` routes must not call
+state-changing handlers.
+
+LogicN should support synchronizer tokens for stateful apps, signed
+double-submit cookies for stateless apps, custom CSRF headers for API-driven
+frontends, Fetch Metadata checks, Origin/Referer checks, SameSite cookie
+defaults and CSRF report output. CSRF does not replace XSS prevention, auth,
+authorization, CORS, rate limits or request validation.
+
+See `docs/CSRF_PROTECTION.md`.
 
 ## Error Handling
 
@@ -193,3 +222,5 @@ encrypt, authenticate, validate, minimise and report network communication.
       backpressure are declared and reported.
 - [ ] Plaintext fallback, TLS downgrade, debug proxying and secrets in URLs are
       denied in production.
+- [ ] Cookie-authenticated state-changing routes require CSRF protection.
+- [ ] `GET`, `HEAD` and `OPTIONS` routes do not change server state.

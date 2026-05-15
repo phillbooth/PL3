@@ -559,6 +559,8 @@ policy or profile caused each important generated setting.
 Basic Kubernetes output may be free/open. Hardened Kubernetes policy packs,
 admission policies, advanced security packs and production hardening automation
 remain enterprise-only unless explicitly unlocked by `docs/ENTERPRISE.md`.
+The Kubernetes deployment target model is documented in
+`docs/KUBERNETES_DEPLOYMENT.md`.
 
 ## Deployment Report
 

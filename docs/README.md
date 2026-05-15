@@ -11,6 +11,7 @@ These files describe the app being built, not the LogicN language itself.
 - `DOMAIN_DRIVEN_DESIGN.md` - optional thin DDD guidance for domain, flow, infrastructure and policy boundaries
 - `ARCHITECTURE.md` - technical structure
 - `SECURITY.md` - security rules, risks and controls
+- `CSRF_PROTECTION.md` - route-level CSRF defaults for cookie-authenticated browser apps and state-changing requests
 - `why-controllers-not-used-in-LogicN.md` - route-first API policy and why controllers are optional framework sugar rather than a core LogicN concept
 - `APPLICATION_SECURITY_POSITIONING.md` - honest LogicN application-security positioning compared with Rust, C++ and Python
 - `NETWORK_ETHERNET_IO.md` - LogicN network and Ethernet I/O positioning, network policy and high-speed network planning
@@ -18,7 +19,9 @@ These files describe the app being built, not the LogicN language itself.
 - `DATABASE.md` - database structure
 - `DEPLOYMENT.md` - deployment process
 - `DEPLOYMENT_AUTOCONFIG.md` - deployment auto-configuration, target detection, runtime capability profiles, gates, health checks and rollback reports
+- `KUBERNETES_DEPLOYMENT.md` - Kubernetes as an optional deployment target, with secure manifest generation and enterprise policy-pack boundaries
 - `TESTING.md` - testing strategy
+- `LEARNING_MODE.md` - safe LogicN learning mode for students, children, teachers and beginners
 - `TASKS.md` - planned work
 - `TODO.md` - smaller reminders
 - `DECISIONS.md` - technical decisions
@@ -33,8 +36,9 @@ These files describe the app being built, not the LogicN language itself.
 - `PROFILE_INSTALLERS.md` - profile-aware installer model for web, server, agent, systems and future kernel project types
 - `MULTI_AGENT_RUNTIME.md` - zero-trust multi-agent runtime model with typed messages, tool gateways, secret guards, memory/cache policy, approval gates and audit reports
 - `RESILIENT_FLOWS.md` - controlled recovery, resilient flows and partial success reporting
-- `RUST_FINANCIAL_MARKETS.md` - Rust benefits and design lessons for financial market systems and LogicN finance-facing direction
-- `../packages-logicn/logicn-core/docs/cpp-rust-maturity-gap.md` - missing LogicN language-core maturity items compared with modern C++ and Rust
+- `LOGICN_FINANCIAL_MARKETS.md` - LogicN-centered financial market contracts, runtime direction, safety rules and adapter boundaries
+- `WEB_RENDERING.md` - typed browser rendering pipeline, safe HTML, client state, streaming render and web package boundaries
+- `../packages-logicn/logicn-core/docs/logicn-language-core-maturity-gap.md` - missing LogicN language-core maturity items compared with modern C++ and Rust
 - `../packages-logicn/logicn-core/docs/compliance-and-privacy.md` - LogicN compliance and privacy framework direction
 - `../packages-logicn/logicn-core/docs/data-processing.md` - LogicN data-processing package family direction
 

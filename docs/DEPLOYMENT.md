@@ -154,8 +154,17 @@ deployment, artifact hash, migration compatibility and rollback safety.
 
 ## Generated Files
 
-LogicN may generate deployment files such as Dockerfiles, platform YAML, systemd
-units, reverse-proxy config and CI workflow snippets.
+LogicN may generate deployment files such as Dockerfiles, platform YAML,
+Kubernetes manifests, systemd units, reverse-proxy config and CI workflow
+snippets.
 
 Generated files must remain inspectable and overrideable. LogicN should show
 which profile or policy caused each important setting.
+
+Kubernetes is a deployment target, not a mandatory runtime requirement. Basic
+Kubernetes output may include Deployment, Service, health/readiness/startup
+probes, resource limits, secret references and deployment reports. Hardened
+Kubernetes policy packs, advanced NetworkPolicy generation, RBAC minimisation,
+admission policy templates and multi-environment production overlays are
+reserved enterprise areas unless explicitly unlocked. See
+`KUBERNETES_DEPLOYMENT.md` and `ENTERPRISE.md`.

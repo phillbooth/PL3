@@ -87,7 +87,8 @@ logicn-compiler
 logicn-runtime
 logicn-security-basic
 logicn-reports-basic
-logicn-web-runtime
+logicn-web
+logicn-web-render
 logicn-agent-local
 logicn-deploy-basic
 logicn-examples

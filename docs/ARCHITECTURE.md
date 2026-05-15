@@ -356,6 +356,18 @@ serves HTTP, loads route manifests, applies server-level limits and passes
 normalised requests into `logicn-framework-app-kernel`. It must not own auth decisions,
 business logic, ORM design, CMS features or frontend rendering.
 
+Browser rendering belongs in the `logicn-web` package family. `logicn-web-render`
+owns the typed browser rendering pipeline from validated API response to typed
+state, safe HTML, state diffing, streaming batches and render reports.
+`logicn-web-state`, `logicn-web-components`, `logicn-web-router` and
+`logicn-web-events` own focused client-state, component, route and event
+contracts. `logicn-data-json` owns JSON validation, `logicn-data-html` owns
+SafeHtml and sanitization policy, `logicn-core-security` owns browser secret and
+HTML security policy, and `logicn-target-js` plus `logicn-target-wasm` own
+browser-compatible output planning. This keeps LogicN able to compile typed UI
+contracts to browser JavaScript/WASM without turning `logicn-core`, the API
+server or the app kernel into a frontend framework.
+
 LogicN API design is route-first and contract-first. Traditional MVC controllers
 must not be required by the core language, app kernel or API server. Routes,
 typed requests, typed responses, policies, declared effects, actions/handlers
@@ -451,14 +463,18 @@ should record backend profile, framework adapter, precision, memory tier,
 topology and fallback.
 
 Optical I/O is different from photonic compute. LogicN should model Intel Silicon
-Photonics and OCI-style devices as high-bandwidth interconnects for moving data
-between CPUs, GPUs, accelerators, memory pools and storage. They are not a
-photonic CPU target. `logicn-core-compute` owns the `optical_io` target selection and
-data-movement cost model, while `logicn-target-photonic` owns optical I/O planning
-reports, topology hints, fallback paths and transfer-format recommendations.
-This lets LogicN optimize data locality, tensor streaming, schema-compressed
-transfers, accelerator placement and remote memory safety without pretending
-that optical I/O performs normal application computation.
+Photonics, OCI-style devices, optical Ethernet, co-packaged optics and photonic
+interconnects as high-bandwidth deployment capabilities for moving data between
+CPUs, GPUs, accelerators, memory pools and storage. They are not a photonic CPU
+target, and normal developers should not control raw light directly.
+`logicn-core-compute` owns the `optical_io` target selection and data-movement
+cost model, while `logicn-core-network` owns network policy and
+`logicn-target-photonic` owns optical I/O planning reports, topology hints,
+fallback paths and transfer-format recommendations until a future
+`logicn-io-optical` package is split out. This lets LogicN optimize data
+locality, tensor streaming, schema-compressed transfers, accelerator placement,
+energy-aware movement and remote memory safety without pretending that optical
+I/O performs normal application computation.
 
 Neural networks are typed compute workloads, not normal app syntax. LogicN can
 define model, inference and training boundaries through `logicn-ai-neural`, while

@@ -23,7 +23,7 @@ Anything outside that list is post-v1 unless it is needed to define core
 semantics.
 
 The C++/Rust maturity gap analysis lives in
-`packages-logicn/logicn-core/docs/cpp-rust-maturity-gap.md`. It is the
+`packages-logicn/logicn-core/docs/logicn-language-core-maturity-gap.md`. It is the
 foundation checklist for making LogicN credible next to mature systems
 languages without pretending the current prototype is already there.
 

@@ -1,36 +1,53 @@
-# Optical I/O Optimisation
+# Optical I/O and Photonic Networking
 
-LogicN should support optical I/O as a data-movement and interconnect optimisation
+LogicN should support optical I/O as a high-speed networking and interconnect
 target.
 
-Intel Silicon Photonics and Optical Compute Interconnect technologies should
-not be treated as normal CPUs or as a direct replacement for GPU or photonic
-matrix-compute targets. They should be modelled as high-bandwidth, low-latency
-optical connectivity for distributed compute, AI infrastructure, memory
-pooling, accelerator communication and large-scale data movement.
-
-Intel describes Silicon Photonics as combining silicon integrated circuits with
-semiconductor lasers to enable faster data transfer over longer distances than
-traditional electronics. Intel's Optical Compute Interconnect, or OCI, is aimed
-at multi-terabit optical connectivity for next-generation compute and AI
-infrastructure. Intel states that its first-generation OCI chiplet supports
-4 Tbps bidirectional connectivity, with a roadmap toward tens of terabits per
-second per device, and is designed to be co-packaged with future CPUs, GPUs,
-IPUs and other SoCs.
-
-For LogicN, the optimisation area is:
+The core rule is:
 
 ```text
-move less data
-move data in better batches
-place compute closer to data
-understand distributed compute topology
-report bandwidth, latency and fallback behaviour
+LogicN should not try to control light directly.
+LogicN should understand when a deployment has optical or photonic I/O and
+optimise data movement, security, topology, batching and fallback around it.
 ```
+
+This means optical I/O is not:
+
+```text
+normal socket code, but with light
+```
+
+It is a deployment capability for moving data across optical-capable
+infrastructure. LogicN should treat optical I/O, photonic interconnect,
+co-packaged optics, optical Ethernet and optical accelerator-to-accelerator
+links as high-bandwidth interconnect layers, not as normal CPU features or
+photonic compute targets.
+
+Intel's Optical Compute Interconnect, or OCI, is a useful example of this
+direction: an integrated optical I/O chiplet combining photonic and electrical
+ICs, designed for co-packaging with CPUs, GPUs, IPUs and SoCs, with
+multi-terabit connectivity. Intel Silicon Photonics also describes standard
+single-mode fibre support and co-packaged or on-board implementations. LogicN
+should model that kind of capability as data movement and topology, not as raw
+light control.
 
 ## Target Model
 
-LogicN should separate these concepts:
+LogicN should separate ordinary networks, high-speed networks and optical
+interconnects:
+
+```text
+network.ethernet
+network.wifi
+network.fibre
+network.rdma
+network.roce
+network.optical_io
+network.co_packaged_optics
+network.photonic_interconnect
+```
+
+It should also keep these concepts distinct:
 
 ```text
 photonic_compute
@@ -43,36 +60,69 @@ photonic_memory
   future optical memory, buffer or pooling concepts
 ```
 
-`optical_io` should be a compute and deployment planning target, but it is not a
-general-purpose compute target by itself.
+`optical_io` is a network, compute-placement and deployment planning target. It
+is not a general-purpose compute target by itself.
 
 Example target concept:
 
 ```LogicN
-target optical_io {
-  provider "intel.silicon_photonics"
-  mode "interconnect"
-  use_for ["ai-cluster", "memory-pooling", "gpu-disaggregation", "data-movement"]
-  fallback ["pcie", "ethernet", "standard-network"]
+network target optical_io {
+  kind "photonic_interconnect"
+
+  use_for [
+    "ai_cluster",
+    "accelerator_to_accelerator",
+    "memory_pooling",
+    "large_tensor_transfer",
+    "distributed_inference"
+  ]
+
+  fallback [
+    "ethernet",
+    "roce",
+    "pcie",
+    "standard_tcp"
+  ]
 }
 ```
 
+This keeps LogicN honest. The application declares that it understands optical
+I/O as a deployment capability; it does not pretend to own the optical hardware.
+
 ## Data Movement As A First-Class Cost
 
-The compiler and runtime planning layers should treat data movement as a
-first-class cost.
-
-They should estimate:
+With optical I/O, the performance question is not only:
 
 ```text
-how much data crosses the interconnect
-where compute happens
-where data lives
-whether data can be streamed
-whether data can be compressed
-whether compute should move to the data
-whether data should move to the compute
-whether the result can be reduced before transfer
+How fast is this code?
+```
+
+It becomes:
+
+```text
+Where is the data?
+Where is the model?
+Where is the accelerator?
+How much data must cross the optical link?
+Can LogicN send less?
+Can LogicN batch it?
+Can LogicN compress it?
+Can LogicN keep results near the compute node?
+```
+
+The compiler, runtime and deployment planner should estimate:
+
+```text
+transfer size
+transfer frequency
+serialization format
+compression choice
+encryption overhead
+compute placement
+data locality
+accelerator locality
+remote memory usage
+fallback path
 ```
 
 Example report:
@@ -80,178 +130,310 @@ Example report:
 ```json
 {
   "opticalIo": {
-    "target": "intel.silicon_photonics.oci",
     "available": true,
-    "estimatedTransferGb": 420,
-    "largestTransfer": "model.layer.17.weights",
+    "kind": "co_packaged_optics",
+    "useCase": "ai_cluster",
+    "largestTransfer": "embedding_batch",
+    "estimatedTransferGb": 38.4,
+    "selectedFormat": "tensorBinary",
+    "fallbackUsed": false,
     "recommendations": [
-      "Keep tensor batch on accelerator node 2",
-      "Use streaming transfer for embeddings",
-      "Avoid JSON transfer between compute nodes",
-      "Use binary schema-compressed format"
+      "Use tensorBinary instead of JSON",
+      "Increase batch size",
+      "Keep model weights on accelerator node",
+      "Return compact result instead of full tensor"
     ]
   }
 }
 ```
 
-## AI And Tensor Workloads
+This is where LogicN can become stronger than ordinary application languages:
+it can understand the cost of movement, not just the cost of calculation.
 
-Optical I/O is most relevant to LogicN when workloads involve large data movement:
+## AI Cluster Use
+
+Optical I/O is most relevant to LogicN when workloads involve large data
+movement:
 
 ```text
-matrix workloads
-tensor workloads
-embedding generation
-large model inference
-distributed model serving
+AI cluster communication
+accelerator-to-accelerator transfer
+distributed inference
+distributed training
+memory pooling
+storage-to-compute pipelines
+large tensor transfer
+high-bandwidth service communication
 vector search
-batch processing
-image/video AI pipelines
-multi-node AI processing
+batch embedding generation
+image and video AI pipelines
 ```
 
-Instead of asking only:
-
-```text
-Should this run on CPU or GPU?
-```
-
-LogicN should also ask:
-
-```text
-Where is the data?
-Where is the accelerator?
-What is the interconnect?
-What is the cost of moving this tensor?
-Can the task be split across nodes?
-Can the result be reduced before transfer?
-```
-
-Example direction:
+AI infrastructure increasingly depends on high-speed fabrics such as RoCE,
+high-bandwidth Ethernet and optical interconnects. LogicN should express that as
+cluster capability and placement policy:
 
 ```LogicN
-compute auto classifyImages(batch: ImageBatch) {
-  prefer accelerator.ai
-  prefer optical_io if data_size > 1gb
-  minimise data_movement
-  return compact_result
+aiCluster {
+  prefer optical_io
+  prefer high_bandwidth_ethernet
+  prefer rdma
+  prefer accelerator_locality
+  minimise_data_movement true
 }
 ```
 
-## Topology-Aware Scheduling
-
-LogicN should be able to generate and use a topology map:
-
-```text
-CPU node 1
-  -> local RAM
-  -> GPU 1
-  -> optical link to GPU 2
-  -> optical link to memory pool
-  -> optical link to storage node
-```
-
-This matters because optical I/O makes larger distributed systems more
-practical.
-
-Example config direction:
+Example task direction:
 
 ```LogicN
-topology auto {
-  detect cpu
-  detect gpu
-  detect accelerator
-  detect optical_io
-  detect memory_pool
-  detect storage
+ai task RunLargeModel {
+  compute auto {
+    prefer ai_accelerator
+    prefer optical_io for tensor_transfer
+    minimise data_movement
+    fallback ethernet
+  }
+
+  memory {
+    keep_weights_on_device true
+    stream_inputs true
+    return_compact_output true
+  }
 }
 ```
 
-Then LogicN can decide:
+LogicN should not require developers to hard-code a vendor fabric in normal app
+logic. Vendor-specific capabilities belong in deployment profiles, adapter
+policy and target reports.
+
+## Topology Awareness
+
+LogicN should not merely detect that a network exists. It should understand the
+layout enough to make safer transfer and placement decisions:
 
 ```text
-run part A near GPU 1
-run part B near GPU 2
-keep shared embeddings in memory pool
-send only reduced results back to CPU
+CPU node
+GPU node
+AI accelerator
+memory pool
+storage node
+optical switch
+co-packaged optical link
+Ethernet fallback
+RoCE fallback
+PCIe fallback
 ```
+
+Example topology direction:
+
+```LogicN
+topology optical {
+  detect nodes
+  detect accelerators
+  detect memory_pools
+  detect storage_nodes
+  detect optical_links
+  detect fallback_links
+
+  optimise for {
+    latency
+    bandwidth
+    energy_per_bit
+    reliability
+  }
+}
+```
+
+The compiler or runtime planner can then produce a plan such as:
+
+```text
+Run preprocessing near storage.
+Move compact tensor batch over optical link.
+Run inference on accelerator group A.
+Return only result IDs and confidence scores.
+Do not return full intermediate tensors.
+```
+
+Shareable reports must avoid exposing private hostnames, private network
+topology, raw endpoint identifiers or secret-bearing routing metadata.
 
 ## Efficient Transfer Formats
 
-Over a high-speed optical link, wasteful formats are still wasteful.
+Optical links can be extremely fast, but wasteful formats are still wasteful.
 
 Avoid:
 
 ```text
-Send huge repeated JSON keys across optical link.
+large repeated JSON payload over optical link
+full intermediate tensor return
+unbatched small messages
+uncompressed repeated embeddings
 ```
 
 Prefer:
 
 ```text
-send schema ID once
-send compact binary rows/tensors
-send only changed fields
-stream in chunks
-use columnar batches where useful
-use zero-copy read-only views where safe
-```
-
-LogicN should support transfer planning for:
-
-```text
-schema-compressed JSON
-binary typed records
+schema-compressed records
+binary typed tensors
 columnar batches
-tensor blocks
-zero-copy read-only views
-streaming pipelines
+streamed chunks
+compressed embeddings
+delta updates
+compact result objects
+zero-copy read-only views where safe
 ```
 
-Example direction:
+Example transfer declaration:
 
 ```LogicN
-transfer UserEvents over optical_io {
-  format schema_compressed
+transfer EmbeddingBatch over optical_io {
+  format tensorBinary
   batch_size auto
+  compression auto
+  encryption required
   max_latency 5ms
-  compress_repeated_keys true
 }
 ```
 
-## Data Locality Rules
+LogicN can remain JSON/API-native at human-facing boundaries while compiling
+large internal transfers into compact typed formats where the deployment allows
+it.
 
-LogicN should be able to express that certain data should stay close to certain
-compute.
+## Security Rules
+
+Optical links are not automatically secure. Data travelling through fibre or a
+co-packaged optical link can still be tapped, misrouted, mirrored, logged by
+infrastructure or exposed through compromised endpoints.
+
+LogicN optical I/O policy should require:
+
+```text
+encryption
+authentication
+endpoint identity
+service identity
+key rotation
+signed topology
+host allowlists
+no plaintext fallback
+no unknown endpoint transfer
+audit logging
+redacted reports
+```
 
 Example:
 
 ```LogicN
-data ModelWeights {
-  size large
-  locality accelerator
-  movement avoid
+optical_io security {
+  require encryption
+  require mutual_authentication
+  require signed_topology
+  deny plaintext_fallback
+  deny unknown_endpoint
+  audit all_transfers
 }
 ```
 
-Or:
+For enterprise AI:
 
 ```LogicN
-task runInference(input: TensorBatch) {
-  prefer data_locality
-  avoid moving ModelWeights
-  move inputBatch instead
-  return small ResultBatch
+aiCluster network {
+  require encrypted_control_plane
+  require encrypted_tensor_transfer for sensitive_data
+  require service_identity
+  deny unapproved_node_transfer
 }
 ```
 
-Optical I/O is fast, but moving huge data unnecessarily still wastes power,
-time and shared interconnect capacity.
+Remote memory should not be treated like local RAM. If LogicN supports memory
+pooling or remote accelerator memory over optical I/O, it must require typed
+access policy, bounds checks, timeout handling, fallback rules, audit logging
+and safe redaction.
+
+Example:
+
+```LogicN
+remote memory EmbeddingPool {
+  access read_only
+  encryption required
+  max_read 20gb
+  timeout 100ms
+  fallback local_cache
+}
+```
+
+## Fallback Behaviour
+
+Optical I/O will not exist on most systems. LogicN should degrade explicitly:
+
+```text
+optical_io -> high-speed Ethernet -> RoCE -> normal Ethernet -> local CPU mode -> queue/fail
+```
+
+Example:
+
+```LogicN
+network auto {
+  prefer optical_io
+  fallback roce
+  fallback ethernet
+  fallback local_only
+
+  if fallback_used {
+    reduce_batch_size
+    increase_timeout
+    write_warning_report
+  }
+}
+```
+
+Report:
+
+```json
+{
+  "networkTarget": "optical_io",
+  "selected": "ethernet",
+  "fallbackUsed": true,
+  "reason": "Optical I/O not detected",
+  "performanceImpact": "high",
+  "recommendation": "Use smaller batches or deploy to an optical-capable cluster"
+}
+```
+
+Fallback must not silently weaken security. Plaintext fallback, unknown endpoint
+fallback and unaudited remote memory fallback should be denied by default.
+
+## Power Awareness
+
+Optical I/O matters for bandwidth, reach and energy per bit. LogicN should be
+able to include energy and placement costs in enterprise AI planning:
+
+```LogicN
+optimise for {
+  latency
+  bandwidth
+  energy_per_bit
+  accelerator_utilisation
+}
+```
+
+Example:
+
+```LogicN
+deployment ai_cluster {
+  prefer optical_io when transfer_gb_per_minute > 100
+  prefer local_compute when transfer_cost_too_high
+  report energy_estimate
+}
+```
+
+Energy estimates must be reported as estimates unless backed by measured
+adapter data from the deployment.
 
 ## Reports
 
-LogicN should produce optical I/O reports when a workload or deployment profile uses
-high-speed interconnect planning.
+LogicN should produce optical I/O reports when a workload or deployment profile
+uses high-speed interconnect planning.
 
 Possible reports:
 
@@ -267,9 +449,11 @@ Report fields:
 
 ```text
 detected interconnect
-provider and backend
+provider and backend profile
+deployment profile
 bandwidth estimate
 latency estimate
+energy estimate
 fallback path
 data moved per task
 largest transfers
@@ -277,7 +461,8 @@ serialization format
 compression used
 remote memory used
 accelerator placement
-security/encryption status
+security and encryption status
+topology redaction status
 warnings and suggested fixes
 ```
 
@@ -289,7 +474,12 @@ Example:
     "type": "optical_io",
     "provider": "intel",
     "mode": "oci",
-    "fallback": "pcie-or-ethernet",
+    "fallback": "ethernet",
+    "security": {
+      "encryption": "required",
+      "endpointIdentity": "required",
+      "plaintextFallback": "denied"
+    },
     "warnings": [
       {
         "message": "Large JSON transfer detected. Use schemaCompressed or tensorBinary."
@@ -299,91 +489,31 @@ Example:
 }
 ```
 
-## Deployment Profiles
-
-Optical I/O is mainly a cloud and data-centre scale feature. LogicN should support
-deployment profiles that understand this.
-
-Example profiles:
-
-```text
-desktop
-server
-cloud
-ai-cluster
-optical-cluster
-edge
-```
-
-Example direction:
-
-```LogicN
-deployment ai_cluster {
-  require high_bandwidth_interconnect
-  prefer optical_io
-  allow gpu_disaggregation
-  allow memory_pooling
-  deny unsafe_remote_memory
-}
-```
-
-If optical I/O is not available:
-
-```text
-Warning:
-optical_io requested but not detected.
-Falling back to ethernet.
-Expected data movement cost increased.
-```
-
-## Remote Memory Safety
-
-If LogicN supports memory pooling or remote accelerator memory, it must be secure.
-
-Remote memory should not be treated like normal local RAM. LogicN should require:
-
-```text
-typed remote memory
-bounds checks
-encryption policy
-access policy
-failure handling
-timeout rules
-fallback rules
-audit logging
-```
-
-Example direction:
-
-```LogicN
-remote memory EmbeddingPool {
-  access read_only
-  encryption required
-  max_read 20gb
-  timeout 100ms
-  fallback local_cache
-}
-```
-
 ## Benchmarks
 
-`logicn-tools-benchmark` should eventually include:
+`logicn-tools-benchmark` should eventually include optical I/O diagnostics:
 
 ```bash
-LogicN benchmark --target optical_io
+LogicN benchmark --network optical
+LogicN benchmark --network optical --light
+LogicN benchmark --network optical --ai-cluster
 ```
 
-It should test:
+Test areas:
 
 ```text
-small message latency
+latency
+throughput
 large tensor transfer
+small message transfer
 schema-compressed JSON transfer
-binary record transfer
-streaming throughput
-remote memory read
+binary tensor transfer
+encryption overhead
+fallback speed
 multi-node reduce
-fallback performance
+packet loss and retry behaviour
+remote memory read
+topology detection
 ```
 
 Example output:
@@ -391,39 +521,35 @@ Example output:
 ```json
 {
   "benchmark": "optical_io_light",
-  "results": {
-    "latencyUs": 8.7,
-    "throughputGbps": 3520,
-    "schemaCompressedJsonGbps": 880,
-    "tensorBinaryGbps": 3100,
-    "fallbackDetected": false
+  "result": {
+    "targetDetected": true,
+    "largeTensorTransferGbps": 3120,
+    "smallMessageLatencyUs": 9,
+    "encryptionOverheadPercent": 4.2,
+    "fallback": false
   }
 }
 ```
 
-## Security Rules
-
-Optical I/O should not bypass LogicN security policy.
-
-Rules:
-
-```text
-remote memory is not local memory
-remote accelerator buffers require access policy
-cross-node transfers require reportable encryption policy
-fallback paths must be reported
-secret-bearing payloads must be redacted from reports
-unsafe remote memory must be denied by default
-interconnect topology must not expose private hostnames in shareable reports
-```
+Benchmarks must stay development-only by default and must not auto-run in
+production.
 
 ## Package Ownership
 
 Recommended ownership:
 
 ```text
+logicn-core-network
+  network target policy, permissions, profiles and network reports
+
+logicn-network-highspeed
+  future io_uring, zero-copy, RDMA and RoCE planning, if split out later
+
+logicn-io-optical
+  future optical I/O package for photonic interconnect, co-packaged optics and topology
+
 logicn-core-compute
-  optical_io target selection and data-movement cost planning
+  optical_io target selection, compute placement and data-movement cost planning
 
 logicn-target-photonic
   photonic compute target planning plus optical I/O/interconnect planning reports
@@ -432,40 +558,42 @@ logicn-core-vector
   tensor, matrix and batch shape information used for transfer estimates
 
 logicn-core-security
-  remote memory, encryption and redaction policy
+  remote memory, encryption, endpoint identity and redaction policy
 
 logicn-core-reports
   shared report metadata and report-writing contracts
+
+logicn-ai-cluster
+  future accelerator-aware distributed AI networking and cluster placement policy
 
 logicn-tools-benchmark
   optical_io benchmark target and fallback diagnostics
 ```
 
-## Conclusion
+The future package names should follow `docs/PACKAGE_NAMING.md`. Optical I/O
+must not be hidden inside a photonic compute package if it becomes a real data
+movement package.
 
-LogicN can make the best of Intel Silicon Photonics by becoming interconnect-aware.
+## Non-Goals
 
-Not just:
-
-```text
-CPU vs GPU vs photonic
-```
-
-But:
+LogicN optical I/O planning should not become:
 
 ```text
-Where is the data?
-Where is the compute?
-How expensive is movement?
-Can optical I/O reduce the bottleneck?
-Can LogicN report and optimise that automatically?
+raw light control for normal developers
+a claim that LogicN makes optical hardware faster
+a replacement for switch, NIC, driver or fibre engineering
+a guarantee that fibre traffic is automatically secure
+a mandatory AI-cluster feature for normal apps
+a production benchmark that runs automatically
 ```
 
-That would make LogicN more forward-looking than a normal language because most
-languages do not understand the cost of moving data across CPUs, GPUs,
-accelerators, memory pools and data-centre fabrics.
+The design goal is narrower and more useful: safe, typed, encrypted,
+topology-aware data movement across optical-capable infrastructure.
 
 ## References
 
+- Intel Optical I/O chiplet announcement: <https://newsroom.intel.com/artificial-intelligence/intel-unveils-first-integrated-optical-io-chiplet>
 - Intel Silicon Photonics: <https://www.intel.com/content/www/us/en/products/details/network-io/silicon-photonics.html>
-- Intel OCI chiplet blog: <https://community.intel.com/t5/Blogs/Tech-Innovation/Artificial-Intelligence-AI/Intel-Shows-OCI-Optical-I-O-Chiplet-Co-packaged-with-CPU-at/post/1582541>
+- Intel OCI chiplet community article: <https://community.intel.com/t5/Blogs/Tech-Innovation/Artificial-Intelligence-AI/Intel-Shows-OCI-Optical-I-O-Chiplet-Co-packaged-with-CPU-at/post/1582541>
+- NVIDIA Spectrum-X Ethernet platform: <https://www.nvidia.com/en-gb/networking/spectrumx/>
+- IEEE 802.3 Ethernet Working Group: <https://www.ieee802.org/3/>

@@ -94,10 +94,14 @@ not mistaken for production runtime dependencies.
 - `logicn-data-*` - post-v1 HTML, search, archive, JSON, database archive,
   typed database boundary, model, query, response, streaming pipeline and
   data-processing report contracts.
+- `logicn-web/` and `logicn-web-*` - post-v1 typed browser rendering, client
+  state, component, router and browser event contracts.
 - `logicn-db-*` - post-v1 database provider adapter contracts for PostgreSQL,
   MySQL, SQLite, OpenSearch and Firestore-style systems.
 - `logicn-core-photonic/` - post-v1 photonic concepts, models, APIs and simulations.
 - `logicn-target-cpu/` and `logicn-target-wasm/` - v1 compiler/output target packages.
+- `logicn-target-js/` - post-v1 JavaScript output planning for browser and
+  framework adapter targets.
 - Other `logicn-target-*` packages - post-v1 target planning.
 - `logicn-cpu-kernels/` - optimized CPU kernel contracts.
 - `logicn-framework-app-kernel/` - optional secure application kernel.

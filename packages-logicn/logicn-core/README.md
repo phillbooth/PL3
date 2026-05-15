@@ -75,7 +75,7 @@ available, platform-aware I/O backend selection and network reports.
 
 LogicN should also not claim maturity next to modern C++ or Rust until the
 language core is enforceable. The missing maturity checklist lives in
-`docs/cpp-rust-maturity-gap.md` and covers the real compiler pipeline,
+`docs/logicn-language-core-maturity-gap.md` and covers the real compiler pipeline,
 traits/protocols, deterministic cleanup, FFI, package management, tests,
 async runtime semantics, source-mapped runtime errors and standard library
 baseline.

@@ -13,6 +13,7 @@
 - [x] Split partial framework guidance into `packages-logicn/logicn-framework-app-kernel/`
 - [x] Add LogicN logic, compute type and secure runtime future-support proposal
 - [x] Add `packages-logicn/logicn-framework-api-server/` HTTP API serving package documentation
+- [x] Add CSRF protection policy for cookie-authenticated state-changing routes
 - [x] Document route-first API policy and controller-style grouping as optional
   framework sugar rather than a core LogicN concept
 - [x] Document optional thin DDD guidance for domain, flow, infrastructure and
@@ -26,6 +27,8 @@
 - [x] Add data-processing framework docs plus `logicn-data-*` package scaffolds
 - [x] Add typed database model/query/response docs plus `logicn-data-db` and
   `logicn-db-*` package scaffolds
+- [x] Add typed browser rendering docs plus `logicn-web-*` and `logicn-target-js`
+  package scaffolds
 - [x] Add optical I/O and Intel Silicon Photonics design note
 - [x] Add passive AI accelerator and Intel Gaudi profile design note
 - [x] Add electrical infrastructure and OT package planning note
@@ -35,6 +38,9 @@
   examples, parser, checker, CPU execution, WASM planning and reports
 - [x] Complete `docs/REQUIREMENTS.md`
 - [x] Complete `docs/DESIGN.md`
+- [x] Document Kubernetes as an optional deployment target without creating the
+  locked enterprise Kubernetes package
+- [x] Add Learning Mode design for students, children, teachers and beginners
 - [ ] Complete `docs/ARCHITECTURE.md`
 - [ ] Complete `docs/SECURITY.md`
 
@@ -130,6 +136,8 @@
 - [x] Define `logicn-target-ai-accelerator` target planning contracts
 - [x] Define Intel Gaudi 3 as a passive AI accelerator backend profile
 - [x] Define `optical_io` as a high-speed interconnect/data-movement target
+- [x] Expand optical I/O planning with topology, secure transfer, fallback,
+  benchmark and AI-cluster data-movement rules
 - [ ] Define `logicn-target-photonic` photonic backend target plans
 
 ## Phase 8: Core Infrastructure Packages

@@ -20,7 +20,7 @@ Use this file as a practical checklist while the project moves from concept to d
 [ ] Add at least 20 real .lln examples for the v1 syntax subset
 [ ] Build parser coverage for those examples
 [ ] Reject post-v1 syntax with clear diagnostics
-[ ] Use docs/cpp-rust-maturity-gap.md as the maturity checklist before claiming
+[ ] Use docs/logicn-language-core-maturity-gap.md as the maturity checklist before claiming
     parity with modern C++ or Rust
 ```
 

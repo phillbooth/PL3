@@ -37,6 +37,9 @@ must not be treated as implemented app functionality.
 - Give AI coding tools enough generated context to understand package ownership
   without replacing compiler, runtime, security or test checks.
 - Provide safe task automation with explicit effects, permissions and reports.
+- Support a future Learning Mode for students, children, teachers and beginners
+  through safe examples, guided diagnostics, sandboxed execution, hints,
+  teacher reports and child-safe privacy defaults.
 
 ## V1 Language Requirements
 
@@ -115,6 +118,8 @@ must not be treated as implemented app functionality.
 | Package maintainer | Evolves reusable LogicN package contracts under `packages-logicn/`. |
 | Security reviewer | Reviews policy, secret handling, reports and package boundaries. |
 | AI coding assistant | Uses `AGENTS.md` and `build/graph` to navigate the project safely. |
+| Learner | Uses Learning Mode, examples and guided diagnostics to learn LogicN safely. |
+| Teacher | Uses lessons, exercise reports and safe classroom defaults to teach LogicN. |
 | Future app user | End user of the bespoke app once a product domain is defined. |
 | Future app admin | Operational/admin user once a product domain is defined. |
 
@@ -146,6 +151,20 @@ must not be treated as implemented app functionality.
 - Generated documents and AI-suggested structures are advisory. Repository
   package boundaries, `AGENTS.md`, `logicn.workspace.json`, package READMEs/TODOs
   and maintained docs take precedence when suggestions conflict.
+- Learning Mode must teach real LogicN concepts rather than fake syntax. It may
+  provide progressive levels, guided exercises, hints and beginner-friendly
+  diagnostics, but examples must remain aligned with documented LogicN syntax.
+- Learning Mode execution must be safe by default: no shell, no secrets, no
+  filesystem writes, no external network, bounded memory and bounded runtime
+  unless a lesson explicitly grants a reviewed permission.
+- Learning Mode for children must avoid real-money examples, production deploys,
+  personal-data collection, open chat, unsafe links and public sharing by
+  default.
+- Learning reports must avoid secret values, unnecessary personal data, raw
+  student identifiers in shareable reports and private messages.
+- Future `logicn-learn*` package names are reserved planning names only. Do not
+  add active learning packages until the core examples, parser/checker and
+  lesson model are stable enough to justify package ownership.
 
 ## App Requirements
 
@@ -175,6 +194,20 @@ The app package must remain deliberately small until a product domain is chosen.
 - Production networked apps must require TLS policy, request/body size limits,
   route-level rate limits, timeout policy and stream backpressure for public
   routes unless an explicit reviewed override exists.
+- Cookie-authenticated browser routes that change state must require CSRF
+  protection by default.
+- CSRF protection must support synchronizer tokens for stateful apps, signed
+  double-submit cookies for stateless apps, custom CSRF headers for SPA/API
+  clients, Fetch Metadata validation, Origin/Referer validation, SameSite cookie
+  defaults and route-level CSRF reports.
+- Routes using `GET`, `HEAD` or `OPTIONS` must not perform state-changing
+  handler effects such as write, delete, payment, trade, password change, email
+  change, account deletion, file upload or admin actions.
+- Routes using bearer-token or other explicit non-cookie authorization may
+  declare CSRF not required, but must still enforce CORS policy where relevant,
+  Origin checks where useful, rate limits, request validation and audit logging.
+- CSRF reports must not include CSRF token values, session identifiers, cookies,
+  authorization headers or other secret-bearing values.
 - Production networked apps must deny plaintext fallback, silent TLS downgrade,
   disabled certificate validation, disabled hostname validation, weak ciphers,
   expired certificates, debug proxying and secrets in URLs.
@@ -249,6 +282,7 @@ The app package must remain deliberately small until a product domain is chosen.
   `packages-logicn/logicn-target-cpu/`.
 - Optimized CPU kernel contracts must live in `packages-logicn/logicn-cpu-kernels/`.
 - Binary/native target planning must live in `packages-logicn/logicn-target-binary/`.
+- JavaScript target planning must live in `packages-logicn/logicn-target-js/`.
 - WebAssembly target planning must live in `packages-logicn/logicn-target-wasm/`.
 - GPU target planning must live in `packages-logicn/logicn-target-gpu/`.
 - AI accelerator target planning for NPU, TPU and AI-chip backends must live in
@@ -257,6 +291,9 @@ The app package must remain deliberately small until a product domain is chosen.
   `packages-logicn/logicn-target-photonic/`.
 - The optional LogicN Secure App Kernel must live in `packages-logicn/logicn-framework-app-kernel/`.
 - The built-in LogicN HTTP API server must live in `packages-logicn/logicn-framework-api-server/`.
+- Browser-safe web rendering contracts must live in `packages-logicn/logicn-web/`
+  and focused `logicn-web-*` packages, not in `logicn-core`, the app kernel or
+  the API server.
 - The LogicN developer CLI must live in `packages-logicn/logicn-core-cli/`.
 - Safe LogicN project automation must live in `packages-logicn/logicn-core-tasks/`.
 - LogicN benchmark and diagnostics tooling must live in `packages-logicn/logicn-tools-benchmark/`.
@@ -530,12 +567,32 @@ the active v1 build graph.
   `logicn-data-response` must own typed database boundary, storage model,
   query/command and safe response mapping contracts. Raw SQL must be denied by
   default unless an explicit reviewed and reported override exists.
+- `logicn-web` must own umbrella browser-safe web package policy and report
+  indexes.
+- `logicn-web-render` must own the typed browser rendering pipeline: validated
+  API response, typed state conversion, safe HTML rendering, state diffing,
+  streaming batches, generated DOM/update plans and render reports.
+- `logicn-web-state` must own client state, state transitions, hydration,
+  partial-data states and state diff plans.
+- `logicn-web-components`, `logicn-web-router` and `logicn-web-events` must own
+  typed browser component, route/navigation and event contracts.
+- Browser rendering must escape text by default, deny raw HTML by default,
+  require `SafeHtml` or equivalent sanitized/trusted HTML for HTML rendering,
+  and block rendering when API data fails schema validation.
+- Browser rendering reports must include API schema status, render mode, unsafe
+  HTML status, streaming status, remote image/domain warnings, performance
+  warnings and redacted security findings.
+- `logicn-web-*` packages must not become a browser engine, CMS, admin UI, CSS
+  framework, page builder or mandatory frontend framework.
 - `logicn-db-*` packages must own provider adapter contracts only. PostgreSQL,
   MySQL, SQLite, OpenSearch and Firestore adapters must not bypass typed
   models, validation, permissions, parameterised access, safe response mapping,
   archive policy or report output.
 - `logicn-target-binary` must own binary/native target planning and artefact
   metadata.
+- `logicn-target-js` must own browser JavaScript output planning, ESM metadata,
+  source-map rules, server-only import blocking, browser secret denial and
+  JavaScript output reports.
 - `logicn-target-cpu` must own CPU capability, feature, thread, memory and fallback
   planning contracts.
 - `logicn-cpu-kernels` must own CPU kernel contracts for GEMM, GEMV, vector dot
@@ -565,21 +622,31 @@ the active v1 build graph.
   `logicn-core-photonic` concepts.
 - `optical_io` must be treated as a high-speed data-movement and interconnect
   target, not as a normal CPU, GPU or photonic compute target.
+- LogicN must not expose raw light control to normal developers. Optical I/O
+  must be represented as a deployment capability for topology-aware,
+  encrypted, typed data movement across optical-capable infrastructure.
+- Optical I/O target planning must distinguish Ethernet, Wi-Fi, fibre, RDMA,
+  RoCE, optical I/O, co-packaged optics and photonic interconnect capabilities.
 - Intel Silicon Photonics and OCI-style devices must be documented as optical
   connectivity for distributed compute, AI infrastructure, accelerator
   communication, GPU disaggregation and memory pooling.
 - `logicn-core-compute` must model data movement as a first-class cost for optical I/O
   planning, including transfer size, data locality, target placement, fallback
-  path and serialization format.
+  path, serialization format, compression choice, encryption overhead and
+  accelerator locality.
 - Optical I/O reports must include detected interconnect, provider, bandwidth
   estimate, latency estimate, fallback path, largest transfers, compression or
-  binary format use, remote memory status and security/encryption policy.
+  binary format use, remote memory status, topology redaction status,
+  energy estimate where available and security/encryption policy.
+- Optical I/O security policy must require encryption, endpoint identity,
+  service identity, signed topology where available, no plaintext fallback,
+  no unknown endpoint transfer, audit logging and redacted reports.
 - Remote memory or memory-pool access over optical I/O must require typed access
   policy, bounds checks, timeout handling, fallback rules, audit logging and
   redacted reports.
 - `logicn-tools-benchmark` should support a future `optical_io` benchmark target for
-  latency, throughput, tensor transfer, schema-compressed transfer, remote
-  memory read and fallback diagnostics.
+  latency, throughput, tensor transfer, schema-compressed transfer, encryption
+  overhead, topology detection, remote memory read and fallback diagnostics.
 
 ## Compiler, Runtime, Security, Config and Report Requirements
 
@@ -816,6 +883,25 @@ the active v1 build graph.
   capability profiles, architecture-aware builds, generated deployment
   artifacts, preflight checks, health checks, readiness checks, smoke tests,
   stability watches and rollback metadata.
+- Kubernetes must be treated as an optional deployment target, not a required
+  runtime for every LogicN app.
+- Basic Kubernetes output may include Deployment, Service, Ingress or Gateway,
+  ConfigMap, Secret references, ServiceAccount, health/readiness/startup probes,
+  resource requests and limits, rollout settings and deployment reports.
+- LogicN must never emit real secret values into Kubernetes YAML. Production
+  Kubernetes output must prefer secret references or external secret stores and
+  warn when Kubernetes Secrets are used without evidence of encryption at rest
+  and least-privilege RBAC.
+- Kubernetes deployment checks must block or warn on root containers, privilege
+  escalation, writable root filesystems, missing resource limits, missing
+  readiness probes, `.env` mounts, broad service accounts, `cluster-admin`,
+  images tagged `latest`, missing image signatures where required and missing
+  rollback metadata.
+- Advanced Kubernetes policy packs, NetworkPolicy generation beyond basic
+  declaration, RBAC minimisation, admission policy templates, secret-store
+  integration templates, multi-environment overlays and production hardening
+  automation must remain reserved enterprise work under `docs/ENTERPRISE.md`
+  unless explicitly unlocked.
 - Git-tracked deployment files should describe intent and policy. Local machine
   profiles, runtime profiles, tuning results, deployment secret metadata,
   benchmark caches and `.env` files must not be committed.
