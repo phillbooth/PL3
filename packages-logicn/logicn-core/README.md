@@ -1,4 +1,5 @@
 # LogicN Core
+### LogicN, short for Logic&lt;N&gt;
 
 ```text
 

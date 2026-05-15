@@ -1,6 +1,6 @@
 # LogicN App Template
 
-### LogicN, short for Logic<N>
+### LogicN, short for Logic&lt;N&gt;
 
 ```text
 Designed to be backwards compatible with binary while supporting photonic Tri logic represented as <N>.
