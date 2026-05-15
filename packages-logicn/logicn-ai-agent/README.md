@@ -1,7 +1,8 @@
 # LogicN Agent
 
 `logicn-ai-agent` is the package for supervised AI agent definitions, tool
-permissions, task groups, merge policies and agent reports.
+permissions, task groups, typed messages, visibility scopes, approval gates,
+merge policies and agent reports.
 
 It belongs in:
 
@@ -14,6 +15,13 @@ Use this package for:
 ```text
 AgentDefinition
 AgentToolPermission
+AgentVisibilityScope
+AgentMessageSchema
+AgentDataExchangePolicy
+AgentSecretPolicy
+AgentMemoryPolicy
+AgentCachePolicy
+AgentSandboxPolicy
 AgentLimits
 AgentTaskGroupPlan
 AgentResult
@@ -21,18 +29,55 @@ AgentMergePolicy
 AgentReport
 ```
 
+## Multi-Agent Runtime Model
+
+LogicN agents are untrusted workers by default.
+
+Agents must not directly access:
+
+```text
+files
+.env
+raw secrets
+databases
+network
+terminal
+Git
+other agents
+deployment tools
+LLM memory
+```
+
+Agents receive typed inputs and may only perform declared actions through the
+LogicN agent runtime. The runtime enforces policy through:
+
+```text
+supervisor agent
+agent registry
+typed message bus
+tool gateway
+secret guard
+memory guard
+cache guard
+sandbox manager
+human approval gate
+audit report generator
+```
+
+The detailed runtime design lives in `../../docs/MULTI_AGENT_RUNTIME.md`.
+
 ## Boundary
 
-`logicn-ai-agent` describes typed agent orchestration. It does not own model inference,
-vector math, target selection, runtime scheduling internals or security
-primitive implementation.
+`logicn-ai-agent` describes typed agent orchestration contracts. It does not own
+model inference, vector math, target selection, runtime scheduling internals,
+sandbox implementation or security primitive implementation.
 
 Related packages:
 
 | Package | Responsibility |
 |---|---|
 | `logicn-core-runtime` | structured concurrency, cancellation, timeout and supervision runtime |
-| `logicn-core-security` | permissions, redaction, unsafe reports and policy checks |
+| `logicn-core-security` | permissions, redaction, secret guards, unsafe reports and policy checks |
 | `logicn-ai` | generic AI inference contracts and safety policy |
 | `logicn-core-compute` | compute target planning and fallback reports |
 | `logicn-core-vector` | vector, matrix, tensor and embedding operations |
@@ -48,7 +93,35 @@ permissioned
 bounded
 cancelable
 reportable
+sandboxable
+cache-guarded
+approval-aware
 ```
+
+## Default Denies
+
+Agents must deny these by default:
+
+```text
+read .env
+read raw secrets
+write files directly
+delete files
+install dependencies
+run shell commands
+access production databases
+deploy to production
+send emails to real users
+process payments
+modify their own permissions
+create more powerful agents
+communicate directly with other agents
+disable audit logs
+```
+
+Agents should normally propose code patches, docs changes, tests, reports and
+deployment requests. Applying dangerous changes requires explicit policy and
+human approval.
 
 Final rule:
 

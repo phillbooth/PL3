@@ -60,6 +60,29 @@ All notable changes to this app should be documented here.
   download by default.
 - Added `docs/PACKAGE_LAYOUT.md` for the proposed `package-logicn.json`,
   `logicn.lock.json`, `packages/` and `packages-logicn/` split.
+- Added `docs/PROFILE_INSTALLERS.md` to define one LogicN language with
+  profile-aware installer presets for web, server, agent, systems and future
+  kernel project types.
+- Added `docs/MULTI_AGENT_RUNTIME.md` and expanded `logicn-ai-agent` guidance
+  with a zero-trust multi-agent runtime model covering typed messages,
+  visibility scopes, tool gateways, secret guards, sandboxing, guarded memory
+  and cache, human approval gates, loop protection and audit reports.
+- Added `docs/DEPLOYMENT_AUTOCONFIG.md` and expanded `docs/DEPLOYMENT.md` with
+  deployment auto-configuration, target detection, runtime capability profiles,
+  deployment gates, health/readiness/smoke tests, rollback metadata,
+  architecture-aware compute selection and secret-safe deployment reports.
+- Added `docs/PASSIVE_LLM_CACHE.md` and updated `logicn-ai`/report guidance with
+  passive generic LLM and embedding cache policy, strict cache keys, typed
+  output validation, privacy denials, provider-neutral stores, invalidation and
+  secret-safe cache reports.
+- Expanded `docs/why-controllers-not-used-in-LogicN.md` and route/API docs to
+  define route contracts, typed actions/handlers, policies, effects and route
+  reports as the secure API core, with controller-style grouping allowed only as
+  optional framework sugar.
+- Added `docs/DOMAIN_DRIVEN_DESIGN.md` to document optional thin DDD structure
+  for business applications, including domain/flow/infrastructure/policy
+  boundaries, pure-domain defaults, architecture reports and warnings against
+  heavyweight layer-first DDD.
 - Added `docs/FINANCE_PACKAGES.md` and `packages-logicn/logicn-finance-core/` as a grouped
   beta finance package area covering finance maths, market data, FIX, audit,
   risk, pricing and desktop interoperability boundaries.

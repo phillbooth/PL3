@@ -13,6 +13,10 @@
 - [x] Split partial framework guidance into `packages-logicn/logicn-framework-app-kernel/`
 - [x] Add LogicN logic, compute type and secure runtime future-support proposal
 - [x] Add `packages-logicn/logicn-framework-api-server/` HTTP API serving package documentation
+- [x] Document route-first API policy and controller-style grouping as optional
+  framework sugar rather than a core LogicN concept
+- [x] Document optional thin DDD guidance for domain, flow, infrastructure and
+  policy boundaries without making DDD mandatory or weakening security
 - [x] Add Rust financial markets design note
 - [x] Add application-security positioning compared with Rust, C++ and Python
 - [x] Add network and Ethernet I/O positioning plus `logicn-core-network` package
@@ -73,7 +77,9 @@
 
 ## Phase 5: Deployment
 
-- [ ] Complete deployment documentation
+- [x] Complete deployment documentation
+- [x] Document deployment auto-configuration, target detection, runtime
+  capability profiles, gates, readiness, smoke tests and rollback reports
 - [ ] Configure environment variables
 - [ ] Build the app
 - [ ] Deploy to staging
@@ -111,7 +117,11 @@
 - [x] Define `logicn-ai-neuromorphic` spiking/event workload contracts
 - [x] Define `logicn-core-compute` compute planning and target selection rules
 - [x] Define `logicn-ai` generic AI inference and safety policy contracts
+- [x] Document passive generic LLM and embedding cache policy with strict keys,
+  typed output validation, privacy denials, invalidation and reports
 - [x] Define `logicn-ai-lowbit` backend contracts for low-bit AI inference
+- [x] Document zero-trust multi-agent runtime boundaries for typed messages,
+  tool gateways, secret guards, sandboxing, approval gates and audit reports
 - [x] Define `logicn-target-cpu` CPU capability and fallback report contracts
 - [x] Define `logicn-cpu-kernels` low-bit CPU kernel planning contracts
 - [ ] Define `logicn-target-binary` binary/native target plans
@@ -169,6 +179,8 @@
 - [ ] Define `package-logicn.json` schema for LogicN package dependencies and profiles
 - [ ] Define `logicn.lock.json` schema for locked LogicN package refs, checksums and
   selected profiles
+- [x] Document profile-aware installer presets for web, server, agent, systems
+  and future kernel project types
 - [x] Use `logicn-devtools-*` and `logicn-tools-*` naming for development-only package
   families instead of a generic developer bucket
 - [x] Remove stale duplicate `logicn-cli`, `logicn-compute` and `logicn-config` package

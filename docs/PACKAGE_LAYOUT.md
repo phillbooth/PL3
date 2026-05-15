@@ -96,6 +96,11 @@ development   graph, diagnostics, generators and test helpers
 benchmark     benchmark packages, never implicit in production
 ```
 
+Project-type installer presets are defined in `docs/PROFILE_INSTALLERS.md`.
+Those presets may provide friendly commands for web apps, servers, agents and
+systems services, but they must all use the same LogicN package resolver,
+profile checker and lockfile rules.
+
 Development and staging packages should be excluded unless explicitly selected.
 
 Production boot/profile defaults must disable development-only and benchmark

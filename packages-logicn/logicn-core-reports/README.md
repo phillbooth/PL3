@@ -21,6 +21,7 @@ target report contracts
 runtime report contracts
 async/concurrency report contracts
 storage and build-cache report contracts
+passive LLM cache report contracts
 network, TLS, port, firewall, packet-filter and network-performance report contracts
 task report contracts
 processing report contracts
@@ -64,6 +65,7 @@ AwaitSiteReport
 AwaitGroupReport
 StorageReport
 BuildCacheReport
+LlmCacheReport
 NetworkReport
 TlsReport
 PortReport
@@ -95,6 +97,13 @@ record optional storage facts, unknown-storage fallback, recommended bounded
 cache mode, cache hits, misses, bypasses, evictions and invalidations. Cache
 reports must make clear that cached data is not required for correctness and
 that secrets or sensitive payloads are denied by default.
+
+Passive LLM cache reports are for provider-neutral AI cache visibility. They
+record whether caching was enabled, store type, hit/miss counts, blocked counts,
+blocked reasons, models used, semantic-cache status, invalidation facts and
+whether secret values were stored. They must not include prompt text, raw user
+messages, secret values, credentials, authorization headers or unredacted
+personal data.
 
 Network reports are for deployment and observability planning. They record
 inbound ports, outbound hosts, TLS policy, selected I/O backend, zero-copy

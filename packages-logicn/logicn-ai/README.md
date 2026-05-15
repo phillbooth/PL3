@@ -18,6 +18,9 @@ model capability declarations
 memory estimates
 AI safety policy
 AI inference reports
+passive LLM cache policy contracts
+LLM provider cache key contracts
+embedding cache policy contracts
 target-neutral generation contracts
 ```
 
@@ -29,16 +32,28 @@ low-bit backend model formats. Those belong in target or adapter packages.
 AI output is untrusted by default. Application policy must decide whether and
 how model output can influence business decisions.
 
+Passive LLM caching is allowed only when it is safe, typed, source-tracked,
+privacy-checked and reportable. `logicn-ai` may define provider-neutral cache
+policy, key material and typed output validation contracts. It must not own the
+cache store implementation, provider runtime or secret scanning implementation.
+
+See `../../docs/PASSIVE_LLM_CACHE.md`.
+
 ## Contracts
 
 The package includes typed contracts for model registry entries, model
 capabilities, prompt/options validation, target preference selection and
-inference reports.
+inference reports. Future contracts should cover passive prompt/response cache,
+embedding cache, schema-output cache, code-analysis cache and AI-context cache
+policy.
 
 Final rule:
 
 ```text
 logicn-ai describes AI inference.
+logicn-ai describes provider-neutral passive LLM cache contracts.
 logicn-ai-lowbit adapts low-bit model backends.
 logicn-core-compute and target packages choose where work runs.
+logicn-core-security owns secret and privacy checks.
+logicn-core-reports owns shared cache report shapes.
 ```

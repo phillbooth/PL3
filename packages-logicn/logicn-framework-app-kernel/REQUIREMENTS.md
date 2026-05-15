@@ -5,6 +5,12 @@
 - Provide a safe request lifecycle for LogicN applications.
 - Decode raw API input into strict typed values before handlers run.
 - Enforce route, webhook and job security policy declared by LogicN source.
+- Treat routes, typed actions/handlers, policies, effects and reports as the
+  secure API core. Traditional controllers must not be required by the app
+  kernel.
+- Allow controller-style grouping only as optional framework sugar that compiles
+  into the same route graph and does not hide auth, CSRF, object access,
+  idempotency, validation, limits, audit or effects.
 - Support auth provider declarations without hard-coding one identity system.
 - Support idempotency and replay protection for risky side effects.
 - Support memory, timeout, concurrency and rate-limit policies.

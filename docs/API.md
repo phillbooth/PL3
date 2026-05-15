@@ -76,6 +76,29 @@ diagnostics
 security report contracts
 ```
 
+## Controller Policy
+
+LogicN should not require MVC controllers as a core API concept.
+
+The API model is:
+
+```text
+route contract
+typed request
+typed response
+security policy
+declared effects
+handler / action
+generated route report
+```
+
+Controller-style grouping may be supported later by framework adapters, but it
+must compile into the same route manifest and route graph. It must not hide
+auth, CSRF, object access, idempotency, validation, rate limits, audit or
+effects from the compiler, app kernel or reports.
+
+See `why-controllers-not-used-in-LogicN.md`.
+
 ## Non-Goals
 
 `logicn-framework-api-server` must not become:

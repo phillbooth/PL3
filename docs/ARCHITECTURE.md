@@ -350,6 +350,23 @@ serves HTTP, loads route manifests, applies server-level limits and passes
 normalised requests into `logicn-framework-app-kernel`. It must not own auth decisions,
 business logic, ORM design, CMS features or frontend rendering.
 
+LogicN API design is route-first and contract-first. Traditional MVC controllers
+must not be required by the core language, app kernel or API server. Routes,
+typed requests, typed responses, policies, declared effects, actions/handlers
+and generated route reports are the secure API core. Controller-style grouping
+may exist later as optional framework sugar only when it compiles into the same
+secure route graph and does not hide auth, CSRF, object access, idempotency,
+validation, limits, audit or effects.
+
+LogicN may support optional thin Domain-Driven Design for business applications,
+but it must not force heavyweight enterprise DDD. Business meaning can live in
+`domain/`, application use cases in `flows/`, external systems in
+`infrastructure/`, routes in `api/`, runtime controls in `policies/` and reports
+in `reports/` when that structure adds clarity. Domain code should be pure by
+default and denied from database, network, secret, file, cache and LLM effects
+unless a reviewed policy says otherwise. DDD does not replace LogicN security,
+memory or compute rules. The full guidance is in `docs/DOMAIN_DRIVEN_DESIGN.md`.
+
 `logicn-core-cli` is the developer command tool. It coordinates compiler, runtime, API
 server and task packages, but it must not own application behaviour.
 
@@ -376,6 +393,16 @@ Production boot/profile policy must additionally default-disable
 `logicn-tools-benchmark` and `logicn-devtools-*`. If one is included in a production
 build, `logicn-core-config` should require an explicit production package override
 with a reason and expose that override in the runtime handoff and reports.
+
+Deployment auto-configuration should be profile-driven and target-aware.
+Deployment declarations record portable intent, while local machine profiles,
+runtime capability profiles, tuning results and deployment secret metadata stay
+out of Git. Production first boot should detect operating system, architecture,
+CPU features, container status and memory limits before selecting runtime and
+compute settings. Production traffic must wait for deployment gates, readiness
+checks and smoke tests, with rollback metadata and deployment reports emitted
+for human and AI review. The full model is documented in
+`docs/DEPLOYMENT_AUTOCONFIG.md`.
 
 Finance, electrical and OT packages are archived post-v2 domain planning. They
 must not be part of active v1 package resolution, compiler targets or build
@@ -435,6 +462,22 @@ background processes. Agent control, tool permissions and merge policies belong
 in `logicn-ai-agent`; structured concurrency and cancellation belong in `logicn-core-runtime`;
 heavy inference or vector work should still go through `compute flow` and
 `logicn-core-compute`.
+The multi-agent runtime must treat agents as untrusted workers. Agents exchange
+typed messages through a runtime-controlled bus, use tools through a gateway,
+receive secrets only through secret-guard operations, run under visibility,
+memory, cache and sandbox policy, and require human approval before dangerous
+actions are applied. The runtime must generate audit reports for agent calls,
+tool use, proposed file changes, cache decisions, policy violations and human
+approval requirements. The full model is documented in
+`docs/MULTI_AGENT_RUNTIME.md`.
+Passive LLM caching belongs to provider-neutral AI contracts, not ad hoc app
+code. `logicn-ai` should define cache policy, strict key material, typed output
+validation and provider-neutral cache behavior; `logicn-core-security` owns
+secret/privacy checks; `logicn-core-reports` owns shared cache report shapes; and
+runtime/provider adapters own storage and execution details. Cache use must be
+safe to bypass, denied for secrets and sensitive raw data by default, invalidated
+by relevant model/schema/policy/source changes, and reported without exposing
+prompt text or secret values. See `docs/PASSIVE_LLM_CACHE.md`.
 Low-bit AI is a CPU fallback path for AI inference, not a core language feature.
 When a compute policy requests AI inference, LogicN can prefer AI accelerator, GPU
 or NPU targets and fall back to `low_bit_ai` or CPU when the model, backend and

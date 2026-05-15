@@ -19,6 +19,12 @@ queue heavy work
 generate reports
 ```
 
+The kernel is route-first and contract-first. It must not require traditional
+MVC controllers. Routes define contracts, typed actions/handlers perform work,
+policies define security, effects define allowed access and reports explain the
+result. Controller-style grouping may exist later as framework sugar only if it
+compiles into the same secure route graph.
+
 ## Position
 
 ```text
@@ -46,6 +52,8 @@ Frameworks provide opinions and user-facing structure.
 ## Responsibilities
 
 - Typed API request and response boundaries.
+- Route-first contract enforcement for route declarations, typed actions,
+  policies, effects, limits and generated route reports.
 - Runtime enforcement of `boot.lln` security policy.
 - Strict input validation before handlers run.
 - Deny-by-default application effects for file, network, database, shell, AI,

@@ -176,6 +176,28 @@ The app package must remain deliberately small until a product domain is chosen.
 - API handlers must receive typed, validated request values by default; unknown
   fields, oversized JSON and invalid payload shapes must be rejected at the
   boundary.
+- LogicN must not require traditional MVC controllers as a core application
+  concept. The secure API core must be route contracts, typed request/response
+  objects, route actions or handlers, policies, effects and generated route
+  reports.
+- Controller-style grouping may be supported later only as optional framework
+  sugar that compiles into the same route manifest/graph and does not hide auth,
+  CSRF, object access, idempotency, validation, rate limits, audit or effects.
+- LogicN may support optional thin DDD structure for business applications, but
+  DDD must not be required for small apps, scripts or early compiler examples.
+- Thin DDD guidance must keep business rules in `domain/`, use cases in
+  `flows/`, external systems in `infrastructure/`, routes in `api/`, runtime
+  and security controls in `policies/`, and reports in `reports/` where that
+  structure adds clarity.
+- Domain code should be pure by default and must not secretly perform database,
+  network, file, secret, cache or LLM effects.
+- DDD must not be treated as the security model, memory model or compute
+  performance model. Security must come from LogicN policies and checks, memory
+  safety from LogicN memory rules, and speed from compute policies, profiling,
+  caching and target reports.
+- Architecture reports may warn about excessive layers, empty wrappers,
+  database-shaped domains, unused abstractions, business rules inside API files
+  and infrastructure effects inside domain code.
 - Raw SQL, unsafe interop, raw shell execution and untrusted deserialization
   must be denied by default in production policy.
 - Security reports must include risky permissions, package effects, route
@@ -689,6 +711,28 @@ the active v1 build graph.
   memory budget, timeout, rate limits and failure behaviour.
 - Parallel agents must run inside supervised task groups, queues, worker pools
   or equivalent runtime supervision.
+- AI agents must be treated as untrusted workers by default.
+- AI agents must not directly access files, `.env`, raw secrets, databases,
+  network, terminal, Git, other agents, deployment tools or LLM memory.
+- AI agents must use typed message passing through a runtime-controlled message
+  bus rather than direct agent-to-agent communication.
+- Agent visibility scopes must limit which files, reports and context an agent
+  can see, and must exclude `.env`, secret files, private logs and raw
+  production data by default.
+- Agent tool use must go through a tool gateway with explicit allow and deny
+  rules for commands, arguments, files, environment and result redaction.
+- Agents must normally propose file changes, dependency installs, migrations and
+  deployments rather than applying them directly.
+- Human approval must be required by default for file writes, dependency
+  installs, database migrations, production deploys, secret creation/rotation,
+  bulk email, payment actions and permission changes.
+- Agent memory and passive LLM cache must deny secrets, raw personal data,
+  authorization headers, cookies and environment values by default.
+- Multi-agent runtimes must enforce max steps, max agent calls, max retries,
+  max runtime and loop detection.
+- Every multi-agent run must produce an audit report covering agents used,
+  tools used, files read or proposed for change, cache decisions, policy
+  violations, secrets access decisions and human approval requirements.
 - Agent outputs may inform decisions but must not directly authorize security,
   payment, access-control or deployment decisions.
 - Neural-network support must live in `logicn-ai-neural`, not `logicn-core`.
@@ -715,6 +759,81 @@ the active v1 build graph.
   targets were not selected.
 - AI accelerator and photonic targets must be optional. CPU-compatible fallback
   must remain the baseline for LogicN developer workflows.
+
+## Passive LLM Cache Requirements
+
+- LogicN may support passive LLM, embedding, RAG/chunk, schema-output,
+  code-analysis and AI-context caches.
+- Passive cache means developers call the LLM normally and LogicN decides
+  whether to read, write, bypass or block cache use according to policy.
+- Passive LLM caching must be automatic only when the input and output are safe,
+  typed, source-tracked, privacy-checked and reportable.
+- LogicN must not cache raw secrets, API keys, access tokens, payment card data,
+  authentication headers, raw customer chat messages, medical data, legal case
+  data, private documents, unredacted personal data, webhook secrets, one-time
+  codes or session cookies by default.
+- LogicN must not cache unvalidated free-text LLM output by default. Cacheable
+  LLM output should pass typed schema validation, required-field validation,
+  confidence validation where relevant, unsafe-content checks and secret-leakage
+  checks.
+- LLM cache keys must include provider, model, model version, system prompt
+  hash, input hash, context hash, output schema hash, tool manifest hash,
+  temperature, `top_p`, seed where available, LogicN version, security policy
+  hash and package/source hashes where relevant.
+- Embedding cache keys must include text hash, embedding model, model version,
+  normalisation settings, chunking settings, provider and project/tenant
+  isolation key.
+- Semantic cache must be disabled by default and require explicit policy. It
+  must be denied by default for payments, legal decisions, medical advice,
+  security decisions, webhooks, financial calculations and access control.
+- Passive LLM cache entries must be invalidated when model, model version,
+  system prompt, output schema, tools, RAG context, security policy, LogicN
+  compiler version, package version, source file or project/tenant isolation
+  key changes.
+- Production LLM cache stores must require tenant isolation, encryption at rest,
+  TTL, redaction, purge support, audit logging and permission checks.
+- Passive LLM cache reports must include enabled state, store type, hits,
+  misses, blocked counts, blocked reasons, models used, semantic-cache status,
+  invalidation facts and whether secret values were stored.
+- Passive LLM cache reports must not include prompt text, raw user text, secret
+  values, credentials, authorization headers, cookies or unredacted personal
+  data by default.
+
+## Deployment Auto-Configuration Requirements
+
+- LogicN deployment must be based on portable project intent, not developer
+  machine assumptions.
+- Deployment declarations should support target auto-detection, runtime
+  capability profiles, architecture-aware builds, generated deployment
+  artifacts, preflight checks, health checks, readiness checks, smoke tests,
+  stability watches and rollback metadata.
+- Git-tracked deployment files should describe intent and policy. Local machine
+  profiles, runtime profiles, tuning results, deployment secret metadata,
+  benchmark caches and `.env` files must not be committed.
+- Deployment checks must block production deployment when required secrets are
+  missing, hardcoded secrets are detected, `.env` files are included in build
+  output, debug mode is enabled, dev packages are included, package permissions
+  are unknown, unsafe network rules are present, health/readiness endpoints are
+  missing, smoke tests fail or the selected target does not match the runtime.
+- Runtime capability profiles must contain metadata only. They must not contain
+  secret values, private logs, raw credentials, authorization headers, cookies
+  or unredacted personal data.
+- Production first boot should detect operating system, architecture, CPU
+  features, container status and memory limits before selecting runtime and
+  compute settings.
+- Runtime auto-tuning must be bounded, safe and time-limited. It must not run
+  extreme benchmarks in production.
+- Compute auto-selection must verify target-specific outputs against a safe
+  reference where correctness or precision matters, and must fall back to a safe
+  CPU scalar path when target-specific acceleration is unavailable or unsafe.
+- Traffic must not be enabled until readiness checks and required smoke tests
+  pass.
+- Deployment reports must include target detection, build target, secret
+  availability, secret exposure status, security/dependency/memory/deployment
+  report status, health/readiness/smoke-test status, traffic status and rollback
+  availability.
+- AI-readable deployment context must include only non-secret metadata and must
+  explicitly list data that must not be exposed.
 
 ## Runtime Naming Requirement
 
