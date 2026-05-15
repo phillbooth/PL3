@@ -52,6 +52,12 @@ to be more memory-safe than Rust; the intended advantage is broader policy:
 deny-by-default effects, typed API boundaries, secret-safe reports, controlled
 interop, production gates and AI-safe context generation. The detailed
 positioning lives in `docs/APPLICATION_SECURITY_POSITIONING.md`.
+The baseline trust model is practical zero trust: external input, dependency
+output, generated AI content, cached data, network data, database data, uploaded
+files, environment-derived values, headers, cookies, tokens, runtime metadata
+and build artifacts start untrusted until validated, typed, permissioned,
+provenance-checked or explicitly policy-reviewed. Trust transitions must be
+visible in types, policies or reports.
 
 ## V1 Surface Freeze
 

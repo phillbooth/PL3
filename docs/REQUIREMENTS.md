@@ -57,6 +57,15 @@ must not be treated as implemented app functionality.
   must be framed as an application-level goal: stronger default policy for
   permissions, APIs, secrets, package effects, interop, deployment and
   AI-readable reports.
+- LogicN must treat data and behavior as untrusted by default within reason.
+  External input, dependency output, generated AI content, cached data, network
+  data, database data, uploaded files, environment-derived values, headers,
+  cookies, tokens, runtime metadata and build artifacts must earn trust through
+  validation, typing, provenance, policy checks or explicit reviewed
+  boundaries.
+- Trust transitions must be represented in types, policies or reports. A value
+  must not silently move from untrusted to trusted because it crossed an
+  internal function boundary.
 - LogicN must not claim to make Ethernet hardware faster. Network positioning
   must be framed as improving application network I/O through typed APIs,
   deny-by-default network permissions, TLS policy, backpressure, timeout policy,

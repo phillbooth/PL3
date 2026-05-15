@@ -17,6 +17,11 @@ Rust, C++ and Python.
 
 ## Core Rules
 
+- Treat everything as untrusted by default within reason. External input,
+  dependency output, generated AI content, cached data, network data, database
+  data, uploaded files, environment-derived values, headers, cookies, tokens,
+  runtime metadata and build artifacts must earn trust through validation,
+  typing, provenance, policy checks or explicit reviewed boundaries.
 - Do not commit secrets.
 - Use environment variables for runtime configuration.
 - Validate all user input.
@@ -37,6 +42,42 @@ Rust, C++ and Python.
   for production networked apps.
 - Generate security reports that show risky permissions, secret flows, package
   effects, route policy gaps and production overrides.
+
+## Default Trust Model
+
+LogicN should use a practical zero-trust baseline:
+
+```text
+untrusted until typed
+untrusted until validated
+untrusted until permissioned
+untrusted until provenance is known
+untrusted until policy allows it
+untrusted until reports can explain it
+```
+
+This does not mean every internal value needs expensive runtime checks forever.
+It means trust should be earned at clear boundaries and then represented in
+types, policies and reports.
+
+Examples:
+
+| Source | Default status | How it earns trust |
+| --- | --- | --- |
+| API request body | Untrusted | Typed request decoding, schema validation, size limits |
+| Headers/cookies/tokens | Untrusted | Signature, expiry, issuer, audience and policy checks |
+| Proxy headers | Untrusted | Accepted only from declared trusted proxies |
+| Network responses | Untrusted | TLS policy, host allowlist, schema validation |
+| Database rows | Untrusted-ish | Typed mapping, migration/version checks, validation before sensitive use |
+| Dependency output | Untrusted-ish | Package permissions, typed contracts, reportable effects |
+| AI/model output | Untrusted | Typed schema validation and deterministic policy review |
+| Cache entries | Untrusted-ish | Content hash, version key, TTL, invalidation, sensitive-data denial |
+| Build artifacts | Untrusted until verified | Hash/signature, source ref, build report and policy checks |
+| Runtime machine facts | Untrusted until detected on target | Capability detection and report metadata |
+
+Trusted boundaries should be narrow, explicit and reviewable. If a module or
+adapter is allowed to produce trusted values, it must declare why, what it
+validated, what it redacted and what report proves it.
 
 ## Environment Variables
 

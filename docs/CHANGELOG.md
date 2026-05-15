@@ -83,6 +83,10 @@ All notable changes to this app should be documented here.
   for business applications, including domain/flow/infrastructure/policy
   boundaries, pure-domain defaults, architecture reports and warnings against
   heavyweight layer-first DDD.
+- Added a practical zero-trust baseline to security docs: data and behavior are
+  treated as untrusted by default until validated, typed, permissioned,
+  provenance-checked or policy-reviewed, with trust transitions represented in
+  types, policies or reports.
 - Added `docs/FINANCE_PACKAGES.md` and `packages-logicn/logicn-finance-core/` as a grouped
   beta finance package area covering finance maths, market data, FIX, audit,
   risk, pricing and desktop interoperability boundaries.

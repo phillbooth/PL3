@@ -37,6 +37,7 @@ that is visible before code runs.
 | 8 | Controlled interop | Python, C, C++, Rust and JavaScript interop goes through typed, audited, permissioned adapters. |
 | 9 | Security-aware IDE warnings | Tooling warns when user input reaches a database, shell command, file path, log, AI prompt or external API unsafely. |
 | 10 | AI-safe project context | AI context generation redacts secrets, private data and unsafe runtime controls by default. |
+| 11 | Practical zero-trust baseline | Inputs, dependencies, AI output, caches, network data, database data and artifacts start untrusted until validated, typed, permissioned, provenance-checked or policy-reviewed. |
 
 ## Compared With Python
 
