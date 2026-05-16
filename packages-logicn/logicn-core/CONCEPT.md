@@ -115,7 +115,7 @@ generic constraints, traits or protocols
 structured concurrency, cancellation and streams
 deterministic resource cleanup
 safe compile-time metadata and attributes
-C ABI and foreign-call boundaries
+Native ABI and foreign-call boundaries
 matrix/vector shape rules with scalar fallback
 stable diagnostics and AI report schemas
 ```

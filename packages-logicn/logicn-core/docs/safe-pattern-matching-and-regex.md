@@ -55,7 +55,9 @@ This keeps regex available without forcing developers to use it for common valid
 
 ## Design Basis
 
-The safe default should follow the same broad safety direction as engines such as RE2 and Rust-style finite-automata regex implementations: avoid features that require exponential backtracking, keep matching bounded, and make memory use explicit.
+The safe default should follow bounded finite-automata style matching: avoid
+features that require exponential backtracking, keep matching bounded, and make
+memory use explicit.
 
 RE2 documents linear-time matching for input length, configurable memory budgeting and unsupported backtracking-only constructs such as backreferences and look-around assertions. PCRE2 JIT is useful as an explicit advanced mode, but requires more careful limits and audit. Hyperscan shows the value of compiling groups of patterns into a database and supporting streaming scans with known memory requirements.
 

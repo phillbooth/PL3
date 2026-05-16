@@ -2,7 +2,9 @@
 
 Ownership note: `logicn-core` may document target declaration syntax and compiler
 report contracts. Binary/native target planning belongs in
-`packages-logicn/logicn-target-binary/`; photonic backend target planning belongs in
+`packages-logicn/logicn-target-binary/`; future systems output planning may start
+there and split only after the ABI and memory rules stabilise;
+photonic backend target planning belongs in
 `packages-logicn/logicn-target-photonic/`; compute target selection belongs in
 `packages-logicn/logicn-core-compute/`.
 
@@ -190,6 +192,21 @@ Babel and app lifecycle are host-framework concerns.
 Mobile-native targets and device capability packages must not turn LogicN into a
 mobile framework or operating-system API layer. They should expose explicit
 permissions, effects, native bindings, compute target reports and source maps.
+
+Systems output targets should lower checked LogicN IR into portable backend
+artifacts or native ABI bindings after type, effect, memory and layout checks
+have run. They must not import low-level unsafe defaults into normal LogicN
+source.
+
+Rules:
+
+```text
+Systems output is a backend target, not a core coding style.
+layout native is explicit and limited to interop or systems profiles.
+Native ABI bindings require ownership, nullability, allocator and error mapping.
+Generated systems output requires source maps, ABI reports, memory reports and security reports.
+Raw pointer arithmetic remains denied outside audited unsafe/systems boundaries.
+```
 
 ---
 

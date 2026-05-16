@@ -34,8 +34,8 @@ open parser/runtime work
 
 Matching examples should live in `docs/sytax-examples/` and show both good and bad usage.
 
-For a cross-language status table of common syntax and logic features compared
-with C++ and Python, see `docs/syntax-logic-status.md`.
+For a status table of common syntax and logic features, see
+`docs/syntax-logic-status.md`.
 
 ---
 

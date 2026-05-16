@@ -66,7 +66,7 @@ rather than pointer-heavy object chains:
 UserScore object -> pointer -> nested object -> pointer -> value
 ```
 
-This does not make LogicN automatically faster than C++ or Rust. It makes the
+This does not make LogicN automatically faster than mature optimized runtimes. It makes the
 performance risks visible and gives developers safer defaults and reports.
 
 ## Cache-Aware Features

@@ -1350,7 +1350,7 @@ Do not claim:
 LogicN is production-ready before it is.
 LogicN has a real photonic backend before it does.
 LogicN makes all software secure automatically.
-LogicN can do maths impossible in C++ or Rust.
+LogicN can do impossible maths before a real backend exists.
 LogicN prevents all reverse engineering.
 ```
 

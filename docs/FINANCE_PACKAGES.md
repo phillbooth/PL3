@@ -22,7 +22,7 @@ research workflows and integration with mature systems.
 
 ## External Projects To Learn From
 
-QuickFIX is an open-source FIX engine for C++ with FIX 4.0 through 5.0 SP2 and
+QuickFIX is an open-source FIX engine with FIX 4.0 through 5.0 SP2 and
 FIXT 1.1 support, language bindings, database-backed stores, SSL/TLS and
 pluggable stores/logging. QuickFIX/J is the Java implementation and describes
 FIX as a messaging standard for real-time securities transactions.
@@ -38,8 +38,8 @@ applications. FINOS FDC3 is an open standard for financial desktop applications
 to interoperate through app launching, context sharing and intents.
 
 OpenBB shows the value of connecting proprietary, licensed and public financial
-data sources into Python, REST APIs, dashboards and AI-agent workflows. GS Quant
-shows how Python remains important for quant research, derivatives analysis,
+data sources into research notebooks, REST APIs, dashboards and AI-agent workflows. GS Quant
+shows how notebook-oriented tooling remains important for quant research, derivatives analysis,
 trading strategies and risk-management workflows, while some APIs require
 institutional credentials.
 
@@ -126,8 +126,8 @@ logicn-core-runtime-low-latency
 LogicN-replay
 ```
 
-Interop should be controlled by policy. A LogicN app may wrap mature C++, Java,
-Python or TypeScript systems, but the wrapper must declare memory isolation,
+Interop should be controlled by policy. A LogicN app may wrap mature external
+finance systems, but the wrapper must declare memory isolation,
 network permissions, credentials policy, audit requirements and fallback
 behaviour.
 

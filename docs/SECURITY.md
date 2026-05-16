@@ -8,12 +8,11 @@
 
 ## Security Summary
 
-LogicN's strongest security position is application-level policy, not a claim
-that it is more memory-safe than Rust or universally safer than C++ or Python.
-The project should make permissions, typed API boundaries, package effects,
-secrets, interop, production rules and AI-readable reports visible before code
-runs. See `docs/APPLICATION_SECURITY_POSITIONING.md` for the comparison with
-Rust, C++ and Python.
+LogicN's strongest security position is secure web runtime policy. The project
+should make permissions, typed API boundaries, package effects, memory-safe
+values, secrets, interop, production rules and AI-readable reports visible
+before code runs. See `docs/SECURE_WEB_RUNTIME_FIRST.md` for the runtime-first
+direction.
 
 ## Core Rules
 
@@ -79,6 +78,12 @@ Syntax follows the same rule. A syntax form is not trusted merely because it
 parses. New syntax must be governed by type contracts, effect declarations,
 permissions, policy, diagnostics, source maps, tests or generated reports before
 it can be treated as safe.
+
+Monkey patching is denied by default. LogicN must not allow normal source to
+modify built-ins, imported package internals, framework methods, runtime
+functions, response serializers or security behaviour after load. Behaviour
+changes must use explicit adapters, interfaces/protocols, pipelines, test-only
+mocks or signed hotfix packages, and must appear in reports.
 
 Examples:
 

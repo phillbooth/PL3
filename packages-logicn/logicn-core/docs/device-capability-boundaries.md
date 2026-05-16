@@ -377,7 +377,7 @@ Linux APIs
 Windows APIs
 macOS APIs
 C libraries
-Rust libraries
+systems libraries
 WebAssembly modules
 device drivers
 vendor SDKs
@@ -573,4 +573,3 @@ operating-system APIs, but it provides safe types, permissions, compute
 targeting, streams, buffers and native bindings so libraries can use device
 capabilities securely.
 ```
-

@@ -125,6 +125,139 @@ control flow.
 
 ---
 
+## Monkey Patching Policy
+
+Monkey patching is not a compatibility feature for normal LogicN. It is hidden
+runtime mutation and should be denied.
+
+Monkey patching means changing existing behaviour after the original code has
+loaded. This includes modifying built-ins, imported modules, package internals,
+framework methods, response serializers, security policy functions or third-party
+provider functions.
+
+Rule:
+
+```text
+Runtime modification of existing behaviour is denied by default.
+Behaviour changes must be explicit, typed, permissioned, source-mapped and reported.
+```
+
+Rejected normal LogicN patterns:
+
+```logicn
+patch String {
+  flow isEmail() -> Bool
+}
+```
+
+```logicn
+replace logicn.http.Response.send {
+  // changed globally
+}
+```
+
+```logicn
+override imported PaymentProvider.charge {
+  // hidden runtime behaviour change
+}
+```
+
+These patterns are rejected because they break source-level contracts. The code
+that calls `String`, `Response.send` or `PaymentProvider.charge` can no longer be
+understood from imports, types, effects, permissions or reports.
+
+Use explicit extension points instead:
+
+| Need | LogicN-safe alternative | Why |
+|---|---|---|
+| Replace a provider | Adapter package | Provider choice is declared and reportable. |
+| Share behaviour | Interface/protocol/trait contract | Callers depend on a typed contract, not hidden mutation. |
+| Add API processing | Pipeline or middleware declaration | Order and effects are visible. |
+| Mock a dependency | Test-only mock binding | Cannot leak into production if gated by test mode. |
+| Apply emergency security fix | Signed hotfix package | Replacement is versioned, audited and reported. |
+
+Example adapter direction:
+
+```logicn
+adapter StripePaymentAdapter implements PaymentProvider {
+  secure flow charge(request: PaymentRequest)
+    -> Result<PaymentResponse, PaymentError>
+  effects [network.outbound] {
+    return Err(PaymentError.ProviderUnavailable)
+  }
+}
+```
+
+Example test-only mock direction:
+
+```logicn
+test mock PaymentProvider with FakePaymentProvider
+```
+
+This must be valid only in test mode and must be reported if any mock binding is
+present in a production build.
+
+Example hotfix direction:
+
+```logicn
+hotfix package security_patch_2026_05 {
+  replaces logicn-framework-api-server@0.1.4
+  reason "security fix"
+  signed true
+  audit required
+}
+```
+
+Hotfix packages are not monkey patches. They are explicit package replacement
+contracts that can be locked, reviewed, signed, source-mapped and reported.
+
+Compiler diagnostics should reject:
+
+```text
+modifying imported package internals
+modifying built-in types
+replacing runtime functions
+changing response serialization globally
+changing auth/security behaviour at runtime
+adding undeclared properties to existing models
+using eval-like dynamic code mutation
+allowing test mocks in production
+```
+
+Suggested diagnostic:
+
+```json
+{
+  "code": "LN-SEC-PATCH-001",
+  "severity": "error",
+  "message": "Runtime patching is not allowed. Use an adapter, interface, pipeline, test mock or signed hotfix package.",
+  "safeToShow": true
+}
+```
+
+For JavaScript output, generated LogicN code must avoid prototype mutation. Do
+not generate:
+
+```js
+Array.prototype.first = function () {
+  return this[0];
+};
+```
+
+Generate ordinary functions or modules instead:
+
+```js
+export function first(array) {
+  return array[0];
+}
+```
+
+Production JavaScript runtimes may freeze critical generated runtime objects, but
+that must be target-policy controlled and reported because it can break some host
+ecosystem packages.
+
+---
+
 ## Eval Policy
 
 `eval` is not a compatibility feature for normal LogicN. It is an unsafe dynamic code
@@ -193,7 +326,7 @@ CommonJS
 PCRE-style regex
 JSON null at boundaries
 exceptions at interop/system boundaries
-C ABI
+Native ABI
 FFI
 native bindings
 SQL drivers
@@ -234,7 +367,7 @@ behaviour.
 | `main.lln` entry file               | Simple-script compatibility          | Common language convention                | Keep for scripts; prefer `boot.lln` for projects     |
 | JSON `null`                        | Boundary value only                  | APIs and databases use it                 | Decode to `Option` or `JsonNull`                    |
 | JavaScript `undefined`             | Rejected                             | JavaScript compatibility pressure         | Do not support; emit migration diagnostics          |
-| truthy/falsy logic                 | Rejected                             | Familiar to JS/PHP/Python developers      | Do not support; require `Bool`                      |
+| truthy/falsy logic                 | Rejected                             | Familiar in dynamic scripting styles      | Do not support; require `Bool`                      |
 | hidden exceptions                  | Rejected as normal error flow        | External ecosystems use exceptions        | Use only for unrecoverable/system/interop cases     |
 | PCRE-style regex                   | Unsafe compatibility boundary        | Legacy patterns may require it            | Allow only as audited `UnsafeRegex`                 |
 | XML                                | Compatibility package/stdlib feature | Enterprise APIs and config formats        | Support safe XML with entity limits                 |
@@ -250,7 +383,7 @@ behaviour.
 | Dart/Flutter target                | Generated package/plugin output      | Flutter ecosystem                         | Keep as interop output, not Flutter-native core     |
 | `Dart.Uint8List`                   | Boundary-only type                   | Dart APIs use it                          | Use `Bytes` in LogicN, convert at Dart boundary         |
 | Flutter platform channels          | Generated boundary contracts         | Flutter native APIs use them              | Keep as reports/contracts                           |
-| FFI / C ABI / native bindings      | Unsafe explicit boundary             | Existing system libraries matter          | Permissioned, audited and source-mapped only        |
+| FFI / native ABI / native bindings | Unsafe explicit boundary             | Existing system libraries matter          | Permissioned, audited and source-mapped only        |
 | SQL / NoSQL                        | Driver/package boundary              | Real apps need databases                  | Typed drivers, not built-in DB engine/ORM           |
 | SMTP / IMAP / email                | Provider package boundary            | Existing systems need email               | Typed payloads and network permissions              |
 | payment providers                  | Provider package boundary            | Real apps use payment systems             | Typed providers and `SecureString` handling         |

@@ -18,7 +18,9 @@ Specialist systems should be built using packages, drivers, frameworks, tooling,
 
 The main rule is:
 
-> If PHP, Python, or C++ would normally use a package, library, framework, driver, extension, or external service for something, LogicN should not make that thing a native language feature.
+> If a feature normally belongs in a package, library, framework, driver,
+> extension, or external service, LogicN should not make that thing a native
+> language feature.
 
 LogicN may provide the safe building blocks.
 
@@ -1913,7 +1915,7 @@ Before adding any feature to LogicN itself, ask:
 ```text
 Is this needed by most programs?
 Does this affect safety, typing, memory, effects, permissions, errors, or compilation?
-Would PHP, Python, or C++ normally need a package, extension, framework, driver, or external service for this?
+Would this normally need a package, extension, framework, driver, or external service?
 Can this be implemented cleanly as a package?
 Would adding this make LogicN harder to keep stable?
 Would this create provider lock-in?

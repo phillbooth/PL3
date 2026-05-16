@@ -1641,15 +1641,15 @@ unsafe features should be visible in package reports
 
 ---
 
-# 39. Python Interop Option
+# 39. External Runtime Interop Option
 
-Some video tooling may initially be Python-based.
+Some video tooling may initially depend on external runtimes.
 
 Example:
 
 ```LogicN
 packages {
-  use PyVideoTools from python "opencv-python" {
+  use VideoRuntime from external_runtime "video-tools" {
     version "4.0.0"
 
     permissions {
@@ -1671,7 +1671,7 @@ packages {
 
 This should be treated as interop, not native LogicN video support.
 
-Python video packages require sandboxing, permission reports and runtime limits.
+External video packages require sandboxing, permission reports and runtime limits.
 
 ---
 
@@ -1922,7 +1922,7 @@ Should raw video storage be denied by default in production?
 Should face detection/person tracking require special privacy effects?
 Should video streams have mandatory max duration?
 Should video transcription always produce a privacy report?
-Should Python video packages be allowed in production?
+Should external video packages be allowed in production?
 Should video embeddings expose dimensions only in reports?
 Should video jobs always be queued above a duration/file-size threshold?
 Should native codec bindings require a higher audit level?
@@ -1973,7 +1973,7 @@ browser camera/screen runtime package example
 video summarisation workflow example
 video moderation package example
 text-to-video search example
-Python interop examples
+external runtime interop examples
 target reports for video packages
 photonic candidate planning for suitable model-heavy video layers
 ```

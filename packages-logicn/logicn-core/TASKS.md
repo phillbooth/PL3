@@ -110,7 +110,7 @@ package boundaries
 [?] Should Decision be built in or standard library?
 [?] Should rollback be available everywhere or only in secure flows?
 [?] Should compute blocks be required for accelerator targeting?
-[?] Should the compiler be written in Rust, Go, TypeScript, Zig, C#, or another language?
+[?] Decide the compiler implementation language after the runtime-first slice is clear.
 [?] Should package management be built early or deferred?
 [?] What syntax should LogicN use for explicit generic constraints or protocols?
 [?] What shape-type syntax should vectors, matrices and tensors use?
@@ -128,7 +128,7 @@ package boundaries
 [ ] Specify structured concurrency, cancellation and typed streams
 [ ] Specify deterministic cleanup for files, sockets, locks and FFI handles
 [ ] Specify safe compile-time metadata and attributes
-[ ] Specify C ABI and foreign-call boundaries
+[ ] Specify native ABI and foreign-call boundaries
 [ ] Specify compiler-facing matrix/vector shape syntax and diagnostics
 [ ] Standardise diagnostics and AI report schemas
 ```

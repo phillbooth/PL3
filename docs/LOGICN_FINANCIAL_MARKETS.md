@@ -105,7 +105,7 @@ high-risk side effects:
 
 LogicN financial-markets documentation should not become:
 
-- a Rust, Python, C, C++ or Java implementation guide
+- an implementation guide for another runtime
 - a broker-specific integration manual
 - a mandatory ORM, CMS, admin UI or frontend-framework design
 - language syntax documentation for LogicN core

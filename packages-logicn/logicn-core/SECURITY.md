@@ -6,10 +6,9 @@ LogicN is a strict, memory-safe, security-first, JSON-native, API-native and acc
 
 Security should not be added later as a framework feature. Security should be part of the language, compiler, runtime, package system, build process and deployment model from the beginning.
 
-LogicN should not claim to be more memory-safe than Rust. Its strongest
-defensible security position is broader application policy: typed APIs,
-deny-by-default effects, secret-safe reporting, controlled interop, production
-gates and AI-safe project context.
+LogicN's strongest defensible security position is secure-runtime policy:
+typed APIs, deny-by-default effects, memory-safe values, secret-safe reporting,
+controlled interop, production gates and AI-safe project context.
 
 LogicN should not claim to make Ethernet hardware faster. Its network security
 position is typed, permissioned and reportable network use: deny-by-default

@@ -32,12 +32,14 @@ Flutter platform channels
 Pigeon-style typed platform APIs
 React Native native-module boundaries
 React Native device permission reports
+native ABI imports and exports
+native-compatible layout declarations
 device capability packages
 mobile platform APIs
 sensor/native hardware bindings
 text AI packages
 LLM/model providers
-Python NLP package interop
+external NLP package interop
 ```
 
 ## Rule
@@ -106,6 +108,72 @@ React Native components, JSX/TSX, navigation, state management, Metro/Babel and
 app lifecycle stay outside LogicN Core.
 Native modules, JSI/TurboModule-style bindings and device capabilities require
 explicit permissions, source maps and reports.
+```
+
+Interop must not use monkey patching as a compatibility strategy.
+
+Rule:
+
+```text
+Adapters may wrap external systems.
+Adapters may not mutate external systems globally.
+```
+
+For JavaScript/TypeScript output, generated LogicN code must not mutate
+`Array.prototype`, `Object.prototype`, framework prototypes, imported package
+objects or global response/security behaviour. Compatibility must be expressed
+through generated modules, adapters, manifests, explicit imports and reports.
+
+## Native ABI Boundary
+
+Native ABI interop should be available eventually, but only as an audited
+boundary. It is not a reason to make normal LogicN application code low-level.
+
+Draft shape:
+
+```LogicN
+interop native sqlite {
+  allow library "sqlite3"
+  allow function "sqlite3_open"
+  memory checked
+  ownership explicit
+}
+
+extern native function sqlite3_open(
+  filename: NativeString,
+  db: Out<NativeHandle>
+) -> NativeInt
+```
+
+Rules:
+
+```text
+Native ABI use is denied by default.
+Every imported symbol must be declared.
+String encoding must be explicit.
+Nullability must use Option or a named nullable interop type.
+Pointer ownership must be Borrowed, Owned, Out or Unsafe and source-mapped.
+Returned buffers must declare allocator and free policy.
+Errors must map into Result or a named diagnostic type.
+Timeouts, blocking calls and thread-safety must be reported.
+```
+
+Native-compatible layout should be explicit and narrow:
+
+```LogicN
+layout native struct Point {
+  x: Float32
+  y: Float32
+}
+```
+
+Rules:
+
+```text
+layout native is for ABI and generated backend boundaries.
+Normal domain models should use ordinary LogicN records.
+Packed layout, alignment overrides and raw pointer fields require an unsafe or
+systems profile plus an ABI report.
 ```
 
 Text AI interop should remain package/provider based.

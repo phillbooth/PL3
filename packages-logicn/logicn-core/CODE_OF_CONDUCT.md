@@ -214,7 +214,7 @@ Avoid making unsupported claims such as:
 ```text
 LogicN is already production-ready.
 LogicN makes all software secure.
-LogicN can do maths impossible in Rust or C++.
+LogicN can do impossible maths before a real backend exists.
 LogicN has a real photonic backend before one exists.
 LogicN prevents all reverse engineering.
 ```

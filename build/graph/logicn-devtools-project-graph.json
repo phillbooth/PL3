@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-15T18:50:57.084Z",
+  "generatedAt": "2026-05-16T08:58:21.780Z",
   "nodes": [
     {
       "id": "package:logicn-core",
@@ -597,15 +597,6 @@
       ]
     },
     {
-      "id": "doc:docs/APPLICATION_SECURITY_POSITIONING.md",
-      "kind": "Document",
-      "label": "APPLICATION_SECURITY_POSITIONING.md",
-      "sourcePath": "docs/APPLICATION_SECURITY_POSITIONING.md",
-      "tags": [
-        "document"
-      ]
-    },
-    {
       "id": "doc:docs/APP_CRASH_HANDLING.md",
       "kind": "Document",
       "label": "APP_CRASH_HANDLING.md",
@@ -952,6 +943,15 @@
       "kind": "Document",
       "label": "SECURE_HTTP_RESPONSES.md",
       "sourcePath": "docs/SECURE_HTTP_RESPONSES.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/SECURE_WEB_RUNTIME_FIRST.md",
+      "kind": "Document",
+      "label": "SECURE_WEB_RUNTIME_FIRST.md",
+      "sourcePath": "docs/SECURE_WEB_RUNTIME_FIRST.md",
       "tags": [
         "document"
       ]
@@ -1490,10 +1490,10 @@
       ]
     },
     {
-      "id": "doc:packages-logicn/logicn-core/docs/backend-language-gap-analysis.md",
+      "id": "doc:packages-logicn/logicn-core/docs/backend-runtime-capability-roadmap.md",
       "kind": "Document",
-      "label": "backend-language-gap-analysis.md",
-      "sourcePath": "packages-logicn/logicn-core/docs/backend-language-gap-analysis.md",
+      "label": "backend-runtime-capability-roadmap.md",
+      "sourcePath": "packages-logicn/logicn-core/docs/backend-runtime-capability-roadmap.md",
       "tags": [
         "document",
         "logicn-core"
@@ -1650,6 +1650,16 @@
       ]
     },
     {
+      "id": "doc:packages-logicn/logicn-core/docs/generated-output-and-runtime-ergonomics.md",
+      "kind": "Document",
+      "label": "generated-output-and-runtime-ergonomics.md",
+      "sourcePath": "packages-logicn/logicn-core/docs/generated-output-and-runtime-ergonomics.md",
+      "tags": [
+        "document",
+        "logicn-core"
+      ]
+    },
+    {
       "id": "doc:packages-logicn/logicn-core/docs/glossary.md",
       "kind": "Document",
       "label": "glossary.md",
@@ -1750,10 +1760,30 @@
       ]
     },
     {
+      "id": "doc:packages-logicn/logicn-core/docs/language-core-maturity-roadmap.md",
+      "kind": "Document",
+      "label": "language-core-maturity-roadmap.md",
+      "sourcePath": "packages-logicn/logicn-core/docs/language-core-maturity-roadmap.md",
+      "tags": [
+        "document",
+        "logicn-core"
+      ]
+    },
+    {
       "id": "doc:packages-logicn/logicn-core/docs/language-non-supported-primitives.md",
       "kind": "Document",
       "label": "language-non-supported-primitives.md",
       "sourcePath": "packages-logicn/logicn-core/docs/language-non-supported-primitives.md",
+      "tags": [
+        "document",
+        "logicn-core"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-core/docs/language-positioning-principles.md",
+      "kind": "Document",
+      "label": "language-positioning-principles.md",
+      "sourcePath": "packages-logicn/logicn-core/docs/language-positioning-principles.md",
       "tags": [
         "document",
         "logicn-core"
@@ -1800,16 +1830,6 @@
       ]
     },
     {
-      "id": "doc:packages-logicn/logicn-core/docs/lessons-from-rust.md",
-      "kind": "Document",
-      "label": "lessons-from-rust.md",
-      "sourcePath": "packages-logicn/logicn-core/docs/lessons-from-rust.md",
-      "tags": [
-        "document",
-        "logicn-core"
-      ]
-    },
-    {
       "id": "doc:packages-logicn/logicn-core/docs/logic-targets.md",
       "kind": "Document",
       "label": "logic-targets.md",
@@ -1824,36 +1844,6 @@
       "kind": "Document",
       "label": "logic-widths.md",
       "sourcePath": "packages-logicn/logicn-core/docs/logic-widths.md",
-      "tags": [
-        "document",
-        "logicn-core"
-      ]
-    },
-    {
-      "id": "doc:packages-logicn/logicn-core/docs/logicn-language-core-maturity-gap.md",
-      "kind": "Document",
-      "label": "logicn-language-core-maturity-gap.md",
-      "sourcePath": "packages-logicn/logicn-core/docs/logicn-language-core-maturity-gap.md",
-      "tags": [
-        "document",
-        "logicn-core"
-      ]
-    },
-    {
-      "id": "doc:packages-logicn/logicn-core/docs/logicn-vs-fsharp.md",
-      "kind": "Document",
-      "label": "logicn-vs-fsharp.md",
-      "sourcePath": "packages-logicn/logicn-core/docs/logicn-vs-fsharp.md",
-      "tags": [
-        "document",
-        "logicn-core"
-      ]
-    },
-    {
-      "id": "doc:packages-logicn/logicn-core/docs/logicn-vs-python-and-generated-outputs.md",
-      "kind": "Document",
-      "label": "logicn-vs-python-and-generated-outputs.md",
-      "sourcePath": "packages-logicn/logicn-core/docs/logicn-vs-python-and-generated-outputs.md",
       "tags": [
         "document",
         "logicn-core"
@@ -1884,6 +1874,16 @@
       "kind": "Document",
       "label": "memory-pressure-and-disk-spill.md",
       "sourcePath": "packages-logicn/logicn-core/docs/memory-pressure-and-disk-spill.md",
+      "tags": [
+        "document",
+        "logicn-core"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-core/docs/memory-safety-and-developer-experience.md",
+      "kind": "Document",
+      "label": "memory-safety-and-developer-experience.md",
+      "sourcePath": "packages-logicn/logicn-core/docs/memory-safety-and-developer-experience.md",
       "tags": [
         "document",
         "logicn-core"
@@ -14295,10 +14295,10 @@
     },
     {
       "from": "package:logicn-core",
-      "to": "doc:packages-logicn/logicn-core/docs/backend-language-gap-analysis.md",
+      "to": "doc:packages-logicn/logicn-core/docs/backend-runtime-capability-roadmap.md",
       "kind": "owns",
       "confidence": "EXTRACTED",
-      "evidencePath": "packages-logicn/logicn-core/docs/backend-language-gap-analysis.md"
+      "evidencePath": "packages-logicn/logicn-core/docs/backend-runtime-capability-roadmap.md"
     },
     {
       "from": "package:logicn-core",
@@ -14312,6 +14312,13 @@
       "to": "doc:packages-logicn/logicn-core/docs/compiler-backends.md",
       "kind": "owns",
       "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-core/docs/compiler-backends.md"
+    },
+    {
+      "from": "doc:packages-logicn/logicn-core/docs/compiler-backends.md",
+      "to": "package:logicn-target-binary",
+      "kind": "documents",
+      "confidence": "INFERRED",
       "evidencePath": "packages-logicn/logicn-core/docs/compiler-backends.md"
     },
     {
@@ -14666,6 +14673,13 @@
     },
     {
       "from": "package:logicn-core",
+      "to": "doc:packages-logicn/logicn-core/docs/generated-output-and-runtime-ergonomics.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-core/docs/generated-output-and-runtime-ergonomics.md"
+    },
+    {
+      "from": "package:logicn-core",
       "to": "doc:packages-logicn/logicn-core/docs/glossary.md",
       "kind": "owns",
       "confidence": "EXTRACTED",
@@ -14827,10 +14841,24 @@
     },
     {
       "from": "package:logicn-core",
+      "to": "doc:packages-logicn/logicn-core/docs/language-core-maturity-roadmap.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-core/docs/language-core-maturity-roadmap.md"
+    },
+    {
+      "from": "package:logicn-core",
       "to": "doc:packages-logicn/logicn-core/docs/language-non-supported-primitives.md",
       "kind": "owns",
       "confidence": "EXTRACTED",
       "evidencePath": "packages-logicn/logicn-core/docs/language-non-supported-primitives.md"
+    },
+    {
+      "from": "package:logicn-core",
+      "to": "doc:packages-logicn/logicn-core/docs/language-positioning-principles.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-core/docs/language-positioning-principles.md"
     },
     {
       "from": "package:logicn-core",
@@ -14861,11 +14889,11 @@
       "evidencePath": "packages-logicn/logicn-core/docs/legacy-and-compatibility-boundaries.md"
     },
     {
-      "from": "package:logicn-core",
-      "to": "doc:packages-logicn/logicn-core/docs/lessons-from-rust.md",
-      "kind": "owns",
-      "confidence": "EXTRACTED",
-      "evidencePath": "packages-logicn/logicn-core/docs/lessons-from-rust.md"
+      "from": "doc:packages-logicn/logicn-core/docs/legacy-and-compatibility-boundaries.md",
+      "to": "package:logicn-framework-api-server",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "packages-logicn/logicn-core/docs/legacy-and-compatibility-boundaries.md"
     },
     {
       "from": "package:logicn-core",
@@ -14911,27 +14939,6 @@
     },
     {
       "from": "package:logicn-core",
-      "to": "doc:packages-logicn/logicn-core/docs/logicn-language-core-maturity-gap.md",
-      "kind": "owns",
-      "confidence": "EXTRACTED",
-      "evidencePath": "packages-logicn/logicn-core/docs/logicn-language-core-maturity-gap.md"
-    },
-    {
-      "from": "package:logicn-core",
-      "to": "doc:packages-logicn/logicn-core/docs/logicn-vs-fsharp.md",
-      "kind": "owns",
-      "confidence": "EXTRACTED",
-      "evidencePath": "packages-logicn/logicn-core/docs/logicn-vs-fsharp.md"
-    },
-    {
-      "from": "package:logicn-core",
-      "to": "doc:packages-logicn/logicn-core/docs/logicn-vs-python-and-generated-outputs.md",
-      "kind": "owns",
-      "confidence": "EXTRACTED",
-      "evidencePath": "packages-logicn/logicn-core/docs/logicn-vs-python-and-generated-outputs.md"
-    },
-    {
-      "from": "package:logicn-core",
       "to": "doc:packages-logicn/logicn-core/docs/memory-and-variable-use.md",
       "kind": "owns",
       "confidence": "EXTRACTED",
@@ -14950,6 +14957,13 @@
       "kind": "owns",
       "confidence": "EXTRACTED",
       "evidencePath": "packages-logicn/logicn-core/docs/memory-pressure-and-disk-spill.md"
+    },
+    {
+      "from": "package:logicn-core",
+      "to": "doc:packages-logicn/logicn-core/docs/memory-safety-and-developer-experience.md",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-core/docs/memory-safety-and-developer-experience.md"
     },
     {
       "from": "package:logicn-core",
@@ -15786,13 +15800,6 @@
     },
     {
       "from": "doc:packages-logicn/logicn-core/docs/syntax-logic-status.md",
-      "to": "package:logicn-core-network",
-      "kind": "documents",
-      "confidence": "INFERRED",
-      "evidencePath": "packages-logicn/logicn-core/docs/syntax-logic-status.md"
-    },
-    {
-      "from": "doc:packages-logicn/logicn-core/docs/syntax-logic-status.md",
       "to": "package:logicn-core-logic",
       "kind": "documents",
       "confidence": "INFERRED",
@@ -15801,27 +15808,6 @@
     {
       "from": "doc:packages-logicn/logicn-core/docs/syntax-logic-status.md",
       "to": "package:logicn-core-vector",
-      "kind": "documents",
-      "confidence": "INFERRED",
-      "evidencePath": "packages-logicn/logicn-core/docs/syntax-logic-status.md"
-    },
-    {
-      "from": "doc:packages-logicn/logicn-core/docs/syntax-logic-status.md",
-      "to": "package:logicn-ai",
-      "kind": "documents",
-      "confidence": "INFERRED",
-      "evidencePath": "packages-logicn/logicn-core/docs/syntax-logic-status.md"
-    },
-    {
-      "from": "doc:packages-logicn/logicn-core/docs/syntax-logic-status.md",
-      "to": "package:logicn-target-cpu",
-      "kind": "documents",
-      "confidence": "INFERRED",
-      "evidencePath": "packages-logicn/logicn-core/docs/syntax-logic-status.md"
-    },
-    {
-      "from": "doc:packages-logicn/logicn-core/docs/syntax-logic-status.md",
-      "to": "package:logicn-target-wasm",
       "kind": "documents",
       "confidence": "INFERRED",
       "evidencePath": "packages-logicn/logicn-core/docs/syntax-logic-status.md"

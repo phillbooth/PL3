@@ -17,7 +17,7 @@ Core idea:
 
 ```text
 LogicN should be easy to run like PHP, Ruby or JavaScript during development,
-but should compile like Rust or Go for production.
+but should support production-oriented output later.
 ```
 
 ## Core Principle

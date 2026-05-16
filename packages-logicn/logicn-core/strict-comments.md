@@ -148,7 +148,7 @@ Strict comments are inspired by existing concepts such as:
 ```text
 JSDoc
 TSDoc
-Rust doc comments
+structured doc comments
 Doxygen
 doctests
 annotations

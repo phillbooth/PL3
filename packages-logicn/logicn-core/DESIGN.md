@@ -67,8 +67,7 @@ a photonic-only language
 a loose scripting language
 a JavaScript clone
 a PHP clone
-a Rust clone
-a Python clone
+a clone of another language
 a full operating system
 a kernel or driver development project by default
 a hardware-vendor-specific language

@@ -57,15 +57,15 @@ The project should not add more active package surfaces until the syntax,
 memory model, Tri/Bool boundary and parser are concrete enough to test against
 real `.lln` programs.
 
-LogicN should not claim measured speed over C#, Python, C or C++ in v0.1. It can
-state performance goals and design opportunities, but measured performance
-claims require an implemented compiler, a settled memory model and reproducible
+LogicN should not make measured performance claims in v0.1. It can state
+performance goals and design opportunities, but measured performance claims
+require an implemented compiler/runtime, a settled memory model and reproducible
 benchmarks.
 
-LogicN should also not claim to be more memory-safe than Rust. Its stronger
-security claim is application-level: deny-by-default effects, typed API
-boundaries, secret-safe reports, package permissions, controlled interop,
-production gates and AI-safe generated project context.
+LogicN's stronger security claim is secure-runtime behavior:
+deny-by-default effects, typed API boundaries, memory-safe values, secret-safe
+reports, package permissions, controlled interop, production gates and AI-safe
+generated project context.
 
 LogicN should not claim direct control over CPU L1/L2/L3 cache or ECC memory.
 Cache-aware work should be framed as memory layout, access-pattern, batching,
@@ -78,9 +78,9 @@ of the network: typed network APIs, deny-by-default network permissions, TLS
 policy, route limits, backpressure, timeout policy, zero-copy planning where
 available, platform-aware I/O backend selection and network reports.
 
-LogicN should also not claim maturity next to modern C++ or Rust until the
-language core is enforceable. The missing maturity checklist lives in
-`docs/logicn-language-core-maturity-gap.md` and covers the real compiler pipeline,
+LogicN should also not claim production maturity until the language core is
+enforceable. The missing maturity checklist lives in
+`docs/language-core-maturity-roadmap.md` and covers the real compiler pipeline,
 traits/protocols, deterministic cleanup, FFI, package management, tests,
 async runtime semantics, source-mapped runtime errors and standard library
 baseline.
@@ -288,16 +288,11 @@ LogicN core:
 | 5 | Structured concurrency, cancellation and streams |
 | 6 | Deterministic resource cleanup |
 | 7 | Safe compile-time metadata and attributes |
-| 8 | C ABI and foreign-call boundaries |
+| 8 | Native ABI and foreign-call boundaries |
 | 9 | Matrix/vector shape rules with scalar fallback |
 | 10 | Stable diagnostics and AI report schemas |
 
-Detailed analysis lives in `docs/backend-language-gap-analysis.md`.
-
-Comparative positioning against mature languages such as F# lives in
-`docs/logicn-vs-fsharp.md`. The short version is that LogicN should not claim to be
-better than F# today; it should compete from a different angle: security-first
-defaults, explicit effects, AI-readable reports and target-aware planning.
+Detailed analysis lives in `docs/backend-runtime-capability-roadmap.md`.
 
 ## File Extension
 

@@ -10,7 +10,9 @@ LogicN should not turn specialist application areas into native language feature
 
 The guiding rule is:
 
-> If PHP, Python, or C++ would normally use a package, library, framework, driver, extension, or external service for something, LogicN should not make that thing a native language feature.
+> If a feature normally belongs in a package, library, framework, driver,
+> extension, or external service, LogicN should not make that thing a native
+> language feature.
 
 LogicN can support the primitive building blocks.
 
@@ -619,10 +621,10 @@ Supported areas:
 
 ```text
 WASM target
-C ABI
-C++ interop
-Rust interop
-Python bridge
+native ABI
+native interop
+systems interop
+external runtime bridge
 JavaScript bridge
 native bindings
 sandboxing
@@ -1031,7 +1033,7 @@ Before adding a feature to LogicN itself, ask:
 ```text
 Is this needed by most programs?
 Does this affect safety, typing, memory, effects, permissions, errors, or compilation?
-Would PHP, Python, or C++ normally need a library, package, extension, driver, framework, or external service for this?
+Would this normally need a library, package, extension, driver, framework, or external service?
 Can this be implemented cleanly as a package?
 Would adding this to the language make LogicN harder to keep stable?
 Would this create provider lock-in?

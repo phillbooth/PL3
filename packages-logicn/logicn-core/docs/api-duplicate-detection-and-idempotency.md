@@ -945,9 +945,9 @@ feature.
 For example:
 
 ```text
-Python does not natively detect duplicate API routes or require idempotency.
+Runtimes without route manifests do not natively detect duplicate API routes or require idempotency.
 PHP does not natively detect duplicate API routes or require idempotency.
-C++ does not natively detect duplicate API routes or require idempotency.
+General-purpose runtimes do not natively detect duplicate API routes or require idempotency.
 JavaScript does not natively detect duplicate API routes or require idempotency.
 ```
 

@@ -13,7 +13,7 @@ These files describe the app being built, not the LogicN language itself.
 - `SECURITY.md` - security rules, risks and controls
 - `CSRF_PROTECTION.md` - route-level CSRF defaults for cookie-authenticated browser apps and state-changing requests
 - `why-controllers-not-used-in-LogicN.md` - route-first API policy and why controllers are optional framework sugar rather than a core LogicN concept
-- `APPLICATION_SECURITY_POSITIONING.md` - honest LogicN application-security positioning compared with Rust, C++ and Python
+- `SECURE_WEB_RUNTIME_FIRST.md` - secure web runtime first direction for LogicN
 - `ENV_SECRETS.md` - `.env` secret declarations, `Secret<T>` handling, taint tracking, safe sinks, secret reports and redaction
 - `NETWORK_ETHERNET_IO.md` - LogicN network and Ethernet I/O positioning, network policy and high-speed network planning
 - `API.md` - API routes and external services
@@ -45,7 +45,7 @@ These files describe the app being built, not the LogicN language itself.
 - `RESILIENT_FLOWS.md` - controlled recovery, resilient flows and partial success reporting
 - `LOGICN_FINANCIAL_MARKETS.md` - LogicN-centered financial market contracts, runtime direction, safety rules and adapter boundaries
 - `WEB_RENDERING.md` - typed browser rendering pipeline, safe HTML, client state, streaming render and web package boundaries
-- `../packages-logicn/logicn-core/docs/logicn-language-core-maturity-gap.md` - missing LogicN language-core maturity items compared with modern C++ and Rust
+- `../packages-logicn/logicn-core/docs/language-core-maturity-roadmap.md` - LogicN language-core maturity roadmap
 - `../packages-logicn/logicn-core/docs/compliance-and-privacy.md` - LogicN compliance and privacy framework direction
 - `../packages-logicn/logicn-core/docs/data-processing.md` - LogicN data-processing package family direction
 

@@ -6,6 +6,7 @@ LogicN should compile through a checked intermediate representation before backe
 
 ```text
 cpu binary
+portable systems output
 JavaScript ESM
 TypeScript declarations
 Node-compatible JavaScript/WASM
@@ -51,15 +52,72 @@ Implementation order:
 8. React Native adapter/package output planning, including permission and native-boundary reports.
 9. WebAssembly output for isolated compute-heavy frontend/backend code.
 10. Browser/Node WASM bridge output and worker-compatible compute modules.
-11. Native/CPU backend once IR, memory rules and security rules stabilise.
-12. Flutter FFI/native-library output after native ABI and memory rules stabilise.
-13. Mobile native binding/package output after platform permission and native boundary rules stabilise.
-14. GPU, photonic, wavelength and omni-logic backends as planning/report targets first.
+11. Portable systems output planning once IR, memory rules, layout rules and ABI rules stabilise.
+12. Native/CPU backend once IR, memory rules and security rules stabilise.
+13. Flutter FFI/native-library output after native ABI and memory rules stabilise.
+14. Mobile native binding/package output after platform permission and native boundary rules stabilise.
+15. GPU, photonic, wavelength and omni-logic backends as planning/report targets first.
 ```
 
 This means early LogicN should run through a checked interpreter/prototype first, not compile directly to WASM or a native binary as the first production path.
 
 The final long-term compiler implementation language remains a separate decision.
+
+## Systems Lowering Boundary
+
+LogicN may support lower-level backend and ABI work later, but normal LogicN
+source should stay high-level, strict and security-first.
+
+Recommended boundary:
+
+```text
+LogicN app layer     = APIs, agents, JSON, security policy, typed contracts
+LogicN systems layer = runtime internals, ABI bindings, layout, buffers, targets
+systems output       = generated backend artifact, not normal source style
+```
+
+This means LogicN may lower checked IR to portable systems output:
+
+```text
+main.lln
+  -> LogicN AST
+  -> typed IR
+  -> security, memory and effect checks
+  -> systems output
+  -> platform compiler
+```
+
+Raw pointer-like access, unchecked casts, null pointer behaviour, macro-heavy
+generation, manual free everywhere and implicit integer conversions remain
+outside normal LogicN code.
+
+Future systems-output planning may remain staged in `logicn-target-binary` until
+it is stable enough to split. Shared ABI and systems-profile rules may later
+justify separate packages, but those packages should not be added before the
+core parser, checker, memory model and interop report contracts are credible.
+
+Expected future systems backend outputs:
+
+```text
+build/systems/app.runtime
+build/systems/logicn_runtime.runtime
+build/systems/logicn_runtime.interface
+build/app.bin
+build/app.source-map.json
+build/app.security-report.json
+build/app.memory-report.json
+build/app.abi-report.json
+```
+
+Rules:
+
+```text
+Systems output is generated, not hand-authored app code.
+Generated systems output must preserve source maps back to LogicN.
+Generated systems output must not weaken LogicN's typed errors, missing-value rules or effects.
+Manual memory control is allowed only inside audited systems/interop profiles.
+Native ABI imports and exports must declare ownership, nullability, layout and errors.
+```
 
 ## Backend Rules
 
@@ -79,6 +137,7 @@ React, React Native, Angular, Express/Fastify and similar adapters must be gener
 Worker-compatible outputs must report clone/transfer decisions and forbidden effects.
 Mobile-native outputs must not provide built-in phone features; they must report device permissions, native bindings and platform capability assumptions.
 Backend compute outputs must keep vendor-specific GPU, AI accelerator, cloud and photonic behaviour in target plugins or deployment profiles.
+Systems output must be treated as a backend artifact with source maps, ABI reports and memory reports.
 CPU fallback remains the baseline unless a project policy explicitly denies fallback.
 Precision, tolerance, memory movement and fallback decisions must be reported.
 ```

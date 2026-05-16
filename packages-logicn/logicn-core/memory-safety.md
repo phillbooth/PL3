@@ -1329,7 +1329,7 @@ LogicN may choose one of several implementation models.
 
 ### Option 1: Ownership-Based
 
-Similar in spirit to Rust.
+Similar in spirit to strict ownership-oriented safety.
 
 Pros:
 

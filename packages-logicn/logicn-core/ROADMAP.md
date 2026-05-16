@@ -34,9 +34,9 @@ The current repository version is beta. It should not be described as a stable
 release while compiler, runtime, package and documentation contracts are still
 being shaped.
 
-LogicN should not claim maturity next to modern C++ or Rust until the missing
-language-core work in `docs/logicn-language-core-maturity-gap.md` is implemented: real
-compiler pipeline, traits/protocols, deterministic cleanup, FFI, package
+LogicN should not claim production maturity until the missing language-core work
+in `docs/language-core-maturity-roadmap.md` is implemented: real compiler
+pipeline, protocols/interfaces, deterministic cleanup, trusted interop, package
 management, testing, async runtime semantics, source-mapped runtime errors and a
 small standard library.
 
@@ -680,11 +680,9 @@ NIST-style standards where useful. `v21` should keep mobile graphics basic:
 canvas-style primitives, charting and adapter planning such as Flutter or Skia,
 without making frontend frameworks part of `logicn-core`.
 
-The F# comparison in `docs/logicn-vs-fsharp.md` should guide positioning. LogicN should
-not compete by claiming maturity, speed or ecosystem depth before those exist.
-It should compete through explicit security contracts, effect/permission
-reports, AI-readable project context, target-aware planning and source-mapped
-diagnostics.
+`docs/language-positioning-principles.md` should guide positioning. LogicN
+should compete through explicit security contracts, effect/permission reports,
+AI-readable project context, target-aware planning and source-mapped diagnostics.
 
 ---
 

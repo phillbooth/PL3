@@ -39,8 +39,8 @@ docs/sytax/patterns-and-regex.md
 docs/sytax-examples/patterns-and-regex.md
 ```
 
-For a compact comparison with C++ and Python, including what LogicN has, what is
-TODO and what is intentionally not core syntax, see
+For a compact status table showing what LogicN has, what is TODO and what is
+intentionally not core syntax, see
 `docs/syntax-logic-status.md`.
 
 ---
@@ -293,7 +293,7 @@ flow
 for the language's version of a function, but with extra meaning for security,
 effects, reports, rollback, AI context and target optimisation.
 
-A normal keyword such as `function`, `def` or `fn` would mainly say:
+A generic function keyword would mainly say:
 
 ```text
 this is a function
@@ -344,13 +344,13 @@ secure function handlePaymentWebhook(...)
 because the code is not just a function. It is a controlled workflow with
 inputs, outputs, effects, security rules, reports and source maps.
 
-Keyword comparison:
+Keyword decision:
 
 | Keyword | Pros | Cons |
 |---|---|---|
-| `function` | Familiar to JS/PHP/C developers | Longer, less unique |
-| `def` | Familiar to Python/Ruby users | Less descriptive, very Python-like |
-| `fn` | Familiar to Rust users | Short, technical |
+| `function` | Clear and widely understandable | Longer, less connected to LogicN reports/effects |
+| `def` | Short | Less descriptive for security-sensitive workflows |
+| `fn` | Short | Too technical for the default app-layer style |
 | `flow` | Fits LogicN security/API/AI/reporting concept | New keyword to learn |
 
 Recommendation:

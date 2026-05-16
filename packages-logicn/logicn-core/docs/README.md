@@ -17,8 +17,11 @@ language-rules.md
 language-supported-primitives.md
 language-non-supported-primitives.md
 legacy-and-compatibility-boundaries.md
-backend-language-gap-analysis.md
-logicn-language-core-maturity-gap.md
+backend-runtime-capability-roadmap.md
+language-core-maturity-roadmap.md
+generated-output-and-runtime-ergonomics.md
+memory-safety-and-developer-experience.md
+language-positioning-principles.md
 compliance-and-privacy.md
 data-processing.md
 concurrency.md
@@ -34,8 +37,6 @@ javascript-typescript-framework-targets.md
 safe-pattern-matching-and-regex.md
 tri-logic
 type-system.md
-lessons-from-rust.md
-LogicN-vs-fsharp.md
 modules-and-visibility.md
 standard-library.md
 package-use-registry.md

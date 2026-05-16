@@ -894,15 +894,15 @@ unsafe features should be visible in package reports
 
 ---
 
-## Python Interop Option
+## External Runtime Interop Option
 
-Some text AI tooling may initially be Python-based.
+Some text AI tooling may initially depend on external runtimes.
 
 Example:
 
 ```LogicN
 packages {
-  use PyNlp from python "transformers" {
+  use TextRuntime from external_runtime "text-model-tools" {
     version "4.0.0"
 
     permissions {
@@ -924,7 +924,7 @@ packages {
 
 This should be treated as interop, not native LogicN text AI support.
 
-Python NLP packages require sandboxing, permission reports and runtime limits.
+External NLP packages require sandboxing, permission reports and runtime limits.
 
 ---
 
@@ -1109,7 +1109,7 @@ Should prompt injection checks be default for external user text?
 Should PII detection be default for text reports?
 Should generated answers require source references?
 Should generated text be a separate unsafe-to-execute type?
-Should Python NLP packages be allowed in production?
+Should external NLP packages be allowed in production?
 Should text embeddings expose vector dimensions only in reports?
 Should TextGeneration be treated as non-deterministic by default?
 Should package-defined text AI task names be standardised?
@@ -1157,7 +1157,7 @@ Version 0.4:
 
 ```text
 photonic_auto planning for suitable matrix-heavy model layers
-Python interop examples
+external runtime interop examples
 cloud AI accelerator profiles
 source-referenced answer reports
 generated text safety typing

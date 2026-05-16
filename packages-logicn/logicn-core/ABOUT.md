@@ -88,10 +88,7 @@ LogicN is not intended to be:
 ```text
 a replacement for every programming language
 a photonic-only research language
-a JavaScript clone
-a PHP clone
-a Rust clone
-a Python clone
+a clone of another language
 a magic AI language
 an operating system
 a hardware vendor-specific language
@@ -105,19 +102,20 @@ The future-facing hardware ideas should enhance the language, not make it unusab
 
 ## Core Identity
 
-LogicN should combine ideas from several areas:
+LogicN should combine practical language-design goals:
 
 | Area | LogicN Direction |
 |---|---|
-| Rust-style safety | Memory safety, explicit errors, safe ownership ideas |
-| TypeScript-style clarity | Familiar, readable typed structures |
-| Go-style deployment | Simple binaries, APIs, workers and concurrency |
-| Python-style maths usefulness | Matrix, tensor and AI-friendly operations |
-| Ruby-style readability | Clear and approachable syntax |
+| Memory safety | Explicit errors, safe ownership ideas and checked boundaries |
+| Typed clarity | Familiar, readable typed structures |
+| Runtime deployment | Secure APIs, workers and concurrency without a binary-first requirement |
+| Maths usefulness | Matrix, tensor and AI-friendly operations |
+| Readability | Clear and approachable syntax |
 | Security engineering | Permissions, effects, secrets and safe defaults |
 | Future hardware | GPU, photonic and ternary target planning |
 
-LogicN should not copy these languages directly.
+LogicN should learn from proven ideas without presenting itself as a clone or
+replacement of another community's work.
 
 It should learn from them and focus on its own purpose.
 

@@ -180,9 +180,9 @@ logicn-support-enterprise
 
 ## 6. Security Charter
 
-LogicN's strongest security position is application-level policy.
+LogicN's strongest security position is secure web runtime policy.
 
-LogicN should not claim to be universally safer than Rust, C++, Python or any mature language. Instead, LogicN should make security boundaries visible before code runs.
+LogicN should make security boundaries visible before code runs.
 
 LogicN should make these visible and reportable:
 
@@ -426,7 +426,8 @@ LogicN should remain CPU-compatible by default.
 
 Future support for GPU, AI accelerator, low-bit AI, optical I/O, photonic planning and ternary logic should be treated as package contracts, target planning, simulations or report artefacts until real backends exist.
 
-LogicN should not claim measured performance over C, C++, Rust, Python, C# or other mature languages until the compiler, memory model, runtime and benchmark methodology exist.
+LogicN should not claim measured performance until the compiler, memory model,
+runtime and benchmark methodology exist.
 
 Future accelerator targets should be selected by policy, configuration or target capability detection, not by hard-coding vendor devices into language syntax.
 
@@ -465,8 +466,6 @@ LogicN should not currently claim to be:
 
 ```text
 a stable production language
-a replacement for Rust
-a replacement for C++
 a finished compiler ecosystem
 an operating system project
 a certified compliance tool

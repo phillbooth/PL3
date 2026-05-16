@@ -348,17 +348,16 @@ Strict comments are checked intent.
 
 ---
 
-## 11. LogicN Compared with Python
+## 11. Generated Output And Runtime Ergonomics
 
-Status: documented in `docs/logicn-vs-python-and-generated-outputs.md`.
+Status: documented in `docs/generated-output-and-runtime-ergonomics.md`.
 
 Best positioning:
 
 ```text
-LogicN is designed for developers who want Python/Ruby-style readability,
-but with strict types, memory-safe compiled deployment,
-built-in API/security reports, AI-friendly project summaries,
-and future accelerator planning.
+LogicN is designed for developers who want readable source, strict types,
+memory-safe runtime behavior, built-in API/security reports, AI-friendly project
+summaries and future accelerator planning.
 ```
 
 ---
@@ -853,9 +852,11 @@ console.scope is development/debug only by default.
 
 ---
 
-## 11G. Lessons From Rust
+## 11G. Memory Safety And Developer Experience
 
-Status: documented in `docs/lessons-from-rust.md`; graph ownership, draft/secure modes, recursion reports, trusted modules and FFI syntax remain pending.
+Status: documented in `docs/memory-safety-and-developer-experience.md`; graph
+ownership, draft/secure modes, recursion reports, trusted modules and FFI syntax
+remain pending.
 
 Core rule:
 

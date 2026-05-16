@@ -10,8 +10,8 @@ This changelog should track major decisions, design changes, documentation updat
 
 ## Unreleased
 
-- Added `docs/logicn-language-core-maturity-gap.md` to document missing LogicN language-core
-  maturity work compared with modern C++ and Rust.
+- Added `docs/language-core-maturity-roadmap.md` to document missing LogicN
+  language-core maturity work.
 
 ---
 
@@ -79,9 +79,8 @@ Example:
 
 ### Added
 
-- Added `docs/logicn-vs-fsharp.md` to document honest positioning against F#,
-  including F# maturity, LogicN differentiators and missing production-readiness
-  work.
+- Added language positioning guidance covering LogicN differentiators and
+  missing production-readiness work.
 - Added `docs/structured-await.md` plus matching `docs/sytax/` and
   `docs/sytax-examples/` entries for LogicN Structured Await: `await`, `await all`,
   `await race`, `await stream`, queue handoff, mandatory timeout policy,
@@ -92,7 +91,7 @@ Example:
   report direction.
 
 ```text
-- Added explicit backend language suggestion adoption guidance to docs/backend-language-gap-analysis.md.
+- Added explicit backend runtime capability guidance to docs/backend-runtime-capability-roadmap.md.
 - Added backend evolution requirements for editions, compatibility, variants, constraints, concurrency, cleanup, metadata, FFI, shape types and diagnostics.
 - Added Secure App Kernel boundary guidance to AI instructions.
 - Added checked Run Mode support for simple `console.log("...")` output.
@@ -148,7 +147,7 @@ Example:
 - Added docs/safe-pattern-matching-and-regex.md for ReDoS-resistant Pattern defaults, UnsafeRegex audit gates, pattern sets, streaming scans and pattern reports.
 - Added docs/sytax/README.md and docs/sytax/patterns-and-regex.md to start one-file-per-feature syntax documentation.
 - Added docs/sytax-examples/README.md and docs/sytax-examples/patterns-and-regex.md to start one-file-per-feature good/bad syntax usage examples.
-- Added docs/logicn-vs-python-and-generated-outputs.md to position LogicN against Python and summarise generated build outputs.
+- Added docs/generated-output-and-runtime-ergonomics.md to summarise generated build outputs.
 - Added docs/pending-additions.md to track pending LogicN concepts, current status and remaining implementation work.
 - Added docs/pending-logicn-additions.md as a planning snapshot of core pending LogicN additions.
 - Added docs/primary-lane-and-offload-nodes.md for bounded CPU offload away from the main execution lane.
@@ -164,7 +163,9 @@ Example:
 - Added docs/security-first-build-system.md to define `LogicN build` as a check, test, report, suggest and compile pipeline.
 - Added docs/startup-validation.md to define project validation before `main()` runs.
 - Added docs/debug-console.md for source-mapped, redacted and production-restricted console debugging.
-- Added docs/lessons-from-rust.md to capture graph ownership, draft/secure modes, trusted modules, FFI and safety-without-friction design lessons.
+- Added docs/memory-safety-and-developer-experience.md to capture graph
+  ownership, draft/secure modes, trusted modules, interop and
+  safety-without-friction design lessons.
 - Added docs/lazy-compact-json.md with Lazy Compact JSON, repeated node shape detection and dataset-style JSON compaction policy.
 - Added docs/memory-and-variable-use.md with local lifetime, read-only borrowing, explicit clone and copy-on-write memory rules.
 - Added copied docs/ versions of existing root technical documents so docs/ can act as the detailed language design area.

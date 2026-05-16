@@ -32,10 +32,10 @@
   framework sugar rather than a core LogicN concept
 - [x] Document optional thin DDD guidance for domain, flow, infrastructure and
   policy boundaries without making DDD mandatory or weakening security
-- [x] Add Rust financial markets design note
-- [x] Add application-security positioning compared with Rust, C++ and Python
+- [x] Add financial markets runtime safety design note
+- [x] Add secure web runtime positioning
 - [x] Add network and Ethernet I/O positioning plus `logicn-core-network` package
-- [x] Add C++/Rust maturity gap analysis for missing LogicN language-core work
+- [x] Add language-core maturity roadmap for missing compiler/runtime work
 - [x] Add compliance and privacy framework docs plus `logicn-compliance-*`
   package scaffolds
 - [x] Add data-processing framework docs plus `logicn-data-*` package scaffolds
@@ -164,8 +164,11 @@
 - [ ] Follow `docs/CORE_FOUNDATION_ROADMAP.md` before adding new active package
   surfaces
 - [ ] Freeze v1 syntax and grammar around the supported examples
-- [x] Add a compact syntax and logic status table comparing LogicN with C++ and
-  Python
+- [x] Clarify that LogicN's first product target is secure web runtime code,
+  not low-level systems programming
+- [x] Document systems-layer direction as generated backend/ABI work,
+  not normal unsafe LogicN source style
+- [x] Add a compact LogicN syntax and logic status table
 - [x] Write at least 20 real `.lln` examples covering basic, intermediate and
   advanced v1 syntax
   - [x] Add the 20th core example, `logic-review-scale.lln`
@@ -185,6 +188,8 @@
     `logicn-core-logic`
 - [ ] Define standard library baseline for JSON, HTTP, files, streams, crypto
   policy, dates, money and safe strings
+  - [x] Capture developer ergonomics and security lessons for the LogicN
+    standard library and language-core roadmap
 - [ ] Define IDE/LSP, debugger, source-map and test-framework roadmap
 - [ ] Define exhaustive match, sealed variant, generic constraint and protocol
   requirements for production-readiness
@@ -192,6 +197,8 @@
   handles, DB connections and secrets
 - [ ] Define FFI/trusted module model with ownership, nullability, layout and
   audit reports
+- [ ] Define native ABI and portable systems-output report contracts before
+  creating a dedicated ABI or systems package surface
 - [ ] Define package manager and registry design with lockfile, permissions and
   reproducible builds
 - [x] Define resilient flow controlled recovery and processing report direction

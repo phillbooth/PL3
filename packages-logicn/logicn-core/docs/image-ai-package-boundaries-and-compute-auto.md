@@ -1177,15 +1177,15 @@ unsafe features should be visible in package reports
 
 ---
 
-# 30. Python Interop Option
+# 30. External Runtime Interop Option
 
-Some image AI tooling may initially be Python-based.
+Some image AI tooling may initially depend on external runtimes.
 
 Example:
 
 ```LogicN
 packages {
-  use PyVision from python "torchvision" {
+  use VisionRuntime from external_runtime "vision-tools" {
     version "0.18.0"
 
     permissions {
@@ -1207,7 +1207,7 @@ packages {
 
 This should be treated as interop, not native LogicN image AI support.
 
-Python vision packages require sandboxing, permission reports and runtime limits.
+External vision packages require sandboxing, permission reports and runtime limits.
 
 ---
 
@@ -1449,7 +1449,7 @@ Should image metadata be stripped by default?
 Should photonic_auto be allowed by default for segmentation?
 Should CPU reference verification be required for photonic targets?
 Should batch image tasks have separate memory limits?
-Should Python vision packages be allowed in production?
+Should external vision packages be allowed in production?
 Should image embeddings expose vector dimensions only in reports?
 Should generated images be marked with metadata by default?
 ```
@@ -1494,7 +1494,7 @@ image similarity package examples
 ## Version 0.4
 
 ```text
-Python interop examples
+external runtime interop examples
 cloud AI accelerator profiles
 wavelength/optical image preprocessing candidates
 image generation package safety

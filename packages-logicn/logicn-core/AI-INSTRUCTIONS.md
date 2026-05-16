@@ -58,16 +58,13 @@ admin UI, ORM, templates and frontend adapters must stay above the kernel.
 LogicN should not become:
 
 ```text
-a JavaScript clone
-a PHP clone
-a Rust clone
-a Python clone
+a clone of another language
 a loose scripting language
 a photonic-only research language
 a language that requires future hardware to be useful
 a full web framework
 a CMS or admin dashboard
-a React or Angular clone
+a frontend framework clone
 a mandatory ORM or template system
 ```
 
@@ -99,8 +96,8 @@ Do not treat the Secure App Kernel as a CMS, ORM, UI framework or page builder.
 
 ## Backend Suggestion Rule
 
-When updating LogicN core, preserve the backend language priorities from
-`docs/backend-language-gap-analysis.md`:
+When updating LogicN core, preserve the backend runtime priorities from
+`docs/backend-runtime-capability-roadmap.md`:
 
 ```text
 language editions and compatibility rules
@@ -110,7 +107,7 @@ generic constraints, traits or protocols
 structured concurrency, cancellation and streams
 deterministic resource cleanup
 safe compile-time metadata and attributes
-C ABI and foreign-call boundaries
+native ABI and foreign-call boundaries
 matrix/vector shape rules with scalar fallback
 stable diagnostics and AI report schemas
 ```
@@ -1166,7 +1163,7 @@ LogicN should be presented as practical first, future-facing second.
 Do not claim:
 
 ```text
-LogicN can do maths impossible in C++ or Rust.
+LogicN can do impossible maths before a real backend exists.
 LogicN makes all software secure automatically.
 LogicN requires photonic hardware.
 LogicN already has a real photonic backend.

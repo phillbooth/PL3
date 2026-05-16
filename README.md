@@ -73,15 +73,10 @@ explicit imports, typed errors, source maps, stable diagnostics and
 machine-readable reports. It does not mean vague natural-language friendliness.
 
 For v1, these are goals unless backed by implemented compiler checks and tests.
-LogicN should not claim measured speed over C#, Python, C or C++ until the compiler,
-memory model and benchmark methodology exist.
-
-LogicN should also avoid claiming that it is more memory-safe than Rust. Its
-strongest security position is application-level policy: deny-by-default
-permissions, typed API boundaries, secret-safe reporting, controlled interop,
-production gates and AI-safe project context. See
-`docs/APPLICATION_SECURITY_POSITIONING.md` for the full position compared with
-Rust, C++ and Python.
+LogicN's strongest position is secure web runtime behavior: deny-by-default
+permissions, typed API boundaries, memory-safe values, secret-safe reporting,
+controlled interop, production gates and AI-safe project context. See
+`docs/SECURE_WEB_RUNTIME_FIRST.md` for the runtime-first direction.
 
 LogicN should not claim to make Ethernet hardware faster. Its network position
 is application-level I/O governance: typed network APIs, deny-by-default network

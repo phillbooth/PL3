@@ -220,7 +220,7 @@ Suggested fix:
 | ------------------------------- | ---: | ------------------------------------------ | ---------------------------------- | --------------------------------------------------- |
 | Package `use` registry          | 0    | Untracked dependency risk                  | Required for packages              | Version, permissions, package reports               |
 | Native bindings                 | 4    | Sandbox escape, memory corruption          | Denied by default                  | Trusted package, audit, ownership report            |
-| FFI / C ABI                     | 4    | ABI mismatch, pointer bugs                 | Explicit boundary only             | Layout types, ownership, platform report            |
+| FFI / native ABI                | 4    | ABI mismatch, pointer bugs                 | Explicit boundary only             | Layout types, ownership, platform report            |
 | SQL drivers                     | 4    | Injection, transaction bugs                | Typed driver boundary              | Parameterisation, transaction reports               |
 | NoSQL drivers                   | 4    | Filter injection, permission bypass        | Typed driver boundary              | Typed filters, permission reports                   |
 | Shell execution                 | X    | Remote code execution                      | Unsupported in normal LogicN           | Explicit admin/tooling boundary only                |

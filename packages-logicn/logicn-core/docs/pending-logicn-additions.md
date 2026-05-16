@@ -661,23 +661,22 @@ webhook PaymentWebhook {
 
 ---
 
-## 11. LogicN Compared with Python
+## 11. Generated Output And Runtime Ergonomics
 
-Status: documented in `docs/logicn-vs-python-and-generated-outputs.md`.
+Status: documented in `docs/generated-output-and-runtime-ergonomics.md`.
 
 Best positioning:
 
 ```text
-LogicN is designed for developers who want Python/Ruby-style readability,
-but with strict types, memory-safe compiled deployment,
-built-in API/security reports, AI-friendly project summaries,
-and future accelerator planning.
+LogicN is designed for developers who want readable source, strict types,
+memory-safe runtime behavior, built-in API/security reports, AI-friendly project
+summaries and future accelerator planning.
 ```
 
 LogicN differentiators:
 
 ```text
-single binary deployment
+secure runtime deployment
 strict types by default
 explicit large value memory behaviour
 Lazy Compact JSON
@@ -993,7 +992,7 @@ Lazy Compact JSON
 Pure Flow Caching
 Memory Pressure and Disk Spill
 Omni Logic
-LogicN vs Python positioning
+generated output and runtime ergonomics
 Package Use Registry
 Vectorised Dataset Syntax
 Hybrid Logic and Wavelength Compute

@@ -21,10 +21,10 @@ LogicN can perform better by understanding the project, storage, memory, schemas
 effects and target hardware before the program runs.
 ```
 
-Compared with Python, LogicN can gain speed through native compilation, strict
+LogicN can gain speed through checked runtime output, strict
 typed execution, streaming-first data handling and fewer runtime checks.
 
-Compared with C++, LogicN should not claim to be generally faster. C++ remains one
+LogicN should not claim to be generally faster than mature optimized runtimes. Runtime maturity remains one
 of the strongest raw-performance languages when written well. LogicN's opportunity
 is to make safe performance defaults normal, visible and reportable.
 

@@ -20,8 +20,8 @@ Use this file as a practical checklist while the project moves from concept to d
 [x] Add at least 20 real .lln examples for the v1 syntax subset
 [ ] Build parser coverage for those examples
 [ ] Reject post-v1 syntax with clear diagnostics
-[ ] Use docs/logicn-language-core-maturity-gap.md as the maturity checklist before claiming
-    parity with modern C++ or Rust
+[ ] Use docs/language-core-maturity-roadmap.md as the maturity checklist before
+    claiming production maturity
 ```
 
 ---
@@ -278,7 +278,7 @@ Reason for additions:
 [x] Add compiled app Git guidance reference to README.md
 [x] Add Omni-logic direction to README.md
 [x] Add diagnostics and memory recovery direction to README.md
-[x] Add docs/logicn-vs-python-and-generated-outputs.md
+[x] Add docs/generated-output-and-runtime-ergonomics.md
 [x] Add docs/pending-additions.md
 [x] Add docs/pending-logicn-additions.md
 [x] Add run-mode generated output docs
@@ -316,7 +316,7 @@ Reason for additions:
 [x] Add docs/pure-flow-caching.md
 [x] Add docs/memory-pressure-and-disk-spill.md
 [x] Add docs/omni-logic.md
-[x] Add docs/logicn-vs-python-and-generated-outputs.md
+[x] Add docs/generated-output-and-runtime-ergonomics.md
 [x] Add docs/pending-additions.md
 [x] Expand SPEC.md into official language rules
 [x] Expand COMPATIBILITY.md with version compatibility policy
@@ -857,10 +857,10 @@ Reason for additions:
 
 ---
 
-## Rust Lessons / Developer Friction TODO
+## Memory Safety / Developer Friction TODO
 
 ```text
-[x] Add lessons-from-Rust design documentation
+[x] Add memory-safety and developer-experience design documentation
 [ ] Define graph ownership syntax
 [ ] Define graph node/edge syntax
 [ ] Define graph cycle report schema

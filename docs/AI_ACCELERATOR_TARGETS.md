@@ -381,7 +381,7 @@ Phase 1
   detect AI accelerator availability and generate reports
 
 Phase 2
-  generate Python/PyTorch/vLLM/Hugging Face adapter configs
+  generate external model-runtime adapter configs
 
 Phase 3
   allow compute auto to choose ai_accelerator for AI tasks

@@ -26,7 +26,7 @@ All notable changes to this app should be documented here.
 - Added bounded Omni logic rules in `logicn-core-logic` and the 20th core
   `.lln` example, `logic-review-scale.lln`.
 - Added `packages-logicn/logicn-core/docs/syntax-logic-status.md` with a
-  compact LogicN syntax and logic status table compared with C++ and Python.
+  compact LogicN syntax and logic status table.
 - Expanded the syntax and logic status table with detailed entries for loops,
   flow modifiers, vector flows, class/object-model decisions, I/O, memory,
   package, target and tooling syntax status.
@@ -42,11 +42,21 @@ All notable changes to this app should be documented here.
 - Added an explicit untrusted-syntax governance rule: syntax starts untrusted
   until it is typed, effect-checked, permissioned, bounded, source-mapped,
   tested or reportable.
-- Added `packages-logicn/logicn-core/docs/logicn-language-core-maturity-gap.md` to track
-  missing LogicN language-core maturity items compared with modern C++ and Rust,
-  including compiler pipeline, traits/protocols, deterministic cleanup, FFI,
-  package management, testing, async runtime, source-mapped runtime errors and
-  standard library work.
+- Added developer ergonomics and security lessons to the LogicN runtime
+  capability roadmap, requirements and core roadmap tasks.
+- Added a first-class monkey-patching ban for normal LogicN code, with adapter,
+  interface/protocol, pipeline, test-mock and signed-hotfix alternatives.
+- Clarified LogicN's first product direction as secure web runtime code, while
+  keeping low-level systems targets, embedded targets and native binary output
+  as later target paths.
+- Documented LogicN's systems direction: portable systems output and native ABI
+  work are future generated backend/interop targets, while normal LogicN source
+  remains high-level, strict, source-mapped, permissioned and reportable.
+- Added `packages-logicn/logicn-core/docs/language-core-maturity-roadmap.md` to
+  track missing LogicN language-core maturity items, including compiler
+  pipeline, protocols, deterministic cleanup, trusted interop, package
+  management, testing, async runtime, source-mapped runtime errors and standard
+  library work.
 - Added `packages-logicn/logicn-core/docs/compliance-and-privacy.md` plus the
   `logicn-compliance` package family for privacy, security control mapping,
   data governance, audit, retention, AI governance, accessibility, deployment
@@ -98,10 +108,9 @@ All notable changes to this app should be documented here.
 - Added `docs/SECURE_HTTP_RESPONSES.md` documenting typed response contracts,
   secure headers, cache/cookie policy, CSP, safe redirects, response size limits
   and response security reports.
-- Added `docs/APPLICATION_SECURITY_POSITIONING.md` to position LogicN's
-  security advantage as application policy, deployment checks, package
-  permissions, typed APIs, security reports and AI-safe context rather than a
-  claim of stronger memory safety than Rust.
+- Added `docs/SECURE_WEB_RUNTIME_FIRST.md` to position LogicN's first milestone
+  as a secure web runtime with application policy, deployment checks, package
+  permissions, typed APIs, security reports and AI-safe context.
 - Added `docs/NETWORK_ETHERNET_IO.md` and `packages-logicn/logicn-core-network/`
   to define LogicN network and Ethernet I/O positioning, deny-by-default
   network policy, TLS policy, backpressure, zero-copy planning, XDP/eBPF and
@@ -169,9 +178,9 @@ All notable changes to this app should be documented here.
 - Added `docs/FINANCE_PACKAGES.md` and `packages-logicn/logicn-finance-core/` as a grouped
   beta finance package area covering finance maths, market data, FIX, audit,
   risk, pricing and desktop interoperability boundaries.
-- Added `packages-logicn/logicn-core/docs/logicn-vs-fsharp.md` to position LogicN honestly against
-  F# as a beta, security-first, AI-readable and target-aware backend language
-  concept rather than a production .NET competitor.
+- Added `packages-logicn/logicn-core/docs/language-positioning-principles.md`
+  to keep LogicN positioning focused on secure runtime behavior,
+  AI-readability and target-aware planning.
 - Initial documentation structure.
 - Added `packages-logicn/logicn-framework-app-kernel/` as the optional partial framework
   layer for secure runtime boundaries.
@@ -346,8 +355,8 @@ All notable changes to this app should be documented here.
 - Narrowed the active workspace target list to `cpu` and `wasm`, with GPU, AI
   accelerator, photonic, optical I/O, low-bit AI and other advanced target work
   labelled post-v1 unless needed by core type-system semantics.
-- Clarified that LogicN must not make measured speed claims over C#, Python, C or
-  C++ until the compiler, memory model and benchmark methodology exist.
+- Clarified that LogicN must not make measured speed claims until the compiler,
+  memory model, runtime and benchmark methodology exist.
 - Defined AI-readable as concrete syntax/tooling properties: regular grammar,
   explicit effects/imports, typed errors, source maps, stable diagnostics and
   machine-readable reports.

@@ -157,9 +157,9 @@ security reports or AI reports.
 
 ---
 
-### REQ-EVOLUTION-008: C ABI and Foreign-Call Boundary
+### REQ-EVOLUTION-008: Native ABI and Foreign-Call Boundary
 
-LogicN MAY support C ABI import/export and foreign calls.
+LogicN MAY support native ABI import/export and foreign calls.
 
 Foreign calls MUST declare types, effects, permissions, target compatibility
 and unsafe boundaries. Raw pointers MUST remain unavailable in normal LogicN code.

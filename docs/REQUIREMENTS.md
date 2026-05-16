@@ -51,18 +51,20 @@ must not be treated as implemented app functionality.
   WASM target support.
 - Everything beyond CPU and WASM targets must be labelled post-v1 unless it is
   necessary to define the core type system.
-- LogicN must not claim to be faster than C#, Python, C or C++ until the compiler,
-  memory model and benchmark methodology exist. Current performance wording
+- LogicN must not make measured performance claims until the compiler, memory
+  model, runtime and benchmark methodology exist. Current performance wording
   must be framed as a goal or opportunity, not a measured fact.
-- LogicN must not claim maturity next to modern C++ or Rust until it has an
-  enforceable language core: parser, AST, symbol table, type checker, memory
-  checker, effect checker, module system, traits/protocols, FFI boundary, test
-  model, standard library, source-mapped runtime errors and build/release
-  modes.
-- LogicN must not claim to be more memory-safe than Rust. Security positioning
-  must be framed as an application-level goal: stronger default policy for
-  permissions, APIs, secrets, package effects, interop, deployment and
-  AI-readable reports.
+- LogicN must not claim production language maturity until it has an enforceable
+  language core: parser, AST, symbol table, type checker, memory checker, effect
+  checker, module system, protocols/interfaces, trusted interop boundary, test
+  model, standard library, source-mapped runtime errors and build/release modes.
+- LogicN security positioning must be framed as a secure web runtime goal:
+  stronger default policy for permissions, APIs, memory-safe values, secrets,
+  package effects, interop, deployment and AI-readable reports.
+- LogicN's first product target is secure web-application runtime code:
+  APIs, webhooks, service workers, queue workers, typed JSON services,
+  auth-heavy applications and agent/tool gateway backends. Low-level systems
+  targets, embedded targets and native binary output remain later target paths.
 - LogicN must treat data and behavior as untrusted by default within reason.
   External input, dependency output, generated AI content, cached data, network
   data, database data, uploaded files, environment-derived values, headers,
@@ -73,6 +75,11 @@ must not be treated as implemented app functionality.
   accepting a feature must not make that feature production-ready; each syntax
   surface must be typed, effect-checked, permissioned, bounded, source-mapped,
   tested or reportable before it is treated as safe.
+- LogicN must ban monkey patching in normal code. Runtime mutation of built-ins,
+  imported modules, package internals, framework methods, response serializers,
+  security policies or provider functions must be denied by default. Use
+  adapters, interfaces/protocols, pipelines, test-only mocks or signed hotfix
+  packages instead.
 - Trust transitions must be represented in types, policies or reports. A value
   must not silently move from untrusted to trusted because it crossed an
   internal function boundary.
@@ -90,6 +97,10 @@ must not be treated as implemented app functionality.
   batching, copying and vectorisation guidance. ECC must be framed as a
   deployment reliability property that can only be detected or required when
   the platform exposes trustworthy evidence.
+- LogicN syntax should stay readable and examples should be easy to follow,
+  while types, missing values, errors, effects, package authority, dynamic
+  execution, imports, JSON decoding, native interop and secret output remain
+  explicit, checked and reportable.
 - Future cache-aware memory work should support contiguous arrays, fixed-size
   buffers, read-only views, copy-on-write for large values, explicit clone
   warnings, hot/cold data separation, structure-of-arrays layouts,
@@ -383,6 +394,13 @@ The app package must remain deliberately small until a product domain is chosen.
   `packages-logicn/logicn-target-cpu/`.
 - Optimized CPU kernel contracts must live in `packages-logicn/logicn-cpu-kernels/`.
 - Binary/native target planning must live in `packages-logicn/logicn-target-binary/`.
+- Portable systems output planning may start in
+  `packages-logicn/logicn-target-binary/` only after ABI, layout and memory
+  report rules stabilise.
+- LogicN must treat systems output as a generated backend/interop target, not
+  as normal unsafe application source style.
+- Future native ABI work must declare ownership, nullability, string encoding,
+  allocator/free policy, blocking/thread-safety assumptions and error mapping.
 - JavaScript target planning must live in `packages-logicn/logicn-target-js/`.
 - WebAssembly target planning must live in `packages-logicn/logicn-target-wasm/`.
 - GPU target planning must live in `packages-logicn/logicn-target-gpu/`.
@@ -510,8 +528,8 @@ the active v1 build graph.
   and redacted evidence bundles.
 - Risk and pricing package work must wait until finance maths, market data and
   audit contracts are stable enough to support them.
-- LogicN finance packages may wrap mature C++, Java, Python or TypeScript finance
-  ecosystems through controlled interop, but wrappers must declare memory
+- LogicN finance packages may wrap mature external finance ecosystems through
+  controlled interop, but wrappers must declare memory
   isolation, credential policy, network permissions, audit requirements and
   fallback behaviour.
 - Early LogicN finance work must not claim to implement a full stock exchange,
@@ -774,10 +792,10 @@ the active v1 build graph.
 
 - `logicn-core-compiler` must own compiler pipeline contracts for lexing, parsing, AST,
   checkers, IR, diagnostics, source maps and compiler reports.
-- `logicn-core-compiler` must treat the C++/Rust maturity gap as a foundation
-  checklist: real parser, AST, symbol table, type checker, memory checker,
-  effect checker, IR, output, debug/release modes and source-mapped runtime
-  errors.
+- `logicn-core-compiler` must use the language-core maturity roadmap as a
+  foundation checklist: real parser, AST, symbol table, type checker, memory
+  checker, effect checker, IR, output, debug/release modes and source-mapped
+  runtime errors.
 - Until the full parser/checker exists, `logicn-core-compiler` must provide a
   conservative syntax safety scan for the frozen v1 core risks: direct Tri
   branch conditions, implicit Tri/Decision/Bool boundary assignments,

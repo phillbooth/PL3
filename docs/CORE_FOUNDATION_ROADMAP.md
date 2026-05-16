@@ -22,10 +22,10 @@ reports
 Anything outside that list is post-v1 unless it is needed to define core
 semantics.
 
-The C++/Rust maturity gap analysis lives in
-`packages-logicn/logicn-core/docs/logicn-language-core-maturity-gap.md`. It is the
-foundation checklist for making LogicN credible next to mature systems
-languages without pretending the current prototype is already there.
+The language-core maturity roadmap lives in
+`packages-logicn/logicn-core/docs/language-core-maturity-roadmap.md`. It is the
+foundation checklist for making LogicN credible without pretending the current
+prototype is already a production compiler.
 
 ## Hard Scope Rules
 
@@ -38,9 +38,9 @@ languages without pretending the current prototype is already there.
   effects/imports, typed errors, source maps, stable diagnostics and
   machine-readable reports.
 - Do not expose future/package complexity as normal language syntax.
-- Do not claim maturity next to C++ or Rust until the parser, AST, symbol table,
-  type checker, memory checker, effect checker, module system, FFI boundary,
-  test model and standard library have enforceable implementations.
+- Do not claim production maturity until the parser, AST, symbol table, type
+  checker, memory checker, effect checker, module system, trusted interop
+  boundary, test model and standard library have enforceable implementations.
 
 ## Phase 0: Workspace Freeze
 
