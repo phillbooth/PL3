@@ -64,6 +64,32 @@ All notable changes to this app should be documented here.
 - Added the layered docs structure under `docs/framework`, `docs/contracts`,
   `docs/reports` and `docs/rules`, plus a Knowledge Base concept note for the
   documentation layer model.
+- Added Knowledge Base concept docs for the core `data -> flow -> permission ->
+  boundary -> report` model, permission/capability/actor semantics, scoped
+  vaults, boundary safety proof, photonic resolution and local AI review.
+- Added dedicated Knowledge Base concept docs for capabilities and software as
+  declared intent, plus permission/capability report guidance.
+- Added a Benchmark Success Plan concept covering compute-mix validation,
+  timed-throughput scoring, warm-up state isolation, checksum interpretation,
+  relative performance reporting and honest LogicN prototype-runner labelling.
+- Added startup and boot warmup docs covering verified boot profiles, minimal
+  production package loading, safe startup caches, phased warmup and startup
+  reports.
+- Added fast response and keep-alive docs covering precompiled route dispatch,
+  warmed validators and policy tables, inbound transport policy, outbound
+  connection pooling and network performance reports.
+- Added a LogicN Concept Map Knowledge Base entry and framework docs for routes,
+  classification, context, scopes/lifetimes, errors, packages and tests under
+  the newer `data -> flow -> permission -> boundary -> report` structure.
+- Added a Match Catch-All Branch concept documenting `_ => { ... }` as the
+  explicit fallback branch for `match`, including webhook and security-sensitive
+  handling rules.
+- Expanded scoped vaults as the no-global-variable efficiency model, including
+  vault scopes, capability-based access, `VaultRef`, safe write declarations,
+  vault reports and fast response planning.
+- Added framework docs for the core model, permissions, boundaries and scoped
+  vaults, plus rule/report docs for boundary safety, photonic resolution, audit
+  evidence and local AI review.
 - Reworked `docs/README.md` into a navigation page for framework concepts,
   contract types, generated reports, rules and package-level references.
 - Added `packages-logicn/logicn-core/docs/language-core-maturity-roadmap.md` to

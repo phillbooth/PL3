@@ -1,0 +1,73 @@
+# Framework: Permissions
+
+## Purpose
+
+Permissions give developers one clear place to declare authority for a flow.
+
+## Short Definition
+
+A permission declares who may run a flow, what the code may do, what data may
+move and what audit/report proof is required.
+
+## Syntax Example
+
+```logicn
+permission user_email_update {
+  actor require users.email.update
+  actor require users.pii.read
+
+  code allow db.read
+  code allow db.write
+  code allow audit.write
+  code deny network.external
+
+  data allow expose classify: pii with users.pii.read
+  data deny expose classify: secret
+
+  audit required event "user.email.update"
+}
+```
+
+Use it from a flow:
+
+```logicn
+secure flow updateUserEmail(
+  request: UpdateEmailRequest,
+  ctx: RequestContext
+) -> Result<UserResponse, ApiError>
+  permission use user_email_update
+{
+  ...
+}
+```
+
+## Internal Parts
+
+| Part | Meaning |
+|---|---|
+| `actor` | what the user/service/package/agent is allowed to do |
+| `code` | what side effects the flow may perform |
+| `data` | what classified data may be accessed or exposed |
+| `audit` | what must be recorded |
+| `report` | generated proof |
+
+## Security Rules
+
+- Sensitive actions require permissions.
+- Sensitive data exposure requires permissions.
+- Missing permission fails closed.
+- Permission must compile into effective capability, effect, policy and report data.
+
+## Generated Reports
+
+```text
+permission-report.json
+permission-effective-report.json
+capability-report.json
+effect-report.json
+security-report.json
+```
+
+## Knowledge Base
+
+See [Permission, Capability And Actor Model](../Knowledge-Bases/permission-capability-actor-model.md).

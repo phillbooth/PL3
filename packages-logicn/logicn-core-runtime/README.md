@@ -28,7 +28,34 @@ target fallback execution
 network backend dispatch contracts
 network timeout and backpressure enforcement hooks
 runtime reports
+verified boot-profile loading
+safe startup warmup hooks
 ```
+
+## Startup And Boot Warmup
+
+`logicn-core-runtime` should support verified startup rather than runtime
+discovery in production.
+
+At build/check time, LogicN may generate a boot profile containing route graph
+hashes, policy graph hashes, schema validator hashes, package graph hashes and
+target plans. At boot, the runtime should verify those artefacts, load the
+smallest safe runtime surface and expose hooks for safe warmup.
+
+Runtime startup responsibilities include:
+
+```text
+verify boot-profile hash inputs
+load prebuilt route/security/schema artefacts
+load eager production packages only
+defer optional AI/search/report/benchmark packages until after readiness
+warm safe validators and runtime tables
+deny secret caching
+emit startup reports
+```
+
+Startup caches must be deterministic, non-secret, rebuildable, bounded and safe
+to bypass. They must not be required for correctness.
 
 ## Structured Await Runtime
 

@@ -1,0 +1,198 @@
+# Permission, Capability And Actor Model
+
+LogicN should expose a simple developer-facing `permission` model while keeping
+capabilities, effects, policies and reports internally precise.
+
+## Short Definitions
+
+```text
+actor       = who or what is performing the action
+capability  = declared authority the actor/package/flow/tool has
+effect      = technical action the code may perform
+permission  = authority for a flow to act
+policy      = rules that decide when authority applies
+report      = proof the checks happened
+```
+
+## Actor
+
+An actor is the identity attempting to perform an action.
+
+Actors may be:
+
+```text
+logged-in user
+admin user
+service account
+API client
+AI agent
+background job
+package/plugin
+external system
+```
+
+The actor usually comes from `ctx.actor`:
+
+```logicn
+ctx.actor.id
+ctx.actor.type
+ctx.actor.roles
+ctx.actor.capabilities
+ctx.actor.tenantId
+```
+
+## Capabilities
+
+Capabilities describe what the actor, service, package, flow or tool is
+authorised to do.
+
+```text
+capabilities = declared permissions / powers
+```
+
+They answer:
+
+```text
+Who is allowed to do this?
+What are they allowed to access?
+For what purpose?
+```
+
+Examples:
+
+```text
+users.read
+users.email.update
+users.pii.read
+orders.refund
+payments.charge
+ai.external_tool.call
+dataset.export
+```
+
+See [Capabilities](capabilities.md) for the dedicated capability concept record.
+
+## Capabilities Versus Effects
+
+| Concept | Meaning | Example |
+|---|---|---|
+| `effects` | What the code is technically allowed to do | `db.read`, `db.write`, `audit.write` |
+| `capabilities` | What the actor is authorised to do | `users.read`, `users.email.update`, `users.pii.read` |
+
+You normally need both.
+
+## Developer-Facing Permission
+
+Instead of making normal developers write separate effects, capabilities,
+policies and audit blocks for every flow, LogicN should support reusable
+permissions.
+
+```logicn
+secure flow updateUserEmail(
+  request: UpdateEmailRequest,
+  ctx: RequestContext
+) -> Result<UserResponse, ApiError>
+  permission use user_email_update
+{
+  let user = try UsersRepository.findRequired(request.userId)
+  let updated = try User.changeEmail(user, request.email)
+
+  return Ok(UserResponse.from(updated))
+}
+```
+
+Permission definition:
+
+```logicn
+permission user_email_update {
+  actor {
+    require users.email.update
+    require users.pii.read
+  }
+
+  code {
+    allow db.read
+    allow db.write
+    allow audit.write
+    deny network.external
+    deny file.write
+  }
+
+  data {
+    allow expose classify: public_id
+    allow expose classify: pii with users.pii.read
+    deny expose classify: secret
+    deny expose classify: internal
+  }
+
+  audit {
+    required true
+    event "user.email.update"
+  }
+}
+```
+
+## Advanced Form
+
+Advanced code may still expose the internal concepts directly:
+
+```logicn
+secure flow getUser(...)
+  capabilities {
+    require users.read
+    require users.pii.read
+  }
+  effects {
+    allow db.read
+    allow audit.write
+    deny network.external
+  }
+  policy use UserReadPolicy
+{
+  ...
+}
+```
+
+## Security Rules
+
+```text
+Sensitive action requires permission.
+Sensitive data exposure requires permission.
+Capabilities must be checked at secure flow, route, package, response and tool boundaries.
+Effects must be declared before privileged technical actions.
+Missing actor authority must fail closed.
+```
+
+## Report Rules
+
+LogicN should generate permission and capability evidence:
+
+```text
+permission-report.json
+permission-effective-report.json
+capability-report.json
+capability-grant-report.json
+effect-report.json
+security-report.json
+```
+
+## Performance Rule
+
+Capabilities should be expensive to validate at build/check time and cheap to
+check at runtime.
+
+At build time LogicN can generate:
+
+```text
+getUser requires:
+- users.read
+- users.pii.read
+```
+
+At runtime the secure runtime can precheck against `ctx.actor.capabilities`.
+
+## AI Rule
+
+AI tools should treat a permission block as the authoritative explanation of who
+may do what, which effects may happen, what data may move and what audit event
+is required.

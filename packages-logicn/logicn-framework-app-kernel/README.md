@@ -87,6 +87,44 @@ Frameworks provide opinions and user-facing structure.
 - Runtime reports for APIs, auth, idempotency, memory, load control, data and
   target behaviour.
 
+## Startup And Fast Response
+
+The app kernel should consume verified boot-profile artefacts instead of
+discovering route and security policy at production startup.
+
+Build/check time may provide:
+
+```text
+route graph
+policy graph
+request validators
+response validators
+effects map
+permission table
+runtime plan
+startup report
+```
+
+At boot, the kernel should verify those artefacts, preload the route table,
+preload security policy, warm common validators and become ready before
+deferred optional packages start.
+
+Fast response should come from a known-safe path:
+
+```text
+precompiled route lookup
+prevalidated request schema
+preloaded permission and effect policy
+bounded request body handling
+warmed typed flow dispatch
+safe response projection
+runtime and security reports
+```
+
+The kernel must still reject invalid requests early and must not let startup
+warmup bypass auth, validation, rate limits, idempotency, replay protection,
+body limits, secret policy or audit requirements.
+
 ## Non-Goals
 
 The kernel must not include:

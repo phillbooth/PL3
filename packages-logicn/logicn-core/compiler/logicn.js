@@ -5309,17 +5309,23 @@ function runArithmeticThresholdBenchmarkExample(source, result, content, mainFlo
 
 function runComputeMixThroughputBenchmarkExample(source, result, content, mainFlow, runOptions) {
   const config = extractComputeMixBenchmarkConfig(content, runOptions);
+
+  const warmupStartedAt = process.hrtime.bigint();
+  if (config.warmupMs > 0) {
+    const warmupState = {
+      seed: config.seed >>> 0,
+      checksum: 0
+    };
+
+    while (Number(process.hrtime.bigint() - warmupStartedAt) / 1_000_000 < config.warmupMs) {
+      runComputeMixBatch(warmupState, config.batchSize);
+    }
+  }
+
   const state = {
     seed: config.seed >>> 0,
     checksum: 0
   };
-
-  const warmupStartedAt = process.hrtime.bigint();
-  if (config.warmupMs > 0) {
-    while (Number(process.hrtime.bigint() - warmupStartedAt) / 1_000_000 < config.warmupMs) {
-      runComputeMixBatch(state, config.batchSize);
-    }
-  }
 
   const startedAt = process.hrtime.bigint();
   const startedCpu = process.cpuUsage();

@@ -932,6 +932,30 @@ production route with raw body access and no reason
 production webhook with no replay protection
 ```
 
+Production mode should also prefer verified boot-profile artefacts over runtime
+discovery. The server should load the route manifest, security policy, schema
+validators and runtime plan from checked build output, verify their hashes, and
+defer optional packages until after readiness.
+
+Fast response should be implemented through:
+
+```text
+precompiled method/path dispatch
+early rejection of unknown method/path before body parsing
+prebuilt request and response validators
+warmed security policy tables
+bounded worker pools
+inbound transport policy
+outbound connection pools
+network performance reports
+```
+
+Keep-alive must be profile-controlled. HTTP/1.x keep-alive, HTTP/2
+multiplexing and HTTP/3/QUIC should be selected by deployment profile and
+reported, not assumed. Connection reuse must never bypass validation, auth,
+TLS policy, rate limits, body limits, timeout policy, backpressure, secret-safe
+logging or graceful shutdown.
+
 ---
 
 ## 24. Example Commands

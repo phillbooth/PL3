@@ -259,6 +259,59 @@ stream HttpRequestBody {
 Network streams need bounded buffering, explicit overflow behavior and timeout
 policy.
 
+## Keep-Alive And Transport Policy
+
+`logicn-core-network` owns the policy model for connection reuse and transport
+capabilities. HTTP serving remains owned by `logicn-framework-api-server`, but
+network policy should describe what transports and pools are allowed.
+
+LogicN should treat HTTP/1.x keep-alive, HTTP/2 multiplexing and HTTP/3/QUIC as
+deployment-profile capabilities, not as core language syntax.
+
+Conceptual transport policy:
+
+```logicn
+network transport {
+  http1 {
+    keepAlive: true
+    idleTimeoutMs: 5000
+    maxRequestsPerConnection: 200
+  }
+
+  http2 {
+    enabled: auto
+    multiplexing: true
+  }
+
+  http3 {
+    enabled: optional
+    requireProfile: "edge-modern"
+  }
+}
+```
+
+Outbound connection pooling must be explicit:
+
+```logicn
+outbound service PaymentProvider {
+  protocol: https
+
+  connectionPool {
+    keepAlive: true
+    maxSockets: 50
+    maxFreeSockets: 10
+    idleTimeoutMs: 10000
+  }
+
+  timeoutMs: 30000
+  retry: safeOnly
+}
+```
+
+Keep-alive and pooling must never bypass TLS policy, authentication,
+authorization, validation, timeout policy, rate limits, body limits,
+backpressure, secret-safe logging or audit requirements.
+
 ## Reports
 
 This package should define the facts needed for:

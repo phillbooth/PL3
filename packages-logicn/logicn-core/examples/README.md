@@ -103,6 +103,14 @@ node packages-logicn/logicn-core/examples/compute-mix-throughput-benchmark.node.
 python packages-logicn/logicn-core/examples/compute-mix-throughput-benchmark.py --operations 100000 --warmup-ms 0 --batch-size 10000 --no-tracemalloc
 ```
 
+For strict validation through the comparison runner, use `--validate`. Validation
+mode forces a fresh measured state and treats fixed-operation checksums as the
+pass/fail condition:
+
+```bash
+node packages-logicn/logicn-core/examples/benchmark-runner.node.js --validate --runs 3 --operations 5000000 --batch-size 100000 --buffer-size 65536
+```
+
 Run the three runtimes repeatedly and write a local JSON result summary:
 
 ```bash
@@ -111,6 +119,11 @@ node packages-logicn/logicn-core/examples/benchmark-runner.node.js --runs 5 --ta
 
 Results are written under `benchmark-results/`. These files are machine-local
 benchmark outputs and should not be treated as language source.
+
+Interpret fixed-operation output as checksum validation only when elapsed time is
+very short. The official speed score is the median operations per second from a
+10-30 second timed run. LogicN prototype results currently measure Node.js
+runner overhead, not native compiler performance.
 
 ### Benchmark Fairness Rules
 
@@ -126,6 +139,9 @@ benchmark outputs and should not be treated as language source.
 10. The median result is the official score.
 11. Results must include CPU, memory, runtime version, OS, architecture and timestamp.
 12. LogicN prototype results must state that the current backend is a Node.js runner.
+13. Warm-up must use separate throwaway state and must not mutate the measured state.
+14. Fixed-operation mode validates checksums; timed mode ranks speed.
+15. Summary reports should include validation status, relative performance and run order.
 
 Current fixtures:
 

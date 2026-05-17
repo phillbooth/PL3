@@ -1,0 +1,65 @@
+# Framework: Boundaries
+
+## Purpose
+
+Boundaries define trust crossings in LogicN applications.
+
+## Short Definition
+
+A boundary is any place where data or authority crosses from one trust area into
+another.
+
+## Boundary Types
+
+```text
+route/API
+package/plugin
+storage
+external API
+event/queue
+AI/tool
+compute target
+vault
+native interop
+```
+
+## Syntax Examples
+
+```logicn
+boundary storage UsersDatabase {
+  type postgres
+  model User
+  permission use user_storage_access
+}
+```
+
+```logicn
+boundary external PaymentProvider {
+  type api
+  request ChargePaymentRequest
+  response ChargePaymentResponse
+  permission use payment_provider_access
+}
+```
+
+## Security Rules
+
+- Every boundary crossing must validate data.
+- Every boundary crossing must check permission.
+- Every boundary crossing must be reportable.
+- Unknown trust must default to untrusted.
+- Native, AI/tool and external boundaries require stricter reports.
+
+## Generated Reports
+
+```text
+boundary-report.json
+external-boundary-report.json
+storage-boundary-report.json
+ai-tool-boundary-report.json
+compute-boundary-report.json
+```
+
+## Knowledge Base
+
+See [Core Application Model](../Knowledge-Bases/core-application-model.md).

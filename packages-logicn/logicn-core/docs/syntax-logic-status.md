@@ -108,7 +108,7 @@ invented as core syntax later.
 | Branching | pattern matching | Implemented prototype | Used for enums, `Option`, `Result`, `Tri`, `Decision`. |
 | Branching | `match result` | Implemented prototype | `examples/result.lln` uses `Ok` and `Err`. |
 | Branching | `match option` | Implemented prototype | `examples/option.lln` uses `Some` and `None`. |
-| Branching | wildcard match | Documented draft | Needs exhaustiveness and reachability rules. |
+| Branching | wildcard match / catch-all branch | Documented draft | `_ => { ... }` means anything else; security-sensitive fallbacks must be explicit, observable and safe. |
 | Loops | counted `for` | Documented draft | Planned with bounds and mutation checks. |
 | Loops | foreach | Documented draft | Prefer explicit collection iteration with element type checks. |
 | Loops | `while` | Documented draft | Planned with termination/resource diagnostics. |

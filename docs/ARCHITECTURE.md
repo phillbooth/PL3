@@ -737,6 +737,23 @@ Production boot/profile policy must additionally default-disable
 build, `logicn-core-config` should require an explicit production package override
 with a reason and expose that override in the runtime handoff and reports.
 
+LogicN startup should use verified boot profiles for production.
+
+Route graphs, policy graphs, schema validators, effects maps, package graphs
+and target plans should be generated at build/check time where possible. Boot
+should verify artefact hashes, load the smallest safe production surface and
+defer optional AI, search, report, graph and benchmark packages until after
+readiness.
+
+Fast response should be treated as a request-path architecture concern.
+
+The API server and app kernel should combine precompiled route dispatch,
+prebuilt validators, warmed security policy tables, bounded worker pools,
+inbound transport policy, outbound connection pools and network performance
+reports. Keep-alive and pooling must remain policy-controlled and must not
+bypass auth, validation, TLS, rate limits, body limits, timeout policy,
+backpressure, secret-safe logging or audit requirements.
+
 
 
 Deployment auto-configuration should be profile-driven and target-aware.

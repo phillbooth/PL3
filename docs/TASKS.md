@@ -60,6 +60,28 @@
 - [x] Add layered documentation structure for framework, contracts, reports and
   rules
 - [x] Add Knowledge Base concept note for the documentation layer model
+- [x] Document the core `data -> flow -> permission -> boundary -> report` model
+- [x] Document permissions, capabilities and actors as the developer-facing
+  authority model
+- [x] Add dedicated capability concept and permission/capability report docs
+- [x] Document LogicN's software-as-declared-intent positioning
+- [x] Document benchmark success and result interpretation rules for
+  compute-mix validation and timed throughput scoring
+- [x] Document startup and boot warmup as verified boot-profile planning
+- [x] Document fast response and keep-alive as policy-controlled request-path
+  optimisation
+- [x] Add detailed concept map under the five-part LogicN core model
+- [x] Add framework docs for routes, classification, context, scopes/lifetimes,
+  errors, packages and tests
+- [x] Document `_ => { ... }` match catch-all branches and safe fallback rules
+- [x] Document scoped vaults as controlled runtime state instead of global
+  variables
+- [x] Document scoped vaults as a fast response mechanism with typed owner,
+  permission, TTL, sensitivity and report rules
+- [x] Document boundary safety as the first LogicN proof target
+- [x] Document photonic resolution rules for optical/photonic compute outputs
+- [x] Document local AI review as advisory tooling where compiler checks remain
+  authoritative
 - [ ] Complete `docs/ARCHITECTURE.md`
 - [ ] Complete `docs/SECURITY.md`
 

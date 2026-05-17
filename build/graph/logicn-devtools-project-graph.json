@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-05-17T11:44:55.844Z",
+  "generatedAt": "2026-05-17T17:45:41.514Z",
   "nodes": [
     {
       "id": "package:logicn-core",
@@ -804,10 +804,28 @@
       ]
     },
     {
+      "id": "doc:docs/FAST_RESPONSE_AND_KEEPALIVE.md",
+      "kind": "Document",
+      "label": "FAST_RESPONSE_AND_KEEPALIVE.md",
+      "sourcePath": "docs/FAST_RESPONSE_AND_KEEPALIVE.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
       "id": "doc:docs/FINANCE_PACKAGES.md",
       "kind": "Document",
       "label": "FINANCE_PACKAGES.md",
       "sourcePath": "docs/FINANCE_PACKAGES.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/framework/framework-boundaries.md",
+      "kind": "Document",
+      "label": "framework-boundaries.md",
+      "sourcePath": "docs/framework/framework-boundaries.md",
       "tags": [
         "document"
       ]
@@ -822,6 +840,24 @@
       ]
     },
     {
+      "id": "doc:docs/framework/framework-classification.md",
+      "kind": "Document",
+      "label": "framework-classification.md",
+      "sourcePath": "docs/framework/framework-classification.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/framework/framework-context.md",
+      "kind": "Document",
+      "label": "framework-context.md",
+      "sourcePath": "docs/framework/framework-context.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
       "id": "doc:docs/framework/framework-contracts.md",
       "kind": "Document",
       "label": "framework-contracts.md",
@@ -831,10 +867,28 @@
       ]
     },
     {
+      "id": "doc:docs/framework/framework-core-model.md",
+      "kind": "Document",
+      "label": "framework-core-model.md",
+      "sourcePath": "docs/framework/framework-core-model.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
       "id": "doc:docs/framework/framework-effects.md",
       "kind": "Document",
       "label": "framework-effects.md",
       "sourcePath": "docs/framework/framework-effects.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/framework/framework-errors.md",
+      "kind": "Document",
+      "label": "framework-errors.md",
+      "sourcePath": "docs/framework/framework-errors.md",
       "tags": [
         "document"
       ]
@@ -853,6 +907,24 @@
       "kind": "Document",
       "label": "framework-overview.md",
       "sourcePath": "docs/framework/framework-overview.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/framework/framework-packages.md",
+      "kind": "Document",
+      "label": "framework-packages.md",
+      "sourcePath": "docs/framework/framework-packages.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/framework/framework-permissions.md",
+      "kind": "Document",
+      "label": "framework-permissions.md",
+      "sourcePath": "docs/framework/framework-permissions.md",
       "tags": [
         "document"
       ]
@@ -903,6 +975,33 @@
       ]
     },
     {
+      "id": "doc:docs/framework/framework-routes.md",
+      "kind": "Document",
+      "label": "framework-routes.md",
+      "sourcePath": "docs/framework/framework-routes.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/framework/framework-scoped-vaults.md",
+      "kind": "Document",
+      "label": "framework-scoped-vaults.md",
+      "sourcePath": "docs/framework/framework-scoped-vaults.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/framework/framework-scopes-lifetimes.md",
+      "kind": "Document",
+      "label": "framework-scopes-lifetimes.md",
+      "sourcePath": "docs/framework/framework-scopes-lifetimes.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
       "id": "doc:docs/framework/framework-secure-flows.md",
       "kind": "Document",
       "label": "framework-secure-flows.md",
@@ -921,10 +1020,136 @@
       ]
     },
     {
+      "id": "doc:docs/framework/framework-tests.md",
+      "kind": "Document",
+      "label": "framework-tests.md",
+      "sourcePath": "docs/framework/framework-tests.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/Knowledge-Bases/benchmark-success-plan.md",
+      "kind": "Document",
+      "label": "benchmark-success-plan.md",
+      "sourcePath": "docs/Knowledge-Bases/benchmark-success-plan.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/Knowledge-Bases/boundary-safety-proof.md",
+      "kind": "Document",
+      "label": "boundary-safety-proof.md",
+      "sourcePath": "docs/Knowledge-Bases/boundary-safety-proof.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/Knowledge-Bases/capabilities.md",
+      "kind": "Document",
+      "label": "capabilities.md",
+      "sourcePath": "docs/Knowledge-Bases/capabilities.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/Knowledge-Bases/core-application-model.md",
+      "kind": "Document",
+      "label": "core-application-model.md",
+      "sourcePath": "docs/Knowledge-Bases/core-application-model.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
       "id": "doc:docs/Knowledge-Bases/documentation-layer-model.md",
       "kind": "Document",
       "label": "documentation-layer-model.md",
       "sourcePath": "docs/Knowledge-Bases/documentation-layer-model.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/Knowledge-Bases/fast-response-and-keep-alive.md",
+      "kind": "Document",
+      "label": "fast-response-and-keep-alive.md",
+      "sourcePath": "docs/Knowledge-Bases/fast-response-and-keep-alive.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/Knowledge-Bases/local-ai-review.md",
+      "kind": "Document",
+      "label": "local-ai-review.md",
+      "sourcePath": "docs/Knowledge-Bases/local-ai-review.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/Knowledge-Bases/logicn-concept-map.md",
+      "kind": "Document",
+      "label": "logicn-concept-map.md",
+      "sourcePath": "docs/Knowledge-Bases/logicn-concept-map.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/Knowledge-Bases/match-catch-all-branch.md",
+      "kind": "Document",
+      "label": "match-catch-all-branch.md",
+      "sourcePath": "docs/Knowledge-Bases/match-catch-all-branch.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/Knowledge-Bases/permission-capability-actor-model.md",
+      "kind": "Document",
+      "label": "permission-capability-actor-model.md",
+      "sourcePath": "docs/Knowledge-Bases/permission-capability-actor-model.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/Knowledge-Bases/photonic-resolution-boundary.md",
+      "kind": "Document",
+      "label": "photonic-resolution-boundary.md",
+      "sourcePath": "docs/Knowledge-Bases/photonic-resolution-boundary.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/Knowledge-Bases/scoped-vaults.md",
+      "kind": "Document",
+      "label": "scoped-vaults.md",
+      "sourcePath": "docs/Knowledge-Bases/scoped-vaults.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/Knowledge-Bases/software-as-declared-intent.md",
+      "kind": "Document",
+      "label": "software-as-declared-intent.md",
+      "sourcePath": "docs/Knowledge-Bases/software-as-declared-intent.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/Knowledge-Bases/startup-and-boot-warmup.md",
+      "kind": "Document",
+      "label": "startup-and-boot-warmup.md",
+      "sourcePath": "docs/Knowledge-Bases/startup-and-boot-warmup.md",
       "tags": [
         "document"
       ]
@@ -1101,10 +1326,28 @@
       ]
     },
     {
+      "id": "doc:docs/reports/reports-audit-evidence.md",
+      "kind": "Document",
+      "label": "reports-audit-evidence.md",
+      "sourcePath": "docs/reports/reports-audit-evidence.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
       "id": "doc:docs/reports/reports-contract-index.md",
       "kind": "Document",
       "label": "reports-contract-index.md",
       "sourcePath": "docs/reports/reports-contract-index.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/reports/reports-local-ai-review.md",
+      "kind": "Document",
+      "label": "reports-local-ai-review.md",
+      "sourcePath": "docs/reports/reports-local-ai-review.md",
       "tags": [
         "document"
       ]
@@ -1123,6 +1366,15 @@
       "kind": "Document",
       "label": "reports-overview.md",
       "sourcePath": "docs/reports/reports-overview.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/reports/reports-permission-capability.md",
+      "kind": "Document",
+      "label": "reports-permission-capability.md",
+      "sourcePath": "docs/reports/reports-permission-capability.md",
       "tags": [
         "document"
       ]
@@ -1164,10 +1416,28 @@
       ]
     },
     {
+      "id": "doc:docs/rules/rules-boundary-safety.md",
+      "kind": "Document",
+      "label": "rules-boundary-safety.md",
+      "sourcePath": "docs/rules/rules-boundary-safety.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
       "id": "doc:docs/rules/rules-non-negotiable.md",
       "kind": "Document",
       "label": "rules-non-negotiable.md",
       "sourcePath": "docs/rules/rules-non-negotiable.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/rules/rules-photonic-resolution.md",
+      "kind": "Document",
+      "label": "rules-photonic-resolution.md",
+      "sourcePath": "docs/rules/rules-photonic-resolution.md",
       "tags": [
         "document"
       ]
@@ -1222,6 +1492,15 @@
       "kind": "Document",
       "label": "SERVER_PLATFORM_SUPPORT.md",
       "sourcePath": "docs/SERVER_PLATFORM_SUPPORT.md",
+      "tags": [
+        "document"
+      ]
+    },
+    {
+      "id": "doc:docs/STARTUP_AND_BOOT_WARMUP.md",
+      "kind": "Document",
+      "label": "STARTUP_AND_BOOT_WARMUP.md",
+      "sourcePath": "docs/STARTUP_AND_BOOT_WARMUP.md",
       "tags": [
         "document"
       ]
@@ -2786,6 +3065,46 @@
       "kind": "Document",
       "label": "compute-mix-throughput-2026-05-17T11-43-52-543Z.json",
       "sourcePath": "packages-logicn/logicn-core/examples/benchmark-results/compute-mix-throughput-2026-05-17T11-43-52-543Z.json",
+      "tags": [
+        "report",
+        "logicn-core"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-core/examples/benchmark-results/compute-mix-throughput-2026-05-17T11-49-25-521Z.json",
+      "kind": "Document",
+      "label": "compute-mix-throughput-2026-05-17T11-49-25-521Z.json",
+      "sourcePath": "packages-logicn/logicn-core/examples/benchmark-results/compute-mix-throughput-2026-05-17T11-49-25-521Z.json",
+      "tags": [
+        "report",
+        "logicn-core"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-core/examples/benchmark-results/compute-mix-throughput-2026-05-17T11-52-31-927Z.json",
+      "kind": "Document",
+      "label": "compute-mix-throughput-2026-05-17T11-52-31-927Z.json",
+      "sourcePath": "packages-logicn/logicn-core/examples/benchmark-results/compute-mix-throughput-2026-05-17T11-52-31-927Z.json",
+      "tags": [
+        "report",
+        "logicn-core"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-core/examples/benchmark-results/compute-mix-throughput-2026-05-17T11-52-42-230Z.json",
+      "kind": "Document",
+      "label": "compute-mix-throughput-2026-05-17T11-52-42-230Z.json",
+      "sourcePath": "packages-logicn/logicn-core/examples/benchmark-results/compute-mix-throughput-2026-05-17T11-52-42-230Z.json",
+      "tags": [
+        "report",
+        "logicn-core"
+      ]
+    },
+    {
+      "id": "doc:packages-logicn/logicn-core/examples/benchmark-results/compute-mix-throughput-2026-05-17T11-58-15-343Z.json",
+      "kind": "Document",
+      "label": "compute-mix-throughput-2026-05-17T11-58-15-343Z.json",
+      "sourcePath": "packages-logicn/logicn-core/examples/benchmark-results/compute-mix-throughput-2026-05-17T11-58-15-343Z.json",
       "tags": [
         "report",
         "logicn-core"
@@ -12174,6 +12493,69 @@
       "evidencePath": "docs/framework/framework-project-structure.md"
     },
     {
+      "from": "doc:docs/Knowledge-Bases/benchmark-success-plan.md",
+      "to": "package:logicn-core",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/Knowledge-Bases/benchmark-success-plan.md"
+    },
+    {
+      "from": "doc:docs/Knowledge-Bases/startup-and-boot-warmup.md",
+      "to": "package:logicn-core",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/Knowledge-Bases/startup-and-boot-warmup.md"
+    },
+    {
+      "from": "doc:docs/Knowledge-Bases/startup-and-boot-warmup.md",
+      "to": "package:logicn-core-runtime",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/Knowledge-Bases/startup-and-boot-warmup.md"
+    },
+    {
+      "from": "doc:docs/Knowledge-Bases/startup-and-boot-warmup.md",
+      "to": "package:logicn-core-security",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/Knowledge-Bases/startup-and-boot-warmup.md"
+    },
+    {
+      "from": "doc:docs/Knowledge-Bases/startup-and-boot-warmup.md",
+      "to": "package:logicn-ai",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/Knowledge-Bases/startup-and-boot-warmup.md"
+    },
+    {
+      "from": "doc:docs/Knowledge-Bases/startup-and-boot-warmup.md",
+      "to": "package:logicn-data",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/Knowledge-Bases/startup-and-boot-warmup.md"
+    },
+    {
+      "from": "doc:docs/Knowledge-Bases/startup-and-boot-warmup.md",
+      "to": "package:logicn-data-search",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/Knowledge-Bases/startup-and-boot-warmup.md"
+    },
+    {
+      "from": "doc:docs/Knowledge-Bases/startup-and-boot-warmup.md",
+      "to": "package:logicn-target-gpu",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/Knowledge-Bases/startup-and-boot-warmup.md"
+    },
+    {
+      "from": "doc:docs/Knowledge-Bases/startup-and-boot-warmup.md",
+      "to": "package:logicn-framework-app-kernel",
+      "kind": "documents",
+      "confidence": "INFERRED",
+      "evidencePath": "docs/Knowledge-Bases/startup-and-boot-warmup.md"
+    },
+    {
       "from": "doc:docs/LEARNING_MODE.md",
       "to": "package:logicn-core",
       "kind": "documents",
@@ -16505,6 +16887,34 @@
       "kind": "owns",
       "confidence": "EXTRACTED",
       "evidencePath": "packages-logicn/logicn-core/examples/benchmark-results/compute-mix-throughput-2026-05-17T11-43-52-543Z.json"
+    },
+    {
+      "from": "package:logicn-core",
+      "to": "doc:packages-logicn/logicn-core/examples/benchmark-results/compute-mix-throughput-2026-05-17T11-49-25-521Z.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-core/examples/benchmark-results/compute-mix-throughput-2026-05-17T11-49-25-521Z.json"
+    },
+    {
+      "from": "package:logicn-core",
+      "to": "doc:packages-logicn/logicn-core/examples/benchmark-results/compute-mix-throughput-2026-05-17T11-52-31-927Z.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-core/examples/benchmark-results/compute-mix-throughput-2026-05-17T11-52-31-927Z.json"
+    },
+    {
+      "from": "package:logicn-core",
+      "to": "doc:packages-logicn/logicn-core/examples/benchmark-results/compute-mix-throughput-2026-05-17T11-52-42-230Z.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-core/examples/benchmark-results/compute-mix-throughput-2026-05-17T11-52-42-230Z.json"
+    },
+    {
+      "from": "package:logicn-core",
+      "to": "doc:packages-logicn/logicn-core/examples/benchmark-results/compute-mix-throughput-2026-05-17T11-58-15-343Z.json",
+      "kind": "owns",
+      "confidence": "EXTRACTED",
+      "evidencePath": "packages-logicn/logicn-core/examples/benchmark-results/compute-mix-throughput-2026-05-17T11-58-15-343Z.json"
     },
     {
       "from": "package:logicn-core",

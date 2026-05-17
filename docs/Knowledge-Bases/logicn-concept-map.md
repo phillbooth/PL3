@@ -1,0 +1,286 @@
+# LogicN Concept Map
+
+## Purpose
+
+LogicN concepts should be easy for humans and AI tools to locate without
+weakening the newer core model:
+
+```text
+data -> flow -> permission -> boundary -> report
+```
+
+The older detailed concept list still matters, but it should sit underneath the
+five-concept model instead of replacing it.
+
+## Core Model
+
+| Core concept | Detailed concepts |
+| --- | --- |
+| `data` | models, requests, responses/views, classification, validators, projectors, redactors |
+| `flow` | secure flows, routes, guards, context, scopes/lifetimes, errors, jobs, schedules |
+| `permission` | policies, effects, capabilities, actor authority, audit rules |
+| `boundary` | contracts, packages, repositories/storage, adapters/connectors, events, AI/tools, compute targets |
+| `report` | security reports, exposure reports, effect reports, capability reports, audit evidence, tests |
+
+## V1-Critical Concepts
+
+The first serious LogicN version should define these early:
+
+- routes
+- requests
+- responses/views
+- secure flows
+- models
+- contracts
+- policies
+- effects
+- capabilities
+- classification
+- context
+- scopes/lifetimes
+- errors
+- reports
+- packages
+- tests
+
+These concepts support secure web/API runtime work without pulling in later
+platform features too early.
+
+## Later Concepts
+
+These remain important, but should not drive the first v1 surface:
+
+- events
+- pipelines
+- jobs
+- schedules
+- external adapters/connectors
+- compute targets
+- ontology/data platform features
+- native/WASM/GPU/NPU/photonic targets
+
+They should be represented as boundaries when needed, then expanded after the
+core runtime model is stable.
+
+## Detailed Concept Definitions
+
+### Routes
+
+Routes define public entry points.
+
+Security rules:
+
+- Routes must not accept raw untyped input.
+- Routes must not return raw internal models.
+- Routes must connect declared requests, responses/views, flows and policies.
+
+### Requests
+
+Requests define what is allowed to enter.
+
+Request contracts should control body size, content type, unknown fields,
+duplicate keys, validation and classification.
+
+### Responses
+
+Responses or views define what may leave.
+
+Core rule:
+
+```text
+Models are internal.
+Responses/views are safe output.
+```
+
+### Effects
+
+Effects define what code may technically do:
+
+- database read/write
+- file access
+- network access
+- email sending
+- queue publishing
+- secret access
+- AI model calls
+- external API calls
+- audit logging
+
+Effects are not the same as capabilities. Effects say what code can do;
+capabilities say what the actor is authorised to do.
+
+### Capabilities
+
+Capabilities describe declared permissions or powers:
+
+- `users.read`
+- `users.pii.read`
+- `orders.cancel`
+- `payments.refund`
+- `ai.external_tool.call`
+
+Sensitive actions and sensitive data exposure require capabilities.
+
+### Classification
+
+Classification marks the sensitivity of data:
+
+- public
+- public_id
+- private
+- pii
+- financial
+- internal
+- secret
+- credential
+
+Classification lets LogicN enforce rules such as:
+
+- secret cannot be returned
+- PII requires permission
+- internal data cannot leave public routes
+- credentials cannot be logged
+
+### Context
+
+Context is how LogicN avoids hidden global request state.
+
+Context may include:
+
+- request id
+- actor/user
+- tenant id
+- locale
+- trace id
+- capabilities
+- runtime environment
+- audit metadata
+
+Rule:
+
+```text
+No hidden global currentUser.
+No hidden global request.
+Pass context explicitly.
+```
+
+### Scopes And Lifetimes
+
+Scopes define where sensitive values are allowed to exist.
+
+Sensitive values such as secrets, payment tokens, credentials, temporary keys,
+large memory values and native handles must not escape their permitted scope.
+
+### Errors
+
+Errors are explicit and typed.
+
+Important forms include:
+
+- `Result<T, E>`
+- `Option<T>`
+- `ApiError`
+- `ValidationError`
+- `SecurityError`
+- `StorageError`
+- `ExternalServiceError`
+
+Core rule:
+
+```text
+No hidden exception paths as the default model.
+```
+
+### Match Catch-All Branch
+
+The `_ => { ... }` branch inside a `match` means "anything else goes here".
+It is the default or fallback branch.
+
+For open-ended external values such as webhook event names, provider status
+strings and future API values, `_` can be useful. For security-sensitive code it
+must not silently ignore unknown cases. It should return a typed error, return
+an explicit ignored response, log a safe redacted event, trigger review or fail
+closed.
+
+See [Match Catch-All Branch](match-catch-all-branch.md).
+
+### Repositories And Storage
+
+Models should not directly own database behaviour.
+
+Prefer explicit storage/repository boundaries:
+
+```logicn
+let user = try UsersRepository.findRequired(userId)
+```
+
+Storage contracts define data source, allowed queries, mapping, effects,
+encryption requirements and parameterised query rules.
+
+### Adapters And Connectors
+
+Adapters connect LogicN to external systems safely.
+
+Examples:
+
+- payment provider adapter
+- email provider adapter
+- search adapter
+- object storage connector
+- AI model adapter
+
+Adapters are boundaries and must be permissioned, effect-checked and
+reportable.
+
+### Packages
+
+Packages define code and authority boundaries.
+
+Package rules should cover exports, internal code, allowed effects, owned data,
+dependencies and required permissions.
+
+### Reports
+
+Reports are first-class outputs.
+
+Common reports include:
+
+- policy reports
+- model exposure reports
+- contract reports
+- effect reports
+- capability reports
+- security reports
+- memory reports
+- AI context reports
+
+### Tests
+
+Tests should understand LogicN security rules.
+
+Useful tests include:
+
+- route rejects raw input
+- response excludes secret field
+- policy denies undeclared network effect
+- model requires classified fields
+- flow handles `Result<T, E>` and `Option<T>`
+
+## Best Mental Model
+
+```text
+Routes define entry points.
+Requests define what can enter.
+Models define internal data.
+Classification defines data sensitivity.
+Responses/views define what can leave.
+Secure flows define controlled execution.
+Policies define what is allowed.
+Capabilities define who or what is authorised.
+Effects define what the code can do.
+Contracts define boundary agreements.
+Context replaces global request state.
+Scopes control sensitive lifetime.
+Reports prove what was checked.
+Tests verify the rules stay true.
+```

@@ -57,6 +57,29 @@ must not be treated as implemented app functionality.
 - LogicN must not make measured performance claims until the compiler, memory
   model, runtime and benchmark methodology exist. Current performance wording
   must be framed as a goal or opportunity, not a measured fact.
+- LogicN benchmarks must separate validation from speed ranking. Fixed-operation
+  mode validates matching checksums; timed 10-30 second throughput mode provides
+  the official median operations-per-second score. Warm-up must use throwaway
+  state and must not mutate the measured benchmark state.
+- LogicN startup must prefer verified boot profiles over runtime discovery in
+  production. Expensive route, policy, schema, package and target planning
+  should happen at build/check time; boot should verify hashes, load the
+  smallest safe runtime surface and defer optional packages until after
+  readiness.
+- LogicN fast response planning must combine verified boot profiles,
+  precompiled route dispatch, prebuilt validators, warmed policy tables,
+  bounded pools, safe inbound connection reuse and safe outbound connection
+  pooling. Keep-alive policy must never bypass auth, validation, TLS, rate
+  limits, body limits, backpressure or secret-safe logging.
+- LogicN v1 concept documentation must keep the five-part model as the main
+  teaching structure while indexing detailed concepts underneath it: routes,
+  requests, responses/views, secure flows, models, contracts, policies,
+  effects, capabilities, classification, context, scopes/lifetimes, errors,
+  reports, packages and tests.
+- LogicN match catch-all branches using `_ => { ... }` must be documented as
+  explicit fallback handling. For security-sensitive matches, catch-all branches
+  must return a typed error, explicit ignored response, safe log, manual review
+  or fail-closed result instead of silently swallowing unknown states.
 - LogicN must not claim production language maturity until it has an enforceable
   language core: parser, AST, symbol table, type checker, memory checker, effect
   checker, module system, protocols/interfaces, trusted interop boundary, test

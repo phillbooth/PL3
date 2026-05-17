@@ -1,0 +1,68 @@
+# Reports: Audit Evidence
+
+## Purpose
+
+Audit evidence reports collect deterministic proof about LogicN security,
+permissions, data exposure, boundaries and runtime configuration.
+
+## Important Limitation
+
+LogicN reports can support audits, but they do not automatically make a system
+compliant. Operational controls, deployment evidence, supplier governance,
+incident response and human review remain required outside the language.
+
+## Evidence Bundle
+
+Possible future command:
+
+```bash
+logicn audit --env production --out build/audit
+```
+
+Output:
+
+```text
+build/audit/
+  audit-summary.md
+  security-report.json
+  data-classification-report.json
+  model-exposure.json
+  policy-effective.json
+  contract-effective.json
+  permission-effective.json
+  secret-usage-report.json
+  storage-boundary-report.json
+  external-boundary-report.json
+  dependency-report.json
+  production-config-report.json
+```
+
+## What LogicN Can Evidence
+
+```text
+which fields are PII
+which fields are secret
+which routes expose which fields
+which flows can access external APIs
+which flows can write to storage
+which permissions are required
+which fields are denied from public output
+which policies apply in production
+```
+
+## What LogicN Cannot Prove Alone
+
+```text
+the real database is encrypted correctly
+cloud IAM roles are correct
+admins follow access policy
+production servers are patched
+backups restore successfully
+the organisation follows incident process
+```
+
+## Positioning
+
+LogicN is designed to support audit-ready secure software by making data
+classification, permissions, flows, contracts, boundaries and exposure rules
+explicit, compiler-checked and reportable.

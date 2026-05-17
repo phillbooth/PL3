@@ -82,13 +82,15 @@ def run_benchmark(args):
     if args.tracemalloc:
         tracemalloc.start()
 
-    seed = args.seed & UINT32_MASK
-    checksum = 0
-
     warmup_started_at = time.perf_counter()
     if args.warmup_ms > 0:
+        warmup_seed = args.seed & UINT32_MASK
+        warmup_checksum = 0
         while elapsed_ms(warmup_started_at) < args.warmup_ms:
-            seed, checksum = run_batch(seed, checksum, args.batch_size)
+            warmup_seed, warmup_checksum = run_batch(warmup_seed, warmup_checksum, args.batch_size)
+
+    seed = args.seed & UINT32_MASK
+    checksum = 0
 
     started_at = time.perf_counter()
     started_cpu = time.process_time()

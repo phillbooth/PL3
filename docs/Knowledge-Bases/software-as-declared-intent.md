@@ -1,0 +1,66 @@
+# Software As Declared Intent
+
+LogicN is built on the idea that modern code should not only execute. It should
+communicate system intent.
+
+## Core Statement
+
+```text
+Modern coding is becoming less about writing machine instructions and more about
+expressing system intent in a way that humans, AI and tools can understand,
+check and safely execute.
+```
+
+## LogicN Statement
+
+LogicN programs should clearly express:
+
+```text
+methods
+rules
+policies
+data flows
+security boundaries
+permissions
+effects
+reports
+```
+
+The goal is for developers, AI systems, compilers and runtime tools to
+understand what the software is meant to do before it runs.
+
+## How LogicN Expresses Intent
+
+LogicN uses:
+
+```text
+data       = what information exists, enters and leaves
+flow       = what runs
+permission = what is allowed
+boundary   = where trust changes
+report     = proof of what was checked
+```
+
+## Security Value
+
+Declared intent lets LogicN check whether implementation behavior matches the
+declared model:
+
+```text
+Does this flow require the right permission?
+Does this response expose only allowed data?
+Does this boundary validate input?
+Does this code perform only declared effects?
+Does this report prove the decision?
+```
+
+## AI Value
+
+AI tools should not need to guess architecture from scattered code. They should
+read declared data, flows, permissions, boundaries and reports, then propose
+changes that preserve those declarations.
+
+## Rule
+
+When LogicN accepts a feature, it should be visible to humans, AI and tools
+through types, permissions, policies, effects, source maps or reports.

@@ -56,17 +56,22 @@ function validateConfig(config) {
 function runBenchmark(config) {
   validateConfig(config);
 
+  const warmupStartedAt = process.hrtime.bigint();
+  if (config.warmupMs > 0) {
+    const warmupState = {
+      seed: config.seed >>> 0,
+      checksum: 0
+    };
+
+    while (elapsedMsSince(warmupStartedAt) < config.warmupMs) {
+      runBatch(warmupState, config.batchSize);
+    }
+  }
+
   const state = {
     seed: config.seed >>> 0,
     checksum: 0
   };
-
-  const warmupStartedAt = process.hrtime.bigint();
-  if (config.warmupMs > 0) {
-    while (elapsedMsSince(warmupStartedAt) < config.warmupMs) {
-      runBatch(state, config.batchSize);
-    }
-  }
 
   const startedAt = process.hrtime.bigint();
   const startedCpu = process.cpuUsage();

@@ -6,8 +6,8 @@ Effects make privileged or external behavior visible before code runs.
 
 ## Short Definition
 
-An effect is a declared capability use such as database access, network access,
-filesystem access, runtime clock access or metrics access.
+An effect is a declared technical action such as database access, network
+access, filesystem access, runtime clock access or metrics access.
 
 ## Syntax Example
 
@@ -21,6 +21,8 @@ effects [database.write, runtime.clock] {
 ## Security Rules
 
 - Undeclared effects are denied.
+- Effects say what code may technically do; capabilities say what the actor is
+  authorised to do.
 - Effects must match package and route policy.
 - Client-safe code must not use server-only effects.
 - Reports must show requested and allowed effects.
